@@ -1,0 +1,47 @@
+---
+sidebar: sidebar 
+permalink: xcp-prepare-windows-for-xcp-smb.html 
+keywords: netapp, xcp, prepare, preparing, preparation, windows, 
+summary: XCP SMB 用に Windows を準備します 
+---
+= XCP SMB 用に Windows を準備します
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+XCP SMB は、 Windows クライアントホストシステムを使用して並列 I/O ストリームを生成し、使用可能なネットワークとストレージのパフォーマンスを最大限に活用します。
+
+
+
+=== ストレージを設定する
+
+XCP SMB の移行および移行には、次のユーザログイン要件があります。
+
+* XCP ホストシステム： XCP ホストユーザには管理者権限が必要です（ユーザは XCP SMB ホストシステムの「 BUILTIN\Administrators 」グループに属している必要があります）。
+* Active Directory の監査ログポリシーとセキュリティログポリシーに移行または XCP ホストユーザを追加します。Windows 10 で「監査とセキュリティログ」ポリシーを見つけるには、次の手順に従います。
+
+
+.手順
+. [ * グループポリシーエディタ * ] ダイアログボックスを開きます。
+. [ * コンピューターの構成 ] 、 [Windows の設定 ] 、 [ セキュリティーの設定 ] 、 [ ローカルポリシー ] 、 [ ユーザー権利の割り当て * ] の順に選択します。
+. 監査ログとセキュリティログの変更 * をクリックします。
+. XCP ホスト・ユーザを追加するには、 * Add User または Group * を選択します。
+
+
+詳細については、を参照してください link:https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn221953(v%3Dws.11)["監査とセキュリティログを管理します"^]。
+
+* ターゲットストレージシステム： XCP ホストユーザに読み取りおよび書き込みアクセスが必要です。
+* ソースストレージシステム：
++
+** ユーザがソース・ストレージ・システムの Backup Operators グループのメンバーである場合、これらのファイルを保護する権限に関係なく、このグループのメンバーはセキュリティ・ルールを使用せずにファイルを読み取ることができます。
+** ユーザがソースシステムの「 Backup Operators 」グループに属していない場合は、そのユーザに読み取りアクセス権が与えられている必要があります。
+
+
+
+
+
+NOTE: XCP オプション「 -preserve -atime 」をサポートするには、ソースストレージシステムに書き込み権限が必要です。

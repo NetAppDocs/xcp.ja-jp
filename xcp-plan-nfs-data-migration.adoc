@@ -1,0 +1,42 @@
+---
+sidebar: sidebar 
+permalink: xcp-plan-nfs-data-migration.html 
+keywords: netapp, xcp, plan, planning, data, migration, migrate, migrating, nfs, smb, file, analytics 
+summary: NFS によるデータ移行を計画 
+---
+= NFS データ移行を計画
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+NFS データ移行を計画
+
+
+
+=== - 表示
+
+'how コマンドは '1 つまたは複数のストレージ・サーバの RPC サービスおよび NFS エクスポートを照会しますコマンドは、各エクスポートの使用済み容量と空き容量に加えて、使用可能なサービスとエクスポートを表示し、各エクスポートのルート属性を指定します。例
+
+* `XCP show <NFS file server IP/FQDN>`
+* XCP show nfs_server01.netapp.com`
+
+
+詳細については 'XCP help show' を実行してください
+
+
+
+=== スキャン
+
+「を使用すると、ソースの NFSv3 エクスポートパス全体を再帰的にスキャンし、スキャンの終了時にファイル構造の統計を出力できます。スキャン処理の実行中は、ソースの NFS エクスポートマウントを読み取り専用モードにすることを推奨します。例
+
+* 'XCP scan NFS server:/export path`
+* XCP scan nfs_server01.netapp.com:/export1`
+
+
+詳細については 'XCP help scan を実行してください
+
+必要に応じて、 File Analytics を使用して、結果をグラフィカルに表示します。

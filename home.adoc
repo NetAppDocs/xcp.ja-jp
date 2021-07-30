@@ -1,0 +1,12 @@
+---
+permalink: home.html 
+sidebar: sidebar 
+keywords: information, library, releases, documentation, install, configure, xcp 
+summary: XCP Information Library へようこそ。以前のリリースへのリンクが含まれています。 
+---
+= XCP v1.7 マニュアル
+
+
+XCP 情報ライブラリへようこそ。ここでは、 XCP v1.7 ソフトウェアのインストール、設定、および使用方法を含むドキュメントを提供しています。
+
+以前のリリースの XCP のマニュアルは、から入手できます link:https://mysupport.netapp.com/documentation/productlibrary/index.html?productID=63064["ネットアップサポートサイト"^]。

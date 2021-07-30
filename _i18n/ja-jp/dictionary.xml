@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blocks>
+  <block id="dc3e4b78f385d96eee62d48189bd45ed" category="summary">INI ファイル XCP を設定する手順</block>
+  <block id="43f3f6a392074dfc63604c7b136e457f" category="doc">XCP NFS の INI ファイルを設定します</block>
+  <block id="7783b67fa1872b358c3b2240a4357994" category="paragraph">INI ファイル XCP を設定する手順</block>
+  <block id="dc610afe03964d3d2f1b9e7927ddef71" category="paragraph">XCP NFS の INI ファイルを設定するには、次の手順を実行します。</block>
+  <block id="f3a29486bed19a90f2da6d007818b427" category="list-title">手順</block>
+  <block id="3c8422ac65406a6a160285d9611689de" category="list-text">vi エディタを使用して、ホスト構成ファイルに XCP サーバのカタログの場所を追加します。</block>
+  <block id="69ab39c4429204099bcace949edc5493" category="admonition">カタログの場所は、「 xcp.ini` XCP 」構成ファイルの詳細を変更する前にエクスポートする必要があります。カタログの場所（ NFSv3 ）は XCP Linux ホストにマウント可能である必要がありますが、マウントされているとは限りません。</block>
+  <block id="fdb4374d91cf6d1d04906739dbd0a418" category="list-text">カタログの XCP Linux クライアントホスト構成ファイルのエントリが変更されたことを確認します。</block>
+  <block id="9d1854a18d1a1a9b0aad19c89b6a15b0" category="summary">JSON 構成ファイルを作成します</block>
+  <block id="eb498a91409025b6f7459d1487819ac5" category="paragraph">JSON 構成ファイルを作成します。</block>
+  <block id="71067d2da44f21581259461be89d2c5b" category="paragraph">イベントログメッセージ、 syslog クライアント、またはカスタマーロギングをイネーブルにする場合は、次の手順を実行します。</block>
+  <block id="4839d2f25cc35b249d5db15efa1afd75" category="paragraph">* 手順 *</block>
+  <block id="d4f0fd36ab870ee5b451ed975a3b840d" category="list-text">メモ帳や vi などの任意のテキストエディタを開きます。</block>
+  <block id="d4b54477c37b7ad7e878a796746f262b" category="list-text">次の JSON テンプレートを使用して新しいファイルを作成します。</block>
+  <block id="4c38ab1ef38cac28ef430c2be0673437" category="list-text">有効にする機能については 'IsEnabled' の値を TRUE' に変更してください</block>
+  <block id="6bdc741a35e3429fb316e331210901e8" category="list-text">ファイルに xcpLogConfig.json という名前を付け、 * Error ！に記載されているファイルの場所に SAE it の名前を付けます。参照ソースが見つかりません。 *</block>
+  <block id="7c584a16cbf4210dc0a344179e274e09" category="cell">デフォルト設定</block>
+  <block id="a2f0a9650b74152ef4105d29bb0e92f0" category="cell">JSON 構成ファイルの例</block>
+  <block id="d41d8cd98f00b204e9800998ecf8427e" category="doc"></block>
+  <block id="c912e5005906fc866b0c65119bf84481" category="summary">ファイル分析を準備</block>
+  <block id="c108d80b5cb48ca6e66a2b5bb8516f73" category="paragraph">File Analytics を使用したデータ移行の準備。</block>
+  <block id="3cc339d965b395a29ad1d863ec861a5d" category="paragraph">File Analytics には次の 2 つの部分があります。</block>
+  <block id="b70d91b5913fd8380c0a9855731efca0" category="list-text">Linux 上で実行されている File Analytics サーバ</block>
+  <block id="f9f9338441d9cdf13d8591c29e099cf5" category="list-text">Windows で実行されている XCP SMB サービス</block>
+  <block id="5c467f28cb79c0e954f4435341917273" category="paragraph">File Analytics のインストールには、次の要件があります。</block>
+  <block id="2df5d96cd561be191acf7a967d1b2f7d" category="list-text">サポートされる OS およびシステム要件は、 NFS および SMB のインストールの場合と同じです。データベースは Linux マシンに配置されるため、 10GB 以上の空きスペースが必要です。</block>
+  <block id="70f3eca25e003193af754baffcc4fa1e" category="list-text">File Analytics サーバーをインストールする Linux マシンは、インターネットまたは yum リポジトリに接続されている必要があります。インストールスクリプトが yum リポジトリと通信し、 PostgreSQL 、 HTTP 、 SSL などの必要なパッケージをダウンロードします。</block>
+  <block id="b3bcd58589083180ea4c797047da5ef1" category="list-text">File Analytics GUI は、同じボックスで実行されている Linux 用の XCP サービスと共に Linux マシンでのみホストできます。</block>
+  <block id="fe4803d353dc5eef03c8d5fba4e56832" category="list-text">SMB サービスを実行する場合は、次の手順を実行します。</block>
+  <block id="5ffd3eba47f3a2d193ecbbaeb0f91a37" category="list-text">ファイル分析サーバが実行されている Linux マシンに対して Windows ボックスから ping が実行されていることを確認します。</block>
+  <block id="153fa6c8551e03c7ac2761ba8a14766b" category="list-text">ファイアウォールの内側にいる場合は、ポート 5030 と 5432 が開いていることを確認します。ポート 5030 は、 Windows への REST 呼び出しに使用されます。PostgreSQL 接続にはポート 5432 ポートが使用されます。</block>
+  <block id="d7f645dd7cd8e403d60c9483f4961bfe" category="admonition">XCP File Analytics サーバは常に Linux マシンで実行されます。SMB File Analytics には、個別のインストールはありません。Windows ユーザーで、 SMB 共有のファイル分析を実行する場合は、 File Analytics for Linux をインストールし、 Windows ボックスを Linux データベースに接続する必要があります。XCP File Analytics のみを使用する場合は、 NFS 用に XCP Catalog を設定する必要はありません。</block>
+  <block id="e11089d4b0b741fa37d3bde7e9ece13f" category="summary">XCP SMB 用に Windows を準備します</block>
+  <block id="66f9acc1b514e86b97784fe390326ce3" category="paragraph">XCP SMB は、 Windows クライアントホストシステムを使用して並列 I/O ストリームを生成し、使用可能なネットワークとストレージのパフォーマンスを最大限に活用します。</block>
+  <block id="d25223f4065ca21361aff2e7cdc61203" category="section-title">ストレージを設定する</block>
+  <block id="c8fe60bf1229083e3bb54f5366226e26" category="paragraph">XCP SMB の移行および移行には、次のユーザログイン要件があります。</block>
+  <block id="511057ab7032e10b44554037f83be0f0" category="list-text">XCP ホストシステム： XCP ホストユーザには管理者権限が必要です（ユーザは XCP SMB ホストシステムの「 BUILTIN\Administrators 」グループに属している必要があります）。</block>
+  <block id="543905c9e8d793e24798d62739fd285b" category="list-text">Active Directory の監査ログポリシーとセキュリティログポリシーに移行または XCP ホストユーザを追加します。Windows 10 で「監査とセキュリティログ」ポリシーを見つけるには、次の手順に従います。</block>
+  <block id="efaadd4be852741a24b28d66addf7e17" category="list-text">[ * グループポリシーエディタ * ] ダイアログボックスを開きます。</block>
+  <block id="58f61041ffa1d14e245af8a57dce1c48" category="list-text">[ * コンピューターの構成 ] 、 [Windows の設定 ] 、 [ セキュリティーの設定 ] 、 [ ローカルポリシー ] 、 [ ユーザー権利の割り当て * ] の順に選択します。</block>
+  <block id="1c22a26a513b9132241fc7480ad20795" category="list-text">監査ログとセキュリティログの変更 * をクリックします。</block>
+  <block id="66b0c244cc406f3e1c6f34b6693be565" category="list-text">XCP ホスト・ユーザを追加するには、 * Add User または Group * を選択します。</block>
+  <block id="4ba21fa3f242b755c406321b6aa530de" category="inline-link-macro">監査とセキュリティログを管理します</block>
+  <block id="c96fce632e7aa3e5167dff9fa88131e9" category="paragraph">詳細については、を参照してください <block ref="d3422bfee6b881948e1c2336b81fe843" category="inline-link-macro-rx"></block>。</block>
+  <block id="130be40193e820f08bf4f1d1d3997f1d" category="list-text">ターゲットストレージシステム： XCP ホストユーザに読み取りおよび書き込みアクセスが必要です。</block>
+  <block id="7afc4c7d5e96a2848efc22152106e0c8" category="list-text">ソースストレージシステム：</block>
+  <block id="386165b259b8ebc30679e32e675a4a0e" category="list-text">ユーザがソース・ストレージ・システムの Backup Operators グループのメンバーである場合、これらのファイルを保護する権限に関係なく、このグループのメンバーはセキュリティ・ルールを使用せずにファイルを読み取ることができます。</block>
+  <block id="d3b52487fdbf549de1321bb2c9d8fba5" category="list-text">ユーザがソースシステムの「 Backup Operators 」グループに属していない場合は、そのユーザに読み取りアクセス権が与えられている必要があります。</block>
+  <block id="b05845bd260a96228d4d5ff877126cfd" category="admonition">XCP オプション「 -preserve -atime 」をサポートするには、ソースストレージシステムに書き込み権限が必要です。</block>
+  <block id="6a5ff98f1029ddc23bd3537c5e16785f" category="summary">NFS によるデータ移行を計画</block>
+  <block id="963344c97166a9491696af9417e60eed" category="doc">NFS データ移行を計画</block>
+  <block id="2d3f0225db2a5974e9dd3efa2510ede8" category="paragraph">NFS データ移行を計画</block>
+  <block id="498f79c4c5bbde77f1bceb6c86fd0f6d" category="section-title">- 表示</block>
+  <block id="2af7eb2d79f03b1c5451390ff7784e40" category="paragraph">'how コマンドは '1 つまたは複数のストレージ・サーバの RPC サービスおよび NFS エクスポートを照会しますコマンドは、各エクスポートの使用済み容量と空き容量に加えて、使用可能なサービスとエクスポートを表示し、各エクスポートのルート属性を指定します。例</block>
+  <block id="36b1ac7befb0a4a2aafb2840c1654f80" category="list-text">`XCP show &lt;NFS file server IP/FQDN&gt;`</block>
+  <block id="4ee7ac9a872eadb3d1f7347270bbfad7" category="list-text">XCP show nfs_server01.netapp.com`</block>
+  <block id="0b38ead8cb81444a18a4c9660907007d" category="paragraph">詳細については 'XCP help show' を実行してください</block>
+  <block id="22efdbe132eabc102306bd7a334fb434" category="section-title">スキャン</block>
+  <block id="260f1bdc770baf06a9e28946677d8ade" category="paragraph">「を使用すると、ソースの NFSv3 エクスポートパス全体を再帰的にスキャンし、スキャンの終了時にファイル構造の統計を出力できます。スキャン処理の実行中は、ソースの NFS エクスポートマウントを読み取り専用モードにすることを推奨します。例</block>
+  <block id="f4ab3aebb097ac37f9fcb496bdebcb05" category="list-text">'XCP scan NFS server:/export path`</block>
+  <block id="aef9e741ab939722d78e05debc0530f8" category="list-text">XCP scan nfs_server01.netapp.com:/export1`</block>
+  <block id="57e9ab68ece2e80c1dd072f065c05577" category="paragraph">詳細については 'XCP help scan を実行してください</block>
+  <block id="d966f213346a789643a8dfc71c67068b" category="paragraph">必要に応じて、 File Analytics を使用して、結果をグラフィカルに表示します。</block>
+  <block id="22d9ce858207febcb08875a117d891c0" category="summary">XCP NFS および SMB にロギングしています</block>
+  <block id="673a73278d9e0a66d2a33d82f445c019" category="doc">NFS および SMB のロギング（オプション）</block>
+  <block id="ca6b5876ba3731010dbd6ce4f943f163" category="paragraph">XCP NFS および SMB にロギングしています。</block>
+  <block id="bbdfba7da6d012043d08425567e45fa2" category="paragraph">XCP は、「 xcpLogConfig.json 」 JSON 構成ファイルを使用して、複数のオプション機能を構成することをサポートしています。特定の機能のみを有効にするには 'xcpLogConfig.json 構成ファイルを手動で作成し 'xcpLogConfig.json 構成ファイルを使用して以下を有効にします</block>
+  <block id="3b940044f58b92869d13d3035d6d408a" category="list-text">イベントログメッセージ</block>
+  <block id="104f1c80c37455f2c0587b79cd313366" category="list-text">XCP の Syslog クライアント</block>
+  <block id="1a6697e218dc4aeea5fe509dd25c7350" category="list-text">カスタム XCP ロギング</block>
+  <block id="2340c9c9c838d4ea774f1fb441121071" category="paragraph">イベントログメッセージおよび syslog クライアントは、デフォルト設定では無効になっています。設定は NFS と SMB の両方で共通です。</block>
+  <block id="9f924c606c08d53acc8be948e2d95d3b" category="cell">JSON ファイルの場所を設定します</block>
+  <block id="1d1a594959ec615f56516f5d0f5e8ddb" category="cell">NFS</block>
+  <block id="b4fdd997b1f33e0d4c6964444c2bf399" category="cell">SMB</block>
+  <block id="c1b0c424171af08d39846b8629a610e7" category="cell">構成ファイルのデフォルトの場所</block>
+  <block id="0c8468e8bc6e9c8ce8e4de412fee0c10" category="cell">/opt/NetApp/xFiles/XCP</block>
+  <block id="0355e9d1594e3a57c3f88a95ae90e7b7" category="cell">C ： \NetApp\XCP \ConfigFile</block>
+  <block id="688880844a9d73f7e3cf8f7c8f2f1da6" category="cell">カスタム・ロケーションには 'XCP _CONFIG_DIR 環境変数が必要です</block>
+  <block id="223d3a19cc16f37abc58628c0df5ee27" category="cell">エラー参照ソースが見つかりません。</block>
+  <block id="382b0f5185773fa0f67a8ed8056c7759" category="cell">該当なし</block>
+  <block id="c71c45be8ac72499222cb1690d308dde" category="paragraph">JSON 構成ファイルのオプションでは、大文字と小文字が区別されます。これらのオプションは、 XCP NFS と XCP SMB で同じです。</block>
+  <block id="648adea552c0c306b10285fc5bd4e59e" category="cell">サブオプション名（ Sub Options Name ）</block>
+  <block id="e19db84f190c3464c2f480631dd5e3ba" category="cell">JSON データタイプ</block>
+  <block id="7a1920d61156abc05a60135aefe8bc67" category="cell">デフォルト</block>
+  <block id="b5a7adde1af5c87d7fd797b6245c2a39" category="cell">説明</block>
+  <block id="46c887ae3ff675fe00072fa1a620b410" category="cell">logconfig</block>
+  <block id="0b368cc0d6bc566655b58b9e30ac8288" category="cell">XCP ロギングをカスタマイズするオプション。</block>
+  <block id="7de270fea2fc6dad4fffb1435cbc3c55" category="cell">「レベル」</block>
+  <block id="27118326006d3829667a400ad23d5d98" category="cell">文字列</block>
+  <block id="551b723eafd6a31d444fcb2f5920fbd3" category="cell">情報</block>
+  <block id="4fde349406f5c210ab92e5c2143bb06b" category="cell">ログメッセージの重大度フィルタレベル。XCP ログメッセージは、重大度が低い順に、「 Critical 」、「 Error 」、「 Warning 」、「 Info 」、「 debug 」の 5 つの重大度レベルをサポートしています（情報またはデバッグを使用することを強く推奨します）。</block>
+  <block id="8fe45724da2b38fc1d814f7aa2e361f2" category="cell">“ maxBytes ”</block>
+  <block id="a0faef0851b4294c06f2b94bb1cb2044" category="cell">整数</block>
+  <block id="ec6d8e20e66fd6aeb73c064140fdbe16" category="cell">52428800</block>
+  <block id="52ef09ffeae8c8d17a3db6c4c6a0244a" category="cell">各ローテーションログファイルのサイズ。サポートされる最大ローテーションファイル数は 10 です。</block>
+  <block id="ae3c7435f2c81037ac59d1f58fc20d8a" category="cell">名前</block>
+  <block id="4bfa73c989008743279ae857adc50faf" category="cell">xcp.log</block>
+  <block id="28f328b3eb2db5bcec48bce6f4f72705" category="cell">カスタムログファイル名を設定するオプション。</block>
+  <block id="f47a66a903b4f64e00e9a1aa9bee17a7" category="cell">イベントログ</block>
+  <block id="20ab83e9c44385a5def0f5f96df46ee0" category="cell">イベントログメッセージを設定するオプション。</block>
+  <block id="bb536b68b59577558f9363f7eaa5ed97" category="cell">“ IsEnabled ”</block>
+  <block id="27226c864bac7454a8504f8edb15d95b" category="cell">ブール値</block>
+  <block id="68934a3e9455fa72420237eb05902327" category="cell">いいえ</block>
+  <block id="c6801972780d22a01c49d964fe8af351" category="cell">このブーリアンオプションは、イベントメッセージングを有効にするために使用されます。false に設定すると ' イベント・メッセージは生成されず ' イベント・ログはイベント・ログ・ファイルに発行されません</block>
+  <block id="be81356ee8695f2cfba9646b3b338090" category="cell">イベントメッセージの重大度フィルタレベル。イベントメッセージングでは、重大度が低い順に 5 つの重大度レベルがサポートされています。重大度は、 critical 、 error 、 warning 、 Info 、 debug です</block>
+  <block id="098181024c2e968b16b5cf85107c1b7e" category="cell">syslog</block>
+  <block id="c3d87898d0b02937967287a208a2ae0a" category="cell">syslog メッセージングを設定するためのオプション。</block>
+  <block id="8e313d0a8b38bd81563ab5684229b838" category="cell">このブーリアンオプションは、 XCP で syslog クライアントを有効にする場合に使用します。</block>
+  <block id="ee7aec01489d45038ddfbeb6ede313e1" category="cell">メッセージの重大度フィルタレベル。XCP イベントログメッセージは、重大度が「重大」、「エラー」、「警告」、「情報」、「デバッグ」の 5 つの重大度レベルをサポートします</block>
+  <block id="5d72da30a65589cbf8a1f844a7fb8d0a" category="cell">「サーバ IP 」</block>
+  <block id="6adf97f83acf6453d4a6a4b1070f3754" category="cell">なし</block>
+  <block id="961704177adf0b6fb8de38720ed27225" category="cell">リモート syslog サーバの IP アドレスまたはホスト名。</block>
+  <block id="9492da74b601c63f971198ae7a09ce53" category="cell">ポート</block>
+  <block id="59b90e1005a220e2ebc542eb9d950b1e" category="cell">514</block>
+  <block id="41f37150ac650751da15e41867b2ef3e" category="cell">リモート syslog レシーバポート。別のポートで syslog データグラムを受信する syslog レシーバは、ポートオプション UDP ポート 514 を使用して設定できますが、必要なポートに設定することもできます。</block>
+  <block id="21511790461e29cd622923924f215edb" category="cell">「サニタイズ」</block>
+  <block id="16bb1af98a3e8c14ecb1b7e10c66078c" category="paragraph">XCP サポートに共通するオプション。このオプションの値を true に設定すると、サポート対象のメッセージ（ロギング、イベント、 syslog など）に機密情報（ IP およびユーザ名）が非表示になります。 たとえば、「 anitize 」オプションを「 false 」に設定した場合： *`20-07-17 03:10:23779-Info-12806 XCP Paths ： ['10.234.104.251/cat_vol ： /cat_vol']`*20-07-17 03:10:23778-Info-12XCP 806 User Name:root'207-15308'x1-1217'xCP Info*'20'20'x8*'20'20'30' と同様に 'xCP Info:'20'x1-24*'20'x8*'20'20'x1-'308*'x1-24*'30 XX.XX.XX.XX:/ cat_vol']`*`20-07-1703:13:51595-Info-12859 XCP ユーザー名 :*`</block>
+  <block id="5d53d5891d91acf4824c28550023ec23" category="summary">File Analytics for SMB をインストールまたはアップグレードします</block>
+  <block id="e9815aad4b6c2855f398a9360208dd65" category="doc">SMB 向けファイル分析をインストール</block>
+  <block id="6a6947b743abcf4f9aaa1664bb88feba" category="paragraph">File Analytics for SMB をインストールまたはアップグレードします。</block>
+  <block id="4501bedf7a80968ef55dd21ff51af4a3" category="inline-link-macro">XCP SMB をインストールします</block>
+  <block id="28f1937a3cc3eb0d6912c14361aae86a" category="paragraph">SMB のシステム要件については、を参照してください <block ref="b1b298f808db7e093ee9abb7cc8bfdef" category="inline-link-macro-rx"></block>。</block>
+  <block id="17e2d63e3b45ecbfe13bcc32fec929d0" category="paragraph">* 始める前に *</block>
+  <block id="e5e58d5cdf81973c4955d5ea6aede873" category="list-text">XCP SMB サービスを使用するには、 Linux マシンで NFS 用に XCP File Analytics を設定する必要があります。</block>
+  <block id="1a192e854cfe5d8168d0d05ae2e502e3" category="list-text">Windows マシンで XCP File Analytics の構成を開始する前に、 Linux マシンで XCP サービスが実行されていることを確認します。</block>
+  <block id="b62051beb7fd4a143b6c815f0754ce91" category="section-title">SMB 向けファイル分析の新規インストール</block>
+  <block id="8d61f5ee9cebc1323e4406cd9c74bee3" category="paragraph">SMB 向けファイル分析の新規インストールを実行するには、次の手順を実行します。</block>
+  <block id="202b59069600c80dee2f3b31bf33ce1a" category="list-text">"XCP .exe" ファイルを Windows`C:` ドライブにコピーします。このバイナリは、 tgz を解凍した後、 "/XCP /Windows" 内で入手できます。</block>
+  <block id="22e274a44bf3a069c4f201b0e827b460" category="inline-link-macro">XCP サイト</block>
+  <block id="36cc7dd1df7adb145df0ee9cebe250c5" category="list-text">から XCP ライセンスファイルをダウンロードします <block ref="f33ccbb3083b14f48de92a286ba83724" category="inline-link-macro-rx"></block>。</block>
+  <block id="6bbb03e83c8f1500cacb227482558dd0" category="list-text">C:\NetApp\XCP というフォルダを作成し、 XCP ライセンスをこの場所にコピーします。</block>
+  <block id="f9a7c45c2f9e869ce9359173c559dd03" category="list-text">コマンドプロンプトで次のコマンドを使用して、 XCP ライセンスをアクティブにします。 xcp.exe activate</block>
+  <block id="771f1f61b29ddab00383860a9b8fe8df" category="list-text">「 server.key 」と「 server.crt 」ファイルを「 /opt/NetApp/xFiles/XCP 」（ XCP File Analytics が設定されている Linux ボックス）から「 C:\NetApp\XCP 」（オプション）にコピーします。 CA 証明書がある場合は、同じ名前と拡張子を持つこの場所に証明書を置きます。</block>
+  <block id="ad50f79627822b073378935381e28b0a" category="list-text">Windows CLI のコマンドプロンプトで、「 XCP configure 」を実行します。</block>
+  <block id="34a5eb12a40f3a927cd1680032a68a8c" category="list-text">プロンプトが表示されたら、 XCP File Analytics サーバが設定されている Linux マシンの IP アドレスを入力します。</block>
+  <block id="e43b30072e1c1e31e80bd2433db31830" category="list-text">プロンプトが表示されたら、 XCP Linux File Analytics 設定で入力したデータベースのパスワードを入力します。</block>
+  <block id="cff644aa1716d68a9351188e54a1a712" category="list-text">Linux マシンに移動し './configure.sh を実行します</block>
+  <block id="d8da99a82dddfba37d491206159ee22d" category="list-text">メインメニューで「 Option 4 (Update XCP Windows agent IP) 」を選択し、 Windows マシンの IP アドレスを指定します。</block>
+  <block id="46be349b53621b4434308c0bbe45ebaf" category="list-text">Windows マシンに移動して、 XCP LISTEN を実行します。ここで XCP File Analytics for SMB が構成されています。サービスを継続的に実行するには、ウィンドウを開いた状態のままにします。</block>
+  <block id="7ff768d8b3e0e35c252ee2e9baf28bc8" category="list-text">Google Chrome ブラウザで File Analytics を起動し、ページを更新してください :`\https://&lt;ip address of Linux&gt;/XCP</block>
+  <block id="c18e175902196dc40d538bf40ec546e5" category="list-text">ダイアログ・ボックスが表示されたら '[OK] をクリックします新しいタブが開きます。ポップアップがブロックされている場合は、ブラウザで有効にしてください。URL のプライバシーポリシーを受け入れ、「 `S MB agent is ready to use 」というメッセージが表示されます。分析ページを更新してください</block>
+  <block id="d7c434c15db5d12a3bed35613610f824" category="list-text">XCP File Analytics GUI がホストされている元のタブに戻り、ページを更新します。これにより、エージェントカードの下に SMB エージェントが表示されます。</block>
+  <block id="55b7006f6e8a19f0555a6b82ca85a801" category="section-title">SMB 向けファイル分析のアップグレード</block>
+  <block id="1688d86172caf9b3ed1acabe15285a4f" category="paragraph">SMB 向けの既存の File Analytics をアップグレードするには、次の手順を実行します。</block>
+  <block id="a2c5f205fc0a35a88463bae625aa351b" category="list-text">File Analytics を実行する前に、 File Analytics が実行されている Linux サーバーもアップグレードされ、サービスが実行されていることを確認してください。</block>
+  <block id="a7a81082a60152f2eb36b8d78016b292" category="list-text">Windows では、コマンドラインに「 CTRL-C 」と入力して、既存の XCP サービスを停止します。</block>
+  <block id="62001cf2823c6318575f560eaf3a11b2" category="list-text">「 XCP .exe 」を最新のバイナリに置き換えます。</block>
+  <block id="7f9cccf134351e9df9c324fb764603f3" category="summary">XCP Information Library へようこそ。以前のリリースへのリンクが含まれています。</block>
+  <block id="3ecfb50f046e96ab1e3c1e892f6ecb61" category="doc">XCP v1.7 マニュアル</block>
+  <block id="227c25e1e932397098d7c6b29e1e444e" category="paragraph">XCP 情報ライブラリへようこそ。ここでは、 XCP v1.7 ソフトウェアのインストール、設定、および使用方法を含むドキュメントを提供しています。</block>
+  <block id="9d2169c1c2855b78a7aeaa4f42d27dc7" category="inline-link-macro">ネットアップサポートサイト</block>
+  <block id="76c8844b91693e12fac2abf6d423c3f5" category="paragraph">以前のリリースの XCP のマニュアルは、から入手できます <block ref="a4ccf985ba56b702a384be031a3cd5f9" category="inline-link-macro-rx"></block>。</block>
+  <block id="0d0094c10f5e227325ec13a4c60c79be" category="summary">XCP File Analytics エラーのトラブルシューティング</block>
+  <block id="58e03a88cb823040213d29590e0a1342" category="doc">XCP File Analytics エラーのトラブルシューティング</block>
+  <block id="2df6366012c9e039186e09dd0f83bf9c" category="paragraph">問題のトラブルシューティング方法を確認します。</block>
+  <block id="642facf67e0ad311eee88b3ab8381590" category="cell">問題</block>
+  <block id="49b21ad0d38942f635877e7bbc5d7a1e" category="cell">解決策</block>
+  <block id="901e69f27ca301eeceb09eafcfc378f3" category="cell">PostgreSQL のインストールまたはサービスに失敗しました</block>
+  <block id="0e0e0acc1a9ea0d43a111a880b5dd1bc" category="paragraph">もう一度 configure を実行し、インストールオプションを選択します。以前のインストールが成功した場合は、修復オプションを選択できます。それでもエラーが表示される場合は、次の手順を実行してください。</block>
+  <block id="7112b19cac4efbfbdf3c6299701d5add" category="list-text">Linux システムで PostgreSQL を実行します。</block>
+  <block id="90807e63bd379b3edb7559be967d8aec" category="paragraph">'sudo yum-y install postgresql-server sudo systemctl start postgresq</block>
+  <block id="6652d535b456a43aa4e5fedcb4074cff" category="list-text">PostgreSQL データベースのデータディレクトリを作成します。</block>
+  <block id="f663918a9aa259a6f404ca14af13cade" category="paragraph">'sudo mkdir /var/lib/postgres/data</block>
+  <block id="0452c0e061058f3f14babc818112b5ab" category="list-text">データベースを初期化します。</block>
+  <block id="69165b3b61eb0f32ebf97f0c65a65b12" category="paragraph">「 sudo -i -u postgres initdb-D 」 /var/lib/pgsql/data 」を参照してください</block>
+  <block id="4f919ced412de93c64b3268b5470c7f3" category="list-text">適切な Linux ファイルエディタを使用して、次のファイルを開きます。</block>
+  <block id="51b6616ee1748ae68a2457e272b019e9" category="paragraph">/var/lib/pgsql/data/pg_hba.conf</block>
+  <block id="a8a53c48cbb8415fbb7d697977e32f6a" category="list-text">次のエントリを削除します。</block>
+  <block id="d733e7b8f15f14b4c8eedf0dc598b8ac" category="paragraph">`# host all all all 127.0.0.1/32 trust`</block>
+  <block id="7f0e0ff2d52ea8b69f4d676763829b0a" category="list-text">「 #host all all 0.0.0.0/0 password 」というエントリを追加します</block>
+  <block id="415f3119a1ec580be5e4f92126e1e1df" category="list-text">ファイル「 /var/lib/pgsql/data/postgresql.conf 」を開きます</block>
+  <block id="3d2d7c012c1648338216848934c4951e" category="list-text">次のエントリを追加します。</block>
+  <block id="ab95ae1de18cf6cfade03d40c71d91d2" category="paragraph">#listen_addresses='*</block>
+  <block id="1cc1902afb4ba7c9bf742c458a5872e0" category="list-text">PostgreSQL サービスを開始します。</block>
+  <block id="1eed2cbf2596004c30d086961feef09e" category="paragraph">'UDO systemctl start postgresql.service`</block>
+  <block id="3dc8891d77e496e943106c94dd505a47" category="cell">httpd のインストールまたはサービスに失敗しました</block>
+  <block id="fc437d4f7db7f5e0dbb9b40849747a59" category="list-text">Linux システムに HTTPD をインストールします。</block>
+  <block id="2f66f95ee195abfa52c444a51e92f8d9" category="paragraph">「 UDO yum-y install httpd 」を選択します</block>
+  <block id="411fab4c9bf3277fce2f253deacedd9d" category="list-text">次の構成ファイルを開いてルールを書き換えます。</block>
+  <block id="e37dd6a6d868be706aecbe04b6ffe0e4" category="paragraph">/etc/httpd/conf/httpd.conf</block>
+  <block id="8361cfc60fc0f09987dabbccc5a19d92" category="list-text">ファイルに次のエントリを追加します。</block>
+  <block id="58e0128c887d5b6db53158e63e08fcfa" category="paragraph">「 RewriteEngine on `RewriteOptions Inherit `&lt;Directory"/var/www/html/"&gt;`AllowOverride None 」には、すべての付与された「 RewriteCond % ｛ request_filename ｝ -f [OR]`RewriteCond % ｛ request_filename ｝ -d `RewriteRule-d`RewriteRule^r 」が必要です index.html</block>
+  <block id="6a694188a1f47b2c9939ade628f2ca2c" category="list-text">HTTPD サービスを開始します。</block>
+  <block id="40988039bbbcbe94d5aa1cce4bb8836d" category="paragraph">'UDO systemctl start httpd</block>
+  <block id="ed264bfaaddf4bfe7727ba32feddc71e" category="cell">SSL をインストールできませんでした</block>
+  <block id="fd1b3fa7b0fd95c401545de42d7347c7" category="list-text">インストール `m OD_SSL`:</block>
+  <block id="45392447695b700e69695b3355d31433" category="paragraph">yum install mod_ssl-y</block>
+  <block id="f0270a27a2ebf914793917c0796bf9aa" category="list-text">Secure Sockets Layer （ SSL ）証明書を生成します。</block>
+  <block id="e8849998f95a0730a9baf388b1e17ff0" category="paragraph">yum openssl req -x509 -nodes -days 365-newkey `rsa:2048 -keout/etc/ssl/private/apache`-`-selfsigned`s elfsigned.key -out /etc/ssl/certs/apache-selfsigned.crt</block>
+  <block id="b3bb59707e32a184490ceafac2af744f" category="list-text">HTTPS サービスを有効にします。</block>
+  <block id="56047ba32d65933f948622c8de73281b" category="paragraph">yum openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048</block>
+  <block id="a5472293a9f24af00475781ccf23bd48" category="list-text">HTTPD サービスを再起動します。</block>
+  <block id="472e5e5ac349331523960cd6d0d4fef7" category="paragraph">'UDO systemctl restart httpd</block>
+  <block id="a243ff5e2dcbe7a95336be919620b6fe" category="list-text">SSL 証明書を適切な場所にコピーします。</block>
+  <block id="c72d33368188ab67f08d620b4b1bf076" category="paragraph">「 sudo cp - pr /etc/pki/certs/localhost.crt /opt/NetApp/xFiles/XCP / server.crt `'UDO cp - pr/etc/pki/ localhost.key /opt/NetApp/xFiles/XCP / server.key`</block>
+  <block id="2113faff27761298b76e18e9d9dc0831" category="cell">インストールの完了後にログインページを開くことができません</block>
+  <block id="c5dcd35af16918a17ee9c3a5c153f0af" category="inline-link-macro">IMT</block>
+  <block id="d8f588f7b9867f36f645b604710b870a" category="cell">XCP File Analytics がインストールされていて、 HTTPD が実行されている Linux マシンに対して、システムが ping を実行できることを確認します。サービスが実行されていない場合は 'configure を実行して ' 修復オプションを選択しますサポートされているバージョンのブラウザを使用していることを確認してください。を参照してください <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block>。</block>
+  <block id="d50784b3674870554d4c3159c77d15ea" category="cell">ユーザログインに失敗しました</block>
+  <block id="6d7f03f9eb7a58ed2278e3c43684c952" category="list-text">サポートされているバージョンのブラウザを使用していることを確認してください。を参照してください <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block>。</block>
+  <block id="a6d7ff6b68019ab8e68727d4c7395570" category="list-text">ユーザが「 admin 」で、パスワードが正しいことを確認します。</block>
+  <block id="87a071af8f99a9c7de6e287b00b79d65" category="list-text">「 XCP service status 」を発行して、 XCP サービスが実行されていることを確認します。</block>
+  <block id="688ed7a6a60fc5e2ea7b8d685b953cbb" category="list-text">Linux でポート 5030 が開いていることを確認します。アプリケーションを *https:// &lt;Linux ip&gt;:5030/api/XCP * で開き、メッセージメッセージメッセージ msg: `M issing Authorization Header` を確認します。</block>
+  <block id="29ce56cd9d307b3514653e8cae7e2c23" category="list-text">xcp.ini` ファイルが /opt/NetApp/xFiles/XCP の場所にあるかどうかを確認します。「 xcp.ini` 」ファイルをリセットするには、設定スクリプトを実行し、「 * Repair * 」オプションを選択します。次に、メニューオプションを選択して、 * xcp.ini ファイルの再構築 * を実行します。</block>
+  <block id="05f335661b9a8df951162cb0258c7f5c" category="list-text">CLI で 'XCP --listen' コマンドを手動で実行し ' ログインしてみますサーバで要求を受信しない場合は、インストールとサーバとの通信に使用するポートを再確認します。インストールが正しいことを確認したら、「 service XCP start 」コマンドを実行してサービスを再起動します。</block>
+  <block id="60d9290e92f76e80de27ec1cca2c6ce6" category="cell">XCP GUI に更新されたページが表示されない。</block>
+  <block id="7c11b01c997091c545072a913db2725d" category="cell">キャッシュをクリアしてやり直してください。</block>
+  <block id="a04f96b6db4b60427c763eb51cfd126b" category="cell">XCP サービスが開始されていません</block>
+  <block id="53c1fcfaeeade0d937642ef92edcea52" category="cell">"XCP " サービスを実行するには、 "UDO systemctl start XCP " コマンドを使用します。または、設定スクリプトを実行し、「 * Repair * 」オプションを選択して停止したサービスを開始します。</block>
+  <block id="00d88d85f86cfc3fd42467a045938e04" category="cell">ファイル共有のスキャンに失敗しました</block>
+  <block id="63ce1ab709d3dcc744a81aea7d2152b2" category="cell">ファイル共有 / ボリュームは読み取りできない可能性があります。ファイル共有がアクセス可能かどうかを手動で確認するには 'XCP show コマンドを実行します</block>
+  <block id="b8ed9da4163768ad065c550427fbbb02" category="cell">ファイルサーバをロードできませんでした</block>
+  <block id="62301a77fa82723024ee92935bc48066" category="cell">ページをリフレッシュしてみてください。問題が解決しない場合は、プロンプトで XCP show コマンドを手動で実行し、ファイルサーバをスキャンできるかどうかを確認します。成功した場合は、ネットアップカスタマーサポートにチケットを発行してください。失敗した場合は、手動でファイルサーバがアクティブかどうかを確認します。xcp.ini` ファイルとライセンスファイルが正しい場所にあるかどうかを確認します「 xcp.ini` 」ファイルをリセットするには、設定スクリプトを実行し、「 * Repair * 」オプションを選択します。次に、 xcp.ini ファイルを再構築するためのメニュー・オプションを選択します。 * ライセンスの更新が必要かどうかを調べるには、「 xcpflogs 」ログを確認します。</block>
+  <block id="f725a02581232d2034f08f5bbb7fd8ac" category="cell">システムのリブート後に XCP File Analytics ページが表示されない</block>
+  <block id="0e4a94fc1ebb00022d0693e301596d2d" category="cell">XCP サービスが停止している可能性があります設定スクリプトを実行し、 * Repair * オプションを選択します。これにより、停止されたすべてのサービスが再起動されます。</block>
+  <block id="e2d6471d3d51e8bf2d4aa734bd07e4ed" category="cell">特定のファイルサーバ上のエクスポートされたファイルシステムの合計スペースは、割り当てられた物理ストレージよりも多くのスペースを表示することがあります。</block>
+  <block id="52772d4f4dfb1f60068cfbfab21fd157" category="cell">これは、ボリューム内に qtree レベルのエクスポートがある場合に発生することがあります。たとえば ' ボリューム・サイズが 10 GB であり ' ボリューム '/vol1/qtree1' 内に qtree がある場合 'XCP show コマンドは 'vol1' サイズを 10 GB' として表示し 'qtree1' サイズを 10 GB' として表示しますXCP File Analytics は、両方のエクスポートのスペースを合計し、合計スペースを提供します。この場合、「 20 GB 」となります。「 qtree1 」は論理空間であることは理解できません。</block>
+  <block id="15a72e0b175cfb652e426660fba4bc3c" category="summary">詳細はこちらをご覧ください</block>
+  <block id="bf07f432276ee2fe7e55f9ea12c2ba5a" category="doc">詳細はこちらをご覧ください</block>
+  <block id="b2869ebd73bb749c2a70fb53b7fb839a" category="paragraph">さまざまなリソース、ドキュメント、フォーラムを通じて、ヘルプを入手したり、詳細情報を参照したりできます。</block>
+  <block id="739cff85d11488640d8e5cd96fd20651" category="inline-link-macro">XCP のドキュメント</block>
+  <block id="0eb64b88f402ba59777a9da3b39eb229" category="list-text"><block ref="1b5583f400587c5923833df145f2aa29" category="inline-link-macro-rx"></block> –このリリースおよび以前のリリースのリリースノートおよびリファレンス資料を含みます</block>
+  <block id="7c5a354d83d8ccdcea8502404b2e4326" category="inline-link-macro">NetApp TechCommTV</block>
+  <block id="2b97e6564e79d94d38203d366b354ed0" category="list-text"><block ref="ac9c1e071b76d74223d967c993054c22" category="inline-link-macro-rx"></block>– NetApp XCP のビデオ</block>
+  <block id="6efa8f47d1a76af77ce311b436e4dca9" category="inline-link-macro">NetApp XCP</block>
+  <block id="3a9dc4d356f0267053bacfcd1d12f2a0" category="list-text"><block ref="8eb894646a418e33ca3d088f11e4914c" category="inline-link-macro-rx"></block> –ライセンスを取得するためのリンクが含まれます</block>
+  <block id="ed08ca4078374e76c6df3f1999af7274" category="inline-link-macro">ネットアップのリソース</block>
+  <block id="8a05209ac1af42c76c9bfccbe981b710" category="list-text"><block ref="51a0489d16489f7754f2ce96a32b3156" category="inline-link-macro-rx"></block> XCP の場合：テクニカルレポートおよび技術情報アーティクルへのリンクを含みます</block>
+  <block id="dd490b81914dd945601e442a41cb4222" category="inline-link-macro">ネットアップコミュニティ</block>
+  <block id="5069a642e7e1b77c303271d4c51a31be" category="list-text"><block ref="a6159e77c91be3ab1d481e4c7c939636" category="inline-link-macro-rx"></block> –フォーラム</block>
+  <block id="a3100bf3334206028c894a5568ddcf09" category="summary">新機能、アップグレードの注意事項、解決済みの問題、既知の制限事項、および既知の問題について説明します。</block>
+  <block id="b12e7947abc806c4a6eadae86ba72e23" category="doc">XCP v1.7 リリースノート</block>
+  <block id="4211ff2337be9231091d785407a0bfb0" category="paragraph">。 <block ref="250a696d75d0d3bbd3c0629ff2f13ecb" category="inline-link-macro-rx"></block> 新機能、アップグレードに関する注意事項、解決済みの問題、既知の制限事項、および既知の問題について説明する。</block>
+  <block id="dbd469acdcbd52648cb242bcfda6add3" category="paragraph">リリースノートにアクセスするには、ネットアップサポートサイトにサインオンする必要があります。</block>
+  <block id="899cb0fc6e09b056f086b2106c805708" category="summary">XCP SMB をインストールします</block>
+  <block id="83eac0335f97fa6241e10b9487c974e1" category="paragraph">このセクションでは、 Windows クライアントでの VC++ 再頒布可能インストールのためのシステム要件と手順、および XCP の初期セットアップについて詳しく説明します。</block>
+  <block id="8f753e7a8965c7ae386ee6fa22a4b1bf" category="admonition">アップグレードするオプションはありません。既存のバージョンを置き換えるには XCP を再インストールしてください。</block>
+  <block id="b9982e4a219c9f069ec01b724fff8274" category="paragraph">* システム要件 *</block>
+  <block id="7d74f3b92b19da5e606d737d339a9679" category="cell">項目</block>
+  <block id="9b97b7bd5e0a87be7bf218224ada83cf" category="cell">要件</block>
+  <block id="a45da96d0bf6575970f2d27af22be28a" category="cell">システム</block>
+  <block id="cf484097e9c1cd5f080006a9a0550714" category="cell">64 ビット Intel または AMD サーバ、最小 4 コア、 32GB RAM</block>
+  <block id="0ed45b799d99029a04d945ba2794df83" category="cell">オペレーティングシステムとソフトウェア</block>
+  <block id="918d32b75f0ab883abba3a8dc0c3ae8d" category="inline-link-macro">Interoperability Matrix Tool で確認してください</block>
+  <block id="93c11dfd633dc7108de53aff18c2255b" category="cell">Windows Server 2012 R2 以降。サポートされている Microsoft OS バージョンについては、を参照してください <block ref="1ed2ba1980a264d01ab3597cde177180" category="inline-link-macro-rx"></block>。Visual C++ 2017 再配布可能ファイルが XCP ホストにインストールされている必要があります。</block>
+  <block id="889e70a278e37320b95f39105b61c0bf" category="cell">特別な要件</block>
+  <block id="b8cf6a58b316c2d2246f9d35aa2e8997" category="cell">ソースストレージシステム、 XCP ホスト、およびターゲット ONTAP システムが同じ Active Directory ドメインに属している必要があります</block>
+  <block id="8c4aa541ee911e8d80451ef8cc304806" category="cell">ストレージ</block>
+  <block id="4a238c022aa917755e27db83983ade18" category="cell">XCP バイナリ用に 20 MB のディスクスペース、および C ： \NetApp\XCP ディレクトリに格納されているログ用に 50 MB 以上のディスクスペース</block>
+  <block id="d31b586de007038e5023c216e62f86b1" category="cell">サポートされているプロトコルバージョン</block>
+  <block id="4ada655f00526d6808f8340ab758c575" category="cell">すべての SMB プロトコルバージョン</block>
+  <block id="817c6a5be8297c117096d41d202aff2e" category="cell">サポートされているブラウザ（ File Analytics のみ）</block>
+  <block id="21c1caf58e7317ab4fa37a9c0510fcd1" category="cell">XCP File Analytics は Google Chrome バージョン 76 以降をサポートします。サポートされているすべてのバージョンのブラウザについては、 IMT マトリックスを参照してください</block>
+  <block id="8c7843878f3c9b0f5e771772d6db2dea" category="section-title">XCP SMB Microsoft VC++ 再頒布可能ファイルのインストール</block>
+  <block id="c54e109937f5c638f4600d450eedcd55" category="paragraph">VC++ 再配布可能なインストールの手順は、次のとおりです。</block>
+  <block id="c4af91562832ae25fbae11e89da4b667" category="inline-link-macro">VC++ 2017 再頒布可能</block>
+  <block id="6cd22d7c4dadeacb23225ecd72fe717c" category="list-text">をクリックします <block ref="9ff75fd178d1ad0222e586938703dbfb" category="inline-link-macro-rx"></block> 実行ファイルをデフォルトのダウンロードフォルダにダウンロードします。</block>
+  <block id="32560870ed79410de18156e8a7708ccc" category="list-text">インストールを開始するには、インストーラをダブルクリックします。利用規約に同意して、「 * インストール * 」をクリックします。</block>
+  <block id="679ad173ef4d2a2de08629da697b979e" category="list-text">インストールが完了したら、 * Restart * をクリックします。</block>
+  <block id="3c91f49d55f34d3506f638d309f40168" category="section-title">XCP SMB Initial Setup 手順の略</block>
+  <block id="4db6b4b2c123aa3cd8ad45d8003538bc" category="paragraph">XCP SMB の初期セットアップを実行するには、次の手順を実行します。</block>
+  <block id="c0fd2c6f11872e36f75c2d1becf5b1bc" category="list-text">Windows ホストでライセンスと XCP SMB バイナリ「 NetApp_XCP _ &lt; バージョン &gt;.tgz 」をコピーします。</block>
+  <block id="e8b023400f6414f32d7707954d99cd66" category="list-text">デスクトップに「 XCP 」ディレクトリを作成します。以前のバージョンの XCP からシステムで「 C ： \NetApp\XCP 」パスが利用可能であることを確認します。「 C:\NetApp\XCP 」がある場合は、「 XCP activate 」コマンドを使用して XCP をアクティブにし、データ移行を続行します。</block>
+  <block id="ac2adfeeb1ae3330aaf5e6549138047d" category="paragraph">「 C:\NetApp\XCP 」が使用できない場合、最初に「 XCP activate 」コマンドを実行すると、システムは XCP ホスト構成ディレクトリとファイルを C:\NetApp\XCP に作成します。activate XCP コマンドが失敗し ' 新しいライセンスを要求するエラーメッセージが表示されます</block>
+  <block id="a93da960db5c5b4f48c763a05f304371" category="list-text">新しく作成したフォルダ「 C ： \NetApp\XCP ：」にライセンスをコピーします</block>
+  <block id="ea6bf0c8de468a8c8d6cf565a16762f0" category="list-text">XCP のアクティブ化：</block>
+  <block id="d9a94aeb05c2b97954eebdc3732fc715" category="summary">NFS データを移行する</block>
+  <block id="37704fe51312a12ba870e785cefa70f4" category="paragraph">「 show 」コマンドと「 can 」コマンドを使用して移行を計画した後、データを移行できます。</block>
+  <block id="5fb63579fc981698f97d55bfecb213ea" category="section-title">コピー</block>
+  <block id="55165f0c8a3b423cd1e339e55828353c" category="paragraph">copy コマンドは ' ソース・ディレクトリ構造全体をスキャンして ' デスティネーションの NFSv3 エクスポートにコピーします'copy' コマンドでは ' ソース・パスとデスティネーション・パスを変数として指定する必要がありますコピー処理の終了時に、スキャンおよびコピーされたファイル、スループット / 速度、および経過時間の詳細が表示されます</block>
+  <block id="c26fe677a830587ef1c141567a86c86a" category="paragraph">* 例： *</block>
+  <block id="09a50a5f71f40a01932aba8c86a8c6b2" category="paragraph">詳細は 'XCP help copy' を参照してください</block>
+  <block id="f1cefec9e2196c672a622347f1fbc325" category="section-title">再開</block>
+  <block id="8ca572f19659e7e1feff3c8dd1401ce1" category="paragraph">「 resume 」コマンドは、カタログインデックス名または番号を指定することにより、以前に中断されたコピー操作を再開します。カタログインデックスの名前または以前のコピー操作の番号は '&lt;catalog path&gt;:/catalog/indexs' ディレクトリに保存されます</block>
+  <block id="12c832a1abd774cf0f4601d95c913d20" category="paragraph">詳細については 'XCP help resume を参照してください</block>
+  <block id="d8e87c0927539672f54462c837be0b7f" category="section-title">同期</block>
+  <block id="1504bd4779c3c062c9078099fad0ac19" category="paragraph">'sync' コマンドは ' カタログ・インデックス・タグ名または以前のコピー操作の番号を使用して ' ソース NFS ディレクトリで実行された変更および変更をスキャンしますソースの差分変更がコピーされ、ターゲットディレクトリに適用されます。古いカタログインデックス番号は、 sync 操作 # の後に新しい 1 つ [.underline] # で置き換えられます。</block>
+  <block id="02ab7688ebf75947479b5e30267d1d55" category="paragraph">詳細については、「 XCP help sync 」を参照してください。</block>
+  <block id="5a750f86ef41f22f852c43351e3ff383" category="section-title">確認します</block>
+  <block id="990d138c681bf32e178b6390caea1423" category="paragraph">「 ve rify 」コマンドでは、カタログインデックス番号を使用せずにコピー操作を行った後に、ソースディレクトリとターゲットディレクトリ間でのバイト単位のデータ比較を完全に使用します。コマンドは、権限を含む、変更日時およびその他のファイルまたはディレクトリの属性をチェックします。また、両側のファイルを読み取り、データを比較します。</block>
+  <block id="8bcf9c6b645253521b5145414a80aecc" category="paragraph">詳細は 'XCP help verify' を参照してください</block>
+  <block id="8c1d67b3b1e3cf97c5f054bf8d66089c" category="summary">SMB データ移行を計画</block>
+  <block id="f4eb381e275885c806213db1203bf102" category="paragraph">SMB のデータ移行を計画</block>
+  <block id="f7d1ef377db88189a0084ee7d6f1b738" category="paragraph">「 show 」コマンドを実行すると、サーバ上で使用可能なすべての SMB 共有が、権限と使用可能なスペースとともに表示されます。例</block>
+  <block id="cf4eff19c5c0fb1733f64f4fcc421b87" category="list-text">'XCP show\\&lt;SMB ファイルサーバ IP/FQDN&gt;`</block>
+  <block id="8b35e2113ce9ad7e63589964e0f33514" category="list-text">XCP show smb_server01.netapp.com`</block>
+  <block id="596e26b9d2a2a09fabd119a1c7970617" category="paragraph">「ス can 」コマンドは SMB 共有全体を再帰的にスキャンし、スキャンの終了時にすべてのファイルを一覧表示します。例</block>
+  <block id="70cc69758e4efa422fa0bec10f65dffb" category="list-text">'XCP scan\\SMB server\share1'</block>
+  <block id="a8386d7454f57e945b9af398be1f740a" category="list-text">XCP scan smb_server01.netapp.com:/share1`</block>
+  <block id="95a35d9399a311a860a23c9c5ca666db" category="summary">File Analytics for NFS をインストールまたはアップグレードします</block>
+  <block id="acb7eae841bcc60d63918737629eaab5" category="doc">File Analytics for NFS をインストールします</block>
+  <block id="65957491431a9d992b0f37939d999254" category="paragraph">File Analytics for NFS をインストールまたはアップグレードします。</block>
+  <block id="c8d71099d454656d5157731fb1f4830e" category="inline-link-macro">XCP NFS をインストールします</block>
+  <block id="1075ac7ace86aea85d4fb5c46d76893a" category="paragraph">NFS のシステム要件については、を参照してください <block ref="3cd449c1c5d47073a7e303a49efe123e" category="inline-link-macro-rx"></block>。「 configure.sh 」スクリプトは、 Linux サーバで利用可能な HTTPD および PostgreSQL のデフォルト設定をインストールし、有効にします。必要に応じて、より新しいバージョンに変更または更新したり、セキュリティガイドラインに従って更新したりできます。</block>
+  <block id="135b308ed83c53f1516b7c754566d1c4" category="list-title">作業を開始する前に</block>
+  <block id="bffa4fb11a93d7fe3b05e9a0ae6ca562" category="list-text">同じホストで XCP アプリケーションと XCP サービスを同時に実行することはできません。実行中の XCP 処理がある場合は、設定を開始する前にその処理を実行します。</block>
+  <block id="179301ccc5709fc7e02ecd874b26f686" category="list-text">Linux マシンが Yum リポジトリサーバまたはインターネットに接続されている必要があります。</block>
+  <block id="1c7bd6403e16df46e3e2b614a9e9b462" category="inline-xref-macro">XCP で使用されるポート</block>
+  <block id="0094a24d5be18635ed7692bb7af4b2cc" category="list-text">Linux マシンでファイアウォールが設定されている場合は、 XCP 、 XCP サービス、および XCP File Analytics で使用されるサービスで使用されるポートを有効にするようにファイアウォールの設定を変更する必要があります。詳細については、を参照してください <block ref="f0232e18255c6ead68096119d370fed7" category="inline-xref-macro-rx"></block>。</block>
+  <block id="0373d3a871a446e1453b9dac2f65fc16" category="list-text">XCP フォルダに移動し './configure.sh スクリプトを実行しますこのスクリプトは、 Linux マシンの設定と次のタスクの実行に 3 ～ 10 分かかります。</block>
+  <block id="764d468e664b446f1d826729929ecfb9" category="list-text">PostgreSQL パッケージをダウンロードします</block>
+  <block id="95729f46d8929016635ddf649e35e2f2" category="list-text">PostgreSQL サーバをインストールします</block>
+  <block id="f2a5f5cc88869d4a87e6ec728f7b0c03" category="list-text">HTTPD をインストールします</block>
+  <block id="94c38da4879043620e5524ff110c37f2" category="list-text">オープン SSL を使用して、自己署名証明書 (`erver.key および server.crt') を作成します。</block>
+  <block id="25209e61095bba68fa40e4487aa75db5" category="list-text">XCP File Analytics データベースを作成します</block>
+  <block id="fc7df983e4500ca08968614afbec45ab" category="list-text">XCP 設定メニューから 'Option 1 Configure client system' を選択します</block>
+  <block id="651c2776198de248bf3626cd676b3f1c" category="list-text">新規インストールの場合は、管理者ユーザとデータベースユーザのパスワードを更新します。アップグレードの場合は、 XCP サービスを停止するように求められます。終了したら 'Option 0' を選択します</block>
+  <block id="4f6cea84c64bcd2cbef1950791410c78" category="list-text">XCP サービスを開始します。次のコマンドを使用して、 XCP サービスが実行されているかどうかを確認します。 service XCP status</block>
+  <block id="e58e3ebc6749ebd9f5c6ca3564e928e8" category="list-text">ブラウザで File Analytics を起動します。 * 。 https://&lt;ip address of Linux &gt; /XCP * 。</block>
+  <block id="8ebcb6923388924859f2dac1791081e8" category="summary">XCP NFS エラーのトラブルシューティング</block>
+  <block id="938d4078879782553ee606a9107059ee" category="doc">XCP NFS エラーのトラブルシューティング</block>
+  <block id="ef8fd37900d2911bb2ff728bb4f9ec8b" category="cell">XCP 問題の略</block>
+  <block id="a7cf2676d276e4fe420000595e3443d2" category="cell">`XCP ： error` ： root として実行する必要があります</block>
+  <block id="2a90812fc13c49a77254684c5a3b5cb8" category="cell">root ユーザとして XCP コマンドを実行します</block>
+  <block id="26170421f8be098bf38a96d89b26cacc" category="cell">xCP ：エラー : ライセンスファイル /opt/NetApp/xFiles/XCP / ライセンスが見つかりません。</block>
+  <block id="250a902a3fb4b31a101a4c8806b80d3b" category="cell">からライセンスをダウンロードします <block ref="f33ccbb3083b14f48de92a286ba83724" category="inline-link-macro-rx"></block> そして '/opt/NetApp/xFiles/XCP にコピーします</block>
+  <block id="c42217f3ea9a2824b2e6414ca47d28c1" category="cell">`XCP : error: このライセンスは有効期限が切れています</block>
+  <block id="fade017532ccd86be0dd06e93349b97a" category="cell">から新しい XCP ライセンスを更新または取得します <block ref="f33ccbb3083b14f48de92a286ba83724" category="inline-link-macro-rx"></block>。</block>
+  <block id="17f5431aa4929b3c834893c75964e33a" category="cell">`XCP : error: ライセンスが読み取り不能です</block>
+  <block id="8b7f10b61929bf6cc6b82ba37f75829f" category="cell">ライセンスファイルが破損している可能性があります。から新しい XCP ライセンスを取得します <block ref="f33ccbb3083b14f48de92a286ba83724" category="inline-link-macro-rx"></block>。</block>
+  <block id="9d20189cd3d18c4ec2337d1bd04f00c0" category="cell">XCP : エラー : XCP がアクティブ化されていません。先に 'activate' を実行してください</block>
+  <block id="74f182aed0adddf0c05034f68c431365" category="cell">「 XCP activate 」コマンドを実行します</block>
+  <block id="25b9d99744f022a106507715192e88dc" category="cell">このコピーのライセンスがありません</block>
+  <block id="8ba84afe18c18194743530245f33e6c3" category="cell">適切な XCP ライセンスファイルを取得します。XCP サーバの /opt/NetApp/xFiles/XCP ディレクトリに XCP ライセンスをコピーします。ライセンスを有効にするには 'XCP activate コマンドを実行します</block>
+  <block id="b6f8b7e40716598e1e429f8c4ca560c3" category="cell">`XCP : エラー : ライセンスの有効化に失敗しました : サーバにアクセスできません</block>
+  <block id="407dbac586cc06e82427958c7ebc9b6e" category="cell">オンラインライセンスをアクティブ化しようとしていますが、ホストシステムがインターネットに接続されていません。システムがインターネットに接続されていることを確認します。</block>
+  <block id="35cabffe4dcfb66c8c5c1abde8d88d79" category="cell">`XCP : エラー : ライセンスの有効化に失敗しました : サーバ xcp.netapp.com unreachable`XCP : ヒント : このホストで DNS を構成するか ' ライセンスページに戻ってプライベートライセンスを要求してください予想されるエラー : ライセンスの有効化に失敗しました : サーバ xcp.netapp.com 到達不能</block>
+  <block id="57bb45ee2626c6c9327710db7ad62b16" category="cell">ホストから xcp.netapp.com にアクセスできること、またはオフラインライセンスを要求していることを確認します</block>
+  <block id="2b0923c485796bcf7f70cc9dfebec175" category="cell">`XCP ： ERROR: カタログにアクセスできません :NFS_server:/export[:subdirectory]` をマウントできません</block>
+  <block id="aa7a7e5f12deaad32d92dac53b12c581" category="cell">XCP Linux クライアントホストでエディタを開き、適切なカタログの場所で構成ファイルを更新します。XCP 構成ファイルは、 /opt/NetApp/xFiles/XCP xcp.ini` にあります。構成ファイルのサンプルエントリ： `[root@scspr1949387001~]# cat /opt/NetApp/xFiles/XCP / xcp.ini # Sample XCP config[XCP ] catalog=10.235.128.153:/catalog`</block>
+  <block id="59052f213763189d6af354107f6d9550" category="cell">`nfs3 error 2`: このようなファイルやディレクトリはありません</block>
+  <block id="e1d14a9642b2578804384063d08b5a1d" category="cell">ターゲット NFS エクスポートにソースファイルが見つかりませんでした。ソースからデスティネーションに差分更新をコピーするには 'XCP sync コマンドを実行します</block>
+  <block id="78e5b69a5a00d7a92919d21e2ba97199" category="cell">`XCP : error: 空または無効なインデックス</block>
+  <block id="f47e7e1b18c5d65cc36fc35a64f1c523" category="cell">ファイルのインデックスを作成する前に、前のコピー操作が中断されました。新しいインデックスで「 XCP copy 」を再実行し、コピーを中断する前にシステムが「 indexed 」を返すことを確認します</block>
+  <block id="c4f538ab4a2a996881ee2390db8a1df5" category="cell">"XCP ： error" ： compare batches ： child process failed" （ exit code -9 ）： recv &lt;type' exceptions .EOFError'&gt;`</block>
+  <block id="49fa9bd2e81eea051a29f8e45c21638b" category="inline-link-macro">NFS データの同期中にメモリを割り当てることができません</block>
+  <block id="ec1ddb4ca70dcd41f3383467aad4f8c5" category="cell">次の技術情報アーティクルの手順に従います。 <block ref="210762096b71656af31c60f1d6e149d7" category="inline-link-macro-rx"></block></block>
+  <block id="da4c5f5f94a9c5f96a18793e2ee86c68" category="cell">`XCP : error`: XCP で ACL を処理するには、 OS nfs4 クライアントを使用して「 &lt;path&gt;` 」をマウントしてください</block>
+  <block id="1f7bf2140d0a23a6d9416516fca213f5" category="cell">XCP ホストにソースとターゲットをマウントします</block>
+  <block id="5066b38ab5bf70aafe33712df1d9dab5" category="cell">移行中に XCP の「 ve rify 」コマンドが失敗する。ステータスに「 failed 」と表示されます。（ライブ）</block>
+  <block id="8f5339cfe8b54520bd6b5cb4d972eba7" category="cell">ソースがライブのときに XCP の「 ve rify 」コマンドが実行されました。最後のカットオーバー後に XCP の「 ve rify 」コマンドを実行します。</block>
+  <block id="62e70645f6409e90524602eafed9306a" category="cell">カットオーバー後に XCP の「 ve rify 」コマンドが失敗する。（ライブ）</block>
+  <block id="abd97a0cc712bae7d2d2c57eef3e5626" category="cell">XCP カットオーバーの同期処理ですべてのデータがコピーされていない可能性があります。最後のカットオーバー後に、 XCP の sync コマンドに続いて「 ve rify 」コマンドを再実行します。問題が解決しない場合は、テクニカルサポートにお問い合わせください。</block>
+  <block id="592186702b758ab08696afc8d28b9140" category="cell">XCP の sync コマンドが失敗します（この環境は移行中にすべての同期エラーを発生させます）。（ライブ）</block>
+  <block id="7c854d835786bed5c18a105db535182c" category="cell">XCP はデータを読み取ることができません。 XCP 問題が原因の可能性があります。コマンド処理の完了後に XCP ステータスメッセージを確認します。「 sync 」コマンドを再実行します。それでも同期処理が失敗する場合は、テクニカルサポートにお問い合わせください。</block>
+  <block id="c2b31ba0b0b414a421fcf40b6f54a893" category="cell">メモリ不足が原因で、 XCP copy コマンド、 `re sum`, および `sync コマンドが失敗します。XCP がクラッシュし、 XCP のステータスが FAILED と表示される。（ライブ）</block>
+  <block id="fd276b4247c01ade132cbdd748bef2d4" category="cell">ホストの使用可能なメモリが不足しているか、増分変更が大量に発生しています。次の技術情報アーティクルの手順に従います。 <block ref="210762096b71656af31c60f1d6e149d7" category="inline-link-macro-rx"></block></block>
+  <block id="48c8358f8ec93d53dce102ada3542d9a" category="summary">XCP NFS 用 Linux を準備します</block>
+  <block id="b60567959313ad04bc597ac1c76b3d78" category="paragraph">XCP NFS は、 Linux クライアントホストシステムを使用して並列 I/O ストリームを生成し、使用可能なネットワークとストレージのパフォーマンスを最大限に活用します。</block>
+  <block id="2ff3c45412179560786cd7233c267e67" category="section-title">カタログを構成します</block>
+  <block id="1abb7321abd92c499537e61dd053435d" category="paragraph">XCP は、 NFSv3 からアクセス可能なカタログディレクトリに処理レポートとメタデータを保存します。カタログのプロビジョニングは、インストール前に次のタスクを必要とする 1 回限りのタスクです。</block>
+  <block id="f85b2894a959159223bcb6e5be12b88c" category="list-text">セキュリティと信頼性を確保するための NetApp NFSv3 エクスポート。</block>
+  <block id="50ee3c2275eb668b515d25b25dc7843f" category="list-text">エクスポートを含むアグリゲートに 10 本以上のディスクまたはソリッドステートドライブが含まれていること。</block>
+  <block id="e40697d32255e93835733be85907b044" category="list-text">XCP の実行に使用されるすべての Linux クライアントの IP アドレスについて、カタログエクスポートへのルートアクセスを許可するように構成されたストレージ（複数の XCP クライアントでカタログの場所を共有可能）。</block>
+  <block id="1260afb8659244577921c8fb1e065bdb" category="list-text">インデックスを作成するオブジェクト（ディレクトリとファイル、ハードリンク） 1 、 000 万個ごとに約 1GB のスペースが必要です。再開または同期できるコピーごと、およびオフラインで検索可能なスキャンごとにインデックスが必要です。</block>
+  <block id="0d5c59864a34fb37a484d6804f701c7f" category="admonition">XCP カタログは別途保存する必要があります。これらのディレクトリは、ソースまたはデスティネーションの NFS エクスポートディレクトリには配置しないでください。XCP はメタデータを管理します。このレポートは、初期セットアップで指定したカタログの場所に保存されます。XCP を使用して処理を実行する前に、レポートの格納場所を指定して更新する必要があります。</block>
+  <block id="57af563c0eacc9d9ac7d1c28bf2f9a11" category="paragraph">XCP NFS の移行および移行には、ソースとターゲットのストレージに関する次の要件があります。</block>
+  <block id="47a59ef97151aaaa29e31591b2233a3d" category="list-text">ソースサーバとターゲットサーバで NFSv3 プロトコルサービスが有効になっている必要があります。NFSv4 ACL を移行する場合は、デスティネーションサーバで NFSv4 プロトコルサービスと NFSv4 ACL を有効にする必要があります。</block>
+  <block id="161dc33e8f5019ca3f26226f073410fc" category="list-text">ソースボリュームとターゲットボリュームは、 XCP Linux クライアントホストへの「 root 」アクセスでエクスポートされる必要があります。</block>
+  <block id="a38eea5bea1d2cd2fcdbb7cf0c8c9234" category="admonition">管理者が誤って変更できないように、 NFSv3 および NFSv4 エクスポートのソースを読み取り専用として設定してください。</block>
+  <block id="2cb211d6d9065080871b03dc58cc2f5f" category="summary">SMB データを移行</block>
+  <block id="28f2900c35a6a416b39cb9a71b13649a" category="paragraph">copy コマンドは ' ソース・ディレクトリ構造全体をスキャンし ' デスティネーション SMB 共有にコピーします'copy' コマンドでは ' ソース・パスとデスティネーション・パスを変数として指定する必要がありますスキャンおよびコピーされたファイル、スループット / 速度、および経過時間の詳細が、 5 秒ごとにコンソールに出力されます。</block>
+  <block id="40fa419bffb820819ac71ba039348155" category="paragraph">「 sync 」コマンドは、ソース共有とターゲット共有の変更と変更を同時にスキャンし、ターゲットに適切なアクション（削除、変更、名前変更など）を適用して、ターゲットがソースと同一であることを確認します。</block>
+  <block id="bb7e8df484499f0f598a871fa277086a" category="paragraph">sync コマンドは、データの内容、タイムスタンプ、ファイル属性、所有権、およびセキュリティ情報を比較します。</block>
+  <block id="53ab8108c26b577654ebb4cf27404e03" category="paragraph">「 ve rify 」コマンドは、ソース共有とターゲット共有の両方を読み取り、比較して、相違点に関する情報を提供します。コマンドは、コピーや同期に使用するツールに関係なく、任意のソースとデスティネーションで使用できます。</block>
+  <block id="26bddf6d4b393b265322f78d679e9266" category="summary">データ移行を計画</block>
+  <block id="a045552c7614c121b614d5387d1d7e15" category="paragraph">CLI または File Analytics GUI を使用して移行を計画できます。</block>
+  <block id="8e20ba8fac66fab3c2a4d90a2d702810" category="paragraph">次のコマンドを使用して、移行を計画します。</block>
+  <block id="73035bb0e9219012f810f55b99b44088" category="paragraph">ファイル分析を使用して、エクスポートと共有の統計を表示します。</block>
+  <block id="2bcb9e91d9726432ada974afa56bdf0f" category="summary">XCP は、 XCP 処理で使用できるフィルタオプションを提供します</block>
+  <block id="f3f43e30c8c7d78c6ac0173515e57a00" category="doc">フィルタ</block>
+  <block id="8f8313770d08b6de4fc9f26ab9cb702f" category="paragraph">XCP は、 XCP 処理で使用できるフィルタオプションを提供します。</block>
+  <block id="afe701d93422db60552b47d48ae873a8" category="paragraph">XCP は、 NFS および SMB の「 -match 」および「 -exclude 」オプション用のフィルタを使用します。</block>
+  <block id="8d0ffbdcda54546120df81be2fa7517a" category="paragraph">NFS の場合は 'XCP help info' を実行し ' フィルタセクションを参照して '-match' フィルタと -exclude' フィルタの使用方法を確認してください</block>
+  <block id="8b8bd82846902c55d97040e4cf92d530" category="paragraph">SMB の場合は、「 XCP help-match 」と「 EXCLUDE 」を実行して、「 m atch 」と「 EXCLUDE 」フィルタの詳細を取得します。</block>
+  <block id="2c64852df0b21e99d0d0ef1cc5b8c6a9" category="paragraph">XCP コマンドでフィルタを使用する場合は、 XCP help コマンドを実行して、サポートされているオプションかどうかを確認します。</block>
+  <block id="1718dc53be562ce70afa56df4e40aac0" category="summary">パフォーマンス調整（ NFS のみ）</block>
+  <block id="0e976619182e016eafbf2e8c1da3d756" category="paragraph">show コマンドと scan コマンドを使用した移行の計画が完了したら、データを移行できます。</block>
+  <block id="d768515fa6bb20ff09428b43b5a4f426" category="paragraph">最適なパフォーマンスと信頼性を実現するために、 XCP Linux クライアントホストの /etc/sysctl.conf に次の Linux カーネル TCP パフォーマンスパラメータを設定することを推奨します。'sysctl-p' または reboot コマンドを実行して変更をコミットします</block>
+  <block id="afc140e7771a565b91190eb36ffe4d87" category="summary">スキャンを実行する</block>
+  <block id="924efb8414fbca05d721d87cd806d298" category="doc">スキャンを実行します</block>
+  <block id="04ec2acd5a3aa521b572bd5eda28b826" category="paragraph">NFS / SMB ファイルシステムが XCP File Analytics GUI に追加されると、ファイルシステムスキャンを開始してデータを分析および表現できます。</block>
+  <block id="73c9b75852e3215a47c68ab6ab2082d5" category="list-text">追加したファイルサーバカードの矢印をクリックして、ファイルサーバ上のファイル共有を表示します。</block>
+  <block id="1cecb0486bf5cf6a9a63507c660cd03d" category="inline-image-macro">ファイル共有のイメージを表示します</block>
+  <block id="b368c6bc5323e94824365fcd21553663" category="paragraph"><block ref="b368c6bc5323e94824365fcd21553663" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c70145f3a9d32b413e32aca4332c15d5" category="list-text">ファイル共有のリストで、スキャンするファイル共有の名前をクリックします。</block>
+  <block id="1d9f1e11f009248b7a6a3f85a1a8c928" category="list-text">スキャンを開始するには、 * スキャン * をクリックします。</block>
+  <block id="b95cc160a68eb624b2033f60040386e7" category="paragraph">スキャンの進捗状況バーが表示されます。</block>
+  <block id="82ba8d2b1fd827ef3a66da623896394d" category="list-text">スキャンが完了すると、 * stat view * および * file distribution * タブが有効になり、グラフを表示できます。</block>
+  <block id="8cb4643cf2374b32d80ce75e3493df62" category="inline-image-macro">完全な画像をスキャンします</block>
+  <block id="5481411c2f0b781c17731517d05610e9" category="paragraph"><block ref="5481411c2f0b781c17731517d05610e9" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="578292ac4c697ed21db0d31cd1b8d3ff" category="section-title">グラフについては、こちらをご覧ください</block>
+  <block id="39608788b7b36c2f24675d36d0d20850" category="paragraph">File Analytics GUI ダッシュボードには、 File Analytics を視覚化するための複数のグラフが表示されます。</block>
+  <block id="c2f26c95cfc4acebceea5957c8a8a752" category="section-title">ホットコールドカウントグラフ</block>
+  <block id="b3f8792258261524437e0929fe8e22e4" category="paragraph">XCP File Analytics は、 90 日間アクセスされていないファイルをコールドデータとして分類します。過去 90 日間にアクセスされたファイルはホットデータです。ホットデータとコールドデータの定義基準は、アクセス時間のみに基づきます。</block>
+  <block id="2c2c76e5815c000443540d6efdea0ba8" category="paragraph"><block ref="2c2c76e5815c000443540d6efdea0ba8" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="be3d2877d7f6edf47d2da23d6f6c8031" category="paragraph">ホットコールド数のグラフには、 XCP NFS のホットまたはコールドの inode 数（数百万）が表示されます。XCP SMB の場合、このグラフはホットまたはコールドのファイル数を示します。色付きのバーはホットデータを表し、 90 日以内にアクセスされたファイルの割合を示します。</block>
+  <block id="17c63d1f020c7412781d86986eed8055" category="section-title">ホットコールドサイズグラフ</block>
+  <block id="803438978ac0bd7226bbc14c201c1883" category="paragraph"><block ref="803438978ac0bd7226bbc14c201c1883" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="adc81e9a8e68bc65823bf41d7802ccd6" category="paragraph">ホットコールドサイズグラフには、ホットファイルとコールドファイルの割合と、各カテゴリのファイルの合計サイズが表示されます。色の付いたバーはホットデータを表し、色のない部分はコールドデータを表します。ホットデータとコールドデータの定義基準は、アクセス時間のみに基づきます。</block>
+  <block id="75ec650e18b56587d103526c6f285389" category="section-title">ディレクトリグラフのエントリ</block>
+  <block id="63cedfead7c2fe0e3d24cb3ea85abade" category="paragraph"><block ref="63cedfead7c2fe0e3d24cb3ea85abade" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="bba91ad230be48b115fc168dfb610f64" category="paragraph">ディレクトリグラフのエントリには、ディレクトリ内のエントリの数が表示されます。[ 深さ ] 列にはさまざまなディレクトリサイズが含まれ、 [ カウント ] 列には各ディレクトリ階層のエントリ数が表示されます。</block>
+  <block id="c630cd9b8f04779bd25dfbe8198e7ce6" category="section-title">サイズ別ファイル分布グラフ（ File Distribution by Size Graph ）</block>
+  <block id="5af5be8a1541747b8173130604ea730d" category="paragraph"><block ref="5af5be8a1541747b8173130604ea730d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a8030ab19614e27516c45e14ba3c9975" category="paragraph">File Distribution by Size グラフには、指定したファイルサイズの下にあるファイルの数が表示されます。[ ファイルサイズ ] 列にはファイルサイズのカテゴリが含まれ、 [ カウント ] 列にはファイル数の分布が示されます。</block>
+  <block id="9260704cc7742c419f81c523b6635c4f" category="section-title">ディレクトリ階層グラフ（ Directory Depth Graph ）</block>
+  <block id="53b83b73ad45cdc6d6960281f0312183" category="paragraph"><block ref="53b83b73ad45cdc6d6960281f0312183" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="6d29a1bbbf5fe7fafaad6cae566b6371" category="paragraph">Directory Depth グラフは、さまざまなディレクトリ階層のディレクトリ数の分布を表します。深さ列にはさまざまなディレクトリの深さが含まれ、数列にはファイル共有内の各ディレクトリの深さの数が含まれます。</block>
+  <block id="d6c7f8633a0d831e9a6f8e1044857021" category="section-title">サイズグラフで使用されるファイルスペース</block>
+  <block id="2c1a908e204d8e572f6be0f64d83c276" category="paragraph"><block ref="2c1a908e204d8e572f6be0f64d83c276" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a4cebdf729f43c76aed8d623b84ccfc6" category="paragraph">[ ファイルサイズで使用されるファイル容量 ] グラフには、ファイルサイズの範囲ごとにファイル数が表示されます。[ ファイルサイズ ] 列には異なるファイルサイズ範囲が含まれ、 [ 使用容量 ] 列には各ファイルサイズ範囲で使用される容量が表示されます。</block>
+  <block id="9874b535d02c22338e735da89ffc88f4" category="section-title">ユーザが占有するスペースグラフ</block>
+  <block id="1d3988bae5f6ae9e0787e5c724fe57f5" category="paragraph"><block ref="1d3988bae5f6ae9e0787e5c724fe57f5" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="e9f26e76bb6ef3ae1813e1df1d8cc8e2" category="paragraph">ユーザーの占有スペースグラフには、ユーザーが使用しているスペースが表示されます。ユーザー名列にはユーザーの名前（ユーザー名を取得できない場合は UID ）が含まれ、使用容量列には各ユーザー名で使用されているスペースが表示されます。</block>
+  <block id="41d6dafcb16f845ca70e42044e5de0dc" category="section-title">アクセス / 変更 / 作成されたファイルのグラフ</block>
+  <block id="ffe6eca8066769d129ed82d6dacd94c9" category="paragraph"><block ref="ffe6eca8066769d129ed82d6dacd94c9" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="1ba708bb040c1401145fd6696909842d" category="paragraph">[ アクセス済みファイル ]/[ 変更済みファイル ]/[ 作成済みファイル ] グラフには、超過時間で変更されたファイルの数が表示されます。X 軸は変更が行われた期間を表し、 Y 軸は変更されたファイルの数を表します。</block>
+  <block id="58ef3ad87f99012fe52ae141775b7f98" category="admonition">SMB スキャンでアクセス時間（ atime ）グラフを取得するには、スキャンを実行する前に atime を保持するチェックボックスをオンにします。</block>
+  <block id="f3903eed8d82fea3de1576f67505c364" category="section-title">拡張子グラフィックによるファイル配布</block>
+  <block id="b6bb426f627b924dfa93dab5250445ea" category="paragraph"><block ref="b6bb426f627b924dfa93dab5250445ea" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="3fad104b85921f1e24dcf1bdded4ece7" category="paragraph">File Distribution by Extension グラフは、ファイル共有内のさまざまなファイル拡張子の数を表しています。拡張子を表す分割のサイズは、各拡張子を持つファイルの数に基づいています。</block>
+  <block id="7205155ddc84a3940ada53155c2b1218" category="section-title">タイプ別ファイル分布グラフ（ File Distribution by Type Graph ）</block>
+  <block id="7a7727dad2bdb494aa0830c3cc046e87" category="paragraph"><block ref="7a7727dad2bdb494aa0830c3cc046e87" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="789ce5d1059bef030025a853ffb95e49" category="paragraph">[ 配布タイプ別 ] グラフには、次のタイプのファイルの数が表示されます。</block>
+  <block id="5aed9994fb25d3562e0d606c1e321b4e" category="list-text">reg: 通常のファイル</block>
+  <block id="98b4f842034dad12db4a252c8d9f6264" category="list-text">LNK ：リンクのファイル</block>
+  <block id="14caca2b86bb5fc70d438c3f2e6b9d34" category="list-text">specials ：デバイスファイルとキャラクタファイルを含むファイルです。</block>
+  <block id="b7e264825d0167b0353f88e4a931eff9" category="list-text">dir ：ディレクトリを含むファイル</block>
+  <block id="04469d5cc45573e655231acc341bf212" category="list-text">ジャンクション： SMB でのみ使用できます</block>
+  <block id="c3a8cc04b10d225329206c08b5a0ebfd" category="summary">ファイルサーバを追加しています</block>
+  <block id="0560ad7866ecc9115ae23021d424dbdf" category="doc">ファイルサーバを追加します</block>
+  <block id="3e0daed933c6a91aa6201ad2331ba049" category="paragraph">NFS および SMB エクスポートされたファイルシステムは、 XCP File Analytics GUI で設定できます。</block>
+  <block id="fe22d3343ef5ef3576fd3a8c614d783c" category="paragraph">これにより、ファイルシステム上のデータをスキャンおよび分析する XCP File Analytics が有効になります。NFS または SMB ファイルサーバを追加するには、次の手順を実行します。</block>
+  <block id="48c7c41b72e1d678923ce3571aa65b2d" category="list-title">ステップ</block>
+  <block id="11ae279acb67e68eef6e5b29ead68d62" category="list-text">ファイルサーバーを追加するには、 * ファイルサーバーの追加 * をクリックします。</block>
+  <block id="78598b64a689474ac10ec7f8c0697abb" category="inline-image-macro">ファイルサーバーの追加画面</block>
+  <block id="503b4be5b956ea211b0169f48e7b4f8b" category="paragraph"><block ref="503b4be5b956ea211b0169f48e7b4f8b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="32db9210762a9969d936f00071f3d4fb" category="paragraph">ファイルサーバの IP アドレスを追加し、 NFS または SMB オプションを選択して、 * 追加 * をクリックします。</block>
+  <block id="ba2d1403f0906196dafde90080678a7d" category="admonition">SMB エージェントが GUI に表示されない場合は、 SMB サーバを追加できません。</block>
+  <block id="5ef4a9ab3fc5fdc69d00d1aad25b070e" category="paragraph">ファイルサーバを追加すると、 XCP が表示されます。</block>
+  <block id="2f2a2a1e65d719301baad1fe95911821" category="list-text">使用可能なファイル共有の総数</block>
+  <block id="cc68875b40a33bf431aa4f50ff6e45e7" category="list-text">分析データとのファイル共有（最初のカウントは「 0 」、スキャンが成功するとこのアップデートが適用されます）</block>
+  <block id="c5b1c7ee80adba42369f15084cf61584" category="list-text">合計スペース使用率 - すべてのエクスポートで使用されているスペースの合計</block>
+  <block id="42d8bc5b4338686330beecb0f442e5ed" category="list-text">ファイル共有とスペース利用率のデータは、 NFS / SMB サーバから直接、リアルタイムで取得されます。データの収集と処理には数秒かかります。</block>
+  <block id="bfd7e7441d439b9d3b393b79102dd4c1" category="admonition">ファイル分析で使用されている使用可能なスペースとスペースは、 NFS 経由で使用可能なエクスポートされた各ファイルシステムから計算されます。たとえば、ボリュームが qtree で構成されていて、 qtree 経由でエクスポートが作成された場合、全体的なスペースはボリュームサイズと qtree サイズの累積スペースになります。</block>
+  <block id="23f08f66a8c926598f110a30ea423fdb" category="summary">File Analytics では、スキャン結果がグラフィカルに表示されます</block>
+  <block id="f0d39ea007ba94b40e0daf5ae44f9298" category="doc">File Analytics にアクセスします</block>
+  <block id="c2fe5fdcb3117ff21509e23d6dfca2de" category="paragraph">File Analytics では、スキャン結果がグラフィカルに表示されます。</block>
+  <block id="e660dfc676d8a29f573aee58d2bc89f9" category="paragraph">XCP File Analytics GUI は、ファイル分析を視覚化するためのグラフを備えたダッシュボードを提供します。Linux マシンで XCP を設定すると、 XCP File Analytics GUI が有効になります。</block>
+  <block id="471ff51c89daf6e35e8e2b5111039744" category="inline-link-macro">NetApp IMT</block>
+  <block id="ae12aa4d83d4e71d628b8ca5184b9d66" category="admonition">サポートされているブラウザから File Analytics にアクセスできるかどうかを確認するには、を参照してください <block ref="dff6889ed90b9930dbb6c11bc90c8854" category="inline-link-macro-rx"></block>。</block>
+  <block id="42f425824cc531c78175d67346f8f124" category="list-text">File Analytics GUI にアクセスするには、 Linux マシンのアドレス &gt;\https://&lt;IP を使用します。プロンプトが表示されたら、セキュリティ証明書を受け入れます。</block>
+  <block id="1db801e56e7633edc485f8e1146d301d" category="list-text">プライバシーポリシーの下にある [ 詳細設定 ] をクリックします。</block>
+  <block id="97f7f088fd80eda7e2b10459f6c30a7b" category="list-text">[Proceed to [&lt; Linux machine の IP アドレス &gt;] リンクをクリックします。</block>
+  <block id="d92966d58b78d88161004cfe9020ede8" category="list-text">ユーザ名「 admin 」と設定時に設定したパスワードを使用して、 GUI にログインします</block>
+  <block id="2ffe186b43f4d120ec24b17fcb23452a" category="inline-image-macro">XCP File Analytics サインイン画面</block>
+  <block id="289a5bc6b34705c66837c45715417ecd" category="paragraph"><block ref="289a5bc6b34705c66837c45715417ecd" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fefbdb3c0131ccf14272f959d23390d5" category="list-text">ログインすると、 NFS エージェントが追加されたことがわかります。 Linux システムと XCP バージョンの最小システム構成を示す緑色のチェックマークが表示されます。</block>
+  <block id="dcc65cd71fd805adc9f9914a4cf41d78" category="list-text">SMB エージェントを設定している場合は、同じエージェントカードで追加された SMB エージェントを確認できます。</block>
+  <block id="bb77d5af0a3f42f7c393fe3289f4a3a1" category="summary">拡張性に優れたハイパフォーマンスのデータ移行を可能にする NetApp XCP</block>
+  <block id="3bacc52d746ebb26cd58025acaa37785" category="doc">XCP を使い始める</block>
+  <block id="606f36e4b2f3e6b50928c25be780089f" category="paragraph">拡張性に優れたハイパフォーマンスのデータ移行を可能にする NetApp XCP 。</block>
+  <block id="125d45c840d79c5bfc630e1ff6268152" category="section-title">XCP の詳細をご確認ください</block>
+  <block id="98c9ea7de2b6238a9b360c918efd30f4" category="paragraph">NetApp XCP は、ネットアップとネットアップ間のデータ移行およびファイル分析に使用するクライアントベースのソフトウェアです。XCP は、使用可能なすべてのシステムリソースを利用して大量のデータセットとハイパフォーマンスな移行を管理することで、拡張性とパフォーマンスの向上を実現するように設計されています。お客様からのレポートを生成するオプションを使用して、ファイルシステムを完全に可視化できます。一致機能と書式設定機能により、レポートニーズに合わせてレポートをカスタマイズできます。</block>
+  <block id="6f1f152483ea52658f15cd3a0974f0a0" category="paragraph">NFS システムまたは SMB システムでは、次のいずれかの方法で XCP を使用します。</block>
+  <block id="3ef32fc3b6780a4fdf91e306a592d1cc" category="list-text">Migration 解決策の略</block>
+  <block id="94249fa72ae331c87efdfcc0d0a58301" category="list-text">File Analytics 解決策の略</block>
+  <block id="39a01943bc4d2456c4a9d4b49615b5a6" category="paragraph">NFS プロトコルと SMB プロトコルをサポートする 1 つのパッケージで提供される XCP は、コマンドラインソフトウェアです。NFS データセット用の Linux バイナリとして XCP が提供されており、 SMB データセット用の Windows 実行ファイルとして利用できます。</block>
+  <block id="4caac5123b74a07486a3cad036087629" category="paragraph">XCP File Analytics は、ファイル共有を検出し、ファイルシステム上でスキャンを実行し、ファイル分析用のダッシュボードを提供するホストベースのソフトウェアです。XCP File Analytics は、ネットアップシステムとサードパーティシステムの両方で動作し、 Linux ホストまたは Windows ホストで動作して、 NFS および SMB エクスポートファイルシステムの分析を提供します。ファイル分析 GUI のバイナリは、 NFS プロトコルと SMB プロトコルをサポートする 1 つのパッケージに含まれています。</block>
+  <block id="ec917fe4e8dc966f4e86bc23b900d1f7" category="paragraph">XCP CLI は堅牢です。詳細については、から _XCP Reference_on をダウンロードしてください <block ref="f33ccbb3083b14f48de92a286ba83724" category="inline-link-macro-rx"></block>。</block>
+  <block id="47ca0a0313826f8c52db360f0b126339" category="paragraph">* XCP ワークフロー *</block>
+  <block id="cb86540892d12e21880b91e51aae8225" category="inline-image-macro">XCP ワークフローイメージ</block>
+  <block id="33fed185b714f317f622abebb7d8d09e" category="paragraph"><block ref="33fed185b714f317f622abebb7d8d09e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c40f016d6141c65a8e7a7ea0b5573496" category="section-title">サポートされない機能です</block>
+  <block id="176653f59747c11963ac42478984763c" category="paragraph">次の機能は XCP NFS ではサポートされていません。</block>
+  <block id="ba719bfda7676bf7a3de102a56d5b709" category="cell">フィーチャー名（ Feature Name ）</block>
+  <block id="fdb7cb8f657426e7c409bfd6d1a36ce4" category="cell">IPv6</block>
+  <block id="6a9c8c643c2aa2f9637fc774313525ff" category="cell">IP バージョン 6 （ IPv6 ）をサポートしない</block>
+  <block id="404b2d894f483a7ddef7817098a7f9e9" category="cell">NFSv4 ACL （サードパーティ製品）</block>
+  <block id="c7bf2265b981e33062858c4abf1ea290" category="cell">サードパーティ製品から NetApp NFSv4 ACL へのアクセスはサポートされません</block>
+  <block id="577d13f7684f9c1dad51523d52a28bf9" category="paragraph">XCP SMB では、次の機能はサポートされていません。</block>
+  <block id="938afd21cb8a9e8f4fedcfb890dd244f" category="cell">NFS シンボリックリンク（シンボリックリンク）</block>
+  <block id="1645c787b92316670d1a71b780ece8d5" category="cell">NFS シンボリックリンクは XCP SMB ではサポートされていません</block>
+  <block id="0b3fd979e0d4902fd7e38deb4745c1a2" category="cell">スキャンの ACL オプション</block>
+  <block id="d96217bc0f4d5233c2c5639e16dc5d01" category="cell">スキャンオプションでは ACL はサポートされていません</block>
+  <block id="88f8d7ad6b44fe7948a187bb130df22d" category="cell">NTFS 代替データストリーム</block>
+  <block id="3f48c017cdd30142ab0d06198fb84098" category="cell">XCP は現在、代替データストリームをサポートしていません</block>
+  <block id="f4915fbc2a7713a0eeea8adce10091de" category="cell">XCP フィルタ</block>
+  <block id="ca2e34fd1c2de7fa4ca5bb236706760b" category="cell">XCP SMB exclude オプションでは、フィルタでのパターンに基づいたディレクトリは除外され、ディレクトリのファイルシステムをトラバースできます。</block>
+  <block id="76e35710ec65c5c13523e53f9290946d" category="cell">アクティブなソースのサポート</block>
+  <block id="4df0ea8d6ab650858ac62da3aa9f0f41" category="cell">ベースラインまたは差分 Snapshot コピーの使用、増分同期のためのライブソース移行は XCP でサポートされていません。</block>
+  <block id="abef06ad7d7930b60b54d21ecda87d96" category="paragraph">次の共通機能は、 XCP NFS および SMB では使用できません。</block>
+  <block id="67563b580602624cbe59ec4a7939e8fe" category="list-text">* 同一ホスト上の XCP 複数インスタンス * ：同一ホスト上で複数の XCP インスタンスを実行すると、予測不能な結果になることがあります。</block>
+  <block id="163e080f44afc4f1a3717f3330b0859b" category="list-text">* 移行が完了するまでの時間 * ：移行を完了するまでの時間や、移行に使用するコマンドを完了するまでの時間は XCP Upfront にありません。最後のカットオーバーを実行する場合は、ソースボリュームのデータ更新が少ないことを確認してください。</block>
+  <block id="da95bf9af8410657106b7dea7919e7af" category="list-text">* クリーンされていないターゲットで再度コピーを実行する * ：デスティネーションターゲットに部分的なデータがあると、 XCP ベースラインコピーが失敗します。XCP ベースラインコピーと XCP Verify を成功させるには、デスティネーションがクリーンである必要があります。</block>
+  <block id="b0875a764dddba8272cc3d6199016dd1" category="list-text">* ライブデスティネーション * ：移行中または差分同期中に、移行先ボリューム上のデータを変更することは XCP でサポートされていません。</block>
+  <block id="1f0b82560627b660c6c6958a1df834b8" category="section-title">サポートされている構成</block>
+  <block id="c9dd6bad4c7d561872f2e2d498a990bf" category="inline-link-macro">Interoperability Matrix Tool （ IMT ）</block>
+  <block id="dc386eab306fc3054ddea5f07ec2ba5f" category="paragraph">ホスト、 ONTAP のバージョン、サポートされているブラウザなど、 XCP でサポートされるすべての構成をに示します <block ref="5a16fc70d031dee6bd6712d64bea2027" category="inline-link-macro-rx"></block>。</block>
+  <block id="00fc0d4b3a5e71116d21a80782c5bdd5" category="summary">XCP の設定手順</block>
+  <block id="ef8cdecd9388166741c6ddeb9e648a30" category="doc">XCP を設定します</block>
+  <block id="95b2f11d1aece0b4ddfc5cba00384742" category="summary">XCP をインストール</block>
+  <block id="14244e05c3dfba3b36a8f2640bf36a3c" category="paragraph">XCP をインストールします。</block>
+  <block id="5157096b4994925e784b5ccc913a425c" category="section-title">ワークフローのインストールと設定</block>
+  <block id="dda26d898eec39eecd399e188771288e" category="paragraph">このドキュメントでは、 NFS システムおよび SMB システムに XCP をインストールしてセットアップするための簡単なワークフローを紹介します。</block>
+  <block id="341d84aa26cb4521474864e04ea2a63b" category="inline-image-macro">エラー：グラフィックイメージがありません</block>
+  <block id="e0cc20d4c07649f34c6795a45c8f54ec" category="paragraph"><block ref="e0cc20d4c07649f34c6795a45c8f54ec" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="af4c2fb6e7c29314dbe63e8b1d277ff8" category="section-title">XCP をダウンロードします</block>
+  <block id="83008f4493bba0b08400133371c2e80c" category="paragraph">ネットアップサポートサイトから XCP をダウンロードし、 XCP サイトからライセンスを取得します。</block>
+  <block id="8c41baf1ca98e1184f48c4721d44d431" category="inline-link-macro">ネットアップサポートサイト</block>
+  <block id="110444d197d67f7d16c29fa0e2022b7f" category="paragraph">XCP はからダウンロードできます <block ref="ff34957a5613d93a82e79914bce07df2" category="inline-link-macro-rx"></block>。</block>
+  <block id="5d813edbc38ed8b3a73ab3c485aa5daf" category="section-title">XCP のライセンス</block>
+  <block id="a6ed02e973991972186d8dbd4bd0e16e" category="paragraph">ネットアップでは 90 日間の XCP ライセンスを無償で提供しています。ライセンスファイルは、から取得できます <block ref="f33ccbb3083b14f48de92a286ba83724" category="inline-link-macro-rx"></block>。ライセンスポータルでは、さまざまなライセンスオプションが提供されています。90 日が経過したら、同じポータルを使用して、さらに 90 日間ライセンスを更新できます。</block>
+  <block id="0f217d96dd705618a7386cd8e0f4a5e4" category="paragraph">XCP ライセンスは、オフラインまたはオンラインライセンスとして提供されています。移行の統計情報を送信する場合は、オンラインライセンスを使用します。オンラインライセンスを使用するには、インターネットに接続する必要があります。オフラインライセンスではインターネット接続は必要ありません。</block>
+  <block id="b4c8d461cf544f3b1324e87e550416e1" category="section-title">システムを準備</block>
+  <block id="e20233267adbb44f966c8c601a37ab48" category="inline-link-macro">Linux システムでの XCP NFS</block>
+  <block id="ab2ab8ec55d2b8153465aab462facdbd" category="paragraph">使用するポート <block ref="367e28dbe315fcc55905a136826ab29e" category="inline-link-macro-rx"></block>では、カタログとストレージを準備する必要があります。</block>
+  <block id="bbf70f0c406dea3e7fa1ac49fe5687a8" category="inline-link-macro">Microsoft Windows システムでの XCP SMB</block>
+  <block id="8428460c8f54a104a00424c2f1cdfa14" category="paragraph">使用するポート <block ref="0e898f1ccb329a0a604cc59e92092982" category="inline-link-macro-rx"></block>ストレージを準備する必要があります。</block>
+  <block id="18debc7f1216480cd2c9cc97c9c22c12" category="summary">File Analytics の使用を計画する</block>
+  <block id="384003e927f14a9663bcc9a576012dd1" category="paragraph">File Analytics を使用してデータ移行を計画します。</block>
+  <block id="1bfd6c721b5b34a7c85fb0545cace8f2" category="admonition">ファイル分析には GUI が使用されますが、 XCP は CLI です。</block>
+  <block id="af869dc88f4bba644edc40129cfbeeeb" category="paragraph">* 概要 *</block>
+  <block id="79ca79b44bcd3dd23a0e525031bfb672" category="paragraph">XCP File Analytics は、 XCP スキャン API を使用して NFS または SMB ホストからデータを収集します。このデータは XCP File Analytics GUI に表示されます。XCP File Analytics には次の 3 つの主要コンポーネントがあります。</block>
+  <block id="27107cef6283311462b35eb24cd1f5ab" category="list-text">XCP サービス</block>
+  <block id="faa16a9775679eda7988e934c13b119f" category="list-text">File Analytics データベース</block>
+  <block id="381ba20d8db8670bc4936ad0d95b6269" category="list-text">データを管理および表示するための File Analytics GUI</block>
+  <block id="bd04bbee229516a404c8c54b22657400" category="paragraph">XCP File Analytics コンポーネントの導入方法は、必要な解決策によって異なります。</block>
+  <block id="0b857c6e7bf19abf29c47f989b4715dc" category="list-text">NFS ファイルシステム用の XCP File Analytics ソリューションの導入：</block>
+  <block id="365fed029c9130511d651745702873b6" category="list-text">File Analytics GUI 、データベース、および XCP サービスは、同じ Linux ホストに導入できます。</block>
+  <block id="958e2b400bf30068195bfa78570cd469" category="list-text">SMB ファイルシステム用の XCP File Analytics ソリューションを導入する： Linux ホストに File Analytics GUI とデータベースを導入し、 Windows ホストに XCP サービスを導入する必要があります。</block>
+  <block id="0971884c69570e8ddf0c0cfb79e7a993" category="summary">Muse が XCP 移行に適切なポートを使用していることを確認します。</block>
+  <block id="fc197bf3689c7c56e57771c38b2b98a6" category="paragraph">XCP で使用されるポートは次のとおりです。</block>
+  <block id="c2ba7e785c49050f48da9aacc45c2b85" category="cell">サービス</block>
+  <block id="60aaf44d4b562252c04db7f98497e9aa" category="cell">ポート</block>
+  <block id="c6546b53840ec8245dd4d4d70fcdbc26" category="cell">CIFS</block>
+  <block id="98b68471f16f5d628a461634d6f6e6ff" category="cell">445 TCP/UDP</block>
+  <block id="8261eb90f9fb907c2e8ed70cc224b082" category="cell">HTTP （ httpd ）</block>
+  <block id="f033ab37c30201f73f142449d037028d" category="cell">80</block>
+  <block id="0e8433f9a404f1f3ba601c14b026d321" category="cell">HTTPS</block>
+  <block id="13f3cf8c531952d72e5847c4183e6910" category="cell">443</block>
+  <block id="6afa287278efd2068353874529e8b21d" category="cell">111 TCP/UDP および 2049 TCP/UDP</block>
+  <block id="c26c231d9e6acbc7ff10118d262f3f5e" category="cell">PostgreSQL</block>
+  <block id="2e92962c0b6996add9517e4242ea9bdc" category="cell">5432</block>
+  <block id="b5d1e5d54f5315ff2add6fab835e546d" category="cell">XCP （ファイル分析用サービス）</block>
+  <block id="faad95253aee7437871781018bdf3309" category="cell">5030</block>
+  <block id="11047916a280f54b6bb638b4fa43d625" category="summary">XCP SMB エラーのトラブルシューティング</block>
+  <block id="5bf172f77cc9d71e44a586eb796e8205" category="doc">XCP SMB エラーのトラブルシューティング</block>
+  <block id="430f0b9cbaeb94092aee4baf6da23965" category="cell">適切な XCP ライセンスファイルを取得します。XCP ホストの「 c ： \NetApp\XCP 」フォルダに XCP ライセンスをコピーします。ライセンスを有効にするには 'XCP activate コマンドを実行します</block>
+  <block id="d41bf97a60e7be57b7f2c07b092ad5b0" category="cell">XCP : エラー : XCP がアクティブ化されていません。先に 'activate' を実行してください</block>
+  <block id="93a8c927e888fa50601e3fe6d0cb5c14" category="cell">から XCP ライセンスをダウンロードします <block ref="f33ccbb3083b14f48de92a286ba83724" category="inline-link-macro-rx"></block>。XCP ホストの c:\NetApp\XCP で XCP Linux クライアントホスト上のファイルをコピーします。ライセンスを有効にするには 'XCP activate コマンドを実行します</block>
+  <block id="c713e98ca26033cf525c6f3707197fb7" category="cell">XCP ：エラー : ライセンスファイル C ： \NetApp\XCP \ ライセンスが見つかりません</block>
+  <block id="e0cb37236740c3d187441b0938f2e55f" category="cell">で XCP ライセンスを登録します <block ref="f33ccbb3083b14f48de92a286ba83724" category="inline-link-macro-rx"></block>。ライセンスファイルを XCP Windows クライアントホスト上の C ： \NetApp\XCP にダウンロードしてコピーします。</block>
+  <block id="ca23c2e68f8662a2e20f4a2b9baf9cf0" category="cell">"XCP scan Error" ：ネットワーク名が見つかりません</block>
+  <block id="1b9f8dad8c202b50e4bc6dbfc712a272" category="cell">コマンドを正しい共有名で再実行します</block>
+  <block id="09afc4ab001e0721c9e13817a46cb546" category="cell">"XCP copy Error" ： xcp.log ファイルに記録されたフォールバックセキュリティプリンシパルエラーメッセージの取得に失敗しました。エラー : (1722 、 'LookupAccountName' 、 'RPC サーバーは使用できません。 '`)</block>
+  <block id="a283c2e507f611ec0a142f5f0ec7e489" category="cell">移行先のボックスを hosts ファイルに追加します (`C:\Windows\System32\drivers\etc\hosts') 。NetApp ストレージのデスティネーション・ボックスのエントリは、「 &lt;data vserver data interface ip&gt;`1 or more white spaces `&lt;cifs server name&gt;` 」の形式で指定する必要があります</block>
+  <block id="71aef63bcbc5d0c5e78ca147512cf71f" category="cell">'XCP copy: error' はフォールバックセキュリティプリンシパルの取得に失敗しました (hosts ファイルへの追加後の宛先ボックスエントリ ) エラーメッセージが xcp.log ファイルに記録されました :'' アカウント名とセキュリティ ID 間のマッピングは行われませんでした ''</block>
+  <block id="0ab4127ba4947453135e709735a6fc6c" category="cell">フォールバックユーザ / グループは、ターゲットシステム（宛先ボックス）または Active Directory に存在しません。正しいフォールバックユーザ / グループオプションを使用してコマンドを再実行します</block>
+  <block id="2214f08896c91ecbb20888adf818aa3e" category="cell">'XCP copy: error' はフォールバックセキュリティプリンシパルの取得に失敗しました (hosts ファイルへの追加後の宛先ボックスエントリ ) xcp.log ファイルにログインしているエラーメッセージ : 'pywintypes.error`(87, 'LookupAccountName', ' パラメータが正しくありません</block>
+  <block id="2e4e559c9f6001c3134b8795d8e47e81" category="cell">フォールバックユーザ / グループオプションのパラメータが正しくありません。ユーザ / グループのフォールバックオプションに正しい構文を使用してコマンドを再実行します</block>
+  <block id="ca5b87c22d59ad15700c80cec3677245" category="cell">ACL 移行 Erorr メッセージを含む XCP copy 」が xcp.log ファイルに記録されます : 'pywintypes.error`:(1314'GetNamedSecurityInfo', 'a required privilege is not Held by the client.')`</block>
+  <block id="f015dbd9c1c7f6c85624307d7541a6c3" category="cell">ユーザはセキュリティ記述子に関連する訴訟の前にいます。移行ユーザが所有する権限で XCP は所有者、グループ、および DACL のみを取得できますが、 SACL は取得できません。移行ユーザを Active Directory の「 Manage Audit and Security Log 」ポリシーに追加します。参照 <block ref="47c554f6b2ce744e50a1b2318fbe4ec3" category="inline-link-macro-rx"></block></block>
+  <block id="63debe27683f1f8c225ad14c415dffcc" category="summary">データを移行</block>
+  <block id="dfdcc7639b3e014792b21c9f7d5c85c0" category="summary">XCP NFS をインストールしています</block>
+  <block id="4e5b1a9c903c0437af920974c6501bd6" category="paragraph">XCP をアップグレードする場合は、現在のインストールファイルを削除し、最新バージョンの新しいインストールファイルに置き換えます。このセクションでは、 Linux クライアントでの XCP の初期セットアップおよび INI ファイルの設定に関するシステム要件と手順について説明します。</block>
+  <block id="0254f3e2d1d09b7f4ac96369282a121f" category="cell">RHEL8 。サポートされているオペレーティングシステムについては、 IMT を参照してください</block>
+  <block id="cfca5f031a4e11845916d10e6d53c91e" category="cell">ソースとデスティネーションの NFSv3 エクスポートへのネットワーク接続とルートレベルのアクセスでは、他のアクティブなアプリケーションは使用できません</block>
+  <block id="306495a7669e8035296030fc21339366" category="cell">XCP バイナリ用に 20 MB のディスクスペース、および /opt/NetApp/xFiles/XCP ディレクトリに格納されているログ用に 50 MB 以上のディスクスペース</block>
+  <block id="efe939e252db8afdf4c58bb48c6f22f7" category="cell">NFSv3 と NFSv4 （ ACL のみ）</block>
+  <block id="1594a72c4334114af4250e4a70d6e8c9" category="admonition">ライブソース移行の推奨構成は、 8 コアと 64GB RAM です。</block>
+  <block id="66a601fe5f401770b437d5c7c8436c0e" category="list-text">root ユーザとして Linux マシンにログインし、ライセンスをダウンロードしてインストールします。</block>
+  <block id="69554211dcb03d7ec63d2bf06670b6cd" category="list-text">XCP を解凍します。</block>
+  <block id="89e2d7b55d7c6e3cea138d3f18fa8e31" category="list-text">以前のバージョンの XCP からシステムで /opt/NetApp/xFiles/XCP パスが利用可能であることを確認します。</block>
+  <block id="228e0782986d1013ce0b49f658129e26" category="paragraph">「 /opt/NetApp/xFiles/XCP 」が使用可能な場合は、「 xCP activate 」コマンドを使用してライセンスをアクティブ化し、データ移行を続行します。</block>
+  <block id="85e7842d519b52b8250a7032406ec998" category="paragraph">/opt/NetApp/xFiles/XCP が使用できない場合は 'XCP activate コマンドを初めて実行するときに '/opt/NetApp/xFiles/XCP で XCP ホスト構成ディレクトリとファイルが作成されます</block>
+  <block id="df5b6fbbd80612bb4dcade1ee94872a7" category="paragraph">ライセンスがインストールされていないため 'XCP activate コマンドは失敗します</block>
+  <block id="cae408e146414f197563c67edf318286" category="list-text">ライセンスを「 /opt/NetApp/xFiles/XCP 」にコピーします。</block>
+  <block id="8ab783e73539b82c1414bd94a3037376" category="list-text">ライセンスファイルが /opt/NetApp/xFiles/XCP にコピーされたことを確認します。</block>
+  <block id="181af529472b0626a27e692b85666546" category="summary">環境変数（ NFS のみ）</block>
+  <block id="0e07abf368204f87aac8c3a6a7fffec8" category="paragraph">NFS システムの環境変数のオプション設定。</block>
+  <block id="0dd6ca798bb0f2d45b2b59c074793ac6" category="paragraph">環境変数 XCP _CONFIG_DIR は、デフォルトの場所である「 /opt/NetApp/xFiles/XCP 」より優先されます。この値を設定する場合は、マウントされている NFS ディレクトリなど、 OS ファイルシステムのパスを指定します。カスタム構成ディレクトリが設定されている場合、ログファイルの名前はデフォルトの「 XCP .log 」ではなく「 XCP .hostname.log 」になります。</block>
+  <block id="ded2d02a4fd60f232dc6bbe8614960b6" category="paragraph">環境変数 XCP ログ _LOG_DIR は、構成ディレクトリ内の XCP ログが格納されているデフォルトの場所よりも優先されます。この値を設定する場合は、マウントされている NFS ディレクトリなど、 OS ファイルシステムのパスを指定します。カスタム・ログ・ディレクトリを設定すると ' ログ・ファイルの名前はデフォルトの "XCP .log" ではなく "XCP .hostname.log" になります</block>
+  <block id="b2a82a89c888f120cc61565aed8191c8" category="paragraph">環境変数 XCP カタログパスは、 xcp.in の設定よりも優先されます設定する場合、値は XCP パス形式である「 server:export[:subdirectory]` 」でなければなりません。</block>
+  <block id="8cf04a9734132302f96da8e113e80ce5" category="sidebar">ホーム</block>
+  <block id="5dd03e8d039863e563e049be198c3fd3" category="sidebar">リリースノート</block>
+  <block id="d60c463bb4096f3ed4bd1618626dfe10" category="sidebar">トラブルシューティングを行う</block>
+</blocks>

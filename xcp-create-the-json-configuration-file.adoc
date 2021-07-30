@@ -1,0 +1,87 @@
+---
+sidebar: sidebar 
+permalink: xcp-create-the-json-configuration-file.html 
+keywords: netapp, xcp, create, json, configuration, file 
+summary: JSON 構成ファイルを作成します 
+---
+= JSON 構成ファイルを作成します
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+JSON 構成ファイルを作成します。
+
+イベントログメッセージ、 syslog クライアント、またはカスタマーロギングをイネーブルにする場合は、次の手順を実行します。
+
+* 手順 *
+
+. メモ帳や vi などの任意のテキストエディタを開きます。
+. 次の JSON テンプレートを使用して新しいファイルを作成します。
++
+[listing]
+----
+{
+  "logConfig": {
+    "level": "INFO",
+    "maxBytes": 52428800,
+    "name": "xcp.log"
+  },
+  "eventlog": {
+    "isEnabled": false,
+    "level": "INFO"
+  },
+  "syslog": {
+    "isEnabled": false,
+    "level": "INFO",
+    "serverIp": "10.234.219.87",
+    "port": 514
+  },
+  "sanitize": false
+}
+----
+. 有効にする機能については 'IsEnabled' の値を TRUE' に変更してください
+. ファイルに xcpLogConfig.json という名前を付け、 * Error ！に記載されているファイルの場所に SAE it の名前を付けます。参照ソースが見つかりません。 *
+
+
+|===
+| デフォルト設定 | JSON 構成ファイルの例 
+
+
+ a| 
+[listing]
+----
+{
+  "logConfig": {
+    "level": "INFO",
+    "maxBytes": 52428800,
+    "name": "xcp.log"
+  },
+  "sanitize": false
+}
+---- a| 
+[listing]
+----
+{
+  "logConfig": {
+    "level": "INFO",
+    "maxBytes": 52428800,
+    "name": "xcp.log"
+  },
+  "eventlog": {
+    "isEnabled": false,
+    "level": "INFO"
+  },
+  "syslog": {
+    "isEnabled": false,
+    "level": "INFO",
+    "serverIp": "10.234.219.87",
+    "port": 514
+  },
+  "sanitize": false
+}
+----
+|===

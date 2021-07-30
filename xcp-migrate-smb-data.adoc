@@ -1,0 +1,60 @@
+---
+sidebar: sidebar 
+permalink: xcp-migrate-smb-data.html 
+keywords: netapp, xcp, migrate, data, smb, copy, resume, sync, verify 
+summary: SMB データを移行 
+---
+= SMB データを移行
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+「 show 」コマンドと「 can 」コマンドを使用して移行を計画した後、データを移行できます。
+
+
+
+=== コピー
+
+copy コマンドは ' ソース・ディレクトリ構造全体をスキャンし ' デスティネーション SMB 共有にコピーします'copy' コマンドでは ' ソース・パスとデスティネーション・パスを変数として指定する必要がありますスキャンおよびコピーされたファイル、スループット / 速度、および経過時間の詳細が、 5 秒ごとにコンソールに出力されます。
+
+* 例： *
+
+[listing]
+----
+C:\xcp>xcp copy \\<source SMB share> \\<destination SMB share>
+----
+詳細は 'XCP help copy' を参照してください
+
+
+
+=== 同期
+
+「 sync 」コマンドは、ソース共有とターゲット共有の変更と変更を同時にスキャンし、ターゲットに適切なアクション（削除、変更、名前変更など）を適用して、ターゲットがソースと同一であることを確認します。
+
+sync コマンドは、データの内容、タイムスタンプ、ファイル属性、所有権、およびセキュリティ情報を比較します。
+
+* 例： *
+
+[listing]
+----
+C:\xcp>xcp sync \\<source SMB share> \\<destination SMB share>
+----
+詳細については、「 XCP help sync 」を参照してください。
+
+
+
+=== 確認します
+
+「 ve rify 」コマンドは、ソース共有とターゲット共有の両方を読み取り、比較して、相違点に関する情報を提供します。コマンドは、コピーや同期に使用するツールに関係なく、任意のソースとデスティネーションで使用できます。
+
+* 例： *
+
+[listing]
+----
+C:\xcp>xcp verify \\<source SMB share> \\<destination SMB share>
+----
+詳細は 'XCP help verify' を参照してください

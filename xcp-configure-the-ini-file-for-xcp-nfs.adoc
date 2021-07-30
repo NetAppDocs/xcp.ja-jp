@@ -1,0 +1,40 @@
+---
+sidebar: sidebar 
+permalink: xcp-configure-the-ini-file-for-xcp-nfs.html 
+keywords: netapp, xcp, configure, configuring, how, performing, tuning, nfs, 
+summary: INI ファイル XCP を設定する手順 
+---
+= XCP NFS の INI ファイルを設定します
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+INI ファイル XCP を設定する手順
+
+XCP NFS の INI ファイルを設定するには、次の手順を実行します。
+
+.手順
+. vi エディタを使用して、ホスト構成ファイルに XCP サーバのカタログの場所を追加します。
++
+
+NOTE: カタログの場所は、「 xcp.ini` XCP 」構成ファイルの詳細を変更する前にエクスポートする必要があります。カタログの場所（ NFSv3 ）は XCP Linux ホストにマウント可能である必要がありますが、マウントされているとは限りません。
+
++
+[listing]
+----
+[root@localhost /]# vi /opt/NetApp/xFiles/xcp/xcp.ini
+----
+. カタログの XCP Linux クライアントホスト構成ファイルのエントリが変更されたことを確認します。
++
+[listing]
+----
+[root@localhost /]# cat /opt/NetApp/xFiles/xcp/xcp.ini
+# Sample xcp config
+[xcp]
+catalog = 10.61.82.210:/vol/xcpvol/
+----
+

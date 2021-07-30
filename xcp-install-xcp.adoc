@@ -1,0 +1,48 @@
+---
+sidebar: sidebar 
+permalink: xcp-install-xcp.html 
+keywords: netapp, xcp, install, installing, download, downloading, license, preparing, system 
+summary: XCP をインストール 
+---
+= XCP をインストール
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+XCP をインストールします。
+
+
+
+== ワークフローのインストールと設定
+
+このドキュメントでは、 NFS システムおよび SMB システムに XCP をインストールしてセットアップするための簡単なワークフローを紹介します。
+
+image:xcp_image16.PNG["エラー：グラフィックイメージがありません"]
+
+
+
+== XCP をダウンロードします
+
+ネットアップサポートサイトから XCP をダウンロードし、 XCP サイトからライセンスを取得します。
+
+XCP はからダウンロードできます link:https://mysupport.netapp.com/products/p/xcp.html["ネットアップサポートサイト"^]。
+
+
+
+== XCP のライセンス
+
+ネットアップでは 90 日間の XCP ライセンスを無償で提供しています。ライセンスファイルは、から取得できます link:https://xcp.netapp.com/["XCP サイト"^]。ライセンスポータルでは、さまざまなライセンスオプションが提供されています。90 日が経過したら、同じポータルを使用して、さらに 90 日間ライセンスを更新できます。
+
+XCP ライセンスは、オフラインまたはオンラインライセンスとして提供されています。移行の統計情報を送信する場合は、オンラインライセンスを使用します。オンラインライセンスを使用するには、インターネットに接続する必要があります。オフラインライセンスではインターネット接続は必要ありません。
+
+
+
+== システムを準備
+
+使用するポート link:xcp-prepare-linux-for-xcp-nfs.html["Linux システムでの XCP NFS"]では、カタログとストレージを準備する必要があります。
+
+使用するポート link:xcp-prepare-windows-for-xcp-smb.html["Microsoft Windows システムでの XCP SMB"]ストレージを準備する必要があります。

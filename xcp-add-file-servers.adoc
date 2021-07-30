@@ -1,0 +1,40 @@
+---
+sidebar: sidebar 
+permalink: xcp-add-file-servers.html 
+keywords: netapp, xcp, file, servers, access, analytics, learn, about, graphs, hot, cold, count, size, entries in directory, distribution by size, directory depth, file space used by size 
+summary: ファイルサーバを追加しています 
+---
+= ファイルサーバを追加します
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+NFS および SMB エクスポートされたファイルシステムは、 XCP File Analytics GUI で設定できます。
+
+これにより、ファイルシステム上のデータをスキャンおよび分析する XCP File Analytics が有効になります。NFS または SMB ファイルサーバを追加するには、次の手順を実行します。
+
+.ステップ
+. ファイルサーバーを追加するには、 * ファイルサーバーの追加 * をクリックします。
+
+
+image:xcp_image3.png["ファイルサーバーの追加画面"]
+
+ファイルサーバの IP アドレスを追加し、 NFS または SMB オプションを選択して、 * 追加 * をクリックします。
+
+
+NOTE: SMB エージェントが GUI に表示されない場合は、 SMB サーバを追加できません。
+
+ファイルサーバを追加すると、 XCP が表示されます。
+
+* 使用可能なファイル共有の総数
+* 分析データとのファイル共有（最初のカウントは「 0 」、スキャンが成功するとこのアップデートが適用されます）
+* 合計スペース使用率 - すべてのエクスポートで使用されているスペースの合計
+* ファイル共有とスペース利用率のデータは、 NFS / SMB サーバから直接、リアルタイムで取得されます。データの収集と処理には数秒かかります。
+
+
+
+NOTE: ファイル分析で使用されている使用可能なスペースとスペースは、 NFS 経由で使用可能なエクスポートされた各ファイルシステムから計算されます。たとえば、ボリュームが qtree で構成されていて、 qtree 経由でエクスポートが作成された場合、全体的なスペースはボリュームサイズと qtree サイズの累積スペースになります。

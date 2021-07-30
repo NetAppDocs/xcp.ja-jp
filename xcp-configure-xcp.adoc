@@ -1,0 +1,14 @@
+---
+sidebar: sidebar 
+permalink: xcp-configure-xcp.html 
+keywords: netapp, xcp, configure, configuring, how, performing, tuning, nfs, 
+summary: XCP の設定手順 
+---
+= XCP を設定します
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+

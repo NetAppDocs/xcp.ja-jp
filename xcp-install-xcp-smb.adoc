@@ -1,0 +1,95 @@
+---
+sidebar: sidebar 
+permalink: xcp-install-xcp-smb.html 
+keywords: netapp, xcp, install, smb 
+summary: XCP SMB をインストールします 
+---
+= XCP SMB をインストールします
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+このセクションでは、 Windows クライアントでの VC++ 再頒布可能インストールのためのシステム要件と手順、および XCP の初期セットアップについて詳しく説明します。
+
+
+NOTE: アップグレードするオプションはありません。既存のバージョンを置き換えるには XCP を再インストールしてください。
+
+* システム要件 *
+
+[cols="35,65"]
+|===
+| 項目 | 要件 
+
+
+| システム | 64 ビット Intel または AMD サーバ、最小 4 コア、 32GB RAM 
+
+
+| オペレーティングシステムとソフトウェア | Windows Server 2012 R2 以降。サポートされている Microsoft OS バージョンについては、を参照してください link:https://mysupport.netapp.com/matrix/#welcome["Interoperability Matrix Tool で確認してください"^]。Visual C++ 2017 再配布可能ファイルが XCP ホストにインストールされている必要があります。 
+
+
+| 特別な要件 | ソースストレージシステム、 XCP ホスト、およびターゲット ONTAP システムが同じ Active Directory ドメインに属している必要があります 
+
+
+| ストレージ | XCP バイナリ用に 20 MB のディスクスペース、および C ： \NetApp\XCP ディレクトリに格納されているログ用に 50 MB 以上のディスクスペース 
+
+
+| サポートされているプロトコルバージョン | すべての SMB プロトコルバージョン 
+
+
+| サポートされているブラウザ（ File Analytics のみ） | XCP File Analytics は Google Chrome バージョン 76 以降をサポートします。サポートされているすべてのバージョンのブラウザについては、 IMT マトリックスを参照してください 
+|===
+
+
+=== XCP SMB Microsoft VC++ 再頒布可能ファイルのインストール
+
+VC++ 再配布可能なインストールの手順は、次のとおりです。
+
+.手順
+. をクリックします link:https://go.microsoft.com/fwlink/?LinkId=746572["VC++ 2017 再頒布可能"^] 実行ファイルをデフォルトのダウンロードフォルダにダウンロードします。
+. インストールを開始するには、インストーラをダブルクリックします。利用規約に同意して、「 * インストール * 」をクリックします。
+. インストールが完了したら、 * Restart * をクリックします。
+
+
+
+
+=== XCP SMB Initial Setup 手順の略
+
+XCP SMB の初期セットアップを実行するには、次の手順を実行します。
+
+.手順
+. Windows ホストでライセンスと XCP SMB バイナリ「 NetApp_XCP _ < バージョン >.tgz 」をコピーします。
+. デスクトップに「 XCP 」ディレクトリを作成します。以前のバージョンの XCP からシステムで「 C ： \NetApp\XCP 」パスが利用可能であることを確認します。「 C:\NetApp\XCP 」がある場合は、「 XCP activate 」コマンドを使用して XCP をアクティブにし、データ移行を続行します。
++
+「 C:\NetApp\XCP 」が使用できない場合、最初に「 XCP activate 」コマンドを実行すると、システムは XCP ホスト構成ディレクトリとファイルを C:\NetApp\XCP に作成します。activate XCP コマンドが失敗し ' 新しいライセンスを要求するエラーメッセージが表示されます
+
++
+[listing]
+----
+C:\>xcp.exe activate
+(c) 2020 NetApp, Inc.
+
+License file C:\NetApp\XCP\license not found.
+Register for a license at https://xcp.netapp.com
+----
+. 新しく作成したフォルダ「 C ： \NetApp\XCP ：」にライセンスをコピーします
++
+[listing]
+----
+C:\>copy license c:\NetApp\XCP
+        1 file(s) copied.
+----
+. XCP のアクティブ化：
++
+[listing]
+----
+C:\>xcp.exe activate
+XCP SMB; (c) 2020 NetApp, Inc.;
+
+XCP already activated
+
+C:\>
+----
+

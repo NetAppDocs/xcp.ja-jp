@@ -1,0 +1,113 @@
+---
+sidebar: sidebar 
+permalink: xcp-install-xcp-nfs.html 
+keywords: netapp, xcp, install, installing, nfs 
+summary: XCP NFS をインストールしています 
+---
+= XCP NFS をインストールします
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+XCP をアップグレードする場合は、現在のインストールファイルを削除し、最新バージョンの新しいインストールファイルに置き換えます。このセクションでは、 Linux クライアントでの XCP の初期セットアップおよび INI ファイルの設定に関するシステム要件と手順について説明します。
+
+* システム要件 *
+
+[cols="35,65"]
+|===
+| 項目 | 要件 
+
+
+| システム | 64 ビット Intel または AMD サーバ、最小 4 コア、 32GB RAM 
+
+
+| オペレーティングシステムとソフトウェア | RHEL8 。サポートされているオペレーティングシステムについては、 IMT を参照してください 
+
+
+| 特別な要件 | ソースとデスティネーションの NFSv3 エクスポートへのネットワーク接続とルートレベルのアクセスでは、他のアクティブなアプリケーションは使用できません 
+
+
+| ストレージ | XCP バイナリ用に 20 MB のディスクスペース、および /opt/NetApp/xFiles/XCP ディレクトリに格納されているログ用に 50 MB 以上のディスクスペース 
+
+
+| サポートされているプロトコルバージョン | NFSv3 と NFSv4 （ ACL のみ） 
+
+
+| サポートされているブラウザ（ File Analytics のみ） | XCP File Analytics は Google Chrome バージョン 76 以降をサポートします。サポートされているすべてのバージョンのブラウザについては、 IMT マトリックスを参照してください 
+|===
+
+NOTE: ライブソース移行の推奨構成は、 8 コアと 64GB RAM です。
+
+.手順
+. root ユーザとして Linux マシンにログインし、ライセンスをダウンロードしてインストールします。
++
+[listing]
+----
+[root@scspr1980872003 ~]# ls -l
+total 36188
+-rw-r--r--  1 root root 37043983 Oct  5 09:36 NETAPP_XCP_<version>.tgz
+-rw-------. 1 root root     1994 Sep  4  2019 license
+----
+. XCP を解凍します。
++
+[listing]
+----
+[root@scspr1980872003 ~]# tar -xvf NETAPP_XCP_<version>.tgz
+[root@scspr1980872003 ~]# ls
+NETAPP_XCP_<version>.tgz license xcp
+[root@scspr1980872003 ~]# cd xcp/linux/
+[root@scspr1980872003 linux]# ls
+xcp
+----
+. 以前のバージョンの XCP からシステムで /opt/NetApp/xFiles/XCP パスが利用可能であることを確認します。
++
+「 /opt/NetApp/xFiles/XCP 」が使用可能な場合は、「 xCP activate 」コマンドを使用してライセンスをアクティブ化し、データ移行を続行します。
+
++
+/opt/NetApp/xFiles/XCP が使用できない場合は 'XCP activate コマンドを初めて実行するときに '/opt/NetApp/xFiles/XCP で XCP ホスト構成ディレクトリとファイルが作成されます
+
++
+ライセンスがインストールされていないため 'XCP activate コマンドは失敗します
+
++
+[listing]
+----
+[root@scspr1980872003 linux]# ./xcp activate
+(c) 2020 NetApp, Inc.
+xcp: Host config file not found. Creating sample at '/opt/NetApp/xFiles/xcp/xcp.ini'
+
+xcp: ERROR: License file /opt/NetApp/xFiles/xcp/license not found.
+Register for a license at https://xcp.netapp.com
+----
+. ライセンスを「 /opt/NetApp/xFiles/XCP 」にコピーします。
++
+[listing]
+----
+[root@scspr1980872003 linux]# cp ~/license /opt/NetApp/xFiles/xcp/
+----
+. ライセンスファイルが /opt/NetApp/xFiles/XCP にコピーされたことを確認します。
++
+[listing]
+----
+[root@ scspr1980872003 ~]# ls -altr /opt/NetApp/xFiles/xcp/
+total 44
+drwxr-xr-x 3 root root    17 Oct  1 06:07 ..
+-rw-r--r-- 1 root root   304 Oct  1 06:07 license
+drwxr-xr-x 2 root root     6 Oct  1 10:16 xcpfalogs
+drwxr-xr-x 2 root root    21 Oct  1 10:16 xcplogs
+-rw-r--r-- 1 root root   110 Oct  5 00:48 xcp.ini
+drwxr-xr-x 4 root root    83 Oct  5 00:48 .
+[root@scspr1978802001 ~]#
+----
+. XCP のアクティブ化：
++
+[listing]
+----
+[root@scspr1980872003 linux]# ./xcp activate
+XCP <version>; (c) 2020 NetApp, Inc.;
+XCP already activated
+----
+

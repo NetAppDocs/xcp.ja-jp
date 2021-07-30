@@ -1,0 +1,64 @@
+---
+sidebar: sidebar 
+permalink: xcp-install-file-analytics-for-smb.html 
+keywords: netapp, xcp, install, installing, file, analytics, smb, upgrade, upgrading 
+summary: File Analytics for SMB をインストールまたはアップグレードします 
+---
+= SMB 向けファイル分析をインストール
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+File Analytics for SMB をインストールまたはアップグレードします。
+
+SMB のシステム要件については、を参照してください link:xcp-install-xcp-smb.html["XCP SMB をインストールします"]。
+
+* 始める前に *
+
+* XCP SMB サービスを使用するには、 Linux マシンで NFS 用に XCP File Analytics を設定する必要があります。
+* Windows マシンで XCP File Analytics の構成を開始する前に、 Linux マシンで XCP サービスが実行されていることを確認します。
+
+
+
+
+== SMB 向けファイル分析の新規インストール
+
+SMB 向けファイル分析の新規インストールを実行するには、次の手順を実行します。
+
+.手順
+. "XCP .exe" ファイルを Windows`C:` ドライブにコピーします。このバイナリは、 tgz を解凍した後、 "/XCP /Windows" 内で入手できます。
+. から XCP ライセンスファイルをダウンロードします link:https://xcp.netapp.com/["XCP サイト"^]。
+. C:\NetApp\XCP というフォルダを作成し、 XCP ライセンスをこの場所にコピーします。
+. コマンドプロンプトで次のコマンドを使用して、 XCP ライセンスをアクティブにします。 xcp.exe activate
+. 「 server.key 」と「 server.crt 」ファイルを「 /opt/NetApp/xFiles/XCP 」（ XCP File Analytics が設定されている Linux ボックス）から「 C:\NetApp\XCP 」（オプション）にコピーします。 CA 証明書がある場合は、同じ名前と拡張子を持つこの場所に証明書を置きます。
+. Windows CLI のコマンドプロンプトで、「 XCP configure 」を実行します。
+. プロンプトが表示されたら、 XCP File Analytics サーバが設定されている Linux マシンの IP アドレスを入力します。
+. プロンプトが表示されたら、 XCP Linux File Analytics 設定で入力したデータベースのパスワードを入力します。
+. Linux マシンに移動し './configure.sh を実行します
+. メインメニューで「 Option 4 (Update XCP Windows agent IP) 」を選択し、 Windows マシンの IP アドレスを指定します。
+. Windows マシンに移動して、 XCP LISTEN を実行します。ここで XCP File Analytics for SMB が構成されています。サービスを継続的に実行するには、ウィンドウを開いた状態のままにします。
+. Google Chrome ブラウザで File Analytics を起動し、ページを更新してください :`\https://<ip address of Linux>/XCP
+. ダイアログ・ボックスが表示されたら '[OK] をクリックします新しいタブが開きます。ポップアップがブロックされている場合は、ブラウザで有効にしてください。URL のプライバシーポリシーを受け入れ、「 `S MB agent is ready to use 」というメッセージが表示されます。分析ページを更新してください
+. XCP File Analytics GUI がホストされている元のタブに戻り、ページを更新します。これにより、エージェントカードの下に SMB エージェントが表示されます。
+
+
+
+
+== SMB 向けファイル分析のアップグレード
+
+SMB 向けの既存の File Analytics をアップグレードするには、次の手順を実行します。
+
+. File Analytics を実行する前に、 File Analytics が実行されている Linux サーバーもアップグレードされ、サービスが実行されていることを確認してください。
+. Windows では、コマンドラインに「 CTRL-C 」と入力して、既存の XCP サービスを停止します。
+. 「 XCP .exe 」を最新のバイナリに置き換えます。
+. Linux マシンに移動し './configure.sh を実行します
+. メインメニューで「 Option 4 (Update XCP Windows agent IP) 」を選択し、 Windows マシンの IP アドレスを指定します。
+. Windows マシンに移動して、 XCP LISTEN を実行します。ここで XCP File Analytics for SMB が構成されています。サービスを継続的に実行するには、ウィンドウを開いた状態のままにします。
+. Google Chrome ブラウザで File Analytics を起動し、ページを更新してください :`\https://<ip address of Linux>/XCP
+. ダイアログ・ボックスが表示されたら '[OK] をクリックします新しいタブが開きます。ポップアップがブロックされている場合は、ブラウザで有効にしてください。URL のプライバシーポリシーを受け入れ、「 `S MB agent is ready to use 」というメッセージが表示されます。分析ページを更新してください
+. XCP File Analytics GUI がホストされている元のタブに戻り、ページを更新します。これにより、エージェントカードの下に SMB エージェントが表示されます。
+

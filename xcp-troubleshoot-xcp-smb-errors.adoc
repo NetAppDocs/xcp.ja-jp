@@ -1,0 +1,47 @@
+---
+sidebar: sidebar 
+permalink: xcp-troubleshoot-xcp-smb-errors.html 
+keywords: netapp, xcp, troubleshoot, troubleshooting, smb, 
+summary: XCP SMB エラーのトラブルシューティング 
+---
+= XCP SMB エラーのトラブルシューティング
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+問題のトラブルシューティング方法を確認します。
+
+|===
+| 問題 | 解決策 
+
+
+| `XCP : error: このライセンスは有効期限が切れています | から新しい XCP ライセンスを更新または取得します link:https://xcp.netapp.com/["XCP サイト"^]。 
+
+
+| このコピーのライセンスがありません | 適切な XCP ライセンスファイルを取得します。XCP ホストの「 c ： \NetApp\XCP 」フォルダに XCP ライセンスをコピーします。ライセンスを有効にするには 'XCP activate コマンドを実行します 
+
+
+| XCP : エラー : XCP がアクティブ化されていません。先に 'activate' を実行してください | から XCP ライセンスをダウンロードします link:https://xcp.netapp.com/["XCP サイト"^]。XCP ホストの c:\NetApp\XCP で XCP Linux クライアントホスト上のファイルをコピーします。ライセンスを有効にするには 'XCP activate コマンドを実行します 
+
+
+| XCP ：エラー : ライセンスファイル C ： \NetApp\XCP \ ライセンスが見つかりません | で XCP ライセンスを登録します link:https://xcp.netapp.com/["XCP サイト"^]。ライセンスファイルを XCP Windows クライアントホスト上の C ： \NetApp\XCP にダウンロードしてコピーします。 
+
+
+| "XCP scan Error" ：ネットワーク名が見つかりません | コマンドを正しい共有名で再実行します 
+
+
+| "XCP copy Error" ： xcp.log ファイルに記録されたフォールバックセキュリティプリンシパルエラーメッセージの取得に失敗しました。エラー : (1722 、 'LookupAccountName' 、 'RPC サーバーは使用できません。 '`) | 移行先のボックスを hosts ファイルに追加します (`C:\Windows\System32\drivers\etc\hosts') 。NetApp ストレージのデスティネーション・ボックスのエントリは、「 <data vserver data interface ip>`1 or more white spaces `<cifs server name>` 」の形式で指定する必要があります 
+
+
+| 'XCP copy: error' はフォールバックセキュリティプリンシパルの取得に失敗しました (hosts ファイルへの追加後の宛先ボックスエントリ ) エラーメッセージが xcp.log ファイルに記録されました :'' アカウント名とセキュリティ ID 間のマッピングは行われませんでした '' | フォールバックユーザ / グループは、ターゲットシステム（宛先ボックス）または Active Directory に存在しません。正しいフォールバックユーザ / グループオプションを使用してコマンドを再実行します 
+
+
+| 'XCP copy: error' はフォールバックセキュリティプリンシパルの取得に失敗しました (hosts ファイルへの追加後の宛先ボックスエントリ ) xcp.log ファイルにログインしているエラーメッセージ : 'pywintypes.error`(87, 'LookupAccountName', ' パラメータが正しくありません | フォールバックユーザ / グループオプションのパラメータが正しくありません。ユーザ / グループのフォールバックオプションに正しい構文を使用してコマンドを再実行します 
+
+
+| ACL 移行 Erorr メッセージを含む XCP copy 」が xcp.log ファイルに記録されます : 'pywintypes.error`:(1314'GetNamedSecurityInfo', 'a required privilege is not Held by the client.')` | ユーザはセキュリティ記述子に関連する訴訟の前にいます。移行ユーザが所有する権限で XCP は所有者、グループ、および DACL のみを取得できますが、 SACL は取得できません。移行ユーザを Active Directory の「 Manage Audit and Security Log 」ポリシーに追加します。参照 link:https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn221953%28v%3Dws.11%29["監査とセキュリティログを管理します"^] 
+|===

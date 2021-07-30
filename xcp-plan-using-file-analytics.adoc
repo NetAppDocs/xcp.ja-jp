@@ -1,0 +1,38 @@
+---
+sidebar: sidebar 
+permalink: xcp-using-file-analytics.html 
+keywords: netapp, xcp, plan, planning, data, migration, migrate, migrating, file, analytics 
+summary: File Analytics の使用を計画する 
+---
+= File Analytics の使用を計画する
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+File Analytics を使用してデータ移行を計画します。
+
+
+NOTE: ファイル分析には GUI が使用されますが、 XCP は CLI です。
+
+* 概要 *
+
+XCP File Analytics は、 XCP スキャン API を使用して NFS または SMB ホストからデータを収集します。このデータは XCP File Analytics GUI に表示されます。XCP File Analytics には次の 3 つの主要コンポーネントがあります。
+
+* XCP サービス
+* File Analytics データベース
+* データを管理および表示するための File Analytics GUI
+
+
+XCP File Analytics コンポーネントの導入方法は、必要な解決策によって異なります。
+
+* NFS ファイルシステム用の XCP File Analytics ソリューションの導入：
++
+** File Analytics GUI 、データベース、および XCP サービスは、同じ Linux ホストに導入できます。
+
+
+* SMB ファイルシステム用の XCP File Analytics ソリューションを導入する： Linux ホストに File Analytics GUI とデータベースを導入し、 Windows ホストに XCP サービスを導入する必要があります。
+

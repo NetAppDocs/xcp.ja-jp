@@ -1,0 +1,154 @@
+---
+sidebar: sidebar 
+permalink: xcp-logging-for-nfs-and-smb.html 
+keywords: netapp, xcp, configure, configuring, how, performing, tuning, nfs, smb, 
+summary: XCP NFS および SMB にロギングしています 
+---
+= NFS および SMB のロギング（オプション）
+
+
+
+
+== NFS および SMB のロギング（オプション）
+
+[role="lead"]
+XCP NFS および SMB にロギングしています。
+
+XCP は、「 xcpLogConfig.json 」 JSON 構成ファイルを使用して、複数のオプション機能を構成することをサポートしています。特定の機能のみを有効にするには 'xcpLogConfig.json 構成ファイルを手動で作成し 'xcpLogConfig.json 構成ファイルを使用して以下を有効にします
+
+* イベントログメッセージ
+* XCP の Syslog クライアント
+* カスタム XCP ロギング
+
+
+イベントログメッセージおよび syslog クライアントは、デフォルト設定では無効になっています。設定は NFS と SMB の両方で共通です。
+
+|===
+| JSON ファイルの場所を設定します | NFS | SMB 
+
+
+| 構成ファイルのデフォルトの場所 | /opt/NetApp/xFiles/XCP | C ： \NetApp\XCP \ConfigFile 
+
+
+| カスタム・ロケーションには 'XCP _CONFIG_DIR 環境変数が必要です | エラー参照ソースが見つかりません。 | 該当なし 
+|===
+JSON 構成ファイルのオプションでは、大文字と小文字が区別されます。これらのオプションは、 XCP NFS と XCP SMB で同じです。
+
+[cols="20,15,15,50"]
+|===
+| サブオプション名（ Sub Options Name ） | JSON データタイプ | デフォルト | 説明 
+
+
+| logconfig |  |  | XCP ロギングをカスタマイズするオプション。 
+
+
+| 「レベル」 | 文字列 | 情報 | ログメッセージの重大度フィルタレベル。XCP ログメッセージは、重大度が低い順に、「 Critical 」、「 Error 」、「 Warning 」、「 Info 」、「 debug 」の 5 つの重大度レベルをサポートしています（情報またはデバッグを使用することを強く推奨します）。 
+
+
+| “ maxBytes ” | 整数 | 52428800 | 各ローテーションログファイルのサイズ。サポートされる最大ローテーションファイル数は 10 です。 
+
+
+| 名前 | 文字列 | xcp.log | カスタムログファイル名を設定するオプション。 
+
+
+| イベントログ |  |  | イベントログメッセージを設定するオプション。 
+
+
+| “ IsEnabled ” | ブール値 | いいえ | このブーリアンオプションは、イベントメッセージングを有効にするために使用されます。false に設定すると ' イベント・メッセージは生成されず ' イベント・ログはイベント・ログ・ファイルに発行されません 
+
+
+| 「レベル」 | 文字列 | 情報 | イベントメッセージの重大度フィルタレベル。イベントメッセージングでは、重大度が低い順に 5 つの重大度レベルがサポートされています。重大度は、 critical 、 error 、 warning 、 Info 、 debug です 
+
+
+| syslog |  |  | syslog メッセージングを設定するためのオプション。 
+
+
+| “ IsEnabled ” | ブール値 | いいえ | このブーリアンオプションは、 XCP で syslog クライアントを有効にする場合に使用します。 
+
+
+| 「レベル」 | 文字列 | 情報 | メッセージの重大度フィルタレベル。XCP イベントログメッセージは、重大度が「重大」、「エラー」、「警告」、「情報」、「デバッグ」の 5 つの重大度レベルをサポートします 
+
+
+| 「サーバ IP 」 | 文字列 | なし | リモート syslog サーバの IP アドレスまたはホスト名。 
+
+
+| ポート | 整数 | 514 | リモート syslog レシーバポート。別のポートで syslog データグラムを受信する syslog レシーバは、ポートオプション UDP ポート 514 を使用して設定できますが、必要なポートに設定することもできます。 
+
+
+| 「サニタイズ」 | ブール値 | いいえ  a| 
+XCP サポートに共通するオプション。このオプションの値を true に設定すると、サポート対象のメッセージ（ロギング、イベント、 syslog など）に機密情報（ IP およびユーザ名）が非表示になります。 たとえば、「 anitize 」オプションを「 false 」に設定した場合： *`20-07-17 03:10:23779-Info-12806 XCP Paths ： ['10.234.104.251/cat_vol ： /cat_vol']`*20-07-17 03:10:23778-Info-12XCP 806 User Name:root'207-15308'x1-1217'xCP Info*'20'20'x8*'20'20'30' と同様に 'xCP Info:'20'x1-24*'20'x8*'20'20'x1-'308*'x1-24*'30 XX.XX.XX.XX:/ cat_vol']`*`20-07-1703:13:51595-Info-12859 XCP ユーザー名 :*`
+
+|===
+
+
+= JSON 構成ファイルを作成します
+
+イベントログメッセージ、 syslog クライアント、またはカスタマーロギングをイネーブルにする場合は、次の手順を実行します。
+
+.手順
+. メモ帳や vi などの任意のテキストエディタを開きます。
+. 次の JSON テンプレートを使用して新しいファイルを作成します。
++
+[listing]
+----
+{
+  "logConfig": {
+    "level": "INFO",
+    "maxBytes": 52428800,
+    "name": "xcp.log"
+  },
+  "eventlog": {
+    "isEnabled": false,
+    "level": "INFO"
+  },
+  "syslog": {
+    "isEnabled": false,
+    "level": "INFO",
+    "serverIp": "10.234.219.87",
+    "port": 514
+  },
+  "sanitize": false
+}
+----
+. 有効にする機能については 'IsEnabled' の値を TRUE' に変更してください
+. ファイルに xcpLogConfig.json という名前を付け、 * Error ！に記載されているファイルの場所に SAE it の名前を付けます。参照ソースが見つかりません。 *
+
+
+|===
+| デフォルト設定 | JSON 構成ファイルの例 
+
+
+ a| 
+[listing]
+----
+{
+  "logConfig": {
+    "level": "INFO",
+    "maxBytes": 52428800,
+    "name": "xcp.log"
+  },
+  "sanitize": false
+}
+---- a| 
+[listing]
+----
+{
+  "logConfig": {
+    "level": "INFO",
+    "maxBytes": 52428800,
+    "name": "xcp.log"
+  },
+  "eventlog": {
+    "isEnabled": false,
+    "level": "INFO"
+  },
+  "syslog": {
+    "isEnabled": false,
+    "level": "INFO",
+    "serverIp": "10.234.219.87",
+    "port": 514
+  },
+  "sanitize": false
+}
+----
+|===

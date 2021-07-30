@@ -1,0 +1,38 @@
+---
+sidebar: sidebar 
+permalink: xcp-prepare-file-analytics.adoc.html 
+keywords: netapp, xcp, prepare, preparing, preparation, file analytics, 
+summary: ファイル分析を準備 
+---
+= ファイル分析を準備
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+File Analytics を使用したデータ移行の準備。
+
+File Analytics には次の 2 つの部分があります。
+
+* Linux 上で実行されている File Analytics サーバ
+* Windows で実行されている XCP SMB サービス
+
+
+File Analytics のインストールには、次の要件があります。
+
+* サポートされる OS およびシステム要件は、 NFS および SMB のインストールの場合と同じです。データベースは Linux マシンに配置されるため、 10GB 以上の空きスペースが必要です。
+* File Analytics サーバーをインストールする Linux マシンは、インターネットまたは yum リポジトリに接続されている必要があります。インストールスクリプトが yum リポジトリと通信し、 PostgreSQL 、 HTTP 、 SSL などの必要なパッケージをダウンロードします。
+* File Analytics GUI は、同じボックスで実行されている Linux 用の XCP サービスと共に Linux マシンでのみホストできます。
+* SMB サービスを実行する場合は、次の手順を実行します。
++
+** ファイル分析サーバが実行されている Linux マシンに対して Windows ボックスから ping が実行されていることを確認します。
+** ファイアウォールの内側にいる場合は、ポート 5030 と 5432 が開いていることを確認します。ポート 5030 は、 Windows への REST 呼び出しに使用されます。PostgreSQL 接続にはポート 5432 ポートが使用されます。
+
+
+
+
+
+NOTE: XCP File Analytics サーバは常に Linux マシンで実行されます。SMB File Analytics には、個別のインストールはありません。Windows ユーザーで、 SMB 共有のファイル分析を実行する場合は、 File Analytics for Linux をインストールし、 Windows ボックスを Linux データベースに接続する必要があります。XCP File Analytics のみを使用する場合は、 NFS 用に XCP Catalog を設定する必要はありません。

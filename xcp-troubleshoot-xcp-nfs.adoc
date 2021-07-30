@@ -1,0 +1,71 @@
+---
+sidebar: sidebar 
+permalink: xcp-troubleshoot-xcp-nfs.html 
+keywords: netapp, xcp, troubleshoot, troubleshooting, nfs, errors, 
+summary: XCP NFS エラーのトラブルシューティング 
+---
+= XCP NFS エラーのトラブルシューティング
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+問題のトラブルシューティング方法を確認します。
+
+|===
+| XCP 問題の略 | 解決策 
+
+
+| `XCP ： error` ： root として実行する必要があります | root ユーザとして XCP コマンドを実行します 
+
+
+| xCP ：エラー : ライセンスファイル /opt/NetApp/xFiles/XCP / ライセンスが見つかりません。 | からライセンスをダウンロードします link:https://xcp.netapp.com/["XCP サイト"^] そして '/opt/NetApp/xFiles/XCP にコピーします 
+
+
+| `XCP : error: このライセンスは有効期限が切れています | から新しい XCP ライセンスを更新または取得します link:https://xcp.netapp.com/["XCP サイト"^]。 
+
+
+| `XCP : error: ライセンスが読み取り不能です | ライセンスファイルが破損している可能性があります。から新しい XCP ライセンスを取得します link:https://xcp.netapp.com/["XCP サイト"^]。 
+
+
+| XCP : エラー : XCP がアクティブ化されていません。先に 'activate' を実行してください | 「 XCP activate 」コマンドを実行します 
+
+
+| このコピーのライセンスがありません | 適切な XCP ライセンスファイルを取得します。XCP サーバの /opt/NetApp/xFiles/XCP ディレクトリに XCP ライセンスをコピーします。ライセンスを有効にするには 'XCP activate コマンドを実行します 
+
+
+| `XCP : エラー : ライセンスの有効化に失敗しました : サーバにアクセスできません | オンラインライセンスをアクティブ化しようとしていますが、ホストシステムがインターネットに接続されていません。システムがインターネットに接続されていることを確認します。 
+
+
+| `XCP : エラー : ライセンスの有効化に失敗しました : サーバ xcp.netapp.com unreachable`XCP : ヒント : このホストで DNS を構成するか ' ライセンスページに戻ってプライベートライセンスを要求してください予想されるエラー : ライセンスの有効化に失敗しました : サーバ xcp.netapp.com 到達不能 | ホストから xcp.netapp.com にアクセスできること、またはオフラインライセンスを要求していることを確認します 
+
+
+| `XCP ： ERROR: カタログにアクセスできません :NFS_server:/export[:subdirectory]` をマウントできません | XCP Linux クライアントホストでエディタを開き、適切なカタログの場所で構成ファイルを更新します。XCP 構成ファイルは、 /opt/NetApp/xFiles/XCP xcp.ini` にあります。構成ファイルのサンプルエントリ： `[root@scspr1949387001~]# cat /opt/NetApp/xFiles/XCP / xcp.ini # Sample XCP config[XCP ] catalog=10.235.128.153:/catalog` 
+
+
+| `nfs3 error 2`: このようなファイルやディレクトリはありません | ターゲット NFS エクスポートにソースファイルが見つかりませんでした。ソースからデスティネーションに差分更新をコピーするには 'XCP sync コマンドを実行します 
+
+
+| `XCP : error: 空または無効なインデックス | ファイルのインデックスを作成する前に、前のコピー操作が中断されました。新しいインデックスで「 XCP copy 」を再実行し、コピーを中断する前にシステムが「 indexed 」を返すことを確認します 
+
+
+| "XCP ： error" ： compare batches ： child process failed" （ exit code -9 ）： recv <type' exceptions .EOFError'>` | 次の技術情報アーティクルの手順に従います。 link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/NetApp_XCP/XCP:_ERROR:_Cannot_allocate_memory_-_when_syncing_NFS_data["NFS データの同期中にメモリを割り当てることができません"^] 
+
+
+| `XCP : error`: XCP で ACL を処理するには、 OS nfs4 クライアントを使用して「 <path>` 」をマウントしてください | XCP ホストにソースとターゲットをマウントします 
+
+
+| 移行中に XCP の「 ve rify 」コマンドが失敗する。ステータスに「 failed 」と表示されます。（ライブ） | ソースがライブのときに XCP の「 ve rify 」コマンドが実行されました。最後のカットオーバー後に XCP の「 ve rify 」コマンドを実行します。 
+
+
+| カットオーバー後に XCP の「 ve rify 」コマンドが失敗する。（ライブ） | XCP カットオーバーの同期処理ですべてのデータがコピーされていない可能性があります。最後のカットオーバー後に、 XCP の sync コマンドに続いて「 ve rify 」コマンドを再実行します。問題が解決しない場合は、テクニカルサポートにお問い合わせください。 
+
+
+| XCP の sync コマンドが失敗します（この環境は移行中にすべての同期エラーを発生させます）。（ライブ） | XCP はデータを読み取ることができません。 XCP 問題が原因の可能性があります。コマンド処理の完了後に XCP ステータスメッセージを確認します。「 sync 」コマンドを再実行します。それでも同期処理が失敗する場合は、テクニカルサポートにお問い合わせください。 
+
+
+| メモリ不足が原因で、 XCP copy コマンド、 `re sum`, および `sync コマンドが失敗します。XCP がクラッシュし、 XCP のステータスが FAILED と表示される。（ライブ） | ホストの使用可能なメモリが不足しているか、増分変更が大量に発生しています。次の技術情報アーティクルの手順に従います。 link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/NetApp_XCP/XCP:_ERROR:_Cannot_allocate_memory_-_when_syncing_NFS_data["NFS データの同期中にメモリを割り当てることができません"^] 
+|===

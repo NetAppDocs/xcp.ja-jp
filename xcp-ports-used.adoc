@@ -1,0 +1,39 @@
+---
+sidebar: sidebar 
+permalink: xcp-ports-used.html 
+keywords: ports, xcp 
+summary: Muse が XCP 移行に適切なポートを使用していることを確認します。 
+---
+= XCP で使用されるポート
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+XCP で使用されるポートは次のとおりです。
+
+[cols="50,50"]
+|===
+| サービス | ポート 
+
+
+| CIFS | 445 TCP/UDP 
+
+
+| HTTP （ httpd ） | 80 
+
+
+| HTTPS | 443 
+
+
+| NFS | 111 TCP/UDP および 2049 TCP/UDP 
+
+
+| PostgreSQL | 5432 
+
+
+| XCP （ファイル分析用サービス） | 5030 
+|===
