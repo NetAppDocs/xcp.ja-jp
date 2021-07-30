@@ -567,7 +567,6 @@
   <block id="63debe27683f1f8c225ad14c415dffcc" category="summary">データを移行</block>
   <block id="dfdcc7639b3e014792b21c9f7d5c85c0" category="summary">XCP NFS をインストールしています</block>
   <block id="4e5b1a9c903c0437af920974c6501bd6" category="paragraph">XCP をアップグレードする場合は、現在のインストールファイルを削除し、最新バージョンの新しいインストールファイルに置き換えます。このセクションでは、 Linux クライアントでの XCP の初期セットアップおよび INI ファイルの設定に関するシステム要件と手順について説明します。</block>
-  <block id="0254f3e2d1d09b7f4ac96369282a121f" category="cell">RHEL8 。サポートされているオペレーティングシステムについては、 IMT を参照してください</block>
   <block id="cfca5f031a4e11845916d10e6d53c91e" category="cell">ソースとデスティネーションの NFSv3 エクスポートへのネットワーク接続とルートレベルのアクセスでは、他のアクティブなアプリケーションは使用できません</block>
   <block id="306495a7669e8035296030fc21339366" category="cell">XCP バイナリ用に 20 MB のディスクスペース、および /opt/NetApp/xFiles/XCP ディレクトリに格納されているログ用に 50 MB 以上のディスクスペース</block>
   <block id="efe939e252db8afdf4c58bb48c6f22f7" category="cell">NFSv3 と NFSv4 （ ACL のみ）</block>
@@ -588,4 +587,6 @@
   <block id="8cf04a9734132302f96da8e113e80ce5" category="sidebar">ホーム</block>
   <block id="5dd03e8d039863e563e049be198c3fd3" category="sidebar">リリースノート</block>
   <block id="d60c463bb4096f3ed4bd1618626dfe10" category="sidebar">トラブルシューティングを行う</block>
+  <block id="b7b4f4d0374211895e3064e560d36b51" category="cell">RHEL8 。を参照してください <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block> サポートされているオペレーティングシステムの場合</block>
+  <block id="ff7e3293a738a8b6a195e9c65ce9974b" category="cell">XCP File Analytics は Google Chrome バージョン 76 以降をサポートします。を参照してください <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block> サポートされているすべてのバージョンのブラウザのマトリックスです</block>
 </blocks>
