@@ -8,6 +8,10 @@ entries:
   url: "/index.html"
   type: solutions
   entries:
+  - title: サポートされない機能です
+    url: "/xcp-unsupported-features.html"
+  - title: サポートされている構成
+    url: "/xcp-supported-configurations.html"
   - title: XCP で使用されるポート
     url: "/xcp-ports-used.html"
 - title: XCP をインストール

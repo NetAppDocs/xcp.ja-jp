@@ -589,4 +589,6 @@
   <block id="d60c463bb4096f3ed4bd1618626dfe10" category="sidebar">トラブルシューティングを行う</block>
   <block id="b7b4f4d0374211895e3064e560d36b51" category="cell">RHEL8 。を参照してください <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block> サポートされているオペレーティングシステムの場合</block>
   <block id="ff7e3293a738a8b6a195e9c65ce9974b" category="cell">XCP File Analytics は Google Chrome バージョン 76 以降をサポートします。を参照してください <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block> サポートされているすべてのバージョンのブラウザのマトリックスです</block>
+  <block id="a313028d66f24e87591ecef5ff9f3484" category="summary">ホスト、 ONTAP のバージョン、サポートされているブラウザなどの XCP がサポートされている構成は、 IMT に記載されています。</block>
+  <block id="57b6232ac0f92803d0544e702c641050" category="summary">一部の機能は、 XCP NFS または XCP SMB ではサポートされません。</block>
 </blocks>

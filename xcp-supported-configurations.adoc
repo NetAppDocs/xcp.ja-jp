@@ -1,0 +1,16 @@
+---
+sidebar: sidebar 
+permalink: xcp-supported-configurations.html 
+keywords: xcp, configurations, supported, supported, hosts 
+summary: ホスト、 ONTAP のバージョン、サポートされているブラウザなどの XCP がサポートされている構成は、 IMT に記載されています。 
+---
+= サポートされている構成
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+ホスト、 ONTAP のバージョン、サポートされているブラウザなど、 XCP でサポートされるすべての構成をに示します link:https://mysupport.netapp.com/matrix/["Interoperability Matrix Tool （ IMT ）"^]。
