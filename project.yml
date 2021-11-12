@@ -17,6 +17,8 @@ sidebar:
     url: "/index.html"
     type: solutions
     entries:
+    - title: XCP NFS アドオン機能
+      url: "/xcp-nfs-add-ons.html"
     - title: サポートされない機能です
       url: "/xcp-unsupported-features.html"
     - title: サポートされている構成
@@ -48,8 +50,12 @@ sidebar:
       url: "/xcp-performance-tuning.html"
     - title: 環境変数（ NFS のみ）
       url: "/xcp-environment-variable.html"
-    - title: NFS および SMB のロギング（オプション）
-      url: xcp-logging-for-nfs-and-smb.html
+    - title: POSIX コネクタの設定（ NFS のみ）
+      url: "/xcp-configure-posix-connector-nfs.html"
+    - title: HDFS コネクタの設定（ NFS のみ）
+      url: "/xcp-configure-hdfs-connector-nfs.html"
+    - title: マルチノードスケールアウトの構成（ NFS のみ）
+      url: "/xcp-configure-multinode-scaleout-nfs.html"
   - title: データ移行を計画
     url: "/xcp-plan-data-migration.html"
     entries:
@@ -68,6 +74,8 @@ sidebar:
         url: "/xcp-run-a-scan.html"
     - title: フィルタ
       url: "/xcp-filters.html"
+    - title: NFS および SMB のロギング（オプション）
+      url: "/xcp-logging-for-nfs-and-smb.html"
   - title: データを移行
     entries:
     - title: NFS データを移行する

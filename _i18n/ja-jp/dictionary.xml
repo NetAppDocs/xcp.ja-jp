@@ -2,12 +2,8 @@
 <blocks>
   <block id="dc3e4b78f385d96eee62d48189bd45ed" category="summary">INI ファイル XCP を設定する手順</block>
   <block id="43f3f6a392074dfc63604c7b136e457f" category="doc">XCP NFS の INI ファイルを設定します</block>
-  <block id="7783b67fa1872b358c3b2240a4357994" category="paragraph">INI ファイル XCP を設定する手順</block>
-  <block id="dc610afe03964d3d2f1b9e7927ddef71" category="paragraph">XCP NFS の INI ファイルを設定するには、次の手順を実行します。</block>
   <block id="f3a29486bed19a90f2da6d007818b427" category="list-title">手順</block>
-  <block id="3c8422ac65406a6a160285d9611689de" category="list-text">vi エディタを使用して、ホスト構成ファイルに XCP サーバのカタログの場所を追加します。</block>
   <block id="69ab39c4429204099bcace949edc5493" category="admonition">カタログの場所は、「 xcp.ini` XCP 」構成ファイルの詳細を変更する前にエクスポートする必要があります。カタログの場所（ NFSv3 ）は XCP Linux ホストにマウント可能である必要がありますが、マウントされているとは限りません。</block>
-  <block id="fdb4374d91cf6d1d04906739dbd0a418" category="list-text">カタログの XCP Linux クライアントホスト構成ファイルのエントリが変更されたことを確認します。</block>
   <block id="9d1854a18d1a1a9b0aad19c89b6a15b0" category="summary">JSON 構成ファイルを作成します</block>
   <block id="eb498a91409025b6f7459d1487819ac5" category="paragraph">JSON 構成ファイルを作成します。</block>
   <block id="71067d2da44f21581259461be89d2c5b" category="paragraph">イベントログメッセージ、 syslog クライアント、またはカスタマーロギングをイネーブルにする場合は、次の手順を実行します。</block>
@@ -59,7 +55,6 @@
   <block id="0b38ead8cb81444a18a4c9660907007d" category="paragraph">詳細については 'XCP help show' を実行してください</block>
   <block id="22efdbe132eabc102306bd7a334fb434" category="section-title">スキャン</block>
   <block id="260f1bdc770baf06a9e28946677d8ade" category="paragraph">「を使用すると、ソースの NFSv3 エクスポートパス全体を再帰的にスキャンし、スキャンの終了時にファイル構造の統計を出力できます。スキャン処理の実行中は、ソースの NFS エクスポートマウントを読み取り専用モードにすることを推奨します。例</block>
-  <block id="f4ab3aebb097ac37f9fcb496bdebcb05" category="list-text">'XCP scan NFS server:/export path`</block>
   <block id="aef9e741ab939722d78e05debc0530f8" category="list-text">XCP scan nfs_server01.netapp.com:/export1`</block>
   <block id="57e9ab68ece2e80c1dd072f065c05577" category="paragraph">詳細については 'XCP help scan を実行してください</block>
   <block id="d966f213346a789643a8dfc71c67068b" category="paragraph">必要に応じて、 File Analytics を使用して、結果をグラフィカルに表示します。</block>
@@ -148,8 +143,6 @@
   <block id="a7a81082a60152f2eb36b8d78016b292" category="list-text">Windows では、コマンドラインに「 CTRL-C 」と入力して、既存の XCP サービスを停止します。</block>
   <block id="62001cf2823c6318575f560eaf3a11b2" category="list-text">「 XCP .exe 」を最新のバイナリに置き換えます。</block>
   <block id="7f9cccf134351e9df9c324fb764603f3" category="summary">XCP Information Library へようこそ。以前のリリースへのリンクが含まれています。</block>
-  <block id="3ecfb50f046e96ab1e3c1e892f6ecb61" category="doc">XCP v1.7 マニュアル</block>
-  <block id="227c25e1e932397098d7c6b29e1e444e" category="paragraph">XCP 情報ライブラリへようこそ。ここでは、 XCP v1.7 ソフトウェアのインストール、設定、および使用方法を含むドキュメントを提供しています。</block>
   <block id="9d2169c1c2855b78a7aeaa4f42d27dc7" category="inline-link-macro">ネットアップサポートサイト</block>
   <block id="76c8844b91693e12fac2abf6d423c3f5" category="paragraph">以前のリリースの XCP のマニュアルは、から入手できます <block ref="a4ccf985ba56b702a384be031a3cd5f9" category="inline-link-macro-rx"></block>。</block>
   <block id="0d0094c10f5e227325ec13a4c60c79be" category="summary">XCP File Analytics エラーのトラブルシューティング</block>
@@ -157,66 +150,22 @@
   <block id="2df6366012c9e039186e09dd0f83bf9c" category="paragraph">問題のトラブルシューティング方法を確認します。</block>
   <block id="642facf67e0ad311eee88b3ab8381590" category="cell">問題</block>
   <block id="49b21ad0d38942f635877e7bbc5d7a1e" category="cell">解決策</block>
-  <block id="901e69f27ca301eeceb09eafcfc378f3" category="cell">PostgreSQL のインストールまたはサービスに失敗しました</block>
   <block id="0e0e0acc1a9ea0d43a111a880b5dd1bc" category="paragraph">もう一度 configure を実行し、インストールオプションを選択します。以前のインストールが成功した場合は、修復オプションを選択できます。それでもエラーが表示される場合は、次の手順を実行してください。</block>
-  <block id="7112b19cac4efbfbdf3c6299701d5add" category="list-text">Linux システムで PostgreSQL を実行します。</block>
-  <block id="90807e63bd379b3edb7559be967d8aec" category="paragraph">'sudo yum-y install postgresql-server sudo systemctl start postgresq</block>
-  <block id="6652d535b456a43aa4e5fedcb4074cff" category="list-text">PostgreSQL データベースのデータディレクトリを作成します。</block>
-  <block id="f663918a9aa259a6f404ca14af13cade" category="paragraph">'sudo mkdir /var/lib/postgres/data</block>
-  <block id="0452c0e061058f3f14babc818112b5ab" category="list-text">データベースを初期化します。</block>
-  <block id="69165b3b61eb0f32ebf97f0c65a65b12" category="paragraph">「 sudo -i -u postgres initdb-D 」 /var/lib/pgsql/data 」を参照してください</block>
-  <block id="4f919ced412de93c64b3268b5470c7f3" category="list-text">適切な Linux ファイルエディタを使用して、次のファイルを開きます。</block>
-  <block id="51b6616ee1748ae68a2457e272b019e9" category="paragraph">/var/lib/pgsql/data/pg_hba.conf</block>
-  <block id="a8a53c48cbb8415fbb7d697977e32f6a" category="list-text">次のエントリを削除します。</block>
-  <block id="d733e7b8f15f14b4c8eedf0dc598b8ac" category="paragraph">`# host all all all 127.0.0.1/32 trust`</block>
-  <block id="7f0e0ff2d52ea8b69f4d676763829b0a" category="list-text">「 #host all all 0.0.0.0/0 password 」というエントリを追加します</block>
-  <block id="415f3119a1ec580be5e4f92126e1e1df" category="list-text">ファイル「 /var/lib/pgsql/data/postgresql.conf 」を開きます</block>
-  <block id="3d2d7c012c1648338216848934c4951e" category="list-text">次のエントリを追加します。</block>
-  <block id="ab95ae1de18cf6cfade03d40c71d91d2" category="paragraph">#listen_addresses='*</block>
-  <block id="1cc1902afb4ba7c9bf742c458a5872e0" category="list-text">PostgreSQL サービスを開始します。</block>
-  <block id="1eed2cbf2596004c30d086961feef09e" category="paragraph">'UDO systemctl start postgresql.service`</block>
-  <block id="3dc8891d77e496e943106c94dd505a47" category="cell">httpd のインストールまたはサービスに失敗しました</block>
-  <block id="fc437d4f7db7f5e0dbb9b40849747a59" category="list-text">Linux システムに HTTPD をインストールします。</block>
-  <block id="2f66f95ee195abfa52c444a51e92f8d9" category="paragraph">「 UDO yum-y install httpd 」を選択します</block>
-  <block id="411fab4c9bf3277fce2f253deacedd9d" category="list-text">次の構成ファイルを開いてルールを書き換えます。</block>
-  <block id="e37dd6a6d868be706aecbe04b6ffe0e4" category="paragraph">/etc/httpd/conf/httpd.conf</block>
-  <block id="8361cfc60fc0f09987dabbccc5a19d92" category="list-text">ファイルに次のエントリを追加します。</block>
-  <block id="58e0128c887d5b6db53158e63e08fcfa" category="paragraph">「 RewriteEngine on `RewriteOptions Inherit `&lt;Directory"/var/www/html/"&gt;`AllowOverride None 」には、すべての付与された「 RewriteCond % ｛ request_filename ｝ -f [OR]`RewriteCond % ｛ request_filename ｝ -d `RewriteRule-d`RewriteRule^r 」が必要です index.html</block>
-  <block id="6a694188a1f47b2c9939ade628f2ca2c" category="list-text">HTTPD サービスを開始します。</block>
-  <block id="40988039bbbcbe94d5aa1cce4bb8836d" category="paragraph">'UDO systemctl start httpd</block>
-  <block id="ed264bfaaddf4bfe7727ba32feddc71e" category="cell">SSL をインストールできませんでした</block>
-  <block id="fd1b3fa7b0fd95c401545de42d7347c7" category="list-text">インストール `m OD_SSL`:</block>
-  <block id="45392447695b700e69695b3355d31433" category="paragraph">yum install mod_ssl-y</block>
-  <block id="f0270a27a2ebf914793917c0796bf9aa" category="list-text">Secure Sockets Layer （ SSL ）証明書を生成します。</block>
-  <block id="e8849998f95a0730a9baf388b1e17ff0" category="paragraph">yum openssl req -x509 -nodes -days 365-newkey `rsa:2048 -keout/etc/ssl/private/apache`-`-selfsigned`s elfsigned.key -out /etc/ssl/certs/apache-selfsigned.crt</block>
-  <block id="b3bb59707e32a184490ceafac2af744f" category="list-text">HTTPS サービスを有効にします。</block>
-  <block id="56047ba32d65933f948622c8de73281b" category="paragraph">yum openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048</block>
   <block id="a5472293a9f24af00475781ccf23bd48" category="list-text">HTTPD サービスを再起動します。</block>
   <block id="472e5e5ac349331523960cd6d0d4fef7" category="paragraph">'UDO systemctl restart httpd</block>
-  <block id="a243ff5e2dcbe7a95336be919620b6fe" category="list-text">SSL 証明書を適切な場所にコピーします。</block>
-  <block id="c72d33368188ab67f08d620b4b1bf076" category="paragraph">「 sudo cp - pr /etc/pki/certs/localhost.crt /opt/NetApp/xFiles/XCP / server.crt `'UDO cp - pr/etc/pki/ localhost.key /opt/NetApp/xFiles/XCP / server.key`</block>
   <block id="2113faff27761298b76e18e9d9dc0831" category="cell">インストールの完了後にログインページを開くことができません</block>
   <block id="c5dcd35af16918a17ee9c3a5c153f0af" category="inline-link-macro">IMT</block>
-  <block id="d8f588f7b9867f36f645b604710b870a" category="cell">XCP File Analytics がインストールされていて、 HTTPD が実行されている Linux マシンに対して、システムが ping を実行できることを確認します。サービスが実行されていない場合は 'configure を実行して ' 修復オプションを選択しますサポートされているバージョンのブラウザを使用していることを確認してください。を参照してください <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block>。</block>
   <block id="d50784b3674870554d4c3159c77d15ea" category="cell">ユーザログインに失敗しました</block>
-  <block id="6d7f03f9eb7a58ed2278e3c43684c952" category="list-text">サポートされているバージョンのブラウザを使用していることを確認してください。を参照してください <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block>。</block>
-  <block id="a6d7ff6b68019ab8e68727d4c7395570" category="list-text">ユーザが「 admin 」で、パスワードが正しいことを確認します。</block>
-  <block id="87a071af8f99a9c7de6e287b00b79d65" category="list-text">「 XCP service status 」を発行して、 XCP サービスが実行されていることを確認します。</block>
   <block id="688ed7a6a60fc5e2ea7b8d685b953cbb" category="list-text">Linux でポート 5030 が開いていることを確認します。アプリケーションを *https:// &lt;Linux ip&gt;:5030/api/XCP * で開き、メッセージメッセージメッセージ msg: `M issing Authorization Header` を確認します。</block>
   <block id="29ce56cd9d307b3514653e8cae7e2c23" category="list-text">xcp.ini` ファイルが /opt/NetApp/xFiles/XCP の場所にあるかどうかを確認します。「 xcp.ini` 」ファイルをリセットするには、設定スクリプトを実行し、「 * Repair * 」オプションを選択します。次に、メニューオプションを選択して、 * xcp.ini ファイルの再構築 * を実行します。</block>
   <block id="05f335661b9a8df951162cb0258c7f5c" category="list-text">CLI で 'XCP --listen' コマンドを手動で実行し ' ログインしてみますサーバで要求を受信しない場合は、インストールとサーバとの通信に使用するポートを再確認します。インストールが正しいことを確認したら、「 service XCP start 」コマンドを実行してサービスを再起動します。</block>
-  <block id="60d9290e92f76e80de27ec1cca2c6ce6" category="cell">XCP GUI に更新されたページが表示されない。</block>
-  <block id="7c11b01c997091c545072a913db2725d" category="cell">キャッシュをクリアしてやり直してください。</block>
   <block id="a04f96b6db4b60427c763eb51cfd126b" category="cell">XCP サービスが開始されていません</block>
   <block id="53c1fcfaeeade0d937642ef92edcea52" category="cell">"XCP " サービスを実行するには、 "UDO systemctl start XCP " コマンドを使用します。または、設定スクリプトを実行し、「 * Repair * 」オプションを選択して停止したサービスを開始します。</block>
   <block id="00d88d85f86cfc3fd42467a045938e04" category="cell">ファイル共有のスキャンに失敗しました</block>
-  <block id="63ce1ab709d3dcc744a81aea7d2152b2" category="cell">ファイル共有 / ボリュームは読み取りできない可能性があります。ファイル共有がアクセス可能かどうかを手動で確認するには 'XCP show コマンドを実行します</block>
   <block id="b8ed9da4163768ad065c550427fbbb02" category="cell">ファイルサーバをロードできませんでした</block>
-  <block id="62301a77fa82723024ee92935bc48066" category="cell">ページをリフレッシュしてみてください。問題が解決しない場合は、プロンプトで XCP show コマンドを手動で実行し、ファイルサーバをスキャンできるかどうかを確認します。成功した場合は、ネットアップカスタマーサポートにチケットを発行してください。失敗した場合は、手動でファイルサーバがアクティブかどうかを確認します。xcp.ini` ファイルとライセンスファイルが正しい場所にあるかどうかを確認します「 xcp.ini` 」ファイルをリセットするには、設定スクリプトを実行し、「 * Repair * 」オプションを選択します。次に、 xcp.ini ファイルを再構築するためのメニュー・オプションを選択します。 * ライセンスの更新が必要かどうかを調べるには、「 xcpflogs 」ログを確認します。</block>
   <block id="f725a02581232d2034f08f5bbb7fd8ac" category="cell">システムのリブート後に XCP File Analytics ページが表示されない</block>
   <block id="0e4a94fc1ebb00022d0693e301596d2d" category="cell">XCP サービスが停止している可能性があります設定スクリプトを実行し、 * Repair * オプションを選択します。これにより、停止されたすべてのサービスが再起動されます。</block>
   <block id="e2d6471d3d51e8bf2d4aa734bd07e4ed" category="cell">特定のファイルサーバ上のエクスポートされたファイルシステムの合計スペースは、割り当てられた物理ストレージよりも多くのスペースを表示することがあります。</block>
-  <block id="52772d4f4dfb1f60068cfbfab21fd157" category="cell">これは、ボリューム内に qtree レベルのエクスポートがある場合に発生することがあります。たとえば ' ボリューム・サイズが 10 GB であり ' ボリューム '/vol1/qtree1' 内に qtree がある場合 'XCP show コマンドは 'vol1' サイズを 10 GB' として表示し 'qtree1' サイズを 10 GB' として表示しますXCP File Analytics は、両方のエクスポートのスペースを合計し、合計スペースを提供します。この場合、「 20 GB 」となります。「 qtree1 」は論理空間であることは理解できません。</block>
   <block id="15a72e0b175cfb652e426660fba4bc3c" category="summary">詳細はこちらをご覧ください</block>
   <block id="bf07f432276ee2fe7e55f9ea12c2ba5a" category="doc">詳細はこちらをご覧ください</block>
   <block id="b2869ebd73bb749c2a70fb53b7fb839a" category="paragraph">さまざまなリソース、ドキュメント、フォーラムを通じて、ヘルプを入手したり、詳細情報を参照したりできます。</block>
@@ -231,8 +180,6 @@
   <block id="dd490b81914dd945601e442a41cb4222" category="inline-link-macro">ネットアップコミュニティ</block>
   <block id="5069a642e7e1b77c303271d4c51a31be" category="list-text"><block ref="a6159e77c91be3ab1d481e4c7c939636" category="inline-link-macro-rx"></block> –フォーラム</block>
   <block id="a3100bf3334206028c894a5568ddcf09" category="summary">新機能、アップグレードの注意事項、解決済みの問題、既知の制限事項、および既知の問題について説明します。</block>
-  <block id="b12e7947abc806c4a6eadae86ba72e23" category="doc">XCP v1.7 リリースノート</block>
-  <block id="4211ff2337be9231091d785407a0bfb0" category="paragraph">。 <block ref="250a696d75d0d3bbd3c0629ff2f13ecb" category="inline-link-macro-rx"></block> 新機能、アップグレードに関する注意事項、解決済みの問題、既知の制限事項、および既知の問題について説明する。</block>
   <block id="dbd469acdcbd52648cb242bcfda6add3" category="paragraph">リリースノートにアクセスするには、ネットアップサポートサイトにサインオンする必要があります。</block>
   <block id="899cb0fc6e09b056f086b2106c805708" category="summary">XCP SMB をインストールします</block>
   <block id="83eac0335f97fa6241e10b9487c974e1" category="paragraph">このセクションでは、 Windows クライアントでの VC++ 再頒布可能インストールのためのシステム要件と手順、および XCP の初期セットアップについて詳しく説明します。</block>
@@ -269,7 +216,6 @@
   <block id="d9a94aeb05c2b97954eebdc3732fc715" category="summary">NFS データを移行する</block>
   <block id="37704fe51312a12ba870e785cefa70f4" category="paragraph">「 show 」コマンドと「 can 」コマンドを使用して移行を計画した後、データを移行できます。</block>
   <block id="5fb63579fc981698f97d55bfecb213ea" category="section-title">コピー</block>
-  <block id="55165f0c8a3b423cd1e339e55828353c" category="paragraph">copy コマンドは ' ソース・ディレクトリ構造全体をスキャンして ' デスティネーションの NFSv3 エクスポートにコピーします'copy' コマンドでは ' ソース・パスとデスティネーション・パスを変数として指定する必要がありますコピー処理の終了時に、スキャンおよびコピーされたファイル、スループット / 速度、および経過時間の詳細が表示されます</block>
   <block id="c26fe677a830587ef1c141567a86c86a" category="paragraph">* 例： *</block>
   <block id="09a50a5f71f40a01932aba8c86a8c6b2" category="paragraph">詳細は 'XCP help copy' を参照してください</block>
   <block id="f1cefec9e2196c672a622347f1fbc325" category="section-title">再開</block>
@@ -315,7 +261,6 @@
   <block id="a7cf2676d276e4fe420000595e3443d2" category="cell">`XCP ： error` ： root として実行する必要があります</block>
   <block id="2a90812fc13c49a77254684c5a3b5cb8" category="cell">root ユーザとして XCP コマンドを実行します</block>
   <block id="26170421f8be098bf38a96d89b26cacc" category="cell">xCP ：エラー : ライセンスファイル /opt/NetApp/xFiles/XCP / ライセンスが見つかりません。</block>
-  <block id="250a902a3fb4b31a101a4c8806b80d3b" category="cell">からライセンスをダウンロードします <block ref="f33ccbb3083b14f48de92a286ba83724" category="inline-link-macro-rx"></block> そして '/opt/NetApp/xFiles/XCP にコピーします</block>
   <block id="c42217f3ea9a2824b2e6414ca47d28c1" category="cell">`XCP : error: このライセンスは有効期限が切れています</block>
   <block id="fade017532ccd86be0dd06e93349b97a" category="cell">から新しい XCP ライセンスを更新または取得します <block ref="f33ccbb3083b14f48de92a286ba83724" category="inline-link-macro-rx"></block>。</block>
   <block id="17f5431aa4929b3c834893c75964e33a" category="cell">`XCP : error: ライセンスが読み取り不能です</block>
@@ -325,20 +270,16 @@
   <block id="25b9d99744f022a106507715192e88dc" category="cell">このコピーのライセンスがありません</block>
   <block id="8ba84afe18c18194743530245f33e6c3" category="cell">適切な XCP ライセンスファイルを取得します。XCP サーバの /opt/NetApp/xFiles/XCP ディレクトリに XCP ライセンスをコピーします。ライセンスを有効にするには 'XCP activate コマンドを実行します</block>
   <block id="b6f8b7e40716598e1e429f8c4ca560c3" category="cell">`XCP : エラー : ライセンスの有効化に失敗しました : サーバにアクセスできません</block>
-  <block id="407dbac586cc06e82427958c7ebc9b6e" category="cell">オンラインライセンスをアクティブ化しようとしていますが、ホストシステムがインターネットに接続されていません。システムがインターネットに接続されていることを確認します。</block>
   <block id="35cabffe4dcfb66c8c5c1abde8d88d79" category="cell">`XCP : エラー : ライセンスの有効化に失敗しました : サーバ xcp.netapp.com unreachable`XCP : ヒント : このホストで DNS を構成するか ' ライセンスページに戻ってプライベートライセンスを要求してください予想されるエラー : ライセンスの有効化に失敗しました : サーバ xcp.netapp.com 到達不能</block>
   <block id="57bb45ee2626c6c9327710db7ad62b16" category="cell">ホストから xcp.netapp.com にアクセスできること、またはオフラインライセンスを要求していることを確認します</block>
   <block id="2b0923c485796bcf7f70cc9dfebec175" category="cell">`XCP ： ERROR: カタログにアクセスできません :NFS_server:/export[:subdirectory]` をマウントできません</block>
-  <block id="aa7a7e5f12deaad32d92dac53b12c581" category="cell">XCP Linux クライアントホストでエディタを開き、適切なカタログの場所で構成ファイルを更新します。XCP 構成ファイルは、 /opt/NetApp/xFiles/XCP xcp.ini` にあります。構成ファイルのサンプルエントリ： `[root@scspr1949387001~]# cat /opt/NetApp/xFiles/XCP / xcp.ini # Sample XCP config[XCP ] catalog=10.235.128.153:/catalog`</block>
   <block id="59052f213763189d6af354107f6d9550" category="cell">`nfs3 error 2`: このようなファイルやディレクトリはありません</block>
   <block id="e1d14a9642b2578804384063d08b5a1d" category="cell">ターゲット NFS エクスポートにソースファイルが見つかりませんでした。ソースからデスティネーションに差分更新をコピーするには 'XCP sync コマンドを実行します</block>
   <block id="78e5b69a5a00d7a92919d21e2ba97199" category="cell">`XCP : error: 空または無効なインデックス</block>
-  <block id="f47e7e1b18c5d65cc36fc35a64f1c523" category="cell">ファイルのインデックスを作成する前に、前のコピー操作が中断されました。新しいインデックスで「 XCP copy 」を再実行し、コピーを中断する前にシステムが「 indexed 」を返すことを確認します</block>
   <block id="c4f538ab4a2a996881ee2390db8a1df5" category="cell">"XCP ： error" ： compare batches ： child process failed" （ exit code -9 ）： recv &lt;type' exceptions .EOFError'&gt;`</block>
   <block id="49fa9bd2e81eea051a29f8e45c21638b" category="inline-link-macro">NFS データの同期中にメモリを割り当てることができません</block>
   <block id="ec1ddb4ca70dcd41f3383467aad4f8c5" category="cell">次の技術情報アーティクルの手順に従います。 <block ref="210762096b71656af31c60f1d6e149d7" category="inline-link-macro-rx"></block></block>
   <block id="da4c5f5f94a9c5f96a18793e2ee86c68" category="cell">`XCP : error`: XCP で ACL を処理するには、 OS nfs4 クライアントを使用して「 &lt;path&gt;` 」をマウントしてください</block>
-  <block id="1f7bf2140d0a23a6d9416516fca213f5" category="cell">XCP ホストにソースとターゲットをマウントします</block>
   <block id="5066b38ab5bf70aafe33712df1d9dab5" category="cell">移行中に XCP の「 ve rify 」コマンドが失敗する。ステータスに「 failed 」と表示されます。（ライブ）</block>
   <block id="8f5339cfe8b54520bd6b5cb4d972eba7" category="cell">ソースがライブのときに XCP の「 ve rify 」コマンドが実行されました。最後のカットオーバー後に XCP の「 ve rify 」コマンドを実行します。</block>
   <block id="62e70645f6409e90524602eafed9306a" category="cell">カットオーバー後に XCP の「 ve rify 」コマンドが失敗する。（ライブ）</block>
@@ -350,16 +291,7 @@
   <block id="48c8358f8ec93d53dce102ada3542d9a" category="summary">XCP NFS 用 Linux を準備します</block>
   <block id="b60567959313ad04bc597ac1c76b3d78" category="paragraph">XCP NFS は、 Linux クライアントホストシステムを使用して並列 I/O ストリームを生成し、使用可能なネットワークとストレージのパフォーマンスを最大限に活用します。</block>
   <block id="2ff3c45412179560786cd7233c267e67" category="section-title">カタログを構成します</block>
-  <block id="1abb7321abd92c499537e61dd053435d" category="paragraph">XCP は、 NFSv3 からアクセス可能なカタログディレクトリに処理レポートとメタデータを保存します。カタログのプロビジョニングは、インストール前に次のタスクを必要とする 1 回限りのタスクです。</block>
-  <block id="f85b2894a959159223bcb6e5be12b88c" category="list-text">セキュリティと信頼性を確保するための NetApp NFSv3 エクスポート。</block>
-  <block id="50ee3c2275eb668b515d25b25dc7843f" category="list-text">エクスポートを含むアグリゲートに 10 本以上のディスクまたはソリッドステートドライブが含まれていること。</block>
-  <block id="e40697d32255e93835733be85907b044" category="list-text">XCP の実行に使用されるすべての Linux クライアントの IP アドレスについて、カタログエクスポートへのルートアクセスを許可するように構成されたストレージ（複数の XCP クライアントでカタログの場所を共有可能）。</block>
-  <block id="1260afb8659244577921c8fb1e065bdb" category="list-text">インデックスを作成するオブジェクト（ディレクトリとファイル、ハードリンク） 1 、 000 万個ごとに約 1GB のスペースが必要です。再開または同期できるコピーごと、およびオフラインで検索可能なスキャンごとにインデックスが必要です。</block>
-  <block id="0d5c59864a34fb37a484d6804f701c7f" category="admonition">XCP カタログは別途保存する必要があります。これらのディレクトリは、ソースまたはデスティネーションの NFS エクスポートディレクトリには配置しないでください。XCP はメタデータを管理します。このレポートは、初期セットアップで指定したカタログの場所に保存されます。XCP を使用して処理を実行する前に、レポートの格納場所を指定して更新する必要があります。</block>
   <block id="57af563c0eacc9d9ac7d1c28bf2f9a11" category="paragraph">XCP NFS の移行および移行には、ソースとターゲットのストレージに関する次の要件があります。</block>
-  <block id="47a59ef97151aaaa29e31591b2233a3d" category="list-text">ソースサーバとターゲットサーバで NFSv3 プロトコルサービスが有効になっている必要があります。NFSv4 ACL を移行する場合は、デスティネーションサーバで NFSv4 プロトコルサービスと NFSv4 ACL を有効にする必要があります。</block>
-  <block id="161dc33e8f5019ca3f26226f073410fc" category="list-text">ソースボリュームとターゲットボリュームは、 XCP Linux クライアントホストへの「 root 」アクセスでエクスポートされる必要があります。</block>
-  <block id="a38eea5bea1d2cd2fcdbb7cf0c8c9234" category="admonition">管理者が誤って変更できないように、 NFSv3 および NFSv4 エクスポートのソースを読み取り専用として設定してください。</block>
   <block id="2cb211d6d9065080871b03dc58cc2f5f" category="summary">SMB データを移行</block>
   <block id="28f2900c35a6a416b39cb9a71b13649a" category="paragraph">copy コマンドは ' ソース・ディレクトリ構造全体をスキャンし ' デスティネーション SMB 共有にコピーします'copy' コマンドでは ' ソース・パスとデスティネーション・パスを変数として指定する必要がありますスキャンおよびコピーされたファイル、スループット / 速度、および経過時間の詳細が、 5 秒ごとにコンソールに出力されます。</block>
   <block id="40fa419bffb820819ac71ba039348155" category="paragraph">「 sync 」コマンドは、ソース共有とターゲット共有の変更と変更を同時にスキャンし、ターゲットに適切なアクション（削除、変更、名前変更など）を適用して、ターゲットがソースと同一であることを確認します。</block>
@@ -377,8 +309,6 @@
   <block id="8b8bd82846902c55d97040e4cf92d530" category="paragraph">SMB の場合は、「 XCP help-match 」と「 EXCLUDE 」を実行して、「 m atch 」と「 EXCLUDE 」フィルタの詳細を取得します。</block>
   <block id="2c64852df0b21e99d0d0ef1cc5b8c6a9" category="paragraph">XCP コマンドでフィルタを使用する場合は、 XCP help コマンドを実行して、サポートされているオプションかどうかを確認します。</block>
   <block id="1718dc53be562ce70afa56df4e40aac0" category="summary">パフォーマンス調整（ NFS のみ）</block>
-  <block id="0e976619182e016eafbf2e8c1da3d756" category="paragraph">show コマンドと scan コマンドを使用した移行の計画が完了したら、データを移行できます。</block>
-  <block id="d768515fa6bb20ff09428b43b5a4f426" category="paragraph">最適なパフォーマンスと信頼性を実現するために、 XCP Linux クライアントホストの /etc/sysctl.conf に次の Linux カーネル TCP パフォーマンスパラメータを設定することを推奨します。'sysctl-p' または reboot コマンドを実行して変更をコミットします</block>
   <block id="afc140e7771a565b91190eb36ffe4d87" category="summary">スキャンを実行する</block>
   <block id="924efb8414fbca05d721d87cd806d298" category="doc">スキャンを実行します</block>
   <block id="04ec2acd5a3aa521b572bd5eda28b826" category="paragraph">NFS / SMB ファイルシステムが XCP File Analytics GUI に追加されると、ファイルシステムスキャンを開始してデータを分析および表現できます。</block>
@@ -479,7 +409,6 @@
   <block id="ba719bfda7676bf7a3de102a56d5b709" category="cell">フィーチャー名（ Feature Name ）</block>
   <block id="fdb7cb8f657426e7c409bfd6d1a36ce4" category="cell">IPv6</block>
   <block id="6a9c8c643c2aa2f9637fc774313525ff" category="cell">IP バージョン 6 （ IPv6 ）をサポートしない</block>
-  <block id="404b2d894f483a7ddef7817098a7f9e9" category="cell">NFSv4 ACL （サードパーティ製品）</block>
   <block id="c7bf2265b981e33062858c4abf1ea290" category="cell">サードパーティ製品から NetApp NFSv4 ACL へのアクセスはサポートされません</block>
   <block id="577d13f7684f9c1dad51523d52a28bf9" category="paragraph">XCP SMB では、次の機能はサポートされていません。</block>
   <block id="938afd21cb8a9e8f4fedcfb890dd244f" category="cell">NFS シンボリックリンク（シンボリックリンク）</block>
@@ -563,20 +492,15 @@
   <block id="2214f08896c91ecbb20888adf818aa3e" category="cell">'XCP copy: error' はフォールバックセキュリティプリンシパルの取得に失敗しました (hosts ファイルへの追加後の宛先ボックスエントリ ) xcp.log ファイルにログインしているエラーメッセージ : 'pywintypes.error`(87, 'LookupAccountName', ' パラメータが正しくありません</block>
   <block id="2e4e559c9f6001c3134b8795d8e47e81" category="cell">フォールバックユーザ / グループオプションのパラメータが正しくありません。ユーザ / グループのフォールバックオプションに正しい構文を使用してコマンドを再実行します</block>
   <block id="ca5b87c22d59ad15700c80cec3677245" category="cell">ACL 移行 Erorr メッセージを含む XCP copy 」が xcp.log ファイルに記録されます : 'pywintypes.error`:(1314'GetNamedSecurityInfo', 'a required privilege is not Held by the client.')`</block>
-  <block id="f015dbd9c1c7f6c85624307d7541a6c3" category="cell">ユーザはセキュリティ記述子に関連する訴訟の前にいます。移行ユーザが所有する権限で XCP は所有者、グループ、および DACL のみを取得できますが、 SACL は取得できません。移行ユーザを Active Directory の「 Manage Audit and Security Log 」ポリシーに追加します。参照 <block ref="47c554f6b2ce744e50a1b2318fbe4ec3" category="inline-link-macro-rx"></block></block>
   <block id="63debe27683f1f8c225ad14c415dffcc" category="summary">データを移行</block>
   <block id="dfdcc7639b3e014792b21c9f7d5c85c0" category="summary">XCP NFS をインストールしています</block>
   <block id="4e5b1a9c903c0437af920974c6501bd6" category="paragraph">XCP をアップグレードする場合は、現在のインストールファイルを削除し、最新バージョンの新しいインストールファイルに置き換えます。このセクションでは、 Linux クライアントでの XCP の初期セットアップおよび INI ファイルの設定に関するシステム要件と手順について説明します。</block>
   <block id="cfca5f031a4e11845916d10e6d53c91e" category="cell">ソースとデスティネーションの NFSv3 エクスポートへのネットワーク接続とルートレベルのアクセスでは、他のアクティブなアプリケーションは使用できません</block>
   <block id="306495a7669e8035296030fc21339366" category="cell">XCP バイナリ用に 20 MB のディスクスペース、および /opt/NetApp/xFiles/XCP ディレクトリに格納されているログ用に 50 MB 以上のディスクスペース</block>
-  <block id="efe939e252db8afdf4c58bb48c6f22f7" category="cell">NFSv3 と NFSv4 （ ACL のみ）</block>
   <block id="1594a72c4334114af4250e4a70d6e8c9" category="admonition">ライブソース移行の推奨構成は、 8 コアと 64GB RAM です。</block>
   <block id="66a601fe5f401770b437d5c7c8436c0e" category="list-text">root ユーザとして Linux マシンにログインし、ライセンスをダウンロードしてインストールします。</block>
-  <block id="69554211dcb03d7ec63d2bf06670b6cd" category="list-text">XCP を解凍します。</block>
   <block id="89e2d7b55d7c6e3cea138d3f18fa8e31" category="list-text">以前のバージョンの XCP からシステムで /opt/NetApp/xFiles/XCP パスが利用可能であることを確認します。</block>
   <block id="228e0782986d1013ce0b49f658129e26" category="paragraph">「 /opt/NetApp/xFiles/XCP 」が使用可能な場合は、「 xCP activate 」コマンドを使用してライセンスをアクティブ化し、データ移行を続行します。</block>
-  <block id="85e7842d519b52b8250a7032406ec998" category="paragraph">/opt/NetApp/xFiles/XCP が使用できない場合は 'XCP activate コマンドを初めて実行するときに '/opt/NetApp/xFiles/XCP で XCP ホスト構成ディレクトリとファイルが作成されます</block>
-  <block id="df5b6fbbd80612bb4dcade1ee94872a7" category="paragraph">ライセンスがインストールされていないため 'XCP activate コマンドは失敗します</block>
   <block id="cae408e146414f197563c67edf318286" category="list-text">ライセンスを「 /opt/NetApp/xFiles/XCP 」にコピーします。</block>
   <block id="8ab783e73539b82c1414bd94a3037376" category="list-text">ライセンスファイルが /opt/NetApp/xFiles/XCP にコピーされたことを確認します。</block>
   <block id="181af529472b0626a27e692b85666546" category="summary">環境変数（ NFS のみ）</block>
@@ -591,4 +515,195 @@
   <block id="ff7e3293a738a8b6a195e9c65ce9974b" category="cell">XCP File Analytics は Google Chrome バージョン 76 以降をサポートします。を参照してください <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block> サポートされているすべてのバージョンのブラウザのマトリックスです</block>
   <block id="a313028d66f24e87591ecef5ff9f3484" category="summary">ホスト、 ONTAP のバージョン、サポートされているブラウザなどの XCP がサポートされている構成は、 IMT に記載されています。</block>
   <block id="57b6232ac0f92803d0544e702c641050" category="summary">一部の機能は、 XCP NFS または XCP SMB ではサポートされません。</block>
+  <block id="27844988f363a5f923e9334ae145a1fd" category="doc">INI ファイルを設定します</block>
+  <block id="29c2f1feeb1231581bf05d60a3d62a9a" category="paragraph">XCP の INI ファイルを設定する手順。</block>
+  <block id="586dba64773da8695bdac99be604919f" category="section-title">ルートユーザの INI ファイルを設定します</block>
+  <block id="21ee12acf8b4df5f11e93b279367513a" category="paragraph">次の手順を使用して、 XCP NFS root ユーザの INI ファイルを設定できます。</block>
+  <block id="e1ec25dfcb584912005b067403525e95" category="list-text">vi エディタを使用して、ホスト構成ファイルに XCP サーバのカタログの場所を追加します。</block>
+  <block id="15b9d4023566740949c10a9a9533c35c" category="list-text">カタログの XCP Linux クライアントホスト構成ファイルのエントリが変更されたことを確認します。</block>
+  <block id="4c82d2eef29d76c200ed39d04be95fc0" category="section-title">root 以外のユーザの INI ファイルを設定する</block>
+  <block id="c9beec711f96849f59fc8b461a17c844" category="paragraph">root 以外のユーザとして、 NFS ファイルシステムをマウントする権限がありません。最初にカタログボリュームをマウントし、 XCP を実行している root 以外のユーザとして XCP を実行するには root ユーザが必要です。カタログボリュームに対する読み取り / 書き込み権限を持っている場合は、 POSIX コネクタを使用してマウントされたカタログボリュームにアクセスできます。ボリュームがマウントされたら、カタログにパスを追加できます。</block>
+  <block id="e981fe37c8879e923e07dadeb9379fe4" category="summary">シングルノードのパフォーマンス制限を克服するには、 1 つの XCP copy コマンドを使用して、複数の Linux システムまたはクラスタノードでワーカーを実行します。</block>
+  <block id="153ac2dbf14a38bdfdf76ac38b946158" category="doc">マルチノードスケールアウトを構成します</block>
+  <block id="fa36d2b7775b09eb7bb335e1cc50784e" category="paragraph">1 つのノードのパフォーマンス制限を克服するには、 1 つの「 copy 」（または「 CAN-MD5 」）コマンドを使用して、複数の Linux システムまたはクラスタノード上でワーカーを実行します。</block>
+  <block id="34109dd87e259e3368d0527414feaced" category="paragraph">マルチノードスケールアウトは、次のような場合など、単一システムのパフォーマンスでは不十分な環境に役立ちます。</block>
+  <block id="8f93480e5a7520f56fd9721507d3f134" category="list-text">ペタバイトのデータをコピーするのにノードが 1 つの場合、数カ月かかるとします</block>
+  <block id="53229db4e3ed8a10d2efce7ed0098338" category="list-text">Kerberos 回線の暗号化を使用するセキュアな環境では、個々のノードの速度が低下します</block>
+  <block id="682fc2970f57e82b3aa1b77324aa5ab5" category="list-text">クラウドオブジェクトストレージへの高レイテンシ接続が原因で、個々のノードの速度が低下している場合</block>
+  <block id="82d1e2f124b7c4ed4bf2ff7b94d07580" category="list-text">大量の I/O 処理を実行する大規模な HDFS クラスタファームでは</block>
+  <block id="867d70e5cd005545ea08668983984822" category="paragraph">マルチノードスケールアウトのパス構文は '--nodes worker1' worker2' worker3' です</block>
+  <block id="f58cf227ccbbe613bfa5731ecd7e3644" category="paragraph">同様の CPU と RAM 構成の 4 台の Linux ホストを使用したセットアップを考えてみてください。移行には 4 つのホストすべてを使用できます。 XCP はすべてのホストノードでコピー処理を調整できるためです。スケールアウト環境でこれらのノードを利用するには、 4 つのノードのいずれかをマスターノード、その他のノードをワーカーノードとして識別する必要があります。たとえば、 Linux の 4 ノードセットアップの場合、各ノードに「 master 」、「 worker1 」、「 worker2 」、および「 worker3 」という名前を付け、マスターノードで構成をセットアップします。</block>
+  <block id="ed5bbe49896e4119e2bc434266a4e9dd" category="list-text">ホームディレクトリに XCP をコピーします。</block>
+  <block id="ef9985cb080be75e8968d6283e5ffb67" category="list-text">XCP ライセンスをインストールしてアクティブにします。</block>
+  <block id="2bb343c5c64b5c34c9de8bcf47e92785" category="list-text">xcp.ini` ファイルを変更し ' カタログ・パスを追加します</block>
+  <block id="4d47b01b605d32966d14249383df9022" category="list-text">マスターノードからワーカーノードにパスワードなしの SSH を設定します。</block>
+  <block id="d0d53af0a600e75b327575d75c03861c" category="list-text">マスターノードでキーを生成します。</block>
+  <block id="370b7e68abea8b7e619db3ecec836d13" category="paragraph">「 sh-keygen -b 2048-t rsa-f/root/.ssh/id_rsa-q-N' 」</block>
+  <block id="9d55d07ef712b748878175a6aa889333" category="list-text">すべてのワーカーノードにキーをコピーします。</block>
+  <block id="f7d8f65267808fa7b9fdab1fdcff8657" category="paragraph">'sh-copy-id -i/root/.ssh/id_rsa.pub root@worker1'</block>
+  <block id="8f2ecf0d61b2572277bf87c749927f1f" category="paragraph">XCP マスターノードは、 Secure Shell （ SSH ）を使用して他のノードでワーカーを実行します。マスターノードで XCP を実行しているユーザに対してパスワードを使用しない SSH アクセスを有効にするようにワーカーノードを設定する必要があります。たとえば、マスターノードで XCP ワーカーノードとしてノード「 worker1 」を使用するためのユーザデモを有効にするには、マスターノードからホームディレクトリ内のすべてのワーカーノードに XCP バイナリをコピーする必要があります。</block>
+  <block id="8b76ed249e6db9e50569a0493601ca7b" category="paragraph">複数の XCP ワーカーを同時に起動してエラーを回避するには、次の例に示すように、各ワーカーノードで「 SHD MaxStartups 」パラメータを増やす必要があります。</block>
+  <block id="ed1d25580bd1a611a49f07d6b51e43cf" category="paragraph">クラスタノードで XCP を実行すると、ワーカープロセスはマスターノードのメイン XCP プロセスから環境変数を継承します。特定のノード環境をカスタマイズするには ' マスターノード上の構成ディレクトリ内の nodes.ini` ファイルに変数を設定する必要があります ( ワーカーノードには構成ディレクトリまたはカタログがありません )たとえば、 Wave （ CentOS ）などのマスターノードとは別の場所に「 libjvm.so 」を持つ Ubuntu サーバ MARS では、 WAVE のワーカーが HDFS コネクタを使用できるようにするために構成ディレクトリが必要です。このセットアップの例を次に示します。</block>
+  <block id="bae7f8a61d8cf1102cf26d111642782d" category="paragraph">POSIX ファイルパスと HDFS ファイルパスを使用してマルチセッションを実行する場合は、ファイルシステムとソースおよびデスティネーションのエクスポート済みファイルシステムをマスターノードとすべてのワーカーノードにマウントする必要があります。</block>
+  <block id="a6cb79833f755cb3f114d1a83274a4db" category="paragraph">ワーカーノードで XCP を実行する場合、ワーカーノードにはローカル構成はありません（ライセンス、ログファイル、またはカタログはありません）。XCP バイナリが必要なのは、ホームディレクトリ内のシステムのみです。たとえば 'copy' コマンドを実行するには ' マスター・ノードとすべてのワーカー・ノードがソースとデスティネーションにアクセスする必要がありますxCP copy -- ノード linux1 、 linux2 hdfs://user/ceme/test\file:/mnt/ontap 、 linux1' および linux2`hosts には HDFS クライアントソフトウェアが設定されており、 /mnt/ontap に NFS エクスポートがマウントされている必要があります。前述のように、 XCP のコピーがホームディレクトリにあることになります。</block>
+  <block id="915e32144be4f88d02cc0b7b1e33c7c8" category="paragraph">POSIX コネクタと HDFS コネクタ、マルチノードスケールアウト、セキュリティ機能を組み合わせて使用できます。たとえば、次の「 copy 」コマンドと「 ve rify 」コマンドは、 POSIX コネクタと HDFS コネクタをセキュリティおよびスケールアウト機能と組み合わせたものです。</block>
+  <block id="2961c595e1b9c1f2bd47edd1c8970e5f" category="list-text">「 copy 」コマンドの例：</block>
+  <block id="ddb7e8c7aef66a74fdfde909cf41e522" category="list-text">「 ve rify 」コマンドの例：</block>
+  <block id="06e36d0d8916c19245d82112295e2676" category="list-text">`XCP scan nfs[server:/export path|\file:/&lt;NFS Mounted path&gt;|hdfs://&lt;HDFS mounted path&gt;]`</block>
+  <block id="d0b08bb1d5a232daa12efa61e334bd33" category="list-text">`XCP scan\file: /mnt/nfs-source`</block>
+  <block id="95e9d579b96f02c13ed81480b282135b" category="list-text">XCP scan hdfs://demo/user1`</block>
+  <block id="145d53a32d3487520bd34eee8e20c389" category="summary">XCP NFS アドオン機能は、 POSIX コネクタと HDFS コネクタの使用をサポートし、セキュリティを強化し、データ移行を高速化するスケールアウトアーキテクチャの使用をサポートしています。</block>
+  <block id="2113611c6320a48f92fea30c44c76f5a" category="doc">XCP NFS アドオン機能</block>
+  <block id="5c8249d1b7838ae94a73676b3af9091d" category="section-title">NFSv4 のサポート</block>
+  <block id="4e8be65645e1c09ea65c5bf2fa334289" category="inline-link-macro">POSIX コネクタを設定します</block>
+  <block id="84b90206cadd8936a452da3c8910a8a5" category="paragraph">データセンター内のソースボリューム、デスティネーションボリューム、カタログボリュームでのみ NFSv4 を有効にする場合は、エクスポートパスの代わりに POSIX パスを使用してデータを移行する必要があります。POSIX パスを使用するには、まず XCP を実行しているホストシステムでソースボリューム、デスティネーションボリューム、カタログボリュームをマウントし、 POSIX ファイルパスを使用して XCP のソースボリュームとデスティネーションボリュームを指定する必要があります。を参照してください <block ref="4357b5b12949e0beb928764758230f36" category="inline-link-macro-rx"></block>。</block>
+  <block id="f0a40ab44292f93f12a2d372e02c3cc2" category="list-text">NFSv4 のサポートは POSIX パスと「 copy 」操作に限定されており、「 sync 」操作はサポートされていません。</block>
+  <block id="aa32463f7efd97cda3d13e5569a64d92" category="list-text">XCP NFSv3 TCP ソケットクライアントエンジンと比較すると、 POSIX コネクタの速度が遅くなる可能性があります。</block>
+  <block id="efed9a1e974f019693529d0db8556c39" category="section-title">POSIX コネクタ</block>
+  <block id="c3cc85c605802927b0ba556ad1712a23" category="paragraph">XCP 1.8 は、 POSIX コネクタを使用したデータ移行のソースパス、デスティネーションパス、カタログパスの提供をサポートしています。POSIX コネクタ（ file ： // ）を使用すると、 XCP は NFSv4 、 XFS 、 Veritas など、 Linux でマウントされた任意のファイルシステムにアクセスすることができます。root 以外のユーザについては、システム管理者はファイルシステムをマウントして root 以外のユーザにファイルシステムへのアクセス権を与えることができます。そのためには、 POSIX コネクタを使用して file://prefix を指定します。</block>
+  <block id="c980562a67ab1f47ad354aa5073d24de" category="paragraph">ファイルをマウントするための十分な権限がない場合やデータセンターでのサポートが NFSv4 に制限されている場合は、 POSIX コネクタを使用すると便利です。このような場合、すべての root ユーザはソースとデスティネーションをマウントし、 POSIX コネクタを使用してパスにアクセスできます。POSIX コネクタを使用している場合は 'XCP COPY オペレーションのみを実行できます</block>
+  <block id="3a51cb36881e8e178c9bf99d64946283" category="section-title">XCP セキュリティ</block>
+  <block id="835825a19a6c2c9cad22259496b44c82" category="paragraph">XCP セキュリティ機能を使用すると、 Linux ホストマシンで root 以外のユーザとして移行を実行できます。以前の XCP バージョンでは、 Linux マシンの root ユーザとして、ソース、デスティネーション、カタログボリュームのすべての権限を使用して移行を実行し、マウントが XCP 処理によって完了していました。</block>
+  <block id="28d729125c8deb316c7eff4c0246e6dc" category="paragraph">データ移行を実行する前に、セキュリティをオフにして、管理者ができるだけ早くすべてをコピーできるようにするのが一般的です。XCP が数年使用されている本番環境での継続的な移行では、管理者（ root ）として実行するのは安全ではありません。そのため、 root ユーザとして XCP を実行する必要がある場合を削除すると、セキュアな環境で XCP を使用できるようになります。通常の root 以外のユーザが XCP 処理を実行する場合、ユーザと同じアクセス権と制限が与えられます。</block>
+  <block id="ebc81900b209d03ba4a97fc7f7b5bdb0" category="paragraph">このセキュアな環境では、 root ユーザがソース、デスティネーション、カタログのボリュームをホストマシンにマウントし、 root 以外のユーザがデータを書き込むために必要なデスティネーションボリュームとカタログボリュームに必要な権限を付与する必要があります。これにより、 root 以外のユーザは XCP POSIX コネクタ機能を使用して移行を実行できます。</block>
+  <block id="4a93e3fe55afb4b06c7c266c66129ddc" category="section-title">XCP スケールアウト</block>
+  <block id="d115685cdf5eabd037c05726f474c324" category="paragraph">これまでは、 XCP を使用したデータ移行は、 RAM と CPU が大きい単一のホストに限定されていました。移行を高速化するために、単一ホスト上のメモリとコアが増加しましたが、ペタバイト単位のデータのコピーにはかなりの時間がかかる可能性があります。XCP スケールアウトアーキテクチャにより、データ移行に複数のホストを使用できるようになりました。この機能を使用すると、複数の Linux ホストを使用してワークロードを分散させ、マイグレーション時間を短縮できます。</block>
+  <block id="a405fd9f6be0e341d1489d7ac1b63432" category="paragraph">単一システムのパフォーマンスでは不十分な環境では、マルチノードのスケールアウトを利用できます。1 つのノードのパフォーマンス制限を克服するには、単一の「 copy 」（または「 CAN-MD5 」）コマンドを使用して、複数の Linux システムまたは Hadoop クラスタノード上でワーカーを実行します。現在、 XCP Scale-out は、「 copy 」コマンド操作でのみサポートされています。</block>
+  <block id="f5722ad26fc4954a8cad9346809792b6" category="section-title">Hadoop Distributed File System コネクタ</block>
+  <block id="30f1813985f65c01bf2b9b92879bc38d" category="paragraph">Hadoop Distributed File System （ HDFS ； Hadoop 分散ファイルシステム）ファイルシステムからネットアップファイルシステムへのデータの移行とその逆の移行がサポートされている XCP 。セキュリティが有効な Hadoop 環境では、 Hadoop クラスタの root 以外のユーザが NetApp NFSv4 エクスポートファイルシステムへの移行を実行できます。HDFS Connector （ HDFS ： // ）では、 XCP は、ベンダーが異なるすべての HDFS ファイルシステムにアクセスするための機能を提供します。root 以外のユーザは、 XCP を使用して、 HDFS または POSIX コネクタを使用した移行を実行できます。</block>
+  <block id="296424663e8e3bf16ffbb2dffed95868" category="paragraph">HDFS クラスタは、複数のハイエンドの Linux マシンを使用する XCP スケールアウト構成に含めることができます。これにより、追加の XCP ワーカーノードに必要な量を最小限に抑えることができますデータ移行では、 HDFS クラスタノードを再利用するか、別々のホストに移動するかを選択できます。</block>
+  <block id="df6c0aff915e6eb3864841ff85b7cd84" category="admonition">HDFS コネクタは MapR および Cloudera クラスタでサポートされますが、ベースラインの「コピー」操作のみを実行できます。</block>
+  <block id="c3aaf0d0d35accc2221dcf51014b407d" category="doc">XCP v1.8 マニュアル</block>
+  <block id="5cf3f2c5fac08fae3fa80a4e2a9266eb" category="paragraph">XCP 情報ライブラリへようこそ。ここでは、 XCP v1.8 ソフトウェアのインストール、設定、および使用方法を含むドキュメントを提供しています。</block>
+  <block id="31cd55a7ebce7cb193b0b2476a5f6631" category="cell">PostgreSQL サービスが失敗しました</block>
+  <block id="78954e9bb59728299873706192a5df73" category="list-text">PostgreSQL サービスを再起動します。</block>
+  <block id="7e248395787e70627bf471ebed8a48a3" category="paragraph">'UDO systemctl restart postgresql.service`</block>
+  <block id="83bc7453d7872b8446f301c3565c08f2" category="list-text">サービスステータスを確認します。</block>
+  <block id="525a1dd8fcaeb6b3a178de1c60e9a857" category="paragraph">'sudo systemctl status postgresql.service | grep Active</block>
+  <block id="58e0ac0bb18008430f97560108149515" category="cell">httpd サービスが失敗しました</block>
+  <block id="3be2db89060ab9c2e383a1fbdd7213a2" category="list-text">HTTPD サービスのステータスを確認します。</block>
+  <block id="773d6c478422286a9fad650c3ddd09dd" category="paragraph">'UDO systemctl status httpd|grep Active'</block>
+  <block id="7c6efba1432d256b5f2c9286332f395e" category="cell">XCP File Analytics がインストールされていて、 HTTPD が実行されている Linux マシンに対して、システムから ping を実行できることを確認します。サービスが実行されていない場合は 'configure を実行して ' 修復オプションを選択しますサポートされているブラウザバージョンを使用していることを確認してください。を参照してください <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block>。</block>
+  <block id="fca5f9179b264aa12937804595452dfa" category="list-text">サポートされているブラウザバージョンを使用していることを確認してください。を参照してください <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block>。</block>
+  <block id="3721f4d27bf1373c3dce1560f7ad4013" category="list-text">ユーザが「 admin 」で、パスワードが正しいことを確認します。</block>
+  <block id="6211d4f14a03b437fa7d26c363715474" category="list-text">XCP サービスのステータスを発行して、 XCP サービスが実行されていることを確認します。</block>
+  <block id="2c028c3924ba3fe117682b1dc99462a5" category="cell">XCP GUI に更新されたページが表示されない。</block>
+  <block id="78b066c66e37c2c031c4496a3ddebed0" category="cell">キャッシュをクリアしてやり直してください。</block>
+  <block id="0794915b73fa5fed8fdbb7381cf8053b" category="cell">ファイル共有 / ボリュームは読み取りできない可能性があります。ファイル共有がアクセス可能かどうかを手動で確認するには 'XCP show コマンドを実行しますまた '`xcp.ini` ファイルが削除されているかどうかを確認します削除された場合は、 configure.sh スクリプト修復オプションを使用して「 xcp.ini` 」ファイルを再構築します。</block>
+  <block id="3851e00cfd9ac3614604e7ee99194ebf" category="cell">ページをリフレッシュしてみてください。問題が解決しない場合は、プロンプトで XCP show コマンドを手動で実行し、ファイルサーバをスキャンできるかどうかを確認します。成功した場合は、ネットアップカスタマーサポートにチケットを発行してください。失敗した場合は、手動チェックを実行してファイルサーバがアクティブかどうかを確認します。xcp.ini` ファイルとライセンスファイルが正しい場所にあるかどうかを確認します「 xcp.ini` 」ファイルをリセットするには、設定スクリプトを実行し、「 * Repair * 」オプションを選択します。次に、 xcp.ini ファイルを再構築するためのメニュー・オプションを選択します。 * ライセンスの更新が必要かどうかを調べるには、「 xcpflogs 」ログを確認します。</block>
+  <block id="ec0bc824851831e651eff319ac6be069" category="cell">これは、ボリューム内に qtree レベルのエクスポートがある場合に発生することがあります。たとえば '/vol1/qtree1' としてエクスポートされるボリューム・サイズが 10 GB で ' ボリューム '/vol1/qtree1' に qtree がある場合 'XCP show コマンドは 'vol1' サイズを 10 GB' として表示し 'qtree1' サイズを 10 GB' として表示しますXCP File Analytics は、両方のエクスポートのスペースを合計し、合計スペースを提供します。この場合、「 20 GB 」となります。「 qtree1 」は論理空間であることは理解できません。</block>
+  <block id="9e7f7d8fcefcabb2bc23ca143a628f7d" category="doc">XCP v1.8 リリースノート</block>
+  <block id="07adad35d292c43e7b7a18db9356fa50" category="paragraph">。 <block ref="4f1f55060be6b492e2b23a003806f4ac" category="inline-link-macro-rx"></block> 新機能、アップグレードに関する注意事項、解決済みの問題、既知の制限事項、および既知の問題について説明する。</block>
+  <block id="fc7af6e6e28187c4a6802a620fab64b4" category="paragraph">copy コマンドは ' ソース・ディレクトリ構造全体をスキャンして ' デスティネーションの NFSv3 エクスポートにコピーします'copy' コマンドでは ' ソース・パスとデスティネーション・パスを変数として指定する必要がありますコピー処理の終了時に、スキャンおよびコピーされたファイル、スループット / 速度、および経過時間の詳細が表示されます</block>
+  <block id="b2afea67c58251abc9cea9e00c6f6195" category="paragraph">* POSIX パスの例 :*</block>
+  <block id="29d2ad021e95ccea21b050eea89967f1" category="paragraph">* HDFS パスの例： *</block>
+  <block id="d851ab4c5c4fba2cc3e27dbabf3c3675" category="cell">からライセンスをダウンロードします <block ref="f33ccbb3083b14f48de92a286ba83724" category="inline-link-macro-rx"></block>をクリックして '/opt/NetApp/xFiles/XCP にコピーし 'XCP activate コマンドを実行してアクティブにします</block>
+  <block id="98dda3ac723570bf847c92d35e6264d2" category="cell">オンラインライセンスをアクティブ化しようとしていますが、ホストシステムがインターネットに接続されていません。システムがインターネットに接続されていることを確認します。</block>
+  <block id="60612c946e496400e59de02fe9c8f935" category="cell">XCP Linux クライアントホストでエディタを開き、適切なカタログの場所で構成ファイルを更新します。XCP 構成ファイルは、 /opt/NetApp/xFiles/XCP xcp.ini` にあります。構成ファイルのサンプル・エントリ： `[root@scspr1949387001~]# cat /opt/NetApp/xFiles/XCP / xcp.ini` [XCP ]`CATALOCATA=10.235.128.153:/catalog`</block>
+  <block id="d6dba2cc68030260f54cd26c1aed3041" category="cell">インデックス・ファイルが作成される前に ' 以前のコピー操作が中断されました新しいインデックスを指定して同じコマンドを再実行し、コマンドを実行したときに、キーワード「 indexed 」が stats に表示されていることを確認します。</block>
+  <block id="6994c4407ea0812e1fe6961944f1e62a" category="cell">NFSv4 を使用して、 XCP ホストにソースとターゲットをマウントします。たとえば、「 mount -o vers=4.0 10.10.10.10 ： /source_vol /mnt/source 」のようになります</block>
+  <block id="b57ceadb9b479628bfe87f6f61717456" category="cell">`m nt3 error 13: permission denied `</block>
+  <block id="5e98d8c9d33ef628ab440eb91a35aa35" category="cell">root 以外のユーザとして、ファイルシステムにアクセスするための適切な権限がありません。ファイルシステムにアクセスして読み取りおよび書き込み処理を実行できるかどうかを確認します。</block>
+  <block id="605d810fa950072ae36d7ab590a10190" category="cell">`XCP : バッチ 1: エラー : [errno 13] 権限拒否 :`</block>
+  <block id="a236f13f8ce1d6dc81ede81947747059" category="cell">`m XCP ：エラー : OSMounter <block ref="58467edd6c43a3c3c7d875c00ff3d61f" category="inline-link-rx"></block> 10.234.115.215_src_vol/DIR' ： [Errno 2] 該当するファイルまたはディレクトリがありません</block>
+  <block id="384e586a72b62e63cca623821b77a83a" category="cell">パス「 /t/10.234.115.215_src_vol/DIR 」は Linux ファイルシステムにマウントされていません。パスが存在するかどうかを確認してください。</block>
+  <block id="ee36f42d906a5d7add26f1455618e30b" category="cell">「 error ： run sync {-id ： 'XCP _ index_1624263869.373485'} ： hdfs/POSIX/s3fs のソースとターゲットにはまだ使用できません。回避策は、最近の monds の一致フィルタを使用してコピーされます。</block>
+  <block id="db73cb94f62d3a2799f6ab05ec9dc57e" category="cell">POSIX コネクタおよび HDFS コネクタの XCP では 'sync' コマンドはサポートされていません</block>
+  <block id="73287168b074ec1a1183ae801c9210f5" category="cell">"XCP verify" コマンドは異なるモード時間で失敗します</block>
+  <block id="080057db4c224649098c09cbbc7549f8" category="cell">ファイルを指定し、手動でコピー先にファイルをコピーできます。</block>
+  <block id="596bbf8778031c332c362402c354a053" category="cell">「ディレクトリ以外のオブジェクトのコピー / 同期は再開できません。もう一度コピーしてください。 詳細については、 XCP ユーザーガイドを参照してください</block>
+  <block id="8813bd98e95eb4fa8de6a5d3a9cda1ae" category="cell">1 つのファイルを再開することはできないため ' ファイルに対してもう一度 XCP copy コマンドを実行することをお勧めしますファイルが変更されると、ファイルの完全なコピーが作成されます。そのため、パフォーマンスに影響はありません。</block>
+  <block id="5a21eef8c5bd906bb47951f0f6c84e0d" category="cell">「ディレクトリ以外のオブジェクトは同期できません。もう一度コピーしてください。 詳細については、 XCP ユーザーガイドを参照してください</block>
+  <block id="b09a96b405c2f6e7c1d1d26969a716e1" category="cell">単一のファイルを同期できないため ' ファイルに対してもう一度 XCP copy コマンドを実行することをお勧めしますファイルが変更されると、ファイルの完全なコピーが作成されます。そのため、パフォーマンスに影響はありません。</block>
+  <block id="9a79371631dc47ec167f3f7d0686a45e" category="cell">`XCP : エラー : バッチ 4: ノードに接続できませんでした</block>
+  <block id="b34fc948fea8a7cae8f6466b9320828d" category="cell">-nodes パラメータで指定されたノードに到達できることを確認しますマスターノードから Secure Shell （ SSH ）を使用して接続してみます</block>
+  <block id="802296207f243f4f8d74f9df675ec014" category="cell">「 [ エラー 13] 許可が拒否されました。</block>
+  <block id="ba6807036282ea03969e0ea735a1e2a5" category="cell">デスティネーションボリュームへの書き込み権限があるかどうかを確認してください。</block>
+  <block id="e4add07a604bb98ac4aacc4b8c857f6f" category="cell">`XCP : エラー : バッチ 2: 子プロセスが失敗しました ( 終了コード -6): recv &lt; タイプ ' 例外 .EOFError'&gt;:`</block>
+  <block id="08f481ccf8f3283bb87e9a548c2fbb41" category="cell">システムメモリを増やして、テストを再実行してください。</block>
+  <block id="a7a2c2a049f265cc780852866db03ac0" category="paragraph">root ユーザと root 以外のユーザに対して設定を行ったあと、設定に応じてどちらかのユーザを選択できます。</block>
+  <block id="2e0178077435e20a76b29bf95752b395" category="paragraph">XCP は、 NFSv3 からアクセス可能なカタログディレクトリまたは必要な権限を持つすべての POSIX パスに処理レポートとメタデータを保存します。</block>
+  <block id="37c61f0759557b7c6869b7975812dcb6" category="list-text">カタログのプロビジョニングは、インストール前の 1 回限りの作業です。</block>
+  <block id="7611d45911be01775791692bcb58d3b1" category="list-text">1 、 000 万個のオブジェクト（ディレクトリ、ファイル、ハードリンク）ごとに約 1GB のスペースがインデックス化されます。再開または同期可能な各コピーと、オフラインで検索可能な各スキャンにはインデックスが必要です。</block>
+  <block id="c74dd8bf102d5776f8cbe148a015069d" category="list-text">パフォーマンスをサポートするには、エクスポートディレクトリが格納されたアグリゲートに少なくとも 10 本のディスクまたはソリッドステートドライブが必要です。</block>
+  <block id="1037c924c09e3d460d5ac007a7bd0ea9" category="admonition">XCP カタログは別途保存する必要があります。これらのディレクトリは、ソースまたはデスティネーションの NFS エクスポートディレクトリには配置しないでください。XCP は、初期セットアップで指定されたカタログの場所にあるレポートであるメタデータを維持します。XCP を使用して処理を実行する前に、レポートの保存先を指定して更新する必要があります。</block>
+  <block id="9e287d5cf8402252b617f813ca5bbcd7" category="list-text">ソースサーバとターゲットサーバで、 NFSv3 または NFS v4.0 プロトコルサービスを有効にしている必要があります</block>
+  <block id="1075b1a5a7aba7d9f25b2444c5fa99ad" category="list-text">NFSv4 ACL を移行する場合は、デスティネーションサーバで NFSv4 プロトコルサービスと NFSv4 ACL を有効にする必要があります。</block>
+  <block id="fcb3966f14183a157ac92b7ebeb80e86" category="list-text">ソースボリュームとターゲットボリュームは、 XCP Linux クライアントホストへの「 root 」アクセスでエクスポートされる必要があります。</block>
+  <block id="69477f24ee2c92ba61ec9bdcb1ad4de5" category="admonition">管理者が誤ってソースボリュームを変更しないようにするには、 NFSv3 および NFSv4 エクスポートディレクトリのソースボリュームを読み取り専用として設定する必要があります。</block>
+  <block id="2d79e432838e40bf14c022092a9ee7c7" category="section-title">root ユーザ</block>
+  <block id="1b644fae3096d18c32ea2eb163d208d7" category="paragraph">Linux マシンの root ユーザには、ソースボリューム、デスティネーションボリューム、カタログボリュームをマウントする権限が付与されています。</block>
+  <block id="b1330e2178f1e768cc94859ba49ae6bd" category="section-title">root 以外のユーザ</block>
+  <block id="85039b54d13b6d2bba23425f79f1e704" category="paragraph">root 以外のユーザには、マウントされたボリュームに対する次の権限が与えられます。</block>
+  <block id="ae489e7c64c7f4a4d143e12281642d7c" category="list-text">ソースボリュームへの読み取り権限アクセス</block>
+  <block id="3ec0238607113152ae7f227b92c2a43f" category="list-text">マウントされたデスティネーションボリュームへの読み取り / 書き込み権限</block>
+  <block id="9c3f740abe99e1e0002c446d4b4e72de" category="list-text">カタログボリュームへの読み取り / 書き込み権限</block>
+  <block id="9db3ca538820d0cfb7b44ef80f16ca98" category="doc">パフォーマンスの調整</block>
+  <block id="78ba29e6847e8859e872ed7c7b5c7720" category="paragraph">「 show 」コマンドと「 can 」コマンドを使用して移行を計画したら、データを移行できます。</block>
+  <block id="50b19e2d999f8ca8fad7bcf765a85ae1" category="admonition">root 以外のユーザとしてデータ移行を実行する場合は、 root ユーザが次の手順を実行できます。</block>
+  <block id="85e1f25d7a3b03fd9a7377f546a7e0ff" category="paragraph">最適なパフォーマンスと信頼性を実現するために、 XCP Linux クライアントホストの /etc/sysctl.conf に次の Linux カーネル TCP パフォーマンスパラメータを設定することを推奨します。「 ysctl-p` 」または「 reboot 」コマンドを実行して変更をコミットします。</block>
+  <block id="a3f0fc42147cbdea8a42a9603bfae066" category="admonition">root 以外のユーザの場合は、 root ユーザが設定を実行する必要があります。</block>
+  <block id="bbea4d9be7e41369b354c0a01cc56390" category="doc">XCP NFS を設定します</block>
+  <block id="8ecf08ca07c6d4a3f11a8ecd76bdfb54" category="summary">HDFS コネクタを使用すると、 XCP は、異なるベンダーが提供するすべての HDFS ファイルシステムにアクセスできます。</block>
+  <block id="1b3dde5d541467088a5fb667cc14f2ea" category="doc">HDFS コネクタを設定します</block>
+  <block id="ad3bfabafea443617265b05ff707d5bb" category="paragraph">Hadoop Distributed File System （ HDFS ）コネクタ（ HDFS ： // ）は、 XCP が、異なるベンダーが提供するすべての HDFS ファイルシステムにアクセスできるようにします。</block>
+  <block id="e31d321ee0fdaaaf8ac9ef21026a1fd0" category="paragraph">HDFS から NFS への「 copy 」コマンド操作は、 HDFS コネクタでサポートされています。</block>
+  <block id="2fcca0f204e97a80f73f130b2a96c173" category="paragraph">HDFS コネクタのパス構文は、「 hdfs://[user@host ： port]/full-path 」です。</block>
+  <block id="895513c3073c7d8c0c3b54666a487132" category="admonition">ユーザ、ホスト、およびポートを指定しない場合、 XCP はホストを「デフォルト」に設定し、ポートを「 0 」に設定した「 hdfsConnect 」を呼び出します。</block>
+  <block id="2d660d25f10b0e5d578c229fe0143117" category="paragraph">hdfs`copy` コマンドを実行するには、 Linux システム上に HDFS クライアントを設定し、 Hadoop ベンダーに基づいて、インターネット上で利用可能なセットアップ構成を実行する必要があります。たとえば、「 https://docs.datafabric.hpe.com/60/AdvancedInstallation/SettingUptheClient- RedHat .html 」を使用して、 MapR クラスタのクライアントを設定できます。</block>
+  <block id="c00c4274d8d993e8f4e353057a47bf05" category="paragraph">HFDS クライアントのセットアップが完了したら、クライアントの設定を完了する必要があります。XCP コマンドで HDFS パスを使用するには、次の環境変数が必要です。</block>
+  <block id="daf45f14fc0d11979b90c046f09e7692" category="list-text">Nhdfs_ LIBhdfs_ path です</block>
+  <block id="ca3c0ce4cd4cbb196cc438fa98d8e563" category="list-text">Nhdfs_libjvm_path</block>
+  <block id="b696e4d6e09540fbab1d75e6c341d9e9" category="paragraph">次の例では、設定は、 CentOS 上の MapR および Java -1.8.0-openjdk-devel と連携しています。</block>
+  <block id="99c35850ff7cf7e436b03acedd4c59b3" category="cell">HDFS</block>
+  <block id="3c5be6328b5f6a0a5980341230b8ac05" category="cell">7222</block>
+  <block id="19989536bdfa1e7f11ff53bc7877ff66" category="cell">ユーザはセキュリティ記述子に関連する問題に直面しています。これは、移行ユーザが所有する権限で XCP が取得できるのは所有者、グループ、および DACL だけですが、 SACL を取得できないためです。移行ユーザを Active Directory の「 Manage Audit and Security Log 」ポリシーに追加します。参照 <block ref="47c554f6b2ce744e50a1b2318fbe4ec3" category="inline-link-macro-rx"></block></block>
+  <block id="bf86284529584845670edb0c3a95e5ec" category="summary">POSIX コネクタを使用すると、 XCP は NFSv4 、 XFS 、 Veritas など、 Linux でマウントされた任意のファイルシステムにアクセスできます。</block>
+  <block id="116f84479037bb112990133fd917c3e0" category="paragraph">XCP では、 POSIX コネクタを使用したデータ移行のソースパスとデスティネーションパスの提供がサポートされるようになりました。</block>
+  <block id="95ddd83f06b46164d9007a3fec84bd09" category="paragraph">POSIX コネクタでは、次の機能がサポートされています。</block>
+  <block id="61d64caacf6145ab9260325232ace1f3" category="list-text">nanosecond`atim`, `imtime`, および ctime をサポートする POSIX ファイルシステムでは '`can `command は完全な値 ( 秒とナノ秒 ) を取得し 'copy` コマンドはそれらを設定します</block>
+  <block id="f17259fd5fd04df8d00de9bae40078cc" category="inline-link-macro">セキュリティを設定します</block>
+  <block id="3105c81fdbe1f2acbb2afca77ea7ecd4" category="list-text">POSIX コネクタは、 NFSv3 TCP ソケットを使用した XCP よりも安全です。を参照してください <block ref="884f9726fabc578536c00929cd2fe7e3" category="inline-link-macro-rx"></block></block>
+  <block id="d67f0d6f3689c0b2c96700d038812574" category="paragraph">POSIX コネクタのパス構文は '\file://&lt; Linux 上のマウントパス &gt;' です</block>
+  <block id="9cdc4f2bba7e1f74ab797e2bfab30c1a" category="paragraph">POSIX コネクタを設定するには、次のタスクを実行する必要があります。</block>
+  <block id="974be5615abf4fe362f269edc57cc8b9" category="list-text">ソースボリュームとデスティネーションボリュームをマウント</block>
+  <block id="b8a381099562cd55362fa7e35a520bed" category="list-text">デスティネーションパスにデータを書き込むために必要な権限があることを確認してください</block>
+  <block id="75b2b8d145ddf699b987dadebf324955" category="paragraph">次の例では、デスティネーションとカタログがマウントされています。</block>
+  <block id="1d44fe9a17cbcc906afeb702a8c0650e" category="paragraph">POSIX コネクタは 'file://' という POSIX 構文を使用して ' ソースボリュームとデスティネーションボリュームにアクセスします上の例では、ソースパスは「 \file://t/10.237.170.39_src_vol 」で、デスティネーションパスは「 file://t/t /10.237.170.53_dest_vol 」です。</block>
+  <block id="ede01f5e98faf5038b2692887de27589" category="paragraph">root 以外のユーザが共有する XCP カタログの構成例を管理するには、 XCP ユーザ用の Linux グループを作成します。root 以外のユーザの場合、 Linux グループユーザが移行を実行するには、次の権限が必要です。</block>
+  <block id="37de02a4b60ff4cabea65dc63b0d0bc8" category="paragraph">次の出力例では、「 d emo 」は root 以外のユーザ、「 /mnt/XCP -catalog 」はカタログボリュームがマウントされているパスです。</block>
+  <block id="516b976a8a5d8b20164ebd6b1b3a6d28" category="paragraph">XCP カタログにはデータは保存されませんが、スキャンおよびコピーのファイル名、ディレクトリ名、およびその他のメタデータは保存されます。したがって、ユーザに格納されたメタデータの保護機能を付与するために、許可されたユーザにカタログファイルシステムの権限を設定することを推奨します。</block>
+  <block id="1197ad5a3910de7aa6ef26ec881f03ce" category="paragraph">通常のユーザとして設定されている場合、デフォルトでは POSIX または NFS3 宛先への「 copy 」コマンドは所有権（ユーザ ID （ UID ）およびグループ ID （ GID ）の設定を試みません。所有権の設定は、通常は管理者が行います。ユーザ A がユーザ B からファイルをコピーする場合、ユーザ A は宛先を所有することを想定します。ただし、 root ユーザがファイルをコピーする場合は、このようなことはありません。root ユーザがファイルをコピーすると '-down' オプションによって動作が変更され '-chown' を指定した root 以外の copy コマンドが UID と GID の設定を試みます</block>
+  <block id="4265a6359621296a6a62e358a36f0c38" category="cell">NFSv3 と NFSv4 （ POSIX と ACL ）</block>
+  <block id="3265face5242872b3514e6079e373c91" category="section-title">root ユーザに XCP NFS をインストールします</block>
+  <block id="547e5edf6a67d692e789acab4a7f3586" category="paragraph">root ユーザには次の手順を使用して XCP をインストールできます。</block>
+  <block id="9496fc241dd177e9b533862e7e81812a" category="list-text">ツールを抽出するには、 XCP を解凍します。</block>
+  <block id="411b31fbf8165b763147d100dc88401a" category="paragraph">「 /opt/NetApp/xFiles/XCP 」が使用できない場合、「 XCP activate 」コマンドを初めて実行すると、システムは XCP ホスト構成ディレクトリを「 /opt/NetApp/xFiles/XCP 」に作成します。</block>
+  <block id="3af23bfc747843a6219b5cedc440c373" category="paragraph">ライセンスがインストールされていないため 'XCP activate コマンドは失敗します</block>
+  <block id="75361fdbf42e50b9175fb0f2f11b61e5" category="section-title">root 以外のユーザに XCP をインストールします</block>
+  <block id="3edfc6fdc9011c16a3a3364feb4be83c" category="paragraph">root 以外のユーザに XCP をインストールするには、次の手順を使用します。</block>
+  <block id="d01c7e76ee98a57762c474f91282e4fa" category="list-text">root 以外のユーザとして Linux マシンにログインし、ライセンスをダウンロードしてインストールします。</block>
+  <block id="418be33a2355fd7d8203a3d895a9db7d" category="list-text">以前のバージョンの XCP からシステムで「 /home/user1/NetApp/xFiles/XCP 」パスが利用可能であることを確認します。</block>
+  <block id="9804effef906123fccb69ec997bfcaeb" category="paragraph">「 /home/user1/NetApp/xFiles/XCP 」パスが使用可能な場合は、「 xCP activate 」コマンドを使用してライセンスをアクティブにし、データ移行を続行します。</block>
+  <block id="c964f883e08bd7e73eedf7523e656fce" category="paragraph">「 /home/user1/NetApp/xFiles/XCP 」が使用できない場合、「 XCP activate 」コマンドを初めて実行すると、システムは XCP ホスト構成ディレクトリを「 /home/user1/NetApp/xFiles/XCP 」に作成します。</block>
+  <block id="818c4be34b657c2134ee2c70ef2312c5" category="list-text">ライセンスを「 /home/user1/NetApp/xFiles/XCP 」にコピーします。</block>
+  <block id="03ab84de1a594e05c7eb116ea062b26c" category="list-text">ライセンスファイルが「 /home/user1/NetApp/xFiles/XCP 」にコピーされたことを確認します。</block>
+  <block id="4467bdfaff09862977dbfe2f4fb9dca5" category="doc">環境変数</block>
+  <block id="9d7df06a85bdd4b5d7f134e518ba0eb5" category="admonition">root 以外のユーザは、次の変数も使用できます。</block>
+  <block id="8dec2942730a578afac995d1f6dbb48c" category="admonition">root 以外のユーザの場合は、エクスポートされたパスの「 XCP カタログパス」を POSIX パスに置き換える必要があります。</block>
+  <block id="8c1266abe370ed20e2a1105ba429c736" category="cell">NFSv4 のアクセス制御リスト（ ACL ）（サードパーティ製品）</block>
+  <block id="ea5a201cf8a5f489b67f974cdbe8ec60" category="cell">POSIX コネクタ</block>
+  <block id="b095640f647d7c14d7c809d0232cd3be" category="list-text">'sync' コマンドは POSIX コネクタをサポートしていません</block>
+  <block id="be449fd5b6a09000629daade7fdd5583" category="list-text">ソースがアクティブなときに 'copy' コマンドは使用しないでください</block>
+  <block id="90637cbab382a9675c5bad0c7aeef15f" category="cell">Hadoop Distributed File System （ HDFS ； Hadoop 分散ファイルシステム）コネクタ</block>
+  <block id="b03665438ed7a747020c197d671b61c3" category="list-text">「 sync 」コマンドでは、 HDFS コネクタはサポートされません</block>
+  <block id="f5f0878108a9a99caae85df13ed2e0ac" category="list-text">HDFS ファイルシステムでは、シンボリックリンク（ symlinks ）、ハードリンク、または特別なファイルをサポートしていません</block>
+  <block id="3fabfbd2744533c3c888e15445477652" category="cell">ACL</block>
+  <block id="3706b1828c935d3a1a30b30080320b22" category="cell">ソースがネットアップ以外のシステムの場合、 XCP は ACL をコピーしません。</block>
+  <block id="edc9f0a5a5d57797bf68e37364743831" category="cell">Linux の場合</block>
+  <block id="bd2cc77640d48204c25994ade9373d0d" category="cell">XCP 1.1.6 でサポートされていた以前の Linux ディストリビューションでは、 XCP はサポートされなくなりました。</block>
+  <block id="84b5f1dcb24995657953339470fd8782" category="list-text">* ファイル分析用の root 以外のユーザ * ： XCP は、 root 以外のユーザまたは sudo ユーザが実行するインストールと設定をサポートしていません。</block>
+  <block id="d84ede1b9c741ee22718aeff6f7137fd" category="sidebar">POSIX コネクタの設定（ NFS のみ）</block>
+  <block id="a7afb6d28a9a50b4bc85ff6875984901" category="sidebar">HDFS コネクタの設定（ NFS のみ）</block>
+  <block id="6832a8a2f6a3a55b7affa685af296264" category="sidebar">マルチノードスケールアウトの構成（ NFS のみ）</block>
 </blocks>

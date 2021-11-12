@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
-permalink: xcp-prepare-file-analytics.adoc.html 
-keywords: netapp, xcp, prepare, preparing, preparation, file analytics, 
-summary: ファイル分析を準備 
+permalink: xcp-prepare-file-analytics.html 
+keywords: netapp, xcp, prepare, preparing, preparation, file analytics 
+summary: File Analytics を使用したデータ移行の準備。 
 ---
 = ファイル分析を準備
 :hardbreaks:

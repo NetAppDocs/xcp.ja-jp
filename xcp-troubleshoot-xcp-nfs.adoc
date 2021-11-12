@@ -22,7 +22,7 @@ summary: XCP NFS エラーのトラブルシューティング
 | `XCP ： error` ： root として実行する必要があります | root ユーザとして XCP コマンドを実行します 
 
 
-| xCP ：エラー : ライセンスファイル /opt/NetApp/xFiles/XCP / ライセンスが見つかりません。 | からライセンスをダウンロードします link:https://xcp.netapp.com/["XCP サイト"^] そして '/opt/NetApp/xFiles/XCP にコピーします 
+| xCP ：エラー : ライセンスファイル /opt/NetApp/xFiles/XCP / ライセンスが見つかりません。 | からライセンスをダウンロードします link:https://xcp.netapp.com/["XCP サイト"^]をクリックして '/opt/NetApp/xFiles/XCP にコピーし 'XCP activate コマンドを実行してアクティブにします 
 
 
 | `XCP : error: このライセンスは有効期限が切れています | から新しい XCP ライセンスを更新または取得します link:https://xcp.netapp.com/["XCP サイト"^]。 
@@ -43,19 +43,19 @@ summary: XCP NFS エラーのトラブルシューティング
 | `XCP : エラー : ライセンスの有効化に失敗しました : サーバ xcp.netapp.com unreachable`XCP : ヒント : このホストで DNS を構成するか ' ライセンスページに戻ってプライベートライセンスを要求してください予想されるエラー : ライセンスの有効化に失敗しました : サーバ xcp.netapp.com 到達不能 | ホストから xcp.netapp.com にアクセスできること、またはオフラインライセンスを要求していることを確認します 
 
 
-| `XCP ： ERROR: カタログにアクセスできません :NFS_server:/export[:subdirectory]` をマウントできません | XCP Linux クライアントホストでエディタを開き、適切なカタログの場所で構成ファイルを更新します。XCP 構成ファイルは、 /opt/NetApp/xFiles/XCP xcp.ini` にあります。構成ファイルのサンプルエントリ： `[root@scspr1949387001~]# cat /opt/NetApp/xFiles/XCP / xcp.ini # Sample XCP config[XCP ] catalog=10.235.128.153:/catalog` 
+| `XCP ： ERROR: カタログにアクセスできません :NFS_server:/export[:subdirectory]` をマウントできません | XCP Linux クライアントホストでエディタを開き、適切なカタログの場所で構成ファイルを更新します。XCP 構成ファイルは、 /opt/NetApp/xFiles/XCP xcp.ini` にあります。構成ファイルのサンプル・エントリ： `[root@scspr1949387001~]# cat /opt/NetApp/xFiles/XCP / xcp.ini` [XCP ]`CATALOCATA=10.235.128.153:/catalog` 
 
 
 | `nfs3 error 2`: このようなファイルやディレクトリはありません | ターゲット NFS エクスポートにソースファイルが見つかりませんでした。ソースからデスティネーションに差分更新をコピーするには 'XCP sync コマンドを実行します 
 
 
-| `XCP : error: 空または無効なインデックス | ファイルのインデックスを作成する前に、前のコピー操作が中断されました。新しいインデックスで「 XCP copy 」を再実行し、コピーを中断する前にシステムが「 indexed 」を返すことを確認します 
+| `XCP : error: 空または無効なインデックス | インデックス・ファイルが作成される前に ' 以前のコピー操作が中断されました新しいインデックスを指定して同じコマンドを再実行し、コマンドを実行したときに、キーワード「 indexed 」が stats に表示されていることを確認します。 
 
 
 | "XCP ： error" ： compare batches ： child process failed" （ exit code -9 ）： recv <type' exceptions .EOFError'>` | 次の技術情報アーティクルの手順に従います。 link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/NetApp_XCP/XCP:_ERROR:_Cannot_allocate_memory_-_when_syncing_NFS_data["NFS データの同期中にメモリを割り当てることができません"^] 
 
 
-| `XCP : error`: XCP で ACL を処理するには、 OS nfs4 クライアントを使用して「 <path>` 」をマウントしてください | XCP ホストにソースとターゲットをマウントします 
+| `XCP : error`: XCP で ACL を処理するには、 OS nfs4 クライアントを使用して「 <path>` 」をマウントしてください | NFSv4 を使用して、 XCP ホストにソースとターゲットをマウントします。たとえば、「 mount -o vers=4.0 10.10.10.10 ： /source_vol /mnt/source 」のようになります 
 
 
 | 移行中に XCP の「 ve rify 」コマンドが失敗する。ステータスに「 failed 」と表示されます。（ライブ） | ソースがライブのときに XCP の「 ve rify 」コマンドが実行されました。最後のカットオーバー後に XCP の「 ve rify 」コマンドを実行します。 
@@ -68,4 +68,34 @@ summary: XCP NFS エラーのトラブルシューティング
 
 
 | メモリ不足が原因で、 XCP copy コマンド、 `re sum`, および `sync コマンドが失敗します。XCP がクラッシュし、 XCP のステータスが FAILED と表示される。（ライブ） | ホストの使用可能なメモリが不足しているか、増分変更が大量に発生しています。次の技術情報アーティクルの手順に従います。 link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/NetApp_XCP/XCP:_ERROR:_Cannot_allocate_memory_-_when_syncing_NFS_data["NFS データの同期中にメモリを割り当てることができません"^] 
+
+
+| `m nt3 error 13: permission denied ` | root 以外のユーザとして、ファイルシステムにアクセスするための適切な権限がありません。ファイルシステムにアクセスして読み取りおよび書き込み処理を実行できるかどうかを確認します。 
+
+
+| `XCP : バッチ 1: エラー : [errno 13] 権限拒否 :` | root 以外のユーザとして、ファイルシステムにアクセスするための適切な権限がありません。ファイルシステムにアクセスして読み取りおよび書き込み処理を実行できるかどうかを確認します。 
+
+
+| `m XCP ：エラー : OSMounter 'file:///t/[] 10.234.115.215_src_vol/DIR' ： [Errno 2] 該当するファイルまたはディレクトリがありません | パス「 /t/10.234.115.215_src_vol/DIR 」は Linux ファイルシステムにマウントされていません。パスが存在するかどうかを確認してください。 
+
+
+| 「 error ： run sync {-id ： 'XCP _ index_1624263869.373485'} ： hdfs/POSIX/s3fs のソースとターゲットにはまだ使用できません。回避策は、最近の monds の一致フィルタを使用してコピーされます。 | POSIX コネクタおよび HDFS コネクタの XCP では 'sync' コマンドはサポートされていません 
+
+
+| "XCP verify" コマンドは異なるモード時間で失敗します | ファイルを指定し、手動でコピー先にファイルをコピーできます。 
+
+
+| 「ディレクトリ以外のオブジェクトのコピー / 同期は再開できません。もう一度コピーしてください。 詳細については、 XCP ユーザーガイドを参照してください | 1 つのファイルを再開することはできないため ' ファイルに対してもう一度 XCP copy コマンドを実行することをお勧めしますファイルが変更されると、ファイルの完全なコピーが作成されます。そのため、パフォーマンスに影響はありません。 
+
+
+| 「ディレクトリ以外のオブジェクトは同期できません。もう一度コピーしてください。 詳細については、 XCP ユーザーガイドを参照してください | 単一のファイルを同期できないため ' ファイルに対してもう一度 XCP copy コマンドを実行することをお勧めしますファイルが変更されると、ファイルの完全なコピーが作成されます。そのため、パフォーマンスに影響はありません。 
+
+
+| `XCP : エラー : バッチ 4: ノードに接続できませんでした | -nodes パラメータで指定されたノードに到達できることを確認しますマスターノードから Secure Shell （ SSH ）を使用して接続してみます 
+
+
+| 「 [ エラー 13] 許可が拒否されました。 | デスティネーションボリュームへの書き込み権限があるかどうかを確認してください。 
+
+
+| `XCP : エラー : バッチ 2: 子プロセスが失敗しました ( 終了コード -6): recv < タイプ ' 例外 .EOFError'>:` | システムメモリを増やして、テストを再実行してください。 
 |===

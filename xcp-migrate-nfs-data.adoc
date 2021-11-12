@@ -27,6 +27,18 @@ copy コマンドは ' ソース・ディレクトリ構造全体をスキャン
 ----
 xcp copy -newid <id> src_server:/src_export dst_server:/dst_export
 ----
+* POSIX パスの例 :*
+
+[listing]
+----
+xcp copy -newid <id> file:///mnt/source file:///mnt/dest
+----
+* HDFS パスの例： *
+
+[listing]
+----
+xcp copy -newid <id> hdfs:///demo/user file:///mnt/dest
+----
 詳細は 'XCP help copy' を参照してください
 
 
@@ -68,5 +80,17 @@ xcp sync [options] -id <id used for copy>
 [listing]
 ----
 xcp verify src_server:/src_export dst_server:/dst_export
+----
+* POSIX パスの例 :*
+
+[listing]
+----
+xcp verify file:///mnt/source file:///mnt/dest
+----
+* HDFS パスの例： *
+
+[listing]
+----
+xcp verify hdfs:///user/demo1/data file:///user/demo1/dest
 ----
 詳細は 'XCP help verify' を参照してください

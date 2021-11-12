@@ -33,13 +33,19 @@ XCP をアップグレードする場合は、現在のインストールファ�
 | ストレージ | XCP バイナリ用に 20 MB のディスクスペース、および /opt/NetApp/xFiles/XCP ディレクトリに格納されているログ用に 50 MB 以上のディスクスペース 
 
 
-| サポートされているプロトコルバージョン | NFSv3 と NFSv4 （ ACL のみ） 
+| サポートされているプロトコルバージョン | NFSv3 と NFSv4 （ POSIX と ACL ） 
 
 
 | サポートされているブラウザ（ File Analytics のみ） | XCP File Analytics は Google Chrome バージョン 76 以降をサポートします。を参照してください link:https://mysupport.netapp.com/matrix/["IMT"^] サポートされているすべてのバージョンのブラウザのマトリックスです 
 |===
 
 NOTE: ライブソース移行の推奨構成は、 8 コアと 64GB RAM です。
+
+
+
+== root ユーザに XCP NFS をインストールします
+
+root ユーザには次の手順を使用して XCP をインストールできます。
 
 .手順
 . root ユーザとして Linux マシンにログインし、ライセンスをダウンロードしてインストールします。
@@ -51,7 +57,7 @@ total 36188
 -rw-r--r--  1 root root 37043983 Oct  5 09:36 NETAPP_XCP_<version>.tgz
 -rw-------. 1 root root     1994 Sep  4  2019 license
 ----
-. XCP を解凍します。
+. ツールを抽出するには、 XCP を解凍します。
 +
 [listing]
 ----
@@ -67,7 +73,7 @@ xcp
 「 /opt/NetApp/xFiles/XCP 」が使用可能な場合は、「 xCP activate 」コマンドを使用してライセンスをアクティブ化し、データ移行を続行します。
 
 +
-/opt/NetApp/xFiles/XCP が使用できない場合は 'XCP activate コマンドを初めて実行するときに '/opt/NetApp/xFiles/XCP で XCP ホスト構成ディレクトリとファイルが作成されます
+「 /opt/NetApp/xFiles/XCP 」が使用できない場合、「 XCP activate 」コマンドを初めて実行すると、システムは XCP ホスト構成ディレクトリを「 /opt/NetApp/xFiles/XCP 」に作成します。
 
 +
 ライセンスがインストールされていないため 'XCP activate コマンドは失敗します
@@ -109,5 +115,84 @@ drwxr-xr-x 4 root root    83 Oct  5 00:48 .
 [root@scspr1980872003 linux]# ./xcp activate
 XCP <version>; (c) 2020 NetApp, Inc.;
 XCP already activated
+----
+
+
+
+
+== root 以外のユーザに XCP をインストールします
+
+root 以外のユーザに XCP をインストールするには、次の手順を使用します。
+
+.手順
+. root 以外のユーザとして Linux マシンにログインし、ライセンスをダウンロードしてインストールします。
++
+[listing]
+----
+[user1@scspr2474004001 ~]$ ls -l
+total 36640
+-rwxr-xr-x 1 user1 user1      352 Sep 20 01:56 license
+-rw-r--r-- 1 user1 user1 37512339 Sep 20 01:56 NETAPP_XCP_Nightly_dev.tgz
+[user1@scspr2474004001 ~]$
+----
+. ツールを抽出するには、 XCP を解凍します。
++
+[listing]
+----
+[user1@scspr2474004001 ~]$ tar -xvf NETAPP_XCP_Nightly_dev.tar
+[user1@scspr2474004001 ~]$ cd xcp/linux/
+[user1@scspr2474004001 linux]$ ls
+xcp
+[user1@scspr2474004001 linux]$
+----
+. 以前のバージョンの XCP からシステムで「 /home/user1/NetApp/xFiles/XCP 」パスが利用可能であることを確認します。
++
+「 /home/user1/NetApp/xFiles/XCP 」パスが使用可能な場合は、「 xCP activate 」コマンドを使用してライセンスをアクティブにし、データ移行を続行します。
+
++
+「 /home/user1/NetApp/xFiles/XCP 」が使用できない場合、「 XCP activate 」コマンドを初めて実行すると、システムは XCP ホスト構成ディレクトリを「 /home/user1/NetApp/xFiles/XCP 」に作成します。
+
++
+ライセンスがインストールされていないため 'XCP activate コマンドは失敗します
+
++
+[listing]
+----
+[user1@scspr2474004001 linux]$ /home/user1/xcp/linux/xcp activate
+(c) 2021 NetApp, Inc.
+xcp: Host config file not found. Creating sample at '/home/user1/NetApp/xFiles/xcp/xcp.ini'
+
+xcp: ERROR: License file /home/user1/NetApp/xFiles/xcp/license not found.
+Register for a license at https://xcp.netapp.com
+[user1@scspr2474004001 linux]$
+----
+. ライセンスを「 /home/user1/NetApp/xFiles/XCP 」にコピーします。
++
+[listing]
+----
+[user1@scspr2474004001 linux]$ cp ~/license /home/user1/NetApp/xFiles/xcp/
+[user1@scspr2474004001 linux]$
+----
+. ライセンスファイルが「 /home/user1/NetApp/xFiles/XCP 」にコピーされたことを確認します。
++
+[listing]
+----
+[user1@scspr2474004001 xcp]$ ls -ltr
+total 8
+drwxrwxr-x 2 user1 user1  21 Sep 20 02:04 xcplogs
+-rw-rw-r-- 1 user1 user1  71 Sep 20 02:04 xcp.ini
+-rwxr-xr-x 1 user1 user1 352 Sep 20 02:10 license
+[user1@scspr2474004001 xcp]$
+----
+. XCP のアクティブ化：
++
+[listing]
+----
+[user1@scspr2474004001 linux]$ ./xcp activate
+(c) 2021 NetApp, Inc.
+
+XCP already activated
+
+[user1@scspr2474004001 linux]$
 ----
 

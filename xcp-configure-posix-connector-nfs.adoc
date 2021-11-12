@@ -1,0 +1,59 @@
+---
+sidebar: sidebar 
+permalink: xcp-configure-posix-connector-nfs.html 
+keywords: xcp, configure, nfs, posix, connector 
+summary: POSIX コネクタを使用すると、 XCP は NFSv4 、 XFS 、 Veritas など、 Linux でマウントされた任意のファイルシステムにアクセスできます。 
+---
+= POSIX コネクタを設定します
+
+
+[role="lead"]
+XCP では、 POSIX コネクタを使用したデータ移行のソースパスとデスティネーションパスの提供がサポートされるようになりました。
+
+POSIX コネクタでは、次の機能がサポートされています。
+
+* nanosecond`atim`, `imtime`, および ctime をサポートする POSIX ファイルシステムでは '`can `command は完全な値 ( 秒とナノ秒 ) を取得し 'copy` コマンドはそれらを設定します
+* POSIX コネクタは、 NFSv3 TCP ソケットを使用した XCP よりも安全です。を参照してください link:xcp-configure-security-nfs.html["セキュリティを設定します"]
+
+
+POSIX コネクタのパス構文は '\file://< Linux 上のマウントパス >' です
+
+POSIX コネクタを設定するには、次のタスクを実行する必要があります。
+
+* ソースボリュームとデスティネーションボリュームをマウント
+* デスティネーションパスにデータを書き込むために必要な権限があることを確認してください
+
+
+次の例では、デスティネーションとカタログがマウントされています。
+
+[listing]
+----
+root@scspr2395903001 ~]# findmnt -t nfs4
+TARGET SOURCE FSTYPE OPTIONS
+/t/10.237.170.39_src_vol 10.237.170.39:/source_vol nfs4
+rw,relatime,vers=4.0,rsize=65536,wsize=65536,namlen=255,hard,proto=t
+cp,timeo=600,retrans=2,sec=sys,clien
+/t/10.237.170.53_dest_vol 10.237.170.53:/dest_vol nfs4
+rw,relatime,vers=4.0,rsize=65536,wsize=65536,namlen=255,hard,proto=t
+cp,timeo=600,retrans=2,sec=sys,clien
+/t/10.237.170.53_catalog_vol 10.237.170.53:/xcp_catalog nfs4
+rw,relatime,vers=4.0,rsize=65536,wsize=65536,namlen=255,hard,proto=t
+cp,timeo=600,retrans=2,sec=sys,clien
+[root@scspr2395903001 ~]#
+----
+POSIX コネクタは 'file://' という POSIX 構文を使用して ' ソースボリュームとデスティネーションボリュームにアクセスします上の例では、ソースパスは「 \file://t/10.237.170.39_src_vol 」で、デスティネーションパスは「 file://t/t /10.237.170.53_dest_vol 」です。
+
+root 以外のユーザが共有する XCP カタログの構成例を管理するには、 XCP ユーザ用の Linux グループを作成します。root 以外のユーザの場合、 Linux グループユーザが移行を実行するには、次の権限が必要です。
+
+次の出力例では、「 d emo 」は root 以外のユーザ、「 /mnt/XCP -catalog 」はカタログボリュームがマウントされているパスです。
+
+[listing]
+----
+sudo groupadd -g 7711 xcp_users
+sudo usermod -G xcp_users -a demo
+sudo chown -R :xcp_users /mnt/xcp-catalog
+sudo chmod -R g+w /mnt/xcp-catalog
+----
+XCP カタログにはデータは保存されませんが、スキャンおよびコピーのファイル名、ディレクトリ名、およびその他のメタデータは保存されます。したがって、ユーザに格納されたメタデータの保護機能を付与するために、許可されたユーザにカタログファイルシステムの権限を設定することを推奨します。
+
+通常のユーザとして設定されている場合、デフォルトでは POSIX または NFS3 宛先への「 copy 」コマンドは所有権（ユーザ ID （ UID ）およびグループ ID （ GID ）の設定を試みません。所有権の設定は、通常は管理者が行います。ユーザ A がユーザ B からファイルをコピーする場合、ユーザ A は宛先を所有することを想定します。ただし、 root ユーザがファイルをコピーする場合は、このようなことはありません。root ユーザがファイルをコピーすると '-down' オプションによって動作が変更され '-chown' を指定した root 以外の copy コマンドが UID と GID の設定を試みます

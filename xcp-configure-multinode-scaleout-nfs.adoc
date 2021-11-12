@@ -1,0 +1,81 @@
+---
+sidebar: sidebar 
+permalink: xcp-configure-multinode-scaleout-nfs.html 
+keywords: xcp, configure, nfs, multinode, scale, out 
+summary: シングルノードのパフォーマンス制限を克服するには、 1 つの XCP copy コマンドを使用して、複数の Linux システムまたはクラスタノードでワーカーを実行します。 
+---
+= マルチノードスケールアウトを構成します
+
+
+[role="lead"]
+1 つのノードのパフォーマンス制限を克服するには、 1 つの「 copy 」（または「 CAN-MD5 」）コマンドを使用して、複数の Linux システムまたはクラスタノード上でワーカーを実行します。
+
+マルチノードスケールアウトは、次のような場合など、単一システムのパフォーマンスでは不十分な環境に役立ちます。
+
+* ペタバイトのデータをコピーするのにノードが 1 つの場合、数カ月かかるとします
+* Kerberos 回線の暗号化を使用するセキュアな環境では、個々のノードの速度が低下します
+* クラウドオブジェクトストレージへの高レイテンシ接続が原因で、個々のノードの速度が低下している場合
+* 大量の I/O 処理を実行する大規模な HDFS クラスタファームでは
+
+
+マルチノードスケールアウトのパス構文は '--nodes worker1' worker2' worker3' です
+
+同様の CPU と RAM 構成の 4 台の Linux ホストを使用したセットアップを考えてみてください。移行には 4 つのホストすべてを使用できます。 XCP はすべてのホストノードでコピー処理を調整できるためです。スケールアウト環境でこれらのノードを利用するには、 4 つのノードのいずれかをマスターノード、その他のノードをワーカーノードとして識別する必要があります。たとえば、 Linux の 4 ノードセットアップの場合、各ノードに「 master 」、「 worker1 」、「 worker2 」、および「 worker3 」という名前を付け、マスターノードで構成をセットアップします。
+
+. ホームディレクトリに XCP をコピーします。
+. XCP ライセンスをインストールしてアクティブにします。
+. xcp.ini` ファイルを変更し ' カタログ・パスを追加します
+. マスターノードからワーカーノードにパスワードなしの SSH を設定します。
++
+.. マスターノードでキーを生成します。
++
+「 sh-keygen -b 2048-t rsa-f/root/.ssh/id_rsa-q-N' 」
+
+.. すべてのワーカーノードにキーをコピーします。
++
+'sh-copy-id -i/root/.ssh/id_rsa.pub root@worker1'
+
+
+
+
+
+XCP マスターノードは、 Secure Shell （ SSH ）を使用して他のノードでワーカーを実行します。マスターノードで XCP を実行しているユーザに対してパスワードを使用しない SSH アクセスを有効にするようにワーカーノードを設定する必要があります。たとえば、マスターノードで XCP ワーカーノードとしてノード「 worker1 」を使用するためのユーザデモを有効にするには、マスターノードからホームディレクトリ内のすべてのワーカーノードに XCP バイナリをコピーする必要があります。
+
+複数の XCP ワーカーを同時に起動してエラーを回避するには、次の例に示すように、各ワーカーノードで「 SHD MaxStartups 」パラメータを増やす必要があります。
+
+[listing]
+----
+echo "MaxStartups 100" | sudo tee -a /etc/ssh/sshd_config sudo systemctl
+restart sshd
+----
+クラスタノードで XCP を実行すると、ワーカープロセスはマスターノードのメイン XCP プロセスから環境変数を継承します。特定のノード環境をカスタマイズするには ' マスターノード上の構成ディレクトリ内の nodes.ini` ファイルに変数を設定する必要があります ( ワーカーノードには構成ディレクトリまたはカタログがありません )たとえば、 Wave （ CentOS ）などのマスターノードとは別の場所に「 libjvm.so 」を持つ Ubuntu サーバ MARS では、 WAVE のワーカーが HDFS コネクタを使用できるようにするために構成ディレクトリが必要です。このセットアップの例を次に示します。
+
+[listing]
+----
+[schay@wave ~]$ cat /opt/NetApp/xFiles/xcp/nodes.ini [mars]
+NHDFS_LIBJVM_PATH=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/
+amd64/server/libjvm.so
+----
+POSIX ファイルパスと HDFS ファイルパスを使用してマルチセッションを実行する場合は、ファイルシステムとソースおよびデスティネーションのエクスポート済みファイルシステムをマスターノードとすべてのワーカーノードにマウントする必要があります。
+
+ワーカーノードで XCP を実行する場合、ワーカーノードにはローカル構成はありません（ライセンス、ログファイル、またはカタログはありません）。XCP バイナリが必要なのは、ホームディレクトリ内のシステムのみです。たとえば 'copy' コマンドを実行するには ' マスター・ノードとすべてのワーカー・ノードがソースとデスティネーションにアクセスする必要がありますxCP copy -- ノード linux1 、 linux2 hdfs://user/ceme/test\file:/mnt/ontap 、 linux1' および linux2`hosts には HDFS クライアントソフトウェアが設定されており、 /mnt/ontap に NFS エクスポートがマウントされている必要があります。前述のように、 XCP のコピーがホームディレクトリにあることになります。
+
+POSIX コネクタと HDFS コネクタ、マルチノードスケールアウト、セキュリティ機能を組み合わせて使用できます。たとえば、次の「 copy 」コマンドと「 ve rify 」コマンドは、 POSIX コネクタと HDFS コネクタをセキュリティおよびスケールアウト機能と組み合わせたものです。
+
+* 「 copy 」コマンドの例：
++
+[listing]
+----
+./xcp copy hdfs:///user/demo/d1 file:///mnt/nfs-server0/d3
+./xcp copy -match "'USER1 in name'" file:///mnt/nfs-server0/d3
+hdfs:///user/demo/d1
+./xcp copy —node worker1,worker2,worker3 hdfs:///user/demo/d1
+file:///mnt/nfs-server0/d3
+----
+* 「 ve rify 」コマンドの例：
+
+
+[listing]
+----
+./xcp verify hdfs:///user/demo/d2 file:///mnt/nfs-server0/d3
+----

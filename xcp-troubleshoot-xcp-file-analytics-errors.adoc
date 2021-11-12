@@ -20,100 +20,43 @@ summary: XCP File Analytics エラーのトラブルシューティング
 | 問題 | 解決策 
 
 
-| PostgreSQL のインストールまたはサービスに失敗しました  a| 
+| PostgreSQL サービスが失敗しました  a| 
 もう一度 configure を実行し、インストールオプションを選択します。以前のインストールが成功した場合は、修復オプションを選択できます。それでもエラーが表示される場合は、次の手順を実行してください。
 
-. Linux システムで PostgreSQL を実行します。
+. PostgreSQL サービスを再起動します。
 +
-'sudo yum-y install postgresql-server sudo systemctl start postgresq
+'UDO systemctl restart postgresql.service`
 
-. PostgreSQL データベースのデータディレクトリを作成します。
+. サービスステータスを確認します。
 +
-'sudo mkdir /var/lib/postgres/data
-
-. データベースを初期化します。
-+
-「 sudo -i -u postgres initdb-D 」 /var/lib/pgsql/data 」を参照してください
-
-. 適切な Linux ファイルエディタを使用して、次のファイルを開きます。
-+
-/var/lib/pgsql/data/pg_hba.conf
-
-. 次のエントリを削除します。
-+
-`# host all all all 127.0.0.1/32 trust`
-
-. 「 #host all all 0.0.0.0/0 password 」というエントリを追加します
-. ファイル「 /var/lib/pgsql/data/postgresql.conf 」を開きます
-. 次のエントリを追加します。
-+
-#listen_addresses='*
-
-. PostgreSQL サービスを開始します。
-+
-'UDO systemctl start postgresql.service`
+'sudo systemctl status postgresql.service | grep Active
 
 
 
 
 
-| httpd のインストールまたはサービスに失敗しました  a| 
+| httpd サービスが失敗しました  a| 
 もう一度 configure を実行し、インストールオプションを選択します。以前のインストールが成功した場合は、修復オプションを選択できます。それでもエラーが表示される場合は、次の手順を実行してください。
-
-. Linux システムに HTTPD をインストールします。
-+
-「 UDO yum-y install httpd 」を選択します
-
-. 次の構成ファイルを開いてルールを書き換えます。
-+
-/etc/httpd/conf/httpd.conf
-
-. ファイルに次のエントリを追加します。
-+
-「 RewriteEngine on `RewriteOptions Inherit `<Directory"/var/www/html/">`AllowOverride None 」には、すべての付与された「 RewriteCond % ｛ request_filename ｝ -f [OR]`RewriteCond % ｛ request_filename ｝ -d `RewriteRule-d`RewriteRule^r 」が必要です index.html
-
-. HTTPD サービスを開始します。
-+
-'UDO systemctl start httpd
-
-
-
-
-
-| SSL をインストールできませんでした  a| 
-もう一度 configure を実行し、インストールオプションを選択します。以前のインストールが成功した場合は、修復オプションを選択できます。それでもエラーが表示される場合は、次の手順を実行してください。
-
-. インストール `m OD_SSL`:
-+
-yum install mod_ssl-y
-
-. Secure Sockets Layer （ SSL ）証明書を生成します。
-+
-yum openssl req -x509 -nodes -days 365-newkey `rsa:2048 -keout/etc/ssl/private/apache`-`-selfsigned`s elfsigned.key -out /etc/ssl/certs/apache-selfsigned.crt
-
-. HTTPS サービスを有効にします。
-+
-yum openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
 
 . HTTPD サービスを再起動します。
 +
 'UDO systemctl restart httpd
 
-. SSL 証明書を適切な場所にコピーします。
+. HTTPD サービスのステータスを確認します。
 +
-「 sudo cp - pr /etc/pki/certs/localhost.crt /opt/NetApp/xFiles/XCP / server.crt `'UDO cp - pr/etc/pki/ localhost.key /opt/NetApp/xFiles/XCP / server.key`
+'UDO systemctl status httpd|grep Active'
 
 
 
 
 
-| インストールの完了後にログインページを開くことができません | XCP File Analytics がインストールされていて、 HTTPD が実行されている Linux マシンに対して、システムが ping を実行できることを確認します。サービスが実行されていない場合は 'configure を実行して ' 修復オプションを選択しますサポートされているバージョンのブラウザを使用していることを確認してください。を参照してください link:https://mysupport.netapp.com/matrix/["IMT"^]。 
+| インストールの完了後にログインページを開くことができません | XCP File Analytics がインストールされていて、 HTTPD が実行されている Linux マシンに対して、システムから ping を実行できることを確認します。サービスが実行されていない場合は 'configure を実行して ' 修復オプションを選択しますサポートされているブラウザバージョンを使用していることを確認してください。を参照してください link:https://mysupport.netapp.com/matrix/["IMT"^]。 
 
 
 | ユーザログインに失敗しました  a| 
-* サポートされているバージョンのブラウザを使用していることを確認してください。を参照してください link:https://mysupport.netapp.com/matrix/["IMT"^]。
+* サポートされているブラウザバージョンを使用していることを確認してください。を参照してください link:https://mysupport.netapp.com/matrix/["IMT"^]。
 * ユーザが「 admin 」で、パスワードが正しいことを確認します。
-* 「 XCP service status 」を発行して、 XCP サービスが実行されていることを確認します。
+* XCP サービスのステータスを発行して、 XCP サービスが実行されていることを確認します。
 * Linux でポート 5030 が開いていることを確認します。アプリケーションを *https:// <Linux ip>:5030/api/XCP * で開き、メッセージメッセージメッセージ msg: `M issing Authorization Header` を確認します。
 * xcp.ini` ファイルが /opt/NetApp/xFiles/XCP の場所にあるかどうかを確認します。「 xcp.ini` 」ファイルをリセットするには、設定スクリプトを実行し、「 * Repair * 」オプションを選択します。次に、メニューオプションを選択して、 * xcp.ini ファイルの再構築 * を実行します。
 * CLI で 'XCP --listen' コマンドを手動で実行し ' ログインしてみますサーバで要求を受信しない場合は、インストールとサーバとの通信に使用するポートを再確認します。インストールが正しいことを確認したら、「 service XCP start 」コマンドを実行してサービスを再起動します。
@@ -127,14 +70,14 @@ yum openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
 | XCP サービスが開始されていません | "XCP " サービスを実行するには、 "UDO systemctl start XCP " コマンドを使用します。または、設定スクリプトを実行し、「 * Repair * 」オプションを選択して停止したサービスを開始します。 
 
 
-| ファイル共有のスキャンに失敗しました | ファイル共有 / ボリュームは読み取りできない可能性があります。ファイル共有がアクセス可能かどうかを手動で確認するには 'XCP show コマンドを実行します 
+| ファイル共有のスキャンに失敗しました | ファイル共有 / ボリュームは読み取りできない可能性があります。ファイル共有がアクセス可能かどうかを手動で確認するには 'XCP show コマンドを実行しますまた '`xcp.ini` ファイルが削除されているかどうかを確認します削除された場合は、 configure.sh スクリプト修復オプションを使用して「 xcp.ini` 」ファイルを再構築します。 
 
 
-| ファイルサーバをロードできませんでした | ページをリフレッシュしてみてください。問題が解決しない場合は、プロンプトで XCP show コマンドを手動で実行し、ファイルサーバをスキャンできるかどうかを確認します。成功した場合は、ネットアップカスタマーサポートにチケットを発行してください。失敗した場合は、手動でファイルサーバがアクティブかどうかを確認します。xcp.ini` ファイルとライセンスファイルが正しい場所にあるかどうかを確認します「 xcp.ini` 」ファイルをリセットするには、設定スクリプトを実行し、「 * Repair * 」オプションを選択します。次に、 xcp.ini ファイルを再構築するためのメニュー・オプションを選択します。 * ライセンスの更新が必要かどうかを調べるには、「 xcpflogs 」ログを確認します。 
+| ファイルサーバをロードできませんでした | ページをリフレッシュしてみてください。問題が解決しない場合は、プロンプトで XCP show コマンドを手動で実行し、ファイルサーバをスキャンできるかどうかを確認します。成功した場合は、ネットアップカスタマーサポートにチケットを発行してください。失敗した場合は、手動チェックを実行してファイルサーバがアクティブかどうかを確認します。xcp.ini` ファイルとライセンスファイルが正しい場所にあるかどうかを確認します「 xcp.ini` 」ファイルをリセットするには、設定スクリプトを実行し、「 * Repair * 」オプションを選択します。次に、 xcp.ini ファイルを再構築するためのメニュー・オプションを選択します。 * ライセンスの更新が必要かどうかを調べるには、「 xcpflogs 」ログを確認します。 
 
 
 | システムのリブート後に XCP File Analytics ページが表示されない | XCP サービスが停止している可能性があります設定スクリプトを実行し、 * Repair * オプションを選択します。これにより、停止されたすべてのサービスが再起動されます。 
 
 
-| 特定のファイルサーバ上のエクスポートされたファイルシステムの合計スペースは、割り当てられた物理ストレージよりも多くのスペースを表示することがあります。 | これは、ボリューム内に qtree レベルのエクスポートがある場合に発生することがあります。たとえば ' ボリューム・サイズが 10 GB であり ' ボリューム '/vol1/qtree1' 内に qtree がある場合 'XCP show コマンドは 'vol1' サイズを 10 GB' として表示し 'qtree1' サイズを 10 GB' として表示しますXCP File Analytics は、両方のエクスポートのスペースを合計し、合計スペースを提供します。この場合、「 20 GB 」となります。「 qtree1 」は論理空間であることは理解できません。 
+| 特定のファイルサーバ上のエクスポートされたファイルシステムの合計スペースは、割り当てられた物理ストレージよりも多くのスペースを表示することがあります。 | これは、ボリューム内に qtree レベルのエクスポートがある場合に発生することがあります。たとえば '/vol1/qtree1' としてエクスポートされるボリューム・サイズが 10 GB で ' ボリューム '/vol1/qtree1' に qtree がある場合 'XCP show コマンドは 'vol1' サイズを 10 GB' として表示し 'qtree1' サイズを 10 GB' として表示しますXCP File Analytics は、両方のエクスポートのスペースを合計し、合計スペースを提供します。この場合、「 20 GB 」となります。「 qtree1 」は論理空間であることは理解できません。 
 |===

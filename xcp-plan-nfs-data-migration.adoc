@@ -33,8 +33,10 @@ NFS データ移行を計画
 
 「を使用すると、ソースの NFSv3 エクスポートパス全体を再帰的にスキャンし、スキャンの終了時にファイル構造の統計を出力できます。スキャン処理の実行中は、ソースの NFS エクスポートマウントを読み取り専用モードにすることを推奨します。例
 
-* 'XCP scan NFS server:/export path`
+* `XCP scan nfs[server:/export path|\file:/<NFS Mounted path>|hdfs://<HDFS mounted path>]`
 * XCP scan nfs_server01.netapp.com:/export1`
+* `XCP scan\file: /mnt/nfs-source`
+* XCP scan hdfs://demo/user1`
 
 
 詳細については 'XCP help scan を実行してください

@@ -4,7 +4,7 @@ permalink: xcp-configure-the-ini-file-for-xcp-nfs.html
 keywords: netapp, xcp, configure, configuring, how, performing, tuning, nfs, 
 summary: INI ファイル XCP を設定する手順 
 ---
-= XCP NFS の INI ファイルを設定します
+= INI ファイルを設定します
 :hardbreaks:
 :nofooter: 
 :icons: font
@@ -13,9 +13,13 @@ summary: INI ファイル XCP を設定する手順
 
 
 [role="lead"]
-INI ファイル XCP を設定する手順
+XCP の INI ファイルを設定する手順。
 
-XCP NFS の INI ファイルを設定するには、次の手順を実行します。
+
+
+== ルートユーザの INI ファイルを設定します
+
+次の手順を使用して、 XCP NFS root ユーザの INI ファイルを設定できます。
 
 .手順
 . vi エディタを使用して、ホスト構成ファイルに XCP サーバのカタログの場所を追加します。
@@ -38,3 +42,24 @@ NOTE: カタログの場所は、「 xcp.ini` XCP 」構成ファイルの詳細
 catalog = 10.61.82.210:/vol/xcpvol/
 ----
 
+
+
+
+== root 以外のユーザの INI ファイルを設定する
+
+root 以外のユーザとして、 NFS ファイルシステムをマウントする権限がありません。最初にカタログボリュームをマウントし、 XCP を実行している root 以外のユーザとして XCP を実行するには root ユーザが必要です。カタログボリュームに対する読み取り / 書き込み権限を持っている場合は、 POSIX コネクタを使用してマウントされたカタログボリュームにアクセスできます。ボリュームがマウントされたら、カタログにパスを追加できます。
+
+[listing]
+----
+(t/10.237.170.53_catalog_vol – This is the path where catalog volume is mounted)as follows.
+
+[user1@scspr2474004001 xcp]$ ls -ltr
+total 8
+drwxrwxr-x 2 user1 user1  21 Sep 20 02:04 xcplogs
+-rw-rw-r-- 1 user1 user1  71 Sep 20 02:04 xcp.ini
+-rwxr-xr-x 1 user1 user1 352 Sep 20 02:10 license
+[user1@scspr2474004001 xcp]$ cat /home/user1/NetApp/xFiles/xcp/xcp.ini
+
+Sample xcp config [xcp]
+catalog = file:///t/10.237.170.53_catalog_vol
+----

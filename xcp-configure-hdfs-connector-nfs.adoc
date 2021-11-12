@@ -1,0 +1,43 @@
+---
+sidebar: sidebar 
+permalink: xcp-configure-hdfs-connector-nfs.html 
+keywords: xcp, nfs, hdfs, connector, configure 
+summary: HDFS コネクタを使用すると、 XCP は、異なるベンダーが提供するすべての HDFS ファイルシステムにアクセスできます。 
+---
+= HDFS コネクタを設定します
+
+
+[role="lead"]
+Hadoop Distributed File System （ HDFS ）コネクタ（ HDFS ： // ）は、 XCP が、異なるベンダーが提供するすべての HDFS ファイルシステムにアクセスできるようにします。
+
+HDFS から NFS への「 copy 」コマンド操作は、 HDFS コネクタでサポートされています。
+
+HDFS コネクタのパス構文は、「 hdfs://[user@host ： port]/full-path 」です。
+
+
+NOTE: ユーザ、ホスト、およびポートを指定しない場合、 XCP はホストを「デフォルト」に設定し、ポートを「 0 」に設定した「 hdfsConnect 」を呼び出します。
+
+hdfs`copy` コマンドを実行するには、 Linux システム上に HDFS クライアントを設定し、 Hadoop ベンダーに基づいて、インターネット上で利用可能なセットアップ構成を実行する必要があります。たとえば、「 https://docs.datafabric.hpe.com/60/AdvancedInstallation/SettingUptheClient- RedHat .html 」を使用して、 MapR クラスタのクライアントを設定できます。
+
+HFDS クライアントのセットアップが完了したら、クライアントの設定を完了する必要があります。XCP コマンドで HDFS パスを使用するには、次の環境変数が必要です。
+
+* Nhdfs_ LIBhdfs_ path です
+* Nhdfs_libjvm_path
+
+
+次の例では、設定は、 CentOS 上の MapR および Java -1.8.0-openjdk-devel と連携しています。
+
+[listing]
+----
+export JAVA_HOME=$(dirname $(dirname $(readlink $(readlink $
+(which javac)))))
+export NHDFS_LIBJVM_PATH=`find $JAVA_HOME -name "libjvm.so"` export
+NHDFS_LIBHDFS_PATH=/opt/mapr/lib/libMapRClient.so
+----
+[listing]
+----
+[demo@mapr0 ~]$ hadoop fs -ls Found 3 items
+drwxr-xr-x - demo mapr 0 2021-01-14 00:02 d1
+drwxr-xr-x - demo mapr 0 2021-01-14 00:02 d2
+drwxr-xr-x - demo mapr 0 2021-01-14 00:02 d3
+----
