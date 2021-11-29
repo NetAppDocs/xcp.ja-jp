@@ -61,7 +61,6 @@
   <block id="22d9ce858207febcb08875a117d891c0" category="summary">XCP NFS および SMB にロギングしています</block>
   <block id="673a73278d9e0a66d2a33d82f445c019" category="doc">NFS および SMB のロギング（オプション）</block>
   <block id="ca6b5876ba3731010dbd6ce4f943f163" category="paragraph">XCP NFS および SMB にロギングしています。</block>
-  <block id="bbdfba7da6d012043d08425567e45fa2" category="paragraph">XCP は、「 xcpLogConfig.json 」 JSON 構成ファイルを使用して、複数のオプション機能を構成することをサポートしています。特定の機能のみを有効にするには 'xcpLogConfig.json 構成ファイルを手動で作成し 'xcpLogConfig.json 構成ファイルを使用して以下を有効にします</block>
   <block id="3b940044f58b92869d13d3035d6d408a" category="list-text">イベントログメッセージ</block>
   <block id="104f1c80c37455f2c0587b79cd313366" category="list-text">XCP の Syslog クライアント</block>
   <block id="1a6697e218dc4aeea5fe509dd25c7350" category="list-text">カスタム XCP ロギング</block>
@@ -76,8 +75,6 @@
   <block id="223d3a19cc16f37abc58628c0df5ee27" category="cell">エラー参照ソースが見つかりません。</block>
   <block id="382b0f5185773fa0f67a8ed8056c7759" category="cell">該当なし</block>
   <block id="c71c45be8ac72499222cb1690d308dde" category="paragraph">JSON 構成ファイルのオプションでは、大文字と小文字が区別されます。これらのオプションは、 XCP NFS と XCP SMB で同じです。</block>
-  <block id="648adea552c0c306b10285fc5bd4e59e" category="cell">サブオプション名（ Sub Options Name ）</block>
-  <block id="e19db84f190c3464c2f480631dd5e3ba" category="cell">JSON データタイプ</block>
   <block id="7a1920d61156abc05a60135aefe8bc67" category="cell">デフォルト</block>
   <block id="b5a7adde1af5c87d7fd797b6245c2a39" category="cell">説明</block>
   <block id="46c887ae3ff675fe00072fa1a620b410" category="cell">logconfig</block>
@@ -111,7 +108,6 @@
   <block id="59b90e1005a220e2ebc542eb9d950b1e" category="cell">514</block>
   <block id="41f37150ac650751da15e41867b2ef3e" category="cell">リモート syslog レシーバポート。別のポートで syslog データグラムを受信する syslog レシーバは、ポートオプション UDP ポート 514 を使用して設定できますが、必要なポートに設定することもできます。</block>
   <block id="21511790461e29cd622923924f215edb" category="cell">「サニタイズ」</block>
-  <block id="16bb1af98a3e8c14ecb1b7e10c66078c" category="paragraph">XCP サポートに共通するオプション。このオプションの値を true に設定すると、サポート対象のメッセージ（ロギング、イベント、 syslog など）に機密情報（ IP およびユーザ名）が非表示になります。 たとえば、「 anitize 」オプションを「 false 」に設定した場合： *`20-07-17 03:10:23779-Info-12806 XCP Paths ： ['10.234.104.251/cat_vol ： /cat_vol']`*20-07-17 03:10:23778-Info-12XCP 806 User Name:root'207-15308'x1-1217'xCP Info*'20'20'x8*'20'20'30' と同様に 'xCP Info:'20'x1-24*'20'x8*'20'20'x1-'308*'x1-24*'30 XX.XX.XX.XX:/ cat_vol']`*`20-07-1703:13:51595-Info-12859 XCP ユーザー名 :*`</block>
   <block id="5d53d5891d91acf4824c28550023ec23" category="summary">File Analytics for SMB をインストールまたはアップグレードします</block>
   <block id="e9815aad4b6c2855f398a9360208dd65" category="doc">SMB 向けファイル分析をインストール</block>
   <block id="6a6947b743abcf4f9aaa1664bb88feba" category="paragraph">File Analytics for SMB をインストールまたはアップグレードします。</block>
@@ -483,13 +479,10 @@
   <block id="93a8c927e888fa50601e3fe6d0cb5c14" category="cell">から XCP ライセンスをダウンロードします <block ref="f33ccbb3083b14f48de92a286ba83724" category="inline-link-macro-rx"></block>。XCP ホストの c:\NetApp\XCP で XCP Linux クライアントホスト上のファイルをコピーします。ライセンスを有効にするには 'XCP activate コマンドを実行します</block>
   <block id="c713e98ca26033cf525c6f3707197fb7" category="cell">XCP ：エラー : ライセンスファイル C ： \NetApp\XCP \ ライセンスが見つかりません</block>
   <block id="e0cb37236740c3d187441b0938f2e55f" category="cell">で XCP ライセンスを登録します <block ref="f33ccbb3083b14f48de92a286ba83724" category="inline-link-macro-rx"></block>。ライセンスファイルを XCP Windows クライアントホスト上の C ： \NetApp\XCP にダウンロードしてコピーします。</block>
-  <block id="ca23c2e68f8662a2e20f4a2b9baf9cf0" category="cell">"XCP scan Error" ：ネットワーク名が見つかりません</block>
   <block id="1b9f8dad8c202b50e4bc6dbfc712a272" category="cell">コマンドを正しい共有名で再実行します</block>
-  <block id="09afc4ab001e0721c9e13817a46cb546" category="cell">"XCP copy Error" ： xcp.log ファイルに記録されたフォールバックセキュリティプリンシパルエラーメッセージの取得に失敗しました。エラー : (1722 、 'LookupAccountName' 、 'RPC サーバーは使用できません。 '`)</block>
   <block id="a283c2e507f611ec0a142f5f0ec7e489" category="cell">移行先のボックスを hosts ファイルに追加します (`C:\Windows\System32\drivers\etc\hosts') 。NetApp ストレージのデスティネーション・ボックスのエントリは、「 &lt;data vserver data interface ip&gt;`1 or more white spaces `&lt;cifs server name&gt;` 」の形式で指定する必要があります</block>
   <block id="71aef63bcbc5d0c5e78ca147512cf71f" category="cell">'XCP copy: error' はフォールバックセキュリティプリンシパルの取得に失敗しました (hosts ファイルへの追加後の宛先ボックスエントリ ) エラーメッセージが xcp.log ファイルに記録されました :'' アカウント名とセキュリティ ID 間のマッピングは行われませんでした ''</block>
   <block id="0ab4127ba4947453135e709735a6fc6c" category="cell">フォールバックユーザ / グループは、ターゲットシステム（宛先ボックス）または Active Directory に存在しません。正しいフォールバックユーザ / グループオプションを使用してコマンドを再実行します</block>
-  <block id="2214f08896c91ecbb20888adf818aa3e" category="cell">'XCP copy: error' はフォールバックセキュリティプリンシパルの取得に失敗しました (hosts ファイルへの追加後の宛先ボックスエントリ ) xcp.log ファイルにログインしているエラーメッセージ : 'pywintypes.error`(87, 'LookupAccountName', ' パラメータが正しくありません</block>
   <block id="2e4e559c9f6001c3134b8795d8e47e81" category="cell">フォールバックユーザ / グループオプションのパラメータが正しくありません。ユーザ / グループのフォールバックオプションに正しい構文を使用してコマンドを再実行します</block>
   <block id="ca5b87c22d59ad15700c80cec3677245" category="cell">ACL 移行 Erorr メッセージを含む XCP copy 」が xcp.log ファイルに記録されます : 'pywintypes.error`:(1314'GetNamedSecurityInfo', 'a required privilege is not Held by the client.')`</block>
   <block id="63debe27683f1f8c225ad14c415dffcc" category="summary">データを移行</block>
@@ -504,7 +497,6 @@
   <block id="cae408e146414f197563c67edf318286" category="list-text">ライセンスを「 /opt/NetApp/xFiles/XCP 」にコピーします。</block>
   <block id="8ab783e73539b82c1414bd94a3037376" category="list-text">ライセンスファイルが /opt/NetApp/xFiles/XCP にコピーされたことを確認します。</block>
   <block id="181af529472b0626a27e692b85666546" category="summary">環境変数（ NFS のみ）</block>
-  <block id="0e07abf368204f87aac8c3a6a7fffec8" category="paragraph">NFS システムの環境変数のオプション設定。</block>
   <block id="0dd6ca798bb0f2d45b2b59c074793ac6" category="paragraph">環境変数 XCP _CONFIG_DIR は、デフォルトの場所である「 /opt/NetApp/xFiles/XCP 」より優先されます。この値を設定する場合は、マウントされている NFS ディレクトリなど、 OS ファイルシステムのパスを指定します。カスタム構成ディレクトリが設定されている場合、ログファイルの名前はデフォルトの「 XCP .log 」ではなく「 XCP .hostname.log 」になります。</block>
   <block id="ded2d02a4fd60f232dc6bbe8614960b6" category="paragraph">環境変数 XCP ログ _LOG_DIR は、構成ディレクトリ内の XCP ログが格納されているデフォルトの場所よりも優先されます。この値を設定する場合は、マウントされている NFS ディレクトリなど、 OS ファイルシステムのパスを指定します。カスタム・ログ・ディレクトリを設定すると ' ログ・ファイルの名前はデフォルトの "XCP .log" ではなく "XCP .hostname.log" になります</block>
   <block id="b2a82a89c888f120cc61565aed8191c8" category="paragraph">環境変数 XCP カタログパスは、 xcp.in の設定よりも優先されます設定する場合、値は XCP パス形式である「 server:export[:subdirectory]` 」でなければなりません。</block>
@@ -525,27 +517,20 @@
   <block id="c9beec711f96849f59fc8b461a17c844" category="paragraph">root 以外のユーザとして、 NFS ファイルシステムをマウントする権限がありません。最初にカタログボリュームをマウントし、 XCP を実行している root 以外のユーザとして XCP を実行するには root ユーザが必要です。カタログボリュームに対する読み取り / 書き込み権限を持っている場合は、 POSIX コネクタを使用してマウントされたカタログボリュームにアクセスできます。ボリュームがマウントされたら、カタログにパスを追加できます。</block>
   <block id="e981fe37c8879e923e07dadeb9379fe4" category="summary">シングルノードのパフォーマンス制限を克服するには、 1 つの XCP copy コマンドを使用して、複数の Linux システムまたはクラスタノードでワーカーを実行します。</block>
   <block id="153ac2dbf14a38bdfdf76ac38b946158" category="doc">マルチノードスケールアウトを構成します</block>
-  <block id="fa36d2b7775b09eb7bb335e1cc50784e" category="paragraph">1 つのノードのパフォーマンス制限を克服するには、 1 つの「 copy 」（または「 CAN-MD5 」）コマンドを使用して、複数の Linux システムまたはクラスタノード上でワーカーを実行します。</block>
   <block id="34109dd87e259e3368d0527414feaced" category="paragraph">マルチノードスケールアウトは、次のような場合など、単一システムのパフォーマンスでは不十分な環境に役立ちます。</block>
   <block id="8f93480e5a7520f56fd9721507d3f134" category="list-text">ペタバイトのデータをコピーするのにノードが 1 つの場合、数カ月かかるとします</block>
-  <block id="53229db4e3ed8a10d2efce7ed0098338" category="list-text">Kerberos 回線の暗号化を使用するセキュアな環境では、個々のノードの速度が低下します</block>
   <block id="682fc2970f57e82b3aa1b77324aa5ab5" category="list-text">クラウドオブジェクトストレージへの高レイテンシ接続が原因で、個々のノードの速度が低下している場合</block>
   <block id="82d1e2f124b7c4ed4bf2ff7b94d07580" category="list-text">大量の I/O 処理を実行する大規模な HDFS クラスタファームでは</block>
   <block id="867d70e5cd005545ea08668983984822" category="paragraph">マルチノードスケールアウトのパス構文は '--nodes worker1' worker2' worker3' です</block>
-  <block id="f58cf227ccbbe613bfa5731ecd7e3644" category="paragraph">同様の CPU と RAM 構成の 4 台の Linux ホストを使用したセットアップを考えてみてください。移行には 4 つのホストすべてを使用できます。 XCP はすべてのホストノードでコピー処理を調整できるためです。スケールアウト環境でこれらのノードを利用するには、 4 つのノードのいずれかをマスターノード、その他のノードをワーカーノードとして識別する必要があります。たとえば、 Linux の 4 ノードセットアップの場合、各ノードに「 master 」、「 worker1 」、「 worker2 」、および「 worker3 」という名前を付け、マスターノードで構成をセットアップします。</block>
   <block id="ed5bbe49896e4119e2bc434266a4e9dd" category="list-text">ホームディレクトリに XCP をコピーします。</block>
   <block id="ef9985cb080be75e8968d6283e5ffb67" category="list-text">XCP ライセンスをインストールしてアクティブにします。</block>
   <block id="2bb343c5c64b5c34c9de8bcf47e92785" category="list-text">xcp.ini` ファイルを変更し ' カタログ・パスを追加します</block>
-  <block id="4d47b01b605d32966d14249383df9022" category="list-text">マスターノードからワーカーノードにパスワードなしの SSH を設定します。</block>
   <block id="d0d53af0a600e75b327575d75c03861c" category="list-text">マスターノードでキーを生成します。</block>
   <block id="370b7e68abea8b7e619db3ecec836d13" category="paragraph">「 sh-keygen -b 2048-t rsa-f/root/.ssh/id_rsa-q-N' 」</block>
   <block id="9d55d07ef712b748878175a6aa889333" category="list-text">すべてのワーカーノードにキーをコピーします。</block>
   <block id="f7d8f65267808fa7b9fdab1fdcff8657" category="paragraph">'sh-copy-id -i/root/.ssh/id_rsa.pub root@worker1'</block>
-  <block id="8f2ecf0d61b2572277bf87c749927f1f" category="paragraph">XCP マスターノードは、 Secure Shell （ SSH ）を使用して他のノードでワーカーを実行します。マスターノードで XCP を実行しているユーザに対してパスワードを使用しない SSH アクセスを有効にするようにワーカーノードを設定する必要があります。たとえば、マスターノードで XCP ワーカーノードとしてノード「 worker1 」を使用するためのユーザデモを有効にするには、マスターノードからホームディレクトリ内のすべてのワーカーノードに XCP バイナリをコピーする必要があります。</block>
   <block id="8b76ed249e6db9e50569a0493601ca7b" category="paragraph">複数の XCP ワーカーを同時に起動してエラーを回避するには、次の例に示すように、各ワーカーノードで「 SHD MaxStartups 」パラメータを増やす必要があります。</block>
-  <block id="ed1d25580bd1a611a49f07d6b51e43cf" category="paragraph">クラスタノードで XCP を実行すると、ワーカープロセスはマスターノードのメイン XCP プロセスから環境変数を継承します。特定のノード環境をカスタマイズするには ' マスターノード上の構成ディレクトリ内の nodes.ini` ファイルに変数を設定する必要があります ( ワーカーノードには構成ディレクトリまたはカタログがありません )たとえば、 Wave （ CentOS ）などのマスターノードとは別の場所に「 libjvm.so 」を持つ Ubuntu サーバ MARS では、 WAVE のワーカーが HDFS コネクタを使用できるようにするために構成ディレクトリが必要です。このセットアップの例を次に示します。</block>
   <block id="bae7f8a61d8cf1102cf26d111642782d" category="paragraph">POSIX ファイルパスと HDFS ファイルパスを使用してマルチセッションを実行する場合は、ファイルシステムとソースおよびデスティネーションのエクスポート済みファイルシステムをマスターノードとすべてのワーカーノードにマウントする必要があります。</block>
-  <block id="a6cb79833f755cb3f114d1a83274a4db" category="paragraph">ワーカーノードで XCP を実行する場合、ワーカーノードにはローカル構成はありません（ライセンス、ログファイル、またはカタログはありません）。XCP バイナリが必要なのは、ホームディレクトリ内のシステムのみです。たとえば 'copy' コマンドを実行するには ' マスター・ノードとすべてのワーカー・ノードがソースとデスティネーションにアクセスする必要がありますxCP copy -- ノード linux1 、 linux2 hdfs://user/ceme/test\file:/mnt/ontap 、 linux1' および linux2`hosts には HDFS クライアントソフトウェアが設定されており、 /mnt/ontap に NFS エクスポートがマウントされている必要があります。前述のように、 XCP のコピーがホームディレクトリにあることになります。</block>
   <block id="915e32144be4f88d02cc0b7b1e33c7c8" category="paragraph">POSIX コネクタと HDFS コネクタ、マルチノードスケールアウト、セキュリティ機能を組み合わせて使用できます。たとえば、次の「 copy 」コマンドと「 ve rify 」コマンドは、 POSIX コネクタと HDFS コネクタをセキュリティおよびスケールアウト機能と組み合わせたものです。</block>
   <block id="2961c595e1b9c1f2bd47edd1c8970e5f" category="list-text">「 copy 」コマンドの例：</block>
   <block id="ddb7e8c7aef66a74fdfde909cf41e522" category="list-text">「 ve rify 」コマンドの例：</block>
@@ -556,19 +541,13 @@
   <block id="2113611c6320a48f92fea30c44c76f5a" category="doc">XCP NFS アドオン機能</block>
   <block id="5c8249d1b7838ae94a73676b3af9091d" category="section-title">NFSv4 のサポート</block>
   <block id="4e8be65645e1c09ea65c5bf2fa334289" category="inline-link-macro">POSIX コネクタを設定します</block>
-  <block id="84b90206cadd8936a452da3c8910a8a5" category="paragraph">データセンター内のソースボリューム、デスティネーションボリューム、カタログボリュームでのみ NFSv4 を有効にする場合は、エクスポートパスの代わりに POSIX パスを使用してデータを移行する必要があります。POSIX パスを使用するには、まず XCP を実行しているホストシステムでソースボリューム、デスティネーションボリューム、カタログボリュームをマウントし、 POSIX ファイルパスを使用して XCP のソースボリュームとデスティネーションボリュームを指定する必要があります。を参照してください <block ref="4357b5b12949e0beb928764758230f36" category="inline-link-macro-rx"></block>。</block>
   <block id="f0a40ab44292f93f12a2d372e02c3cc2" category="list-text">NFSv4 のサポートは POSIX パスと「 copy 」操作に限定されており、「 sync 」操作はサポートされていません。</block>
   <block id="aa32463f7efd97cda3d13e5569a64d92" category="list-text">XCP NFSv3 TCP ソケットクライアントエンジンと比較すると、 POSIX コネクタの速度が遅くなる可能性があります。</block>
   <block id="efed9a1e974f019693529d0db8556c39" category="section-title">POSIX コネクタ</block>
   <block id="c3cc85c605802927b0ba556ad1712a23" category="paragraph">XCP 1.8 は、 POSIX コネクタを使用したデータ移行のソースパス、デスティネーションパス、カタログパスの提供をサポートしています。POSIX コネクタ（ file ： // ）を使用すると、 XCP は NFSv4 、 XFS 、 Veritas など、 Linux でマウントされた任意のファイルシステムにアクセスすることができます。root 以外のユーザについては、システム管理者はファイルシステムをマウントして root 以外のユーザにファイルシステムへのアクセス権を与えることができます。そのためには、 POSIX コネクタを使用して file://prefix を指定します。</block>
   <block id="c980562a67ab1f47ad354aa5073d24de" category="paragraph">ファイルをマウントするための十分な権限がない場合やデータセンターでのサポートが NFSv4 に制限されている場合は、 POSIX コネクタを使用すると便利です。このような場合、すべての root ユーザはソースとデスティネーションをマウントし、 POSIX コネクタを使用してパスにアクセスできます。POSIX コネクタを使用している場合は 'XCP COPY オペレーションのみを実行できます</block>
   <block id="3a51cb36881e8e178c9bf99d64946283" category="section-title">XCP セキュリティ</block>
-  <block id="835825a19a6c2c9cad22259496b44c82" category="paragraph">XCP セキュリティ機能を使用すると、 Linux ホストマシンで root 以外のユーザとして移行を実行できます。以前の XCP バージョンでは、 Linux マシンの root ユーザとして、ソース、デスティネーション、カタログボリュームのすべての権限を使用して移行を実行し、マウントが XCP 処理によって完了していました。</block>
-  <block id="28d729125c8deb316c7eff4c0246e6dc" category="paragraph">データ移行を実行する前に、セキュリティをオフにして、管理者ができるだけ早くすべてをコピーできるようにするのが一般的です。XCP が数年使用されている本番環境での継続的な移行では、管理者（ root ）として実行するのは安全ではありません。そのため、 root ユーザとして XCP を実行する必要がある場合を削除すると、セキュアな環境で XCP を使用できるようになります。通常の root 以外のユーザが XCP 処理を実行する場合、ユーザと同じアクセス権と制限が与えられます。</block>
-  <block id="ebc81900b209d03ba4a97fc7f7b5bdb0" category="paragraph">このセキュアな環境では、 root ユーザがソース、デスティネーション、カタログのボリュームをホストマシンにマウントし、 root 以外のユーザがデータを書き込むために必要なデスティネーションボリュームとカタログボリュームに必要な権限を付与する必要があります。これにより、 root 以外のユーザは XCP POSIX コネクタ機能を使用して移行を実行できます。</block>
   <block id="4a93e3fe55afb4b06c7c266c66129ddc" category="section-title">XCP スケールアウト</block>
-  <block id="d115685cdf5eabd037c05726f474c324" category="paragraph">これまでは、 XCP を使用したデータ移行は、 RAM と CPU が大きい単一のホストに限定されていました。移行を高速化するために、単一ホスト上のメモリとコアが増加しましたが、ペタバイト単位のデータのコピーにはかなりの時間がかかる可能性があります。XCP スケールアウトアーキテクチャにより、データ移行に複数のホストを使用できるようになりました。この機能を使用すると、複数の Linux ホストを使用してワークロードを分散させ、マイグレーション時間を短縮できます。</block>
-  <block id="a405fd9f6be0e341d1489d7ac1b63432" category="paragraph">単一システムのパフォーマンスでは不十分な環境では、マルチノードのスケールアウトを利用できます。1 つのノードのパフォーマンス制限を克服するには、単一の「 copy 」（または「 CAN-MD5 」）コマンドを使用して、複数の Linux システムまたは Hadoop クラスタノード上でワーカーを実行します。現在、 XCP Scale-out は、「 copy 」コマンド操作でのみサポートされています。</block>
   <block id="f5722ad26fc4954a8cad9346809792b6" category="section-title">Hadoop Distributed File System コネクタ</block>
   <block id="30f1813985f65c01bf2b9b92879bc38d" category="paragraph">Hadoop Distributed File System （ HDFS ； Hadoop 分散ファイルシステム）ファイルシステムからネットアップファイルシステムへのデータの移行とその逆の移行がサポートされている XCP 。セキュリティが有効な Hadoop 環境では、 Hadoop クラスタの root 以外のユーザが NetApp NFSv4 エクスポートファイルシステムへの移行を実行できます。HDFS Connector （ HDFS ： // ）では、 XCP は、ベンダーが異なるすべての HDFS ファイルシステムにアクセスするための機能を提供します。root 以外のユーザは、 XCP を使用して、 HDFS または POSIX コネクタを使用した移行を実行できます。</block>
   <block id="296424663e8e3bf16ffbb2dffed95868" category="paragraph">HDFS クラスタは、複数のハイエンドの Linux マシンを使用する XCP スケールアウト構成に含めることができます。これにより、追加の XCP ワーカーノードに必要な量を最小限に抑えることができますデータ移行では、 HDFS クラスタノードを再利用するか、別々のホストに移動するかを選択できます。</block>
@@ -625,8 +604,6 @@
   <block id="2e0178077435e20a76b29bf95752b395" category="paragraph">XCP は、 NFSv3 からアクセス可能なカタログディレクトリまたは必要な権限を持つすべての POSIX パスに処理レポートとメタデータを保存します。</block>
   <block id="37c61f0759557b7c6869b7975812dcb6" category="list-text">カタログのプロビジョニングは、インストール前の 1 回限りの作業です。</block>
   <block id="7611d45911be01775791692bcb58d3b1" category="list-text">1 、 000 万個のオブジェクト（ディレクトリ、ファイル、ハードリンク）ごとに約 1GB のスペースがインデックス化されます。再開または同期可能な各コピーと、オフラインで検索可能な各スキャンにはインデックスが必要です。</block>
-  <block id="c74dd8bf102d5776f8cbe148a015069d" category="list-text">パフォーマンスをサポートするには、エクスポートディレクトリが格納されたアグリゲートに少なくとも 10 本のディスクまたはソリッドステートドライブが必要です。</block>
-  <block id="1037c924c09e3d460d5ac007a7bd0ea9" category="admonition">XCP カタログは別途保存する必要があります。これらのディレクトリは、ソースまたはデスティネーションの NFS エクスポートディレクトリには配置しないでください。XCP は、初期セットアップで指定されたカタログの場所にあるレポートであるメタデータを維持します。XCP を使用して処理を実行する前に、レポートの保存先を指定して更新する必要があります。</block>
   <block id="9e287d5cf8402252b617f813ca5bbcd7" category="list-text">ソースサーバとターゲットサーバで、 NFSv3 または NFS v4.0 プロトコルサービスを有効にしている必要があります</block>
   <block id="1075b1a5a7aba7d9f25b2444c5fa99ad" category="list-text">NFSv4 ACL を移行する場合は、デスティネーションサーバで NFSv4 プロトコルサービスと NFSv4 ACL を有効にする必要があります。</block>
   <block id="fcb3966f14183a157ac92b7ebeb80e86" category="list-text">ソースボリュームとターゲットボリュームは、 XCP Linux クライアントホストへの「 root 」アクセスでエクスポートされる必要があります。</block>
@@ -639,18 +616,15 @@
   <block id="3ec0238607113152ae7f227b92c2a43f" category="list-text">マウントされたデスティネーションボリュームへの読み取り / 書き込み権限</block>
   <block id="9c3f740abe99e1e0002c446d4b4e72de" category="list-text">カタログボリュームへの読み取り / 書き込み権限</block>
   <block id="9db3ca538820d0cfb7b44ef80f16ca98" category="doc">パフォーマンスの調整</block>
-  <block id="78ba29e6847e8859e872ed7c7b5c7720" category="paragraph">「 show 」コマンドと「 can 」コマンドを使用して移行を計画したら、データを移行できます。</block>
   <block id="50b19e2d999f8ca8fad7bcf765a85ae1" category="admonition">root 以外のユーザとしてデータ移行を実行する場合は、 root ユーザが次の手順を実行できます。</block>
   <block id="85e1f25d7a3b03fd9a7377f546a7e0ff" category="paragraph">最適なパフォーマンスと信頼性を実現するために、 XCP Linux クライアントホストの /etc/sysctl.conf に次の Linux カーネル TCP パフォーマンスパラメータを設定することを推奨します。「 ysctl-p` 」または「 reboot 」コマンドを実行して変更をコミットします。</block>
   <block id="a3f0fc42147cbdea8a42a9603bfae066" category="admonition">root 以外のユーザの場合は、 root ユーザが設定を実行する必要があります。</block>
   <block id="bbea4d9be7e41369b354c0a01cc56390" category="doc">XCP NFS を設定します</block>
   <block id="8ecf08ca07c6d4a3f11a8ecd76bdfb54" category="summary">HDFS コネクタを使用すると、 XCP は、異なるベンダーが提供するすべての HDFS ファイルシステムにアクセスできます。</block>
   <block id="1b3dde5d541467088a5fb667cc14f2ea" category="doc">HDFS コネクタを設定します</block>
-  <block id="ad3bfabafea443617265b05ff707d5bb" category="paragraph">Hadoop Distributed File System （ HDFS ）コネクタ（ HDFS ： // ）は、 XCP が、異なるベンダーが提供するすべての HDFS ファイルシステムにアクセスできるようにします。</block>
   <block id="e31d321ee0fdaaaf8ac9ef21026a1fd0" category="paragraph">HDFS から NFS への「 copy 」コマンド操作は、 HDFS コネクタでサポートされています。</block>
   <block id="2fcca0f204e97a80f73f130b2a96c173" category="paragraph">HDFS コネクタのパス構文は、「 hdfs://[user@host ： port]/full-path 」です。</block>
   <block id="895513c3073c7d8c0c3b54666a487132" category="admonition">ユーザ、ホスト、およびポートを指定しない場合、 XCP はホストを「デフォルト」に設定し、ポートを「 0 」に設定した「 hdfsConnect 」を呼び出します。</block>
-  <block id="2d660d25f10b0e5d578c229fe0143117" category="paragraph">hdfs`copy` コマンドを実行するには、 Linux システム上に HDFS クライアントを設定し、 Hadoop ベンダーに基づいて、インターネット上で利用可能なセットアップ構成を実行する必要があります。たとえば、「 https://docs.datafabric.hpe.com/60/AdvancedInstallation/SettingUptheClient- RedHat .html 」を使用して、 MapR クラスタのクライアントを設定できます。</block>
   <block id="c00c4274d8d993e8f4e353057a47bf05" category="paragraph">HFDS クライアントのセットアップが完了したら、クライアントの設定を完了する必要があります。XCP コマンドで HDFS パスを使用するには、次の環境変数が必要です。</block>
   <block id="daf45f14fc0d11979b90c046f09e7692" category="list-text">Nhdfs_ LIBhdfs_ path です</block>
   <block id="ca3c0ce4cd4cbb196cc438fa98d8e563" category="list-text">Nhdfs_libjvm_path</block>
@@ -659,11 +633,9 @@
   <block id="3c5be6328b5f6a0a5980341230b8ac05" category="cell">7222</block>
   <block id="19989536bdfa1e7f11ff53bc7877ff66" category="cell">ユーザはセキュリティ記述子に関連する問題に直面しています。これは、移行ユーザが所有する権限で XCP が取得できるのは所有者、グループ、および DACL だけですが、 SACL を取得できないためです。移行ユーザを Active Directory の「 Manage Audit and Security Log 」ポリシーに追加します。参照 <block ref="47c554f6b2ce744e50a1b2318fbe4ec3" category="inline-link-macro-rx"></block></block>
   <block id="bf86284529584845670edb0c3a95e5ec" category="summary">POSIX コネクタを使用すると、 XCP は NFSv4 、 XFS 、 Veritas など、 Linux でマウントされた任意のファイルシステムにアクセスできます。</block>
-  <block id="116f84479037bb112990133fd917c3e0" category="paragraph">XCP では、 POSIX コネクタを使用したデータ移行のソースパスとデスティネーションパスの提供がサポートされるようになりました。</block>
   <block id="95ddd83f06b46164d9007a3fec84bd09" category="paragraph">POSIX コネクタでは、次の機能がサポートされています。</block>
   <block id="61d64caacf6145ab9260325232ace1f3" category="list-text">nanosecond`atim`, `imtime`, および ctime をサポートする POSIX ファイルシステムでは '`can `command は完全な値 ( 秒とナノ秒 ) を取得し 'copy` コマンドはそれらを設定します</block>
   <block id="f17259fd5fd04df8d00de9bae40078cc" category="inline-link-macro">セキュリティを設定します</block>
-  <block id="3105c81fdbe1f2acbb2afca77ea7ecd4" category="list-text">POSIX コネクタは、 NFSv3 TCP ソケットを使用した XCP よりも安全です。を参照してください <block ref="884f9726fabc578536c00929cd2fe7e3" category="inline-link-macro-rx"></block></block>
   <block id="d67f0d6f3689c0b2c96700d038812574" category="paragraph">POSIX コネクタのパス構文は '\file://&lt; Linux 上のマウントパス &gt;' です</block>
   <block id="9cdc4f2bba7e1f74ab797e2bfab30c1a" category="paragraph">POSIX コネクタを設定するには、次のタスクを実行する必要があります。</block>
   <block id="974be5615abf4fe362f269edc57cc8b9" category="list-text">ソースボリュームとデスティネーションボリュームをマウント</block>
@@ -703,7 +675,33 @@
   <block id="edc9f0a5a5d57797bf68e37364743831" category="cell">Linux の場合</block>
   <block id="bd2cc77640d48204c25994ade9373d0d" category="cell">XCP 1.1.6 でサポートされていた以前の Linux ディストリビューションでは、 XCP はサポートされなくなりました。</block>
   <block id="84b5f1dcb24995657953339470fd8782" category="list-text">* ファイル分析用の root 以外のユーザ * ： XCP は、 root 以外のユーザまたは sudo ユーザが実行するインストールと設定をサポートしていません。</block>
-  <block id="d84ede1b9c741ee22718aeff6f7137fd" category="sidebar">POSIX コネクタの設定（ NFS のみ）</block>
-  <block id="a7afb6d28a9a50b4bc85ff6875984901" category="sidebar">HDFS コネクタの設定（ NFS のみ）</block>
-  <block id="6832a8a2f6a3a55b7affa685af296264" category="sidebar">マルチノードスケールアウトの構成（ NFS のみ）</block>
+  <block id="7a737a0106671114c37e3d7033cdffd5" category="paragraph">XCP NFS の場合、 Hadoop Distributed File System （ HDFS ） Connector （ HDFS ： // ）は、 XCP に、異なるベンダーが提供するすべての HDFS ファイルシステムへのアクセスを許可します。</block>
+  <block id="e47d29cbfac9b28d909784fb18f8d023" category="paragraph">hdfs`copy` コマンドを実行するには、 Linux システム上に HDFS クライアントを設定する必要があります。また、 Hadoop ベンダーに基づいて、インターネット上で利用可能なセットアップ構成に従います。たとえば、「 https://docs.datafabric.hpe.com/60/AdvancedInstallation/SettingUptheClient- RedHat .html 」を使用して、 MapR クラスタのクライアントを設定できます。</block>
+  <block id="5315f815cd8e347436520e95ce6fe6a5" category="cell">XCP スキャンエラー：ネットワーク名が見つかりません</block>
+  <block id="3f83f3f6c25db286fb620064231f9217" category="cell">XCP copy Error: error failed to Obtain fallback security principal Error message logged in xcp.log file: 'pywintypes.error:(1722 、 'LookupAccountName', 'The RPC server is unavailable.')`</block>
+  <block id="4be936fd7e612c47d18eaec68c3932c3" category="cell">'XCP copy: error' はフォールバックセキュリティプリンシパルの取得に失敗しました (hosts ファイルへの追加後の宛先ボックスのエントリ ) xcp.log ファイルにログインしているエラーメッセージ : 'pywintypes.error:(87' 、 'LookupAccountName' 、 ' パラメータが正しくありません。 ')`</block>
+  <block id="159d5dad3025108b6e9c7a70ebc1dcb0" category="paragraph">XCP NFS では、 POSIX コネクタを使用したデータ移行のソースパスとデスティネーションパスの提供がサポートされるようになりました。</block>
+  <block id="efed384e39c6ae674248adc931cd6fe9" category="list-text">POSIX コネクタは、 NFSv3 TCP ソケットを使用する XCP よりも安全です。を参照してください <block ref="884f9726fabc578536c00929cd2fe7e3" category="inline-link-macro-rx"></block></block>
+  <block id="5cad50b0f7561b60eeb94de38f286346" category="list-text">パフォーマンスをサポートするには、エクスポートディレクトリを含むアグリゲートに少なくとも 10 本のディスクまたは SSD が必要です。</block>
+  <block id="2c40f64451d08661759b332825242588" category="admonition">XCP カタログは別途保存する必要があります。ソースまたはデスティネーションの NFS エクスポートディレクトリに配置されていない。XCP はメタデータを維持します。メタデータは、初期セットアップで指定したカタログ上の場所にあるレポートです。XCP を使用して処理を実行する前に、レポートの保存先を指定して更新する必要があります。</block>
+  <block id="b0b900f48dcf7f402754cc2d5748fc0d" category="paragraph">XCP NFS の場合は、「 How 」コマンドと「 Can 」コマンドを使用して移行を計画した後で、データを移行できます。</block>
+  <block id="36836fd13aeec5b924ea6cf294316fa1" category="paragraph">XCP NFS システムの環境変数のオプション設定。</block>
+  <block id="ab655b44682f313f14f6de4d1867d0b6" category="paragraph">XCP NFS の場合、 1 つのノードのパフォーマンス制限を克服するには、単一の「 copy 」（または「 CAN-MD5 」）コマンドを使用して、複数の Linux システムまたはクラスタノード上でワーカーを実行します。</block>
+  <block id="bb1a203003802f0405eebd6a7f7623a8" category="paragraph">同様の CPU と RAM 構成の 4 台の Linux ホストを使用したセットアップを考えてみてください。移行には 4 つのホストすべてを使用できます。 XCP はすべてのホストノードでコピー処理を調整できるためです。スケールアウト環境でこれらのノードを利用するには、 4 つのノードのいずれかをマスターノード、その他のノードをワーカーノードとして識別する必要があります。たとえば、 Linux の 4 ノードセットアップの場合、ノードに「 master 」、「 worker1 」、「 worker2 」、および「 worker3 」という名前を付け、マスターノードで構成をセットアップします。</block>
+  <block id="e7465a44f40c1871dc86247362cb9c17" category="list-text">マスターノードからワーカーノードにパスワードなしの Secure Shell （ SSH ）を設定します。</block>
+  <block id="70e4f46a27cb6199ac7f605ef48989f9" category="paragraph">XCP マスターノードは、 SSH を使用して他のノードでワーカーを実行します。マスターノードで XCP を実行しているユーザに対してパスワードを使用しない SSH アクセスを有効にするようにワーカーノードを設定する必要があります。たとえば、マスターノードで XCP ワーカーノードとしてノード「 worker1 」を使用するためのユーザデモを有効にするには、マスターノードからホームディレクトリ内のすべてのワーカーノードに XCP バイナリをコピーする必要があります。</block>
+  <block id="e88c2696512e18442eb3ff58e07b493a" category="paragraph">クラスタノードで XCP を実行すると、ワーカープロセスはマスターノードのメイン XCP プロセスから環境変数を継承します。特定のノード環境をカスタマイズするには ' マスターノード上の構成ディレクトリ内の nodes.ini` ファイルに変数を設定する必要があります ( ワーカーノードには構成ディレクトリまたはカタログがありません )たとえば、 Wave （ CentOS ）などのマスターノードとは別の場所に「 libjvm.so 」を置いている Ubuntu サーバ MARS の場合、 MARS 上のワーカーが HDFS コネクタを使用できるようにするには、設定ディレクトリが必要です。このセットアップの例を次に示します。</block>
+  <block id="0aae93e59b413158a9f79c59df5b1564" category="paragraph">ワーカーノードで XCP を実行する場合、ワーカーノードにはローカル構成はありません（ライセンス、ログファイル、またはカタログはありません）。XCP バイナリが必要なのは、ホームディレクトリ内のシステムのみです。たとえば 'copy' コマンドを実行するには ' マスター・ノードとすべてのワーカー・ノードがソースとデスティネーションにアクセスする必要がありますxCP copy -- ノード linux1 、 linux2 hdfs://user/ceme/test\file:/mnt/ontap `, linux1' および linux2`hosts には HDFS クライアントソフトウェアが設定されており、 /mnt/ontap に NFS エクスポートがマウントされている必要があります。前述のように、 XCP バイナリのコピーがホームディレクトリに格納されている必要があります。</block>
+  <block id="48516b0c7199d8b965898ca813c5db0d" category="paragraph">データセンター内のソースボリューム、デスティネーションボリューム、カタログボリュームでのみ NFSv4 を有効にする場合は、エクスポートパスの代わりに POSIX パスを使用してデータを移行できます。POSIX パスを使用するには、まず XCP を実行しているホストシステムでソースボリューム、デスティネーションボリューム、カタログボリュームをマウントし、 POSIX ファイルパスを使用して XCP のソースボリュームとデスティネーションボリュームを指定する必要があります。を参照してください <block ref="4357b5b12949e0beb928764758230f36" category="inline-link-macro-rx"></block>。</block>
+  <block id="f22fc7dc06956fc47928d7d86c04b513" category="paragraph">XCP セキュリティ機能を使用すると、 Linux ホストマシンで root 以外のユーザとして移行を実行できます。以前の XCP バージョンでは、 Linux マシンの root ユーザとして、ソース、デスティネーション、カタログボリュームのすべての権限を使用して移行を実行し、マウントは XCP 処理によって完了します。</block>
+  <block id="d6c5dec882eba287336a4a472a703c98" category="paragraph">データ移行を実行する前に、セキュリティをオフにして、管理者ができるだけ早くすべてをコピーできるようにするのが一般的です。XCP が数年使用されている本番環境での継続的な移行では、管理者（ root ）として実行するのは安全ではありません。そのため、 root ユーザとして XCP を実行する必要がある場合を削除すると、セキュアな環境で XCP を使用できるようになります。通常の root 以外のユーザが XCP 処理を実行する場合、 root 以外のユーザにはユーザと同じアクセス権と制限が与えられます。</block>
+  <block id="c0a0bb4715a7e7c1d0af31f8b2272777" category="paragraph">このセキュアな環境では、 root ユーザがソース、デスティネーション、カタログのボリュームをホストマシンにマウントし、 root 以外のユーザがデータを書き込むために必要なデスティネーションボリュームとカタログボリュームに必要な権限を付与できます。これにより、 root 以外のユーザは XCP POSIX コネクタ機能を使用して移行を実行できます。</block>
+  <block id="e25a79f68fb914070c48850eab6d3a15" category="paragraph">これまでは、 XCP を使用したデータ移行は、 RAM と CPU が大きい単一のホストに限定されていました。移行を高速化するために、単一ホスト上のメモリとコアが増加しましたが、ペタバイト単位のデータのコピーにはかなりの時間がかかる可能性があります。XCP スケールアウトアーキテクチャでは、複数のホストを使用してデータを移行できます。この機能を使用すると、複数の Linux ホストを使用してワークロードを分散させ、マイグレーション時間を短縮できます。</block>
+  <block id="2051d1acfe38bc6422b7be5a01744ff5" category="paragraph">単一システムのパフォーマンスでは不十分な環境では、マルチノードのスケールアウトを利用できます。1 つのノードのパフォーマンス制限を克服するには、単一の「 copy 」（または「 CAN-MD5 」）コマンドを使用して、複数の Linux システムまたは Hadoop クラスタノード上でワーカーを実行します。現在、 XCP スケールアウトは「 copy 」コマンド操作でのみサポートされています。</block>
+  <block id="62283e8b61ae280bfbfcb0e8237e37be" category="paragraph">XCP は、「 xcpLogConfig.json 」 JSON 構成ファイルを使用して、複数のオプション機能を構成することをサポートしています。特定の機能のみを有効にするには 'xcpLogConfig.json 構成ファイルを手動で作成しますxcpLogConfig.json 構成ファイルを使用して、以下を有効にすることができます。</block>
+  <block id="00a20684d8065f1c9d26a305e2eadcd0" category="cell">サブオプション名</block>
+  <block id="508302f93085c89bb969aac3a0863690" category="cell">JSON データ型</block>
+  <block id="2c03b0684383dd1a51ac7863955591d6" category="paragraph">XCP サポートに共通するオプション。このオプションの値を true に設定すると、サポートされるメッセージ（ロギング、イベント、 syslog など）で機密情報（ IP とユーザ名）が非表示になります。たとえば、「 anitize 」オプションを「 false 」に設定した場合： *`20-07-17 03:10:23779-Info-12806 XCP Paths ： ['10.234.104.251/cat_vol ： /cat_vol']`*20-07-17 03:10:23778-Info-12XCP 806 User Name:root'207-15308'x1-1217'xCP Info*'20'20'x8*'20'20'30' と同様に 'xCP Info:'20'x1-24*'20'x8*'20'20'x1-'308*'x1-24*'30 XX.XX.XX.XX:/ cat_vol']`*`20-07-1703:13:51595-Info-12859 XCP ユーザー名 :*`</block>
+  <block id="0db76c5e35f0f2f03c2d9b09a9c5b6ab" category="list-text">有効にするすべての機能について 'IsEnabled' の値を TRUE' に変更します</block>
+  <block id="fd162698220e1fdc813cf6219f85e6c6" category="list-text">ファイルに xcpLogConfig.json という名前を付け、 * Error ！に記載されているファイルの場所に保存します。参照ソースが見つかりません。 *</block>
 </blocks>

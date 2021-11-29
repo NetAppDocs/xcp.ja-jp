@@ -46,15 +46,15 @@ sidebar:
     entries:
     - title: XCP NFS の INI ファイルを設定します
       url: "/xcp-configure-the-ini-file-for-xcp-nfs.html"
-    - title: パフォーマンス調整（ NFS のみ）
+    - title: パフォーマンスの調整
       url: "/xcp-performance-tuning.html"
-    - title: 環境変数（ NFS のみ）
+    - title: 環境変数
       url: "/xcp-environment-variable.html"
-    - title: POSIX コネクタの設定（ NFS のみ）
+    - title: POSIX コネクタを設定します
       url: "/xcp-configure-posix-connector-nfs.html"
-    - title: HDFS コネクタの設定（ NFS のみ）
+    - title: HDFS コネクタを設定します
       url: "/xcp-configure-hdfs-connector-nfs.html"
-    - title: マルチノードスケールアウトの構成（ NFS のみ）
+    - title: マルチノードスケールアウトを構成します
       url: "/xcp-configure-multinode-scaleout-nfs.html"
   - title: データ移行を計画
     url: "/xcp-plan-data-migration.html"

@@ -8,12 +8,12 @@ summary: POSIX コネクタを使用すると、 XCP は NFSv4 、 XFS 、 Verit
 
 
 [role="lead"]
-XCP では、 POSIX コネクタを使用したデータ移行のソースパスとデスティネーションパスの提供がサポートされるようになりました。
+XCP NFS では、 POSIX コネクタを使用したデータ移行のソースパスとデスティネーションパスの提供がサポートされるようになりました。
 
 POSIX コネクタでは、次の機能がサポートされています。
 
 * nanosecond`atim`, `imtime`, および ctime をサポートする POSIX ファイルシステムでは '`can `command は完全な値 ( 秒とナノ秒 ) を取得し 'copy` コマンドはそれらを設定します
-* POSIX コネクタは、 NFSv3 TCP ソケットを使用した XCP よりも安全です。を参照してください link:xcp-configure-security-nfs.html["セキュリティを設定します"]
+* POSIX コネクタは、 NFSv3 TCP ソケットを使用する XCP よりも安全です。を参照してください link:xcp-configure-security-nfs.html["セキュリティを設定します"]
 
 
 POSIX コネクタのパス構文は '\file://< Linux 上のマウントパス >' です
