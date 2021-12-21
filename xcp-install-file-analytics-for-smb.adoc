@@ -42,7 +42,7 @@ SMB 向けファイル分析の新規インストールを実行するには、�
 . メインメニューで「 Option 4 (Update XCP Windows agent IP) 」を選択し、 Windows マシンの IP アドレスを指定します。
 . Windows マシンに移動して、 XCP LISTEN を実行します。ここで XCP File Analytics for SMB が構成されています。サービスを継続的に実行するには、ウィンドウを開いた状態のままにします。
 . Google Chrome ブラウザで File Analytics を起動し、ページを更新してください :`\https://<ip address of Linux>/XCP
-. ダイアログ・ボックスが表示されたら '[OK] をクリックします新しいタブが開きます。ポップアップがブロックされている場合は、ブラウザで有効にしてください。URL のプライバシーポリシーを受け入れ、「 `S MB agent is ready to use 」というメッセージが表示されます。分析ページを更新してください
+. ダイアログボックスが表示されたら「 OK 」を選択します。新しいタブが開きます。ポップアップがブロックされている場合は、ブラウザで有効にしてください。URL のプライバシーポリシーを受け入れ、「 `S MB agent is ready to use 」というメッセージが表示されます。分析ページを更新してください
 . XCP File Analytics GUI がホストされている元のタブに戻り、ページを更新します。これにより、エージェントカードの下に SMB エージェントが表示されます。
 
 
@@ -59,6 +59,6 @@ SMB 向けの既存の File Analytics をアップグレードするには、次
 . メインメニューで「 Option 4 (Update XCP Windows agent IP) 」を選択し、 Windows マシンの IP アドレスを指定します。
 . Windows マシンに移動して、 XCP LISTEN を実行します。ここで XCP File Analytics for SMB が構成されています。サービスを継続的に実行するには、ウィンドウを開いた状態のままにします。
 . Google Chrome ブラウザで File Analytics を起動し、ページを更新してください :`\https://<ip address of Linux>/XCP
-. ダイアログ・ボックスが表示されたら '[OK] をクリックします新しいタブが開きます。ポップアップがブロックされている場合は、ブラウザで有効にしてください。URL のプライバシーポリシーを受け入れ、「 `S MB agent is ready to use 」というメッセージが表示されます。分析ページを更新してください
+. ダイアログボックスが表示されたら「 OK 」を選択します。新しいタブが開きます。ポップアップがブロックされている場合は、ブラウザで有効にしてください。URL のプライバシーポリシーを受け入れ、「 `S MB agent is ready to use 」というメッセージが表示されます。分析ページを更新してください
 . XCP File Analytics GUI がホストされている元のタブに戻り、ページを更新します。これにより、エージェントカードの下に SMB エージェントが表示されます。
 
