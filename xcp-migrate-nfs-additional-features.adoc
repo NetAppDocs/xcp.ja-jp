@@ -1,0 +1,50 @@
+---
+sidebar: sidebar 
+permalink: xcp-migrate-nfs-additional-features.html 
+keywords: xcp, nfs, chomod, chown, posix, ownership, change, file, path, directory, command, scan 
+summary: NFS 共有または POSIX パスのファイルとディレクトリの所有権と許可を簡単に変更できる NFS 機能が XCP に追加されています。 
+---
+= その他の NFS 機能
+
+
+[role="lead"]
+NFS 共有または POSIX パスのファイルとディレクトリの所有権と許可を簡単に変更できる NFS 機能が XCP に追加されています。指定された NFS 共有または POSIX パスのすべてのファイルとディレクトリを再帰的に変更するには、 XCP `chown`s コマンドと chmod `chmod コマンドを使用します。これにより、数百万のファイルのパフォーマンスが向上します。
+
+ファイルの所有権を変更する前に、新しい所有者を設定する必要があります。そうしないと、コマンドが失敗します。XCP の chown` コマンドと chmod コマンドは、 linux の chown` コマンドと chmod コマンドと同様に動作します。
+
+
+
+== chmod
+
+chmod コマンドは ' 選択されたディレクトリ構造内のすべてのファイルのファイルアクセス権をスキャンし ' 変更しますchmod コマンドは ' モードまたはリファレンスを必要とし 'NFS 共有または POSIX パスを変数として要求しますXCP chmod は ' 指定されたパスのパーミッションを再帰的に変更します「 chmod 」コマンドを使用すると、スキャンされたファイルの総数と、出力で変更されたアクセス権を表示できます。
+
+* 例： *
+
+....
+xcp chmod -mode 777 NFS [server:/export path | file://<NFS mounted path>]
+xcp chmod -mode 707 nfs_server01.netapp.com:/export1
+xcp chmod -reference nfs_server01.netapp.com:/export/dir1/file.txt  nfs_server02.netapp.com: export1
+xcp chmod -match “fnm(‘file.txt’)” -mode 111 file:///mnt/nfs_mount_point/
+xcp chmod -exclude “fnm(‘file.txt’)” -mode 111 file:///demo/user1/
+....
+詳細については 'XCP help chmod コマンドを実行してください
+
+
+
+== chown
+
+'chown' コマンドは ' 選択したディレクトリ構造内のすべてのファイルの所有権をスキャンし ' 変更します`chown` コマンドは変数として NFS 共有か POSIX パスを要求する。XCP `chown' 指定されたパスの所有権を再帰的に変更します
+
+* 例 *
+
+....
+xcp chown -user user1 NFS [server:/export path | file://<NFS mounted path>
+xcp chown -user user1 nfs_server01.netapp.com:/export1
+xcp chown -user user1 -group group1 nfs_server01.netapp.com:/export1/dir1/
+xcp chown  -reference nfs_server01.netapp.com:/export/dir1/file.txt  nfs_server02.netapp.com:/export1
+xcp chown -match “fnm(‘file.txt’)” -user user1 file:///mnt/nfs_mount_point/
+xcp chown -exclude “fnm(‘file.txt’)” -user user1 -group group1
+xcp chown -user-from user1 -user user2 file:///mnt/nfs_mount_point/
+xcp chown -group-from group1 -group group2 nfs_server01.netapp.com:/export1/
+....
+詳細については 'XCP help chown' コマンドを実行してください

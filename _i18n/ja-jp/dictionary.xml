@@ -221,7 +221,6 @@
   <block id="f7d1ef377db88189a0084ee7d6f1b738" category="paragraph">「 show 」コマンドを実行すると、サーバ上で使用可能なすべての SMB 共有が、権限と使用可能なスペースとともに表示されます。例</block>
   <block id="cf4eff19c5c0fb1733f64f4fcc421b87" category="list-text">'XCP show\\&lt;SMB ファイルサーバ IP/FQDN&gt;`</block>
   <block id="8b35e2113ce9ad7e63589964e0f33514" category="list-text">XCP show smb_server01.netapp.com`</block>
-  <block id="596e26b9d2a2a09fabd119a1c7970617" category="paragraph">「ス can 」コマンドは SMB 共有全体を再帰的にスキャンし、スキャンの終了時にすべてのファイルを一覧表示します。例</block>
   <block id="70cc69758e4efa422fa0bec10f65dffb" category="list-text">'XCP scan\\SMB server\share1'</block>
   <block id="a8386d7454f57e945b9af398be1f740a" category="list-text">XCP scan smb_server01.netapp.com:/share1`</block>
   <block id="95a35d9399a311a860a23c9c5ca666db" category="summary">File Analytics for NFS をインストールまたはアップグレードします</block>
@@ -558,8 +557,6 @@
   <block id="0794915b73fa5fed8fdbb7381cf8053b" category="cell">ファイル共有 / ボリュームは読み取りできない可能性があります。ファイル共有がアクセス可能かどうかを手動で確認するには 'XCP show コマンドを実行しますまた '`xcp.ini` ファイルが削除されているかどうかを確認します削除された場合は、 configure.sh スクリプト修復オプションを使用して「 xcp.ini` 」ファイルを再構築します。</block>
   <block id="3851e00cfd9ac3614604e7ee99194ebf" category="cell">ページをリフレッシュしてみてください。問題が解決しない場合は、プロンプトで XCP show コマンドを手動で実行し、ファイルサーバをスキャンできるかどうかを確認します。成功した場合は、ネットアップカスタマーサポートにチケットを発行してください。失敗した場合は、手動チェックを実行してファイルサーバがアクティブかどうかを確認します。xcp.ini` ファイルとライセンスファイルが正しい場所にあるかどうかを確認します「 xcp.ini` 」ファイルをリセットするには、設定スクリプトを実行し、「 * Repair * 」オプションを選択します。次に、 xcp.ini ファイルを再構築するためのメニュー・オプションを選択します。 * ライセンスの更新が必要かどうかを調べるには、「 xcpflogs 」ログを確認します。</block>
   <block id="ec0bc824851831e651eff319ac6be069" category="cell">これは、ボリューム内に qtree レベルのエクスポートがある場合に発生することがあります。たとえば '/vol1/qtree1' としてエクスポートされるボリューム・サイズが 10 GB で ' ボリューム '/vol1/qtree1' に qtree がある場合 'XCP show コマンドは 'vol1' サイズを 10 GB' として表示し 'qtree1' サイズを 10 GB' として表示しますXCP File Analytics は、両方のエクスポートのスペースを合計し、合計スペースを提供します。この場合、「 20 GB 」となります。「 qtree1 」は論理空間であることは理解できません。</block>
-  <block id="9e7f7d8fcefcabb2bc23ca143a628f7d" category="doc">XCP v1.8 リリースノート</block>
-  <block id="07adad35d292c43e7b7a18db9356fa50" category="paragraph">。 <block ref="4f1f55060be6b492e2b23a003806f4ac" category="inline-link-macro-rx"></block> 新機能、アップグレードに関する注意事項、解決済みの問題、既知の制限事項、および既知の問題について説明する。</block>
   <block id="fc7af6e6e28187c4a6802a620fab64b4" category="paragraph">copy コマンドは ' ソース・ディレクトリ構造全体をスキャンして ' デスティネーションの NFSv3 エクスポートにコピーします'copy' コマンドでは ' ソース・パスとデスティネーション・パスを変数として指定する必要がありますコピー処理の終了時に、スキャンおよびコピーされたファイル、スループット / 速度、および経過時間の詳細が表示されます</block>
   <block id="b2afea67c58251abc9cea9e00c6f6195" category="paragraph">* POSIX パスの例 :*</block>
   <block id="29d2ad021e95ccea21b050eea89967f1" category="paragraph">* HDFS パスの例： *</block>
@@ -706,4 +703,43 @@
   <block id="01f49d7de6d116ea373b4aef4a75b8bb" category="list-text">ダイアログボックスが表示されたら「 OK 」を選択します。新しいタブが開きます。ポップアップがブロックされている場合は、ブラウザで有効にしてください。URL のプライバシーポリシーを受け入れ、「 `S MB agent is ready to use 」というメッセージが表示されます。分析ページを更新してください</block>
   <block id="d1b673b157daeb18c4d73618946f7ef4" category="list-text">プライバシーポリシーの下にある [ 詳細設定 ] を選択します。</block>
   <block id="d6d3a57c5e8a09cb5cc8bf5e2c0810ce" category="list-text">[Linux マシンの IP アドレス &gt;] リンクを選択します。</block>
+  <block id="c64a522ee6418ae33077670975c2798b" category="admonition">コピー操作中に 'copy' コマンドとともに --preserve-atim' フラグを使用すると ' ソースでのアクセス時間を保持できます</block>
+  <block id="9d83a2ce37bac2516a6b570ccc972b69" category="admonition">同期操作中に '-spreserve-atim' フラグを 'sync' コマンドとともに使用すると ' ソースでのアクセス時間を保持できます</block>
+  <block id="7e4d5419d4fcf4ceade27ffac84d4e92" category="list-text">検証操作中に 'verify' コマンドで --preserve-atim' フラグを使用すると ' ソースでのアクセス時間を保持できます</block>
+  <block id="0e97e9bc1c0f6d8ea9bc140cab258f9a" category="list-text">検証動作中に 'verify コマンドとともに -noatim' フラグを使用して ' アクセス時間の違いを除外できます</block>
+  <block id="bfd97ee6bc45bf0c46cc517744e9e74f" category="doc">XCP v1.8.1 リリースノート</block>
+  <block id="2361f2046255643526d0bc654680e3f7" category="paragraph">。 <block ref="658eea0f41de67e93f9c7baad3cdc904" category="inline-link-macro-rx"></block> 新機能、アップグレードに関する注意事項、解決済みの問題、既知の制限事項、および既知の問題について説明する。</block>
+  <block id="d04f98cbab23bb984f10968cafdb77bf" category="section-title">Windows クライアントを設定します</block>
+  <block id="8723065565846862b1fa4bd925384734" category="list-text">デスティネーションストレージボックスとソースストレージボックスをホストファイルに追加します。</block>
+  <block id="cf2408bbf2ce4b4de95513dd3053d13a" category="list-text">「 (C:\Windows\System32\drivers\etc\hosts 」の場所に移動します</block>
+  <block id="73510c08d5556b316226c808aaa9eca1" category="list-text">ファイルに次の形式でホストエントリを挿入します。</block>
+  <block id="476073ef56fe1fff4342c5ca2a5df7b2" category="paragraph">「 &lt; ソースデータ Vserver データインターフェイス IP&gt; &lt; ソース CIFS サーバ名 &gt;&lt; デスティネーションデータ Vserver データインターフェイス IP&gt; &lt;Destination CIFS サーバ名 &gt;] 」のように設定します</block>
+  <block id="938f1047c15f00fdd0cbfc8e4cfa15e1" category="paragraph">* 例 *</block>
+  <block id="3b511dbccc3be54ef9ec0eb7891e0660" category="inline-image-macro">サンプル hosts ファイル</block>
+  <block id="43ab6e97e5a245b30aa42dc31aab3fde" category="paragraph"><block ref="43ab6e97e5a245b30aa42dc31aab3fde" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f6d7a1a39c7e76b0a2ad7044af130caf" category="section-title">サポートされている機能</block>
+  <block id="020ec197b81e56345052745b2d507168" category="section-title">パスの構文</block>
+  <block id="e46c2c3b78dd65a39b82aaeb11382265" category="section-title">POSIX コネクタを設定します</block>
+  <block id="0d800eaa04aaecec3ceb6afe9d979e75" category="section-title">所有権（ UID および GID ）</block>
+  <block id="13da1aac842d8173bd42f8e52ae0233a" category="section-title">オープンファイル記述子の最大数を増やします</block>
+  <block id="8fe282d6211426a6fd01df906b39997d" category="paragraph">最適なパフォーマンスと信頼性を実現するために、すべてのノードで XCP ユーザのオープンファイル記述子の最大数を増やすことができます。</block>
+  <block id="167c2c4b3e4b8252ac2e7a794d520b60" category="list-text">ファイルを開くには 'vi /etc/security/limits.conf' コマンドを使用します</block>
+  <block id="e86a0c50969f69caaf0846c01183351b" category="list-text">ファイルに次の行を追加します :`&lt;username&gt;-nofile 999999`</block>
+  <block id="0db61995ae463b2910371fdee152cb88" category="inline-link-macro">Red Hat ソリューション</block>
+  <block id="ccdcaa8e5fef5673db21a65af6bc516b" category="paragraph">を参照してください <block ref="86f0b7d75368fee2dcdb28d15e03688c" category="inline-link-macro-rx"></block> を参照してください。</block>
+  <block id="258c43132f7d0ee8dca2932b84e55383" category="summary">NFS 共有または POSIX パスのファイルとディレクトリの所有権と許可を簡単に変更できる NFS 機能が XCP に追加されています。</block>
+  <block id="ce0d872fae9d962e1e9e1ff7397f5840" category="doc">その他の NFS 機能</block>
+  <block id="237f1be769ddaca2a6c7f5fb510296bc" category="paragraph">NFS 共有または POSIX パスのファイルとディレクトリの所有権と許可を簡単に変更できる NFS 機能が XCP に追加されています。指定された NFS 共有または POSIX パスのすべてのファイルとディレクトリを再帰的に変更するには、 XCP `chown`s コマンドと chmod `chmod コマンドを使用します。これにより、数百万のファイルのパフォーマンスが向上します。</block>
+  <block id="c353351e2cab6270e61ca76351aa5192" category="paragraph">ファイルの所有権を変更する前に、新しい所有者を設定する必要があります。そうしないと、コマンドが失敗します。XCP の chown` コマンドと chmod コマンドは、 linux の chown` コマンドと chmod コマンドと同様に動作します。</block>
+  <block id="c8f43293a0d371a440cac8bb93307056" category="section-title">chmod</block>
+  <block id="a4d26be6e1a014201192b6f7a5db4c72" category="paragraph">chmod コマンドは ' 選択されたディレクトリ構造内のすべてのファイルのファイルアクセス権をスキャンし ' 変更しますchmod コマンドは ' モードまたはリファレンスを必要とし 'NFS 共有または POSIX パスを変数として要求しますXCP chmod は ' 指定されたパスのパーミッションを再帰的に変更します「 chmod 」コマンドを使用すると、スキャンされたファイルの総数と、出力で変更されたアクセス権を表示できます。</block>
+  <block id="ed4ffa57a1bdcb56aaf1d22b8d722821" category="paragraph">詳細については 'XCP help chmod コマンドを実行してください</block>
+  <block id="845fbaad258ca858251e4c4c0ad53eb0" category="section-title">chown</block>
+  <block id="12ef08f5f383690078c3df9936bfe139" category="paragraph">'chown' コマンドは ' 選択したディレクトリ構造内のすべてのファイルの所有権をスキャンし ' 変更します`chown` コマンドは変数として NFS 共有か POSIX パスを要求する。XCP `chown' 指定されたパスの所有権を再帰的に変更します</block>
+  <block id="8fa3ac473e7edac7e52a655e5271e49f" category="paragraph">詳細については 'XCP help chown' コマンドを実行してください</block>
+  <block id="fe3babe18b970588464b8384c50d8cb3" category="paragraph">「ス can 」コマンドは SMB 共有全体を再帰的にスキャンし、スキャンの終了時にすべてのファイルを一覧表示します。</block>
+  <block id="e7cd4019e47684c4ac82ed229910b175" category="admonition">スキャン操作中に '-preserve-atim' フラグを 'scan コマンドとともに使用すると ' ソースでのアクセス時間を保持できます</block>
+  <block id="8d79bfe51b141cbe8fb2c30741dbfe14" category="paragraph">* 例： *</block>
+  <block id="de71db72eafd60fc2c3c26a9416f0909" category="list-text">NFSv4 ACL を移行するには、 ACL の移行が必要なボリュームにエンコード言語 UTF-8 を使用する必要があります。</block>
+  <block id="90e6485e4d08b9e0728e2671dfa4ced2" category="list-text">ONTAP では、 diagnostic 「 -atime-update 」オプションを使用して atime を保持できます。この機能は ONTAP でのみ使用でき、 XCP の実行中にソースオブジェクトで atime を保持する場合に便利です。</block>
 </blocks>
