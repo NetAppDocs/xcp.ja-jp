@@ -533,6 +533,8 @@
 
 
 
+
+
           
         </li>
       </ul>
@@ -682,6 +684,8 @@
         NFS データを移行する
       </a></li><li class="  active "><a class="na-navbar-padding" href="/ja-jp/xcp/xcp-migrate-smb-data.html">
         SMB データを移行
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/xcp/xcp-migrate-nfs-additional-features.html">
+        その他の NFS 機能
       </a></li></ul></li><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> トラブルシューティングを行う</div>
       </a>
@@ -757,11 +761,19 @@
 <p class="page-details">
   
     
-    <time datetime="2022-01-31 13:25:38 +0000">01/31/2022</time>
+    <time datetime="2022-02-28 14:43:17 +0000">02/28/2022</time>
     
   
 
 <span>寄稿者
+  <a target="_blank" href="https://github.com/netapp-aoife">
+    <img  class="avatar avatar-small"
+          alt="netapp-aoife"
+          width="20" height="20"
+          src="https://avatars.githubusercontent.com/u/92876203?v=4"
+          style="border-radius: 50%;"/>
+  </a>
+  
   <a target="_blank" href="https://github.com/netapp-barbe">
     <img  class="avatar avatar-small"
           alt="netapp-barbe"
@@ -796,6 +808,18 @@
 <div class="paragraph">
 <p>copy コマンドは ' ソース・ディレクトリ構造全体をスキャンし ' デスティネーション SMB 共有にコピーします&#8217;copy' コマンドでは ' ソース・パスとデスティネーション・パスを変数として指定する必要がありますスキャンおよびコピーされたファイル、スループット / 速度、および経過時間の詳細が、 5 秒ごとにコンソールに出力されます。</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/xcp/images/note.svg" alt="注記">
+</td>
+<td class="content">
+コピー操作中に 'copy' コマンドとともに --preserve-atim' フラグを使用すると ' ソースでのアクセス時間を保持できます
+</td>
+</tr>
+</table>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -820,6 +844,18 @@
 <div class="paragraph">
 <p>sync コマンドは、データの内容、タイムスタンプ、ファイル属性、所有権、およびセキュリティ情報を比較します。</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/xcp/images/note.svg" alt="注記">
+</td>
+<td class="content">
+同期操作中に '-spreserve-atim' フラグを 'sync' コマンドとともに使用すると ' ソースでのアクセス時間を保持できます
+</td>
+</tr>
+</table>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -840,6 +876,27 @@
 <h3 id="確認します">確認します</h3>
 <div class="paragraph">
 <p>「 ve rify 」コマンドは、ソース共有とターゲット共有の両方を読み取り、比較して、相違点に関する情報を提供します。コマンドは、コピーや同期に使用するツールに関係なく、任意のソースとデスティネーションで使用できます。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/xcp/images/note.svg" alt="注記">
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>検証操作中に 'verify' コマンドで --preserve-atim' フラグを使用すると ' ソースでのアクセス時間を保持できます</p>
+</li>
+<li>
+<p>検証動作中に 'verify コマンドとともに -noatim' フラグを使用して ' アクセス時間の違いを除外できます</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="ulist">
 <ul>

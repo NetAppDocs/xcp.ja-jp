@@ -533,6 +533,8 @@
 
 
 
+
+
           
         </li>
       </ul>
@@ -682,6 +684,8 @@
         NFS データを移行する
       </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/xcp/xcp-migrate-smb-data.html">
         SMB データを移行
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/xcp/xcp-migrate-nfs-additional-features.html">
+        その他の NFS 機能
       </a></li></ul></li><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> トラブルシューティングを行う</div>
       </a>
@@ -757,7 +761,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-01-31 13:25:38 +0000">01/31/2022</time>
+    <time datetime="2022-02-28 14:43:17 +0000">02/28/2022</time>
     
   
 
@@ -770,15 +774,30 @@
           style="border-radius: 50%;"/>
   </a>
   
+  <a target="_blank" href="https://github.com/netapp-aoife">
+    <img  class="avatar avatar-small"
+          alt="netapp-aoife"
+          width="20" height="20"
+          src="https://avatars.githubusercontent.com/u/92876203?v=4"
+          style="border-radius: 50%;"/>
+  </a>
+  
 </span>
 
 
 </p>
 
 
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph lead">
 <p>XCP NFS では、 POSIX コネクタを使用したデータ移行のソースパスとデスティネーションパスの提供がサポートされるようになりました。</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="サポートされている機能">サポートされている機能</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>POSIX コネクタでは、次の機能がサポートされています。</p>
 </div>
@@ -792,9 +811,19 @@
 </li>
 </ul>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="パスの構文">パスの構文</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>POSIX コネクタのパス構文は 'file://&lt; Linux 上のマウントパス &gt;' です</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="posix-コネクタを設定します">POSIX コネクタを設定します</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>POSIX コネクタを設定するには、次のタスクを実行する必要があります。</p>
 </div>
@@ -847,8 +876,49 @@ sudo chmod -R g+w /mnt/xcp-catalog</pre>
 <div class="paragraph">
 <p>XCP カタログにはデータは保存されませんが、スキャンおよびコピーのファイル名、ディレクトリ名、およびその他のメタデータは保存されます。したがって、ユーザに格納されたメタデータの保護機能を付与するために、許可されたユーザにカタログファイルシステムの権限を設定することを推奨します。</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="所有権-uid-および-gid">所有権（ UID および GID ）</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>通常のユーザとして設定されている場合、デフォルトでは POSIX または NFS3 宛先への「 copy 」コマンドは所有権（ユーザ ID （ UID ）およびグループ ID （ GID ）の設定を試みません。所有権の設定は、通常は管理者が行います。ユーザ A がユーザ B からファイルをコピーする場合、ユーザ A は宛先を所有することを想定します。ただし、 root ユーザがファイルをコピーする場合は、このようなことはありません。root ユーザがファイルをコピーすると '-down' オプションによって動作が変更され '-chown' を指定した root 以外の copy コマンドが UID と GID の設定を試みます</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="オープンファイル記述子の最大数を増やします">オープンファイル記述子の最大数を増やします</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>最適なパフォーマンスと信頼性を実現するために、すべてのノードで XCP ユーザのオープンファイル記述子の最大数を増やすことができます。</p>
+</div>
+<div class="olist arabic">
+<div class="title">手順</div>
+<ol class="arabic">
+<li>
+<p>ファイルを開くには 'vi /etc/security/limits.conf' コマンドを使用します</p>
+</li>
+<li>
+<p>ファイルに次の行を追加します :`&lt;username&gt;-nofile 999999`</p>
+<div class="ulist">
+<ul>
+<li>
+<p>例 *</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>root - nofile 999999</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>を参照してください <a href="https://access.redhat.com/solutions/61334^">"Red Hat ソリューション"</a> を参照してください。</p>
+</div>
+</div>
 </div>
 
     </article>
