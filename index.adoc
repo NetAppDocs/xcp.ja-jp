@@ -6,6 +6,7 @@ summary: 拡張性に優れたハイパフォーマンスのデータ移行を�
 ---
 = XCP を使い始める
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

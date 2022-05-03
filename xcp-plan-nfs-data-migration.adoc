@@ -6,6 +6,7 @@ summary: NFS によるデータ移行を計画
 ---
 = NFS データ移行を計画
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

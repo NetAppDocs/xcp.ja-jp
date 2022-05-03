@@ -6,6 +6,7 @@ summary: 詳細はこちらをご覧ください
 ---
 = 詳細はこちらをご覧ください
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

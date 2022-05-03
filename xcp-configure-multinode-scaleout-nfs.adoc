@@ -5,6 +5,7 @@ keywords: xcp, configure, nfs, multinode, scale, out
 summary: シングルノードのパフォーマンス制限を克服するには、 1 つの XCP copy コマンドを使用して、複数の Linux システムまたはクラスタノードでワーカーを実行します。 
 ---
 = マルチノードスケールアウトを構成します
+:allow-uri-read: 
 
 
 [role="lead"]

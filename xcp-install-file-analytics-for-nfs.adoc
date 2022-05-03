@@ -6,6 +6,7 @@ summary: File Analytics for NFS をインストールまたはアップグレー
 ---
 = File Analytics for NFS をインストールします
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

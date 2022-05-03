@@ -6,6 +6,7 @@ summary: データ移行を計画
 ---
 = データ移行を計画
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ summary: Muse が XCP 移行に適切なポートを使用していることを�
 ---
 = XCP で使用されるポート
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

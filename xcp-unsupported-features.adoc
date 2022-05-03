@@ -6,6 +6,7 @@ summary: 一部の機能は、 XCP NFS または XCP SMB ではサポートさ�
 ---
 = サポートされない機能です
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

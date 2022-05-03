@@ -6,6 +6,7 @@ summary: JSON 構成ファイルを作成します
 ---
 = JSON 構成ファイルを作成します
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ summary: SMB データを移行
 ---
 = SMB データを移行
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

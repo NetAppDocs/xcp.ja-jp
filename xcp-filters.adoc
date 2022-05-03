@@ -6,6 +6,7 @@ summary: XCP は、 XCP 処理で使用できるフィルタオプションを�
 ---
 = フィルタ
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

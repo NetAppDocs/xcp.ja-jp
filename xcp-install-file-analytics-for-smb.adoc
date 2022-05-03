@@ -6,6 +6,7 @@ summary: File Analytics for SMB をインストールまたはアップグレー
 ---
 = SMB 向けファイル分析をインストール
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

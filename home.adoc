@@ -5,6 +5,7 @@ keywords: information, library, releases, documentation, install, configure, xcp
 summary: XCP Information Library へようこそ。以前のリリースへのリンクが含まれています。 
 ---
 = XCP v1.8 マニュアル
+:allow-uri-read: 
 
 
 XCP 情報ライブラリへようこそ。ここでは、 XCP v1.8 ソフトウェアのインストール、設定、および使用方法を含むドキュメントを提供しています。

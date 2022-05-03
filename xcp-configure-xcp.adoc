@@ -6,6 +6,7 @@ summary: XCP の設定手順
 ---
 = XCP NFS を設定します
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

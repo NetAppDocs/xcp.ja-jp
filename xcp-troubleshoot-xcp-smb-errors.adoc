@@ -6,6 +6,7 @@ summary: XCP SMB エラーのトラブルシューティング
 ---
 = XCP SMB エラーのトラブルシューティング
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

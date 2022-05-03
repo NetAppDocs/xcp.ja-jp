@@ -6,6 +6,7 @@ summary: スキャンを実行する
 ---
 = スキャンを実行します
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

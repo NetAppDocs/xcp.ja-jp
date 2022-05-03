@@ -5,6 +5,7 @@ keywords: netapp, xcp, configure, configuring, how, performing, tuning, nfs, smb
 summary: XCP NFS および SMB にロギングしています 
 ---
 = NFS および SMB のロギング（オプション）
+:allow-uri-read: 
 
 
 

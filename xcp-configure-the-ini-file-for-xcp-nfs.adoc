@@ -6,6 +6,7 @@ summary: INI ファイル XCP を設定する手順
 ---
 = INI ファイルを設定します
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

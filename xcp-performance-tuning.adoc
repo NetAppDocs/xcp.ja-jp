@@ -6,6 +6,7 @@ summary: パフォーマンス調整（ NFS のみ）
 ---
 = パフォーマンスの調整
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

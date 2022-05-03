@@ -5,6 +5,7 @@ keywords: xcp, configure, nfs, posix, connector
 summary: POSIX コネクタを使用すると、 XCP は NFSv4 、 XFS 、 Veritas など、 Linux でマウントされた任意のファイルシステムにアクセスできます。 
 ---
 = POSIX コネクタを設定します
+:allow-uri-read: 
 
 
 [role="lead"]

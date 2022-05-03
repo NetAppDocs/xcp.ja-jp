@@ -6,6 +6,7 @@ summary: File Analytics では、スキャン結果がグラフィカルに表�
 ---
 = File Analytics にアクセスします
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

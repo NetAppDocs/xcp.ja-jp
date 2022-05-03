@@ -5,6 +5,7 @@ keywords: xcp, nfs, hdfs, connector, configure, security
 summary: XCP NFS アドオン機能は、 POSIX コネクタと HDFS コネクタの使用をサポートし、セキュリティを強化し、データ移行を高速化するスケールアウトアーキテクチャの使用をサポートしています。 
 ---
 = XCP NFS アドオン機能
+:allow-uri-read: 
 
 
 [role="lead"]

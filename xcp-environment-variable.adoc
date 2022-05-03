@@ -6,6 +6,7 @@ summary: 環境変数（ NFS のみ）
 ---
 = 環境変数
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

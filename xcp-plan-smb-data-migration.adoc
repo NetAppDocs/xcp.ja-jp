@@ -6,6 +6,7 @@ summary: SMB データ移行を計画
 ---
 = SMB データ移行を計画
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

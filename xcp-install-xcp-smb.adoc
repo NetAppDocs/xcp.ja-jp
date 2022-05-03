@@ -6,6 +6,7 @@ summary: XCP SMB をインストールします
 ---
 = XCP SMB をインストールします
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

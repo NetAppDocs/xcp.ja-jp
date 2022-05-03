@@ -6,6 +6,7 @@ summary: XCP File Analytics エラーのトラブルシューティング
 ---
 = XCP File Analytics エラーのトラブルシューティング
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

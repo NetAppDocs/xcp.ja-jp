@@ -6,6 +6,7 @@ summary: File Analytics の使用を計画する
 ---
 = File Analytics の使用を計画する
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

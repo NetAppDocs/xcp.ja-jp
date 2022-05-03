@@ -6,6 +6,7 @@ summary: XCP SMB 用に Windows を準備します
 ---
 = XCP SMB 用に Windows を準備します
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

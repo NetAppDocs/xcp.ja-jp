@@ -6,6 +6,7 @@ summary: NFS データを移行する
 ---
 = NFS データを移行する
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

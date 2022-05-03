@@ -5,6 +5,7 @@ keywords: xcp, nfs, hdfs, connector, configure
 summary: HDFS コネクタを使用すると、 XCP は、異なるベンダーが提供するすべての HDFS ファイルシステムにアクセスできます。 
 ---
 = HDFS コネクタを設定します
+:allow-uri-read: 
 
 
 [role="lead"]
