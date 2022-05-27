@@ -5,12 +5,13 @@ keywords: netapp, xcp, configure, configuring, how, performing, tuning, nfs, smb
 summary: XCP NFS および SMB にロギングしています 
 ---
 = NFS および SMB のロギング（オプション）
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
 
-
-
-
-== NFS および SMB のロギング（オプション）
 
 [role="lead"]
 XCP NFS および SMB にロギングしています。
@@ -82,7 +83,7 @@ XCP サポートに共通するオプション。このオプションの値を 
 |===
 
 
-= JSON 構成ファイルを作成します
+== JSON 構成ファイルを作成します
 
 イベントログメッセージ、 syslog クライアント、またはカスタマーロギングをイネーブルにする場合は、次の手順を実行します。
 
