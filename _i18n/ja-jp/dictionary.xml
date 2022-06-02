@@ -71,7 +71,6 @@
   <block id="0c8468e8bc6e9c8ce8e4de412fee0c10" category="cell">/opt/NetApp/xFiles/XCP</block>
   <block id="0355e9d1594e3a57c3f88a95ae90e7b7" category="cell">C ： \NetApp\XCP \ConfigFile</block>
   <block id="688880844a9d73f7e3cf8f7c8f2f1da6" category="cell">カスタム・ロケーションには 'XCP _CONFIG_DIR 環境変数が必要です</block>
-  <block id="223d3a19cc16f37abc58628c0df5ee27" category="cell">エラー参照ソースが見つかりません。</block>
   <block id="382b0f5185773fa0f67a8ed8056c7759" category="cell">該当なし</block>
   <block id="c71c45be8ac72499222cb1690d308dde" category="paragraph">JSON 構成ファイルのオプションでは、大文字と小文字が区別されます。これらのオプションは、 XCP NFS と XCP SMB で同じです。</block>
   <block id="7a1920d61156abc05a60135aefe8bc67" category="cell">デフォルト</block>
@@ -512,9 +511,7 @@
   <block id="ef9985cb080be75e8968d6283e5ffb67" category="list-text">XCP ライセンスをインストールしてアクティブにします。</block>
   <block id="2bb343c5c64b5c34c9de8bcf47e92785" category="list-text">xcp.ini` ファイルを変更し ' カタログ・パスを追加します</block>
   <block id="d0d53af0a600e75b327575d75c03861c" category="list-text">マスターノードでキーを生成します。</block>
-  <block id="370b7e68abea8b7e619db3ecec836d13" category="paragraph">「 sh-keygen -b 2048-t rsa-f/root/.ssh/id_rsa-q-N' 」</block>
   <block id="9d55d07ef712b748878175a6aa889333" category="list-text">すべてのワーカーノードにキーをコピーします。</block>
-  <block id="f7d8f65267808fa7b9fdab1fdcff8657" category="paragraph">'sh-copy-id -i/root/.ssh/id_rsa.pub root@worker1'</block>
   <block id="8b76ed249e6db9e50569a0493601ca7b" category="paragraph">複数の XCP ワーカーを同時に起動してエラーを回避するには、次の例に示すように、各ワーカーノードで「 SHD MaxStartups 」パラメータを増やす必要があります。</block>
   <block id="bae7f8a61d8cf1102cf26d111642782d" category="paragraph">POSIX ファイルパスと HDFS ファイルパスを使用してマルチセッションを実行する場合は、ファイルシステムとソースおよびデスティネーションのエクスポート済みファイルシステムをマスターノードとすべてのワーカーノードにマウントする必要があります。</block>
   <block id="915e32144be4f88d02cc0b7b1e33c7c8" category="paragraph">POSIX コネクタと HDFS コネクタ、マルチノードスケールアウト、セキュリティ機能を組み合わせて使用できます。たとえば、次の「 copy 」コマンドと「 ve rify 」コマンドは、 POSIX コネクタと HDFS コネクタをセキュリティおよびスケールアウト機能と組み合わせたものです。</block>
@@ -687,7 +684,6 @@
   <block id="508302f93085c89bb969aac3a0863690" category="cell">JSON データ型</block>
   <block id="2c03b0684383dd1a51ac7863955591d6" category="paragraph">XCP サポートに共通するオプション。このオプションの値を true に設定すると、サポートされるメッセージ（ロギング、イベント、 syslog など）で機密情報（ IP とユーザ名）が非表示になります。たとえば、「 anitize 」オプションを「 false 」に設定した場合： *`20-07-17 03:10:23779-Info-12806 XCP Paths ： ['10.234.104.251/cat_vol ： /cat_vol']`*20-07-17 03:10:23778-Info-12XCP 806 User Name:root'207-15308'x1-1217'xCP Info*'20'20'x8*'20'20'30' と同様に 'xCP Info:'20'x1-24*'20'x8*'20'20'x1-'308*'x1-24*'30 XX.XX.XX.XX:/ cat_vol']`*`20-07-1703:13:51595-Info-12859 XCP ユーザー名 :*`</block>
   <block id="0db76c5e35f0f2f03c2d9b09a9c5b6ab" category="list-text">有効にするすべての機能について 'IsEnabled' の値を TRUE' に変更します</block>
-  <block id="fd162698220e1fdc813cf6219f85e6c6" category="list-text">ファイルに xcpLogConfig.json という名前を付け、 * Error ！に記載されているファイルの場所に保存します。参照ソースが見つかりません。 *</block>
   <block id="580b128701ff902d4e6230fe6bbdd91f" category="list-text">ファイルサーバーを追加するには、 * ファイルサーバーの追加 * を選択します。</block>
   <block id="557826c4c436faf2e30d6af6f7e8debf" category="list-text">インストールを開始するには、インストーラをダブルクリックします。利用規約に同意して、「 * Install * 」を選択します。</block>
   <block id="23c9666a12a742df28045c71457392a3" category="list-text">インストールが完了したら、 Windows クライアントを再起動します。</block>
@@ -742,4 +738,9 @@
   <block id="8d79bfe51b141cbe8fb2c30741dbfe14" category="paragraph">* 例： *</block>
   <block id="de71db72eafd60fc2c3c26a9416f0909" category="list-text">NFSv4 ACL を移行するには、 ACL の移行が必要なボリュームにエンコード言語 UTF-8 を使用する必要があります。</block>
   <block id="90e6485e4d08b9e0728e2671dfa4ced2" category="list-text">ONTAP では、 diagnostic 「 -atime-update 」オプションを使用して atime を保持できます。この機能は ONTAP でのみ使用でき、 XCP の実行中にソースオブジェクトで atime を保持する場合に便利です。</block>
+  <block id="3f2483126bfaf4f145dc2ccaaf50a96d" category="cell">設定した場所は'XCP CONFIG_DIR変数に対して使用します</block>
+  <block id="422b2633c200093920a3504cacd40ac4" category="list-text">ファイルに「xcpLogConfig.json」という名前を付け、デフォルトの場所（/opt/NetApp/xFiles/XCP）に保存します</block>
+  <block id="5a80d55457d11b6a6649cb8e31a68ae9" category="paragraph">環境変数XCP _CONFIG_DIRが設定されている場合は'xcpLogConfig.jsonファイルを'XCP CONFIG_DIR変数と同じ場所に保存します</block>
+  <block id="eeb488eb1940aa6eb63fb96f6766209e" category="paragraph">「ssh-keygen -b 2048 -t rsa-f/root/.ssh/id_rsa-q-N'」</block>
+  <block id="6fa3c056ccd312364628a9d8779047d9" category="paragraph">「ssh-copy-id -i /root/.ssh/id_rsa.pub root@worker1」</block>
 </blocks>

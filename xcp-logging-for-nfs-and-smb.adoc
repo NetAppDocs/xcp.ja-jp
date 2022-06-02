@@ -32,7 +32,7 @@ XCP は、「 xcpLogConfig.json 」 JSON 構成ファイルを使用して、複
 | 構成ファイルのデフォルトの場所 | /opt/NetApp/xFiles/XCP | C ： \NetApp\XCP \ConfigFile 
 
 
-| カスタム・ロケーションには 'XCP _CONFIG_DIR 環境変数が必要です | エラー参照ソースが見つかりません。 | 該当なし 
+| カスタム・ロケーションには 'XCP _CONFIG_DIR 環境変数が必要です | 設定した場所は'XCP CONFIG_DIR変数に対して使用します | 該当なし 
 |===
 JSON 構成ファイルのオプションでは、大文字と小文字が区別されます。これらのオプションは、 XCP NFS と XCP SMB で同じです。
 
@@ -113,7 +113,10 @@ XCP サポートに共通するオプション。このオプションの値を 
 }
 ----
 . 有効にするすべての機能について 'IsEnabled' の値を TRUE' に変更します
-. ファイルに xcpLogConfig.json という名前を付け、 * Error ！に記載されているファイルの場所に保存します。参照ソースが見つかりません。 *
+. ファイルに「xcpLogConfig.json」という名前を付け、デフォルトの場所（/opt/NetApp/xFiles/XCP）に保存します
++
+環境変数XCP _CONFIG_DIRが設定されている場合は'xcpLogConfig.jsonファイルを'XCP CONFIG_DIR変数と同じ場所に保存します
+
 
 
 |===
