@@ -795,7 +795,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-05-27 14:28:46 +0000">05/27/2022</time>
+    <time datetime="2022-06-02 14:38:01 +0000">06/02/2022</time>
     
   
 
@@ -847,7 +847,7 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">カスタム・ロケーションには 'XCP _CONFIG_DIR 環境変数が必要です</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">エラー参照ソースが見つかりません。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">設定した場所は&#8217;XCP CONFIG_DIR変数に対して使用します</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">該当なし</p></td>
 </tr>
 </tbody>
@@ -996,7 +996,10 @@
 <p>有効にするすべての機能について 'IsEnabled' の値を TRUE' に変更します</p>
 </li>
 <li>
-<p>ファイルに xcpLogConfig.json という名前を付け、 * Error ！に記載されているファイルの場所に保存します。参照ソースが見つかりません。 *</p>
+<p>ファイルに「xcpLogConfig.json」という名前を付け、デフォルトの場所（/opt/NetApp/xFiles/XCP）に保存します</p>
+<div class="paragraph">
+<p>環境変数XCP _CONFIG_DIRが設定されている場合は&#8217;xcpLogConfig.jsonファイルを&#8217;XCP CONFIG_DIR変数と同じ場所に保存します</p>
+</div>
 </li>
 </ol>
 </div>
