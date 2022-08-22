@@ -18,7 +18,7 @@ HDFS コネクタのパス構文は、「 hdfs://[user@host ： port]/full-path 
 
 NOTE: ユーザ、ホスト、およびポートを指定しない場合、 XCP はホストを「デフォルト」に設定し、ポートを「 0 」に設定した「 hdfsConnect 」を呼び出します。
 
-hdfs`copy` コマンドを実行するには、 Linux システム上に HDFS クライアントを設定する必要があります。また、 Hadoop ベンダーに基づいて、インターネット上で利用可能なセットアップ構成に従います。たとえば、「 https://docs.datafabric.hpe.com/60/AdvancedInstallation/SettingUptheClient- RedHat .html 」を使用して、 MapR クラスタのクライアントを設定できます。
+hdfs`copy` コマンドを実行するには、 Linux システム上に HDFS クライアントを設定する必要があります。また、 Hadoop ベンダーに基づいて、インターネット上で利用可能なセットアップ構成に従います。たとえば、MapRクラスタのクライアントを設定するには、「https://docs.datafabric.hpe.com/60/AdvancedInstallation/SettingUptheClient-redhat.html`」を使用します。
 
 HFDS クライアントのセットアップが完了したら、クライアントの設定を完了する必要があります。XCP コマンドで HDFS パスを使用するには、次の環境変数が必要です。
 

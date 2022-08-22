@@ -4,10 +4,10 @@ sidebar: sidebar
 keywords: information, library, releases, documentation, install, configure, xcp 
 summary: XCP Information Library へようこそ。以前のリリースへのリンクが含まれています。 
 ---
-= XCP v1.8 マニュアル
+= XCP v1.9マニュアル
 :allow-uri-read: 
 
 
-XCP 情報ライブラリへようこそ。ここでは、 XCP v1.8 ソフトウェアのインストール、設定、および使用方法を含むドキュメントを提供しています。
+XCP 情報ライブラリへようこそ。ここでは、XCP v1.9ソフトウェアのインストール、設定、および使用方法を記載したマニュアルを提供しています。
 
 以前のリリースの XCP のマニュアルは、から入手できます link:https://mysupport.netapp.com/documentation/productlibrary/index.html?productID=63064["ネットアップサポートサイト"^]。

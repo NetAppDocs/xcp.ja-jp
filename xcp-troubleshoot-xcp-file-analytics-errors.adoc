@@ -51,7 +51,7 @@ summary: XCP File Analytics エラーのトラブルシューティング
 
 
 
-| インストールの完了後にログインページを開くことができません | XCP File Analytics がインストールされていて、 HTTPD が実行されている Linux マシンに対して、システムから ping を実行できることを確認します。サービスが実行されていない場合は 'configure を実行して ' 修復オプションを選択しますサポートされているブラウザバージョンを使用していることを確認してください。を参照してください link:https://mysupport.netapp.com/matrix/["IMT"^]。 
+| インストールの完了後にログインページを開くことができません | XCP File Analyticsがインストールされていて、HTTPDが実行されているLinuxマシンに対して、システムからpingを実行できることを確認します。サービスが実行されていない場合は 'configure を実行して ' 修復オプションを選択しますサポートされているブラウザバージョンを使用していることを確認してください。を参照してください link:https://mysupport.netapp.com/matrix/["IMT"^]。 
 
 
 | ユーザログインに失敗しました  a| 

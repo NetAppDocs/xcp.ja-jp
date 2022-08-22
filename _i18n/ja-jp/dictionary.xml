@@ -469,7 +469,6 @@
   <block id="71aef63bcbc5d0c5e78ca147512cf71f" category="cell">'XCP copy: error' はフォールバックセキュリティプリンシパルの取得に失敗しました (hosts ファイルへの追加後の宛先ボックスエントリ ) エラーメッセージが xcp.log ファイルに記録されました :'' アカウント名とセキュリティ ID 間のマッピングは行われませんでした ''</block>
   <block id="0ab4127ba4947453135e709735a6fc6c" category="cell">フォールバックユーザ / グループは、ターゲットシステム（宛先ボックス）または Active Directory に存在しません。正しいフォールバックユーザ / グループオプションを使用してコマンドを再実行します</block>
   <block id="2e4e559c9f6001c3134b8795d8e47e81" category="cell">フォールバックユーザ / グループオプションのパラメータが正しくありません。ユーザ / グループのフォールバックオプションに正しい構文を使用してコマンドを再実行します</block>
-  <block id="ca5b87c22d59ad15700c80cec3677245" category="cell">ACL 移行 Erorr メッセージを含む XCP copy 」が xcp.log ファイルに記録されます : 'pywintypes.error`:(1314'GetNamedSecurityInfo', 'a required privilege is not Held by the client.')`</block>
   <block id="63debe27683f1f8c225ad14c415dffcc" category="summary">データを移行</block>
   <block id="dfdcc7639b3e014792b21c9f7d5c85c0" category="summary">XCP NFS をインストールしています</block>
   <block id="4e5b1a9c903c0437af920974c6501bd6" category="paragraph">XCP をアップグレードする場合は、現在のインストールファイルを削除し、最新バージョンの新しいインストールファイルに置き換えます。このセクションでは、 Linux クライアントでの XCP の初期セットアップおよび INI ファイルの設定に関するシステム要件と手順について説明します。</block>
@@ -482,9 +481,6 @@
   <block id="cae408e146414f197563c67edf318286" category="list-text">ライセンスを「 /opt/NetApp/xFiles/XCP 」にコピーします。</block>
   <block id="8ab783e73539b82c1414bd94a3037376" category="list-text">ライセンスファイルが /opt/NetApp/xFiles/XCP にコピーされたことを確認します。</block>
   <block id="181af529472b0626a27e692b85666546" category="summary">環境変数（ NFS のみ）</block>
-  <block id="0dd6ca798bb0f2d45b2b59c074793ac6" category="paragraph">環境変数 XCP _CONFIG_DIR は、デフォルトの場所である「 /opt/NetApp/xFiles/XCP 」より優先されます。この値を設定する場合は、マウントされている NFS ディレクトリなど、 OS ファイルシステムのパスを指定します。カスタム構成ディレクトリが設定されている場合、ログファイルの名前はデフォルトの「 XCP .log 」ではなく「 XCP .hostname.log 」になります。</block>
-  <block id="ded2d02a4fd60f232dc6bbe8614960b6" category="paragraph">環境変数 XCP ログ _LOG_DIR は、構成ディレクトリ内の XCP ログが格納されているデフォルトの場所よりも優先されます。この値を設定する場合は、マウントされている NFS ディレクトリなど、 OS ファイルシステムのパスを指定します。カスタム・ログ・ディレクトリを設定すると ' ログ・ファイルの名前はデフォルトの "XCP .log" ではなく "XCP .hostname.log" になります</block>
-  <block id="b2a82a89c888f120cc61565aed8191c8" category="paragraph">環境変数 XCP カタログパスは、 xcp.in の設定よりも優先されます設定する場合、値は XCP パス形式である「 server:export[:subdirectory]` 」でなければなりません。</block>
   <block id="8cf04a9734132302f96da8e113e80ce5" category="sidebar">ホーム</block>
   <block id="5dd03e8d039863e563e049be198c3fd3" category="sidebar">リリースノート</block>
   <block id="d60c463bb4096f3ed4bd1618626dfe10" category="sidebar">トラブルシューティングを行う</block>
@@ -535,8 +531,6 @@
   <block id="30f1813985f65c01bf2b9b92879bc38d" category="paragraph">Hadoop Distributed File System （ HDFS ； Hadoop 分散ファイルシステム）ファイルシステムからネットアップファイルシステムへのデータの移行とその逆の移行がサポートされている XCP 。セキュリティが有効な Hadoop 環境では、 Hadoop クラスタの root 以外のユーザが NetApp NFSv4 エクスポートファイルシステムへの移行を実行できます。HDFS Connector （ HDFS ： // ）では、 XCP は、ベンダーが異なるすべての HDFS ファイルシステムにアクセスするための機能を提供します。root 以外のユーザは、 XCP を使用して、 HDFS または POSIX コネクタを使用した移行を実行できます。</block>
   <block id="296424663e8e3bf16ffbb2dffed95868" category="paragraph">HDFS クラスタは、複数のハイエンドの Linux マシンを使用する XCP スケールアウト構成に含めることができます。これにより、追加の XCP ワーカーノードに必要な量を最小限に抑えることができますデータ移行では、 HDFS クラスタノードを再利用するか、別々のホストに移動するかを選択できます。</block>
   <block id="df6c0aff915e6eb3864841ff85b7cd84" category="admonition">HDFS コネクタは MapR および Cloudera クラスタでサポートされますが、ベースラインの「コピー」操作のみを実行できます。</block>
-  <block id="c3aaf0d0d35accc2221dcf51014b407d" category="doc">XCP v1.8 マニュアル</block>
-  <block id="5cf3f2c5fac08fae3fa80a4e2a9266eb" category="paragraph">XCP 情報ライブラリへようこそ。ここでは、 XCP v1.8 ソフトウェアのインストール、設定、および使用方法を含むドキュメントを提供しています。</block>
   <block id="31cd55a7ebce7cb193b0b2476a5f6631" category="cell">PostgreSQL サービスが失敗しました</block>
   <block id="78954e9bb59728299873706192a5df73" category="list-text">PostgreSQL サービスを再起動します。</block>
   <block id="7e248395787e70627bf471ebed8a48a3" category="paragraph">'UDO systemctl restart postgresql.service`</block>
@@ -545,7 +539,6 @@
   <block id="58e0ac0bb18008430f97560108149515" category="cell">httpd サービスが失敗しました</block>
   <block id="3be2db89060ab9c2e383a1fbdd7213a2" category="list-text">HTTPD サービスのステータスを確認します。</block>
   <block id="773d6c478422286a9fad650c3ddd09dd" category="paragraph">'UDO systemctl status httpd|grep Active'</block>
-  <block id="7c6efba1432d256b5f2c9286332f395e" category="cell">XCP File Analytics がインストールされていて、 HTTPD が実行されている Linux マシンに対して、システムから ping を実行できることを確認します。サービスが実行されていない場合は 'configure を実行して ' 修復オプションを選択しますサポートされているブラウザバージョンを使用していることを確認してください。を参照してください <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block>。</block>
   <block id="fca5f9179b264aa12937804595452dfa" category="list-text">サポートされているブラウザバージョンを使用していることを確認してください。を参照してください <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block>。</block>
   <block id="3721f4d27bf1373c3dce1560f7ad4013" category="list-text">ユーザが「 admin 」で、パスワードが正しいことを確認します。</block>
   <block id="6211d4f14a03b437fa7d26c363715474" category="list-text">XCP サービスのステータスを発行して、 XCP サービスが実行されていることを確認します。</block>
@@ -612,11 +605,9 @@
   <block id="b696e4d6e09540fbab1d75e6c341d9e9" category="paragraph">次の例では、設定は、 CentOS 上の MapR および Java -1.8.0-openjdk-devel と連携しています。</block>
   <block id="99c35850ff7cf7e436b03acedd4c59b3" category="cell">HDFS</block>
   <block id="3c5be6328b5f6a0a5980341230b8ac05" category="cell">7222</block>
-  <block id="19989536bdfa1e7f11ff53bc7877ff66" category="cell">ユーザはセキュリティ記述子に関連する問題に直面しています。これは、移行ユーザが所有する権限で XCP が取得できるのは所有者、グループ、および DACL だけですが、 SACL を取得できないためです。移行ユーザを Active Directory の「 Manage Audit and Security Log 」ポリシーに追加します。参照 <block ref="47c554f6b2ce744e50a1b2318fbe4ec3" category="inline-link-macro-rx"></block></block>
   <block id="bf86284529584845670edb0c3a95e5ec" category="summary">POSIX コネクタを使用すると、 XCP は NFSv4 、 XFS 、 Veritas など、 Linux でマウントされた任意のファイルシステムにアクセスできます。</block>
   <block id="95ddd83f06b46164d9007a3fec84bd09" category="paragraph">POSIX コネクタでは、次の機能がサポートされています。</block>
   <block id="61d64caacf6145ab9260325232ace1f3" category="list-text">nanosecond`atim`, `imtime`, および ctime をサポートする POSIX ファイルシステムでは '`can `command は完全な値 ( 秒とナノ秒 ) を取得し 'copy` コマンドはそれらを設定します</block>
-  <block id="f17259fd5fd04df8d00de9bae40078cc" category="inline-link-macro">セキュリティを設定します</block>
   <block id="d67f0d6f3689c0b2c96700d038812574" category="paragraph">POSIX コネクタのパス構文は '\file://&lt; Linux 上のマウントパス &gt;' です</block>
   <block id="9cdc4f2bba7e1f74ab797e2bfab30c1a" category="paragraph">POSIX コネクタを設定するには、次のタスクを実行する必要があります。</block>
   <block id="974be5615abf4fe362f269edc57cc8b9" category="list-text">ソースボリュームとデスティネーションボリュームをマウント</block>
@@ -657,12 +648,10 @@
   <block id="bd2cc77640d48204c25994ade9373d0d" category="cell">XCP 1.1.6 でサポートされていた以前の Linux ディストリビューションでは、 XCP はサポートされなくなりました。</block>
   <block id="84b5f1dcb24995657953339470fd8782" category="list-text">* ファイル分析用の root 以外のユーザ * ： XCP は、 root 以外のユーザまたは sudo ユーザが実行するインストールと設定をサポートしていません。</block>
   <block id="7a737a0106671114c37e3d7033cdffd5" category="paragraph">XCP NFS の場合、 Hadoop Distributed File System （ HDFS ） Connector （ HDFS ： // ）は、 XCP に、異なるベンダーが提供するすべての HDFS ファイルシステムへのアクセスを許可します。</block>
-  <block id="e47d29cbfac9b28d909784fb18f8d023" category="paragraph">hdfs`copy` コマンドを実行するには、 Linux システム上に HDFS クライアントを設定する必要があります。また、 Hadoop ベンダーに基づいて、インターネット上で利用可能なセットアップ構成に従います。たとえば、「 https://docs.datafabric.hpe.com/60/AdvancedInstallation/SettingUptheClient- RedHat .html 」を使用して、 MapR クラスタのクライアントを設定できます。</block>
   <block id="5315f815cd8e347436520e95ce6fe6a5" category="cell">XCP スキャンエラー：ネットワーク名が見つかりません</block>
   <block id="3f83f3f6c25db286fb620064231f9217" category="cell">XCP copy Error: error failed to Obtain fallback security principal Error message logged in xcp.log file: 'pywintypes.error:(1722 、 'LookupAccountName', 'The RPC server is unavailable.')`</block>
   <block id="4be936fd7e612c47d18eaec68c3932c3" category="cell">'XCP copy: error' はフォールバックセキュリティプリンシパルの取得に失敗しました (hosts ファイルへの追加後の宛先ボックスのエントリ ) xcp.log ファイルにログインしているエラーメッセージ : 'pywintypes.error:(87' 、 'LookupAccountName' 、 ' パラメータが正しくありません。 ')`</block>
   <block id="159d5dad3025108b6e9c7a70ebc1dcb0" category="paragraph">XCP NFS では、 POSIX コネクタを使用したデータ移行のソースパスとデスティネーションパスの提供がサポートされるようになりました。</block>
-  <block id="efed384e39c6ae674248adc931cd6fe9" category="list-text">POSIX コネクタは、 NFSv3 TCP ソケットを使用する XCP よりも安全です。を参照してください <block ref="884f9726fabc578536c00929cd2fe7e3" category="inline-link-macro-rx"></block></block>
   <block id="5cad50b0f7561b60eeb94de38f286346" category="list-text">パフォーマンスをサポートするには、エクスポートディレクトリを含むアグリゲートに少なくとも 10 本のディスクまたは SSD が必要です。</block>
   <block id="2c40f64451d08661759b332825242588" category="admonition">XCP カタログは別途保存する必要があります。ソースまたはデスティネーションの NFS エクスポートディレクトリに配置されていない。XCP はメタデータを維持します。メタデータは、初期セットアップで指定したカタログ上の場所にあるレポートです。XCP を使用して処理を実行する前に、レポートの保存先を指定して更新する必要があります。</block>
   <block id="b0b900f48dcf7f402754cc2d5748fc0d" category="paragraph">XCP NFS の場合は、「 How 」コマンドと「 Can 」コマンドを使用して移行を計画した後で、データを移行できます。</block>
@@ -703,8 +692,6 @@
   <block id="9d83a2ce37bac2516a6b570ccc972b69" category="admonition">同期操作中に '-spreserve-atim' フラグを 'sync' コマンドとともに使用すると ' ソースでのアクセス時間を保持できます</block>
   <block id="7e4d5419d4fcf4ceade27ffac84d4e92" category="list-text">検証操作中に 'verify' コマンドで --preserve-atim' フラグを使用すると ' ソースでのアクセス時間を保持できます</block>
   <block id="0e97e9bc1c0f6d8ea9bc140cab258f9a" category="list-text">検証動作中に 'verify コマンドとともに -noatim' フラグを使用して ' アクセス時間の違いを除外できます</block>
-  <block id="bfd97ee6bc45bf0c46cc517744e9e74f" category="doc">XCP v1.8.1 リリースノート</block>
-  <block id="2361f2046255643526d0bc654680e3f7" category="paragraph">。 <block ref="658eea0f41de67e93f9c7baad3cdc904" category="inline-link-macro-rx"></block> 新機能、アップグレードに関する注意事項、解決済みの問題、既知の制限事項、および既知の問題について説明する。</block>
   <block id="d04f98cbab23bb984f10968cafdb77bf" category="section-title">Windows クライアントを設定します</block>
   <block id="8723065565846862b1fa4bd925384734" category="list-text">デスティネーションストレージボックスとソースストレージボックスをホストファイルに追加します。</block>
   <block id="cf2408bbf2ce4b4de95513dd3053d13a" category="list-text">「 (C:\Windows\System32\drivers\etc\hosts 」の場所に移動します</block>
@@ -725,22 +712,44 @@
   <block id="ccdcaa8e5fef5673db21a65af6bc516b" category="paragraph">を参照してください <block ref="86f0b7d75368fee2dcdb28d15e03688c" category="inline-link-macro-rx"></block> を参照してください。</block>
   <block id="258c43132f7d0ee8dca2932b84e55383" category="summary">NFS 共有または POSIX パスのファイルとディレクトリの所有権と許可を簡単に変更できる NFS 機能が XCP に追加されています。</block>
   <block id="ce0d872fae9d962e1e9e1ff7397f5840" category="doc">その他の NFS 機能</block>
-  <block id="237f1be769ddaca2a6c7f5fb510296bc" category="paragraph">NFS 共有または POSIX パスのファイルとディレクトリの所有権と許可を簡単に変更できる NFS 機能が XCP に追加されています。指定された NFS 共有または POSIX パスのすべてのファイルとディレクトリを再帰的に変更するには、 XCP `chown`s コマンドと chmod `chmod コマンドを使用します。これにより、数百万のファイルのパフォーマンスが向上します。</block>
   <block id="c353351e2cab6270e61ca76351aa5192" category="paragraph">ファイルの所有権を変更する前に、新しい所有者を設定する必要があります。そうしないと、コマンドが失敗します。XCP の chown` コマンドと chmod コマンドは、 linux の chown` コマンドと chmod コマンドと同様に動作します。</block>
   <block id="c8f43293a0d371a440cac8bb93307056" category="section-title">chmod</block>
-  <block id="a4d26be6e1a014201192b6f7a5db4c72" category="paragraph">chmod コマンドは ' 選択されたディレクトリ構造内のすべてのファイルのファイルアクセス権をスキャンし ' 変更しますchmod コマンドは ' モードまたはリファレンスを必要とし 'NFS 共有または POSIX パスを変数として要求しますXCP chmod は ' 指定されたパスのパーミッションを再帰的に変更します「 chmod 」コマンドを使用すると、スキャンされたファイルの総数と、出力で変更されたアクセス権を表示できます。</block>
   <block id="ed4ffa57a1bdcb56aaf1d22b8d722821" category="paragraph">詳細については 'XCP help chmod コマンドを実行してください</block>
   <block id="845fbaad258ca858251e4c4c0ad53eb0" category="section-title">chown</block>
-  <block id="12ef08f5f383690078c3df9936bfe139" category="paragraph">'chown' コマンドは ' 選択したディレクトリ構造内のすべてのファイルの所有権をスキャンし ' 変更します`chown` コマンドは変数として NFS 共有か POSIX パスを要求する。XCP `chown' 指定されたパスの所有権を再帰的に変更します</block>
   <block id="8fa3ac473e7edac7e52a655e5271e49f" category="paragraph">詳細については 'XCP help chown' コマンドを実行してください</block>
   <block id="fe3babe18b970588464b8384c50d8cb3" category="paragraph">「ス can 」コマンドは SMB 共有全体を再帰的にスキャンし、スキャンの終了時にすべてのファイルを一覧表示します。</block>
   <block id="e7cd4019e47684c4ac82ed229910b175" category="admonition">スキャン操作中に '-preserve-atim' フラグを 'scan コマンドとともに使用すると ' ソースでのアクセス時間を保持できます</block>
-  <block id="8d79bfe51b141cbe8fb2c30741dbfe14" category="paragraph">* 例： *</block>
   <block id="de71db72eafd60fc2c3c26a9416f0909" category="list-text">NFSv4 ACL を移行するには、 ACL の移行が必要なボリュームにエンコード言語 UTF-8 を使用する必要があります。</block>
-  <block id="90e6485e4d08b9e0728e2671dfa4ced2" category="list-text">ONTAP では、 diagnostic 「 -atime-update 」オプションを使用して atime を保持できます。この機能は ONTAP でのみ使用でき、 XCP の実行中にソースオブジェクトで atime を保持する場合に便利です。</block>
   <block id="3f2483126bfaf4f145dc2ccaaf50a96d" category="cell">設定した場所は'XCP CONFIG_DIR変数に対して使用します</block>
   <block id="422b2633c200093920a3504cacd40ac4" category="list-text">ファイルに「xcpLogConfig.json」という名前を付け、デフォルトの場所（/opt/NetApp/xFiles/XCP）に保存します</block>
   <block id="5a80d55457d11b6a6649cb8e31a68ae9" category="paragraph">環境変数XCP _CONFIG_DIRが設定されている場合は'xcpLogConfig.jsonファイルを'XCP CONFIG_DIR変数と同じ場所に保存します</block>
   <block id="eeb488eb1940aa6eb63fb96f6766209e" category="paragraph">「ssh-keygen -b 2048 -t rsa-f/root/.ssh/id_rsa-q-N'」</block>
   <block id="6fa3c056ccd312364628a9d8779047d9" category="paragraph">「ssh-copy-id -i /root/.ssh/id_rsa.pub root@worker1」</block>
+  <block id="e5970308b839bb1af1aefcf9dad2fed2" category="paragraph">環境変数XCP _CONFIG_DIRは'デフォルトの場所である/opt/NetApp/xFiles/xcpを上書きしますこの値を設定する場合は、マウントされている NFS ディレクトリなど、 OS ファイルシステムのパスを指定します。'XCP CONFIG_DIR'変数が設定されている場合'ホスト名と同じ名前の新しいディレクトリがカスタム構成ディレクトリパス内に作成され'新しいログはこの場所に格納されます</block>
+  <block id="193182b59524f80db2dfb99b91b8e2d2" category="paragraph">環境変数のXCPログが設定ディレクトリに格納されるデフォルトの場所は'XCPログディレクトリによって上書きされますこの値を設定する場合は、マウントされている NFS ディレクトリなど、 OS ファイルシステムのパスを指定します。'XCP _LOG_DIR'変数を設定すると'ホスト名と同じ名前の新しいディレクトリがカスタム・ログ・ディレクトリ・パス内に作成され'新しいログはこの場所に格納されます</block>
+  <block id="f9c9daf8c094d7173f6aa05e00e89394" category="paragraph">環境変数XCPカタログパスは、xcp.inの設定よりも優先されます設定する場合、値は XCP パス形式である「 server:export[:subdirectory]` 」でなければなりません。</block>
+  <block id="0b5b78e477505196ea9cd8e57fe855fd" category="list-text">ONTAP では、ソースオブジェクトにatimeを保持するには、diagnostic「-atime-update」オプションを使用します。この機能は ONTAP でのみ使用でき、 XCP の実行中にソースオブジェクトで atime を保持する場合に便利です。</block>
+  <block id="9d2ab81c393d1ef2f0a8cefba68af9a1" category="list-text">XCPでは、「-preserve -atime」オプションを使用してソースオブジェクトにatimeを保持できます。このオプションは、ソースオブジェクトにアクセスするすべてのコマンドで使用できます。</block>
+  <block id="fba36a51a969015158fea284508e24b5" category="paragraph">NFSの機能をいくつか追加してXCPを使用する場合</block>
+  <block id="5b014105285dfb3396658b56a0e6a980" category="section-title">chownとchmod</block>
+  <block id="e502bd5d6fd36f24fe83faf495b01250" category="paragraph">指定された NFS 共有または POSIX パスのすべてのファイルとディレクトリを再帰的に変更するには、 XCP `chown`s コマンドと chmod `chmod コマンドを使用します。これにより、数百万のファイルのパフォーマンスが向上します。</block>
+  <block id="09d12addf13fc84e75f41dc976e24bd2" category="paragraph">chmod コマンドは ' 選択されたディレクトリ構造内のすべてのファイルのファイルアクセス権をスキャンし ' 変更しますchmodコマンドは'モードまたは参照'およびNFS共有またはPOSIXパスを変数として必要としますXCP chmod は ' 指定されたパスのパーミッションを再帰的に変更します「 chmod 」コマンドを使用すると、スキャンされたファイルの総数と、出力で変更されたアクセス権を表示できます。</block>
+  <block id="d36f032e221f3900149f9473b5c0ce4f" category="paragraph">指定されたNFS共有またはPOSIXパスのすべてのファイルとディレクトリを再帰的に変更するには、XCP `chown`コマンドを使用します。これにより、数百万のファイルのパフォーマンスが向上します。</block>
+  <block id="a0b553d099f15801f1726ee64318e949" category="paragraph">'chown' コマンドは ' 選択したディレクトリ構造内のすべてのファイルの所有権をスキャンし ' 変更します`chown`コマンドはNFS共有かPOSIXパスを変数として要求する。XCP `chown`は与えられたパスの所有権を再帰的に変更する。</block>
+  <block id="d9b1d76e05f593fa781c1a1da0c9012b" category="list-text">POSIX コネクタは、 NFSv3 TCP ソケットを使用する XCP よりも安全です。</block>
+  <block id="539be75a76dadebbca3424b2f7b46bde" category="doc">XCP v1.9リリースノート</block>
+  <block id="0bd1668ea08c54bc067675d64e6f83a4" category="paragraph">。 <block ref="08ad1ee2f6369863d444accaa8181f3c" category="inline-link-macro-rx"></block> 新機能、アップグレードに関する注意事項、解決済みの問題、既知の制限事項、および既知の問題について説明する。</block>
+  <block id="18f2ba0369aea7a98cca4c137d4b6372" category="paragraph">hdfs`copy` コマンドを実行するには、 Linux システム上に HDFS クライアントを設定する必要があります。また、 Hadoop ベンダーに基づいて、インターネット上で利用可能なセットアップ構成に従います。たとえば、MapRクラスタのクライアントを設定するには、「https://docs.datafabric.hpe.com/60/AdvancedInstallation/SettingUptheClient-redhat.html`」を使用します。</block>
+  <block id="5477a542a80c11f2da04e8a045970ccc" category="section-title">XCPの問題と解決策</block>
+  <block id="2c21e7858fb5fc86fe2510cb996c6926" category="cell">`XCP : error:互換性のないインデックスファイルです。現在のバージョンのXCPで生成されたインデックスファイルのみを使用してください。または、xcp.netapp.comから古いXCPバイナリをダウンロードすることもできます。</block>
+  <block id="ee919e739e668a270db61ab6e8e94e16" category="cell">XCP 1.9より前のXCPバージョンを使用して生成されたインデックスに対して処理を実行しようとしています。これはサポートされていません。実行中の移行を完了してから、このバージョンのXCPに切り替えることを推奨します。また、「scan」、「copy」、または「verify」コマンドを再実行して、XCP 1.9で新しいインデックスを生成することもできます。</block>
+  <block id="78e3c3d20c30f31e40219bc4fc26d005" category="section-title">ログダンプ</block>
+  <block id="f2223b790f3262b778f881ea47ce4191" category="paragraph">問題 でXCPコマンドまたはジョブが発生した場合、「logdump」コマンドを使用すると、問題 に関連するログファイルを「.zip」ファイルにダンプできます。このファイルをネットアップに送信してデバッグを行うことができます。logdumpコマンドは'移行IDまたはジョブIDに基づいてログをフィルタリングし'それらのログを現在のディレクトリ内の.zipファイルにダンプします「.zip」ファイルの名前は、コマンドで使用される移行またはジョブIDと同じです。</block>
+  <block id="f6e8987d5e2d203c406379ba9e8b8a47" category="admonition">移行後に'XCPのCONFIG_DIRまたは'XCPのLOG_DIR'環境変数を使用してデフォルトの設定場所またはログの場所を上書きすると'古い移行またはジョブIDで使用した場合に'logdump'コマンドは失敗しますこれを回避するには、移行が完了するまで同じログパスを使用します。</block>
+  <block id="20f0f3784e710ced2f992c9e868a329f" category="cell">ACL移行を伴うXCP COPYエラーメッセージがxcp.logファイルに記録されました:'pywintypes.error:`(1314'GetNamedSecurityInfo','a required privilege is not Held by the client.')`</block>
+  <block id="ec548dc7e9c4428d0af475d94ed8628f" category="cell">ユーザはセキュリティ記述子に関連する問題 に直面しています。これは、移行ユーザが所有する権限でXCPが取得できるのは所有者、グループ、およびDACLのみで、SACLを取得できないためです。移行ユーザを Active Directory の「 Manage Audit and Security Log 」ポリシーに追加します。参照 <block ref="47c554f6b2ce744e50a1b2318fbe4ec3" category="inline-link-macro-rx"></block></block>
+  <block id="fdbdc0e84f617d7346b90d43e65e3e78" category="doc">XCP v1.9マニュアル</block>
+  <block id="acca97deb653a678580117072b78b763" category="paragraph">XCP 情報ライブラリへようこそ。ここでは、XCP v1.9ソフトウェアのインストール、設定、および使用方法を記載したマニュアルを提供しています。</block>
+  <block id="8d199d68726e0baa3da715584c92e083" category="admonition">XCPバイナリはコード署名済みです。詳細については、「NetApp_XCP _&lt;バージョン&gt;.tgz」のREADMEを参照してください。</block>
+  <block id="259c9d5f301d6e350422d2ebfe2bcc87" category="cell">XCP File Analyticsがインストールされていて、HTTPDが実行されているLinuxマシンに対して、システムからpingを実行できることを確認します。サービスが実行されていない場合は 'configure を実行して ' 修復オプションを選択しますサポートされているブラウザバージョンを使用していることを確認してください。を参照してください <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block>。</block>
 </blocks>

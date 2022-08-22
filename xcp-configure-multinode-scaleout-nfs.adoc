@@ -45,8 +45,8 @@ XCP マスターノードは、 SSH を使用して他のノードでワーカ�
 
 [listing]
 ----
-echo "MaxStartups 100" | sudo tee -a /etc/ssh/sshd_config sudo systemctl
-restart sshd
+echo "MaxStartups 100" | sudo tee -a /etc/ssh/sshd_config
+sudo systemctl restart sshd
 ----
 クラスタノードで XCP を実行すると、ワーカープロセスはマスターノードのメイン XCP プロセスから環境変数を継承します。特定のノード環境をカスタマイズするには ' マスターノード上の構成ディレクトリ内の nodes.ini` ファイルに変数を設定する必要があります ( ワーカーノードには構成ディレクトリまたはカタログがありません )たとえば、 Wave （ CentOS ）などのマスターノードとは別の場所に「 libjvm.so 」を置いている Ubuntu サーバ MARS の場合、 MARS 上のワーカーが HDFS コネクタを使用できるようにするには、設定ディレクトリが必要です。このセットアップの例を次に示します。
 
