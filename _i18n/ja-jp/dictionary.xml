@@ -5,13 +5,9 @@
   <block id="f3a29486bed19a90f2da6d007818b427" category="list-title">手順</block>
   <block id="69ab39c4429204099bcace949edc5493" category="admonition">カタログの場所は、「 xcp.ini` XCP 」構成ファイルの詳細を変更する前にエクスポートする必要があります。カタログの場所（ NFSv3 ）は XCP Linux ホストにマウント可能である必要がありますが、マウントされているとは限りません。</block>
   <block id="9d1854a18d1a1a9b0aad19c89b6a15b0" category="summary">JSON 構成ファイルを作成します</block>
-  <block id="eb498a91409025b6f7459d1487819ac5" category="paragraph">JSON 構成ファイルを作成します。</block>
   <block id="71067d2da44f21581259461be89d2c5b" category="paragraph">イベントログメッセージ、 syslog クライアント、またはカスタマーロギングをイネーブルにする場合は、次の手順を実行します。</block>
-  <block id="4839d2f25cc35b249d5db15efa1afd75" category="paragraph">* 手順 *</block>
   <block id="d4f0fd36ab870ee5b451ed975a3b840d" category="list-text">メモ帳や vi などの任意のテキストエディタを開きます。</block>
   <block id="d4b54477c37b7ad7e878a796746f262b" category="list-text">次の JSON テンプレートを使用して新しいファイルを作成します。</block>
-  <block id="4c38ab1ef38cac28ef430c2be0673437" category="list-text">有効にする機能については 'IsEnabled' の値を TRUE' に変更してください</block>
-  <block id="6bdc741a35e3429fb316e331210901e8" category="list-text">ファイルに xcpLogConfig.json という名前を付け、 * Error ！に記載されているファイルの場所に SAE it の名前を付けます。参照ソースが見つかりません。 *</block>
   <block id="7c584a16cbf4210dc0a344179e274e09" category="cell">デフォルト設定</block>
   <block id="a2f0a9650b74152ef4105d29bb0e92f0" category="cell">JSON 構成ファイルの例</block>
   <block id="d41d8cd98f00b204e9800998ecf8427e" category="doc"></block>
@@ -366,10 +362,8 @@
   <block id="471ff51c89daf6e35e8e2b5111039744" category="inline-link-macro">NetApp IMT</block>
   <block id="ae12aa4d83d4e71d628b8ca5184b9d66" category="admonition">サポートされているブラウザから File Analytics にアクセスできるかどうかを確認するには、を参照してください <block ref="dff6889ed90b9930dbb6c11bc90c8854" category="inline-link-macro-rx"></block>。</block>
   <block id="42f425824cc531c78175d67346f8f124" category="list-text">File Analytics GUI にアクセスするには、 Linux マシンのアドレス &gt;\https://&lt;IP を使用します。プロンプトが表示されたら、セキュリティ証明書を受け入れます。</block>
-  <block id="d92966d58b78d88161004cfe9020ede8" category="list-text">ユーザ名「 admin 」と設定時に設定したパスワードを使用して、 GUI にログインします</block>
   <block id="2ffe186b43f4d120ec24b17fcb23452a" category="inline-image-macro">XCP File Analytics サインイン画面</block>
   <block id="289a5bc6b34705c66837c45715417ecd" category="paragraph"><block ref="289a5bc6b34705c66837c45715417ecd" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="fefbdb3c0131ccf14272f959d23390d5" category="list-text">ログインすると、 NFS エージェントが追加されたことがわかります。 Linux システムと XCP バージョンの最小システム構成を示す緑色のチェックマークが表示されます。</block>
   <block id="dcc65cd71fd805adc9f9914a4cf41d78" category="list-text">SMB エージェントを設定している場合は、同じエージェントカードで追加された SMB エージェントを確認できます。</block>
   <block id="bb77d5af0a3f42f7c393fe3289f4a3a1" category="summary">拡張性に優れたハイパフォーマンスのデータ移行を可能にする NetApp XCP</block>
   <block id="3bacc52d746ebb26cd58025acaa37785" category="doc">XCP を使い始める</block>
@@ -737,11 +731,8 @@
   <block id="d36f032e221f3900149f9473b5c0ce4f" category="paragraph">指定されたNFS共有またはPOSIXパスのすべてのファイルとディレクトリを再帰的に変更するには、XCP `chown`コマンドを使用します。これにより、数百万のファイルのパフォーマンスが向上します。</block>
   <block id="a0b553d099f15801f1726ee64318e949" category="paragraph">'chown' コマンドは ' 選択したディレクトリ構造内のすべてのファイルの所有権をスキャンし ' 変更します`chown`コマンドはNFS共有かPOSIXパスを変数として要求する。XCP `chown`は与えられたパスの所有権を再帰的に変更する。</block>
   <block id="d9b1d76e05f593fa781c1a1da0c9012b" category="list-text">POSIX コネクタは、 NFSv3 TCP ソケットを使用する XCP よりも安全です。</block>
-  <block id="539be75a76dadebbca3424b2f7b46bde" category="doc">XCP v1.9リリースノート</block>
-  <block id="0bd1668ea08c54bc067675d64e6f83a4" category="paragraph">。 <block ref="08ad1ee2f6369863d444accaa8181f3c" category="inline-link-macro-rx"></block> 新機能、アップグレードに関する注意事項、解決済みの問題、既知の制限事項、および既知の問題について説明する。</block>
   <block id="18f2ba0369aea7a98cca4c137d4b6372" category="paragraph">hdfs`copy` コマンドを実行するには、 Linux システム上に HDFS クライアントを設定する必要があります。また、 Hadoop ベンダーに基づいて、インターネット上で利用可能なセットアップ構成に従います。たとえば、MapRクラスタのクライアントを設定するには、「https://docs.datafabric.hpe.com/60/AdvancedInstallation/SettingUptheClient-redhat.html`」を使用します。</block>
   <block id="5477a542a80c11f2da04e8a045970ccc" category="section-title">XCPの問題と解決策</block>
-  <block id="2c21e7858fb5fc86fe2510cb996c6926" category="cell">`XCP : error:互換性のないインデックスファイルです。現在のバージョンのXCPで生成されたインデックスファイルのみを使用してください。または、xcp.netapp.comから古いXCPバイナリをダウンロードすることもできます。</block>
   <block id="ee919e739e668a270db61ab6e8e94e16" category="cell">XCP 1.9より前のXCPバージョンを使用して生成されたインデックスに対して処理を実行しようとしています。これはサポートされていません。実行中の移行を完了してから、このバージョンのXCPに切り替えることを推奨します。また、「scan」、「copy」、または「verify」コマンドを再実行して、XCP 1.9で新しいインデックスを生成することもできます。</block>
   <block id="78e3c3d20c30f31e40219bc4fc26d005" category="section-title">ログダンプ</block>
   <block id="f2223b790f3262b778f881ea47ce4191" category="paragraph">問題 でXCPコマンドまたはジョブが発生した場合、「logdump」コマンドを使用すると、問題 に関連するログファイルを「.zip」ファイルにダンプできます。このファイルをネットアップに送信してデバッグを行うことができます。logdumpコマンドは'移行IDまたはジョブIDに基づいてログをフィルタリングし'それらのログを現在のディレクトリ内の.zipファイルにダンプします「.zip」ファイルの名前は、コマンドで使用される移行またはジョブIDと同じです。</block>
@@ -752,4 +743,39 @@
   <block id="acca97deb653a678580117072b78b763" category="paragraph">XCP 情報ライブラリへようこそ。ここでは、XCP v1.9ソフトウェアのインストール、設定、および使用方法を記載したマニュアルを提供しています。</block>
   <block id="8d199d68726e0baa3da715584c92e083" category="admonition">XCPバイナリはコード署名済みです。詳細については、「NetApp_XCP _&lt;バージョン&gt;.tgz」のREADMEを参照してください。</block>
   <block id="259c9d5f301d6e350422d2ebfe2bcc87" category="cell">XCP File Analyticsがインストールされていて、HTTPDが実行されているLinuxマシンに対して、システムからpingを実行できることを確認します。サービスが実行されていない場合は 'configure を実行して ' 修復オプションを選択しますサポートされているブラウザバージョンを使用していることを確認してください。を参照してください <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block>。</block>
+  <block id="bfccbf3e891050373f71f1230130222b" category="cell"><block ref="ad3b549c4b03e0598dee96d17d3ccc66" prefix="" category="inline-code"></block>:バッチの比較:互換性のないインデックスファイルです。現在のバージョンのXCPで生成されたインデックスファイルのみを使用してください。または、xcp.netapp.comから古いXCPバイナリをダウンロードすることもできます。</block>
+  <block id="481da41cf08734ac99d07aca58644781" category="cell"><block ref="6d7d8e19dacf4142870d92b873503ded" prefix="" category="inline-code"></block></block>
+  <block id="2dc9d74fea656209a3e6734b2bd09c40" category="cell">ファイルパスにコロン（:）が含まれている場合は、代わりに3つのコロン（::）を使用します。</block>
+  <block id="e9bef9a5a04a193f8f77a5867e82c24b" category="doc">XCP v1.9.1:リリースノート</block>
+  <block id="a76dc4faed369cb6713d049dbc0ca400" category="paragraph">。 <block ref="5a4a1c694a80c57bbface50f0a4d4a69" category="inline-link-macro-rx"></block> 新機能、アップグレードに関する注意事項、解決済みの問題、既知の制限事項、および既知の問題について説明する。</block>
+  <block id="410bc026d79ee8d7b9f82dd6b03feb98" category="list-text">File Analytics GUIにログインします。</block>
+  <block id="fce3933747223b348680fa7fa109330b" category="paragraph">File Analytics GUIにログインするには、2つの方法があります。</block>
+  <block id="f54b0f1d442f1ec5a7de065a3541d957" category="list-text">設定時に設定したユーザ名adminとパスワードを使用します。</block>
+  <block id="9232193990a75b1e49392f2b2617103d" category="list-text">エンタープライズ規模のシングルサインオン（SSO）機能を設定して有効にします。</block>
+  <block id="2e3c9f20aee1951e2d90c60c3895ab58" category="paragraph">このログイン機能を使用して、特定のマシンでXCP File Analyticsをセットアップし、Web UI URLを全社規模で共有することができます。これにより、ユーザーはSSOクレデンシャルを使用してUIにログインできます。</block>
+  <block id="69bb9c4e14480c847abc95d5c42499ad" category="admonition">SSOログインはオプションであり、永続的に設定および有効化できます。Security Assertion Markup Language（SAML）ベースのSSOログインをセットアップするには、を参照してください <block ref="24bd22f7d0a05b19a03434bac975689d" category="inline-xref-macro-rx"></block>。</block>
+  <block id="5011fee80695c860b0a39f97d0dcb95c" category="list-text">ログインすると、NFSエージェントが表示されます。LinuxシステムとXCPバージョンの最小システム構成を示す緑色のチェックマークが表示されます。</block>
+  <block id="bb589a1b8201c2239ba76232e361cafc" category="section-title">SSOクレデンシャルを設定する</block>
+  <block id="fffd3dfdf9fa53044cdb134dcc69c528" category="paragraph">SSOログイン機能は、SAMLを使用するXCP File Analyticsで実装され、Active Directory Federation Services（ADFS）アイデンティティプロバイダでサポートされます。SAMLは、認証タスクを企業のサードパーティのアイデンティティプロバイダ（IdP）にオフロードし、MFA（多要素認証）に対して任意の数のアプローチを利用できます。</block>
+  <block id="f2d88d647c936a165a3e77edcbea1d96" category="list-text">XCP File Analyticsアプリケーションを企業IDプロバイダに登録します。</block>
+  <block id="1f93f245c9251dd40bbdd43eacc5372c" category="paragraph">File Analyticsはサービスプロバイダーとして実行されるようになりました。そのため、エンタープライズアイデンティティプロバイダに登録する必要があります。通常、このSSO統合プロセスを処理するチームが社内に存在します。最初のステップは、関連するチームを見つけて、ファイル分析アプリケーションのメタデータの詳細を共有することです。</block>
+  <block id="2fa5a2b9e39c8c52b4712c4defadf219" category="paragraph">アイデンティティプロバイダに登録するために、共有する必要がある必須の詳細情報は次のとおりです。</block>
+  <block id="9563382993688c51fdc3a46e81eb172f" category="list-text">*サービスプロバイダエンティティID：*<block ref="e1fe6adfd56c8994795ceb238170e3b4" prefix=" " category="inline-code"></block></block>
+  <block id="bf1e51171726684d1ee1b309557acd01" category="list-text">*サービスプロバイダーアサーションコンシューマサービス（ACS）URL：*<block ref="21d0fedea22f326cba161956dc12f67c" prefix=" " category="inline-code"></block></block>
+  <block id="f57c5b8986c37b4a0952ba786b74f802" category="paragraph">File Analytics UIにログインして、これらの詳細を確認することもできます。</block>
+  <block id="80dae1bc5036b7e9bda13b9e72ac846e" category="list-text">ユーザ名「admin」と、インストール時に設定したパスワードを使用してUIにログインします。</block>
+  <block id="ccd1f9a4a3996dec7dcc1222859ee8f1" category="list-text">ページの右上にある* User *アイコンを選択し、* SAML設定*を選択します。</block>
+  <block id="363cae04551b1b1a61f8792a42d5332c" category="paragraph">表示されるドロップダウンメニューで*サービスプロバイダ設定*を確認します。</block>
+  <block id="957c109b84ab3a9745776f942062afea" category="inline-image-macro">SAMLの設定例</block>
+  <block id="82d38923543ba21104350ca2e054aed6" category="paragraph"><block ref="82d38923543ba21104350ca2e054aed6" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="231aa7872617b02f47d61c8a448d71d3" category="paragraph">登録が完了すると、企業のIdPエンドポイントの詳細が表示されます。このIdPエンドポイントのメタデータをファイル分析UIに指定する必要があります。</block>
+  <block id="0fabd32fee9ac3582435784332323cf0" category="list-text">IdPの詳細を指定します。</block>
+  <block id="13cdf4657d47700947243dc2788b7179" category="list-text">「 * ダッシュボード * 」に移動します。ページの右上にある* User *アイコンを選択し、* SAML設定*を選択します。</block>
+  <block id="d8adeda321a41aaa17a27edc3b9f91af" category="list-text">登録後に取得したIdPの詳細を入力します。</block>
+  <block id="632a19fe4f9dbcb608d0fc15adce1abd" category="inline-image-macro">IdP設定例</block>
+  <block id="d9f5a9253d4897150b89f01bd1fff5b8" category="paragraph"><block ref="d9f5a9253d4897150b89f01bd1fff5b8" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="52a2204afc476b63dc6724a5bd0b634b" category="list-text">SAMLベースのSSOを永続的に有効にするには、* SAMLを有効にする*チェックボックスを選択します。</block>
+  <block id="10492389e94efdebbb66f7b0cd8a1324" category="list-text">[ 保存（ Save ） ] を選択します。</block>
+  <block id="280adca2af76ab2f6d95dd020df20c76" category="list-text">File Analyticsからログアウトして、再度ログインします。</block>
+  <block id="26fe07940d9a7bac7605ee7fc243d89a" category="paragraph">エンタープライズSSOページにリダイレクトされます。</block>
 </blocks>
