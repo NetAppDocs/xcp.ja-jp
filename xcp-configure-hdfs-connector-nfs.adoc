@@ -11,13 +11,16 @@ summary: HDFS コネクタを使用すると、 XCP は、異なるベンダー�
 [role="lead"]
 XCP NFS の場合、 Hadoop Distributed File System （ HDFS ） Connector （ HDFS ： // ）は、 XCP に、異なるベンダーが提供するすべての HDFS ファイルシステムへのアクセスを許可します。
 
+.サポートされている機能
 HDFS から NFS への「 copy 」コマンド操作は、 HDFS コネクタでサポートされています。
 
+.パスの構文
 HDFS コネクタのパス構文は、「 hdfs://[user@host ： port]/full-path 」です。
 
 
 NOTE: ユーザ、ホスト、およびポートを指定しない場合、 XCP はホストを「デフォルト」に設定し、ポートを「 0 」に設定した「 hdfsConnect 」を呼び出します。
 
+.HDFSコネクタをセットアップする
 hdfs`copy` コマンドを実行するには、 Linux システム上に HDFS クライアントを設定する必要があります。また、 Hadoop ベンダーに基づいて、インターネット上で利用可能なセットアップ構成に従います。たとえば、MapRクラスタのクライアントを設定するには、「https://docs.datafabric.hpe.com/60/AdvancedInstallation/SettingUptheClient-redhat.html`」を使用します。
 
 HFDS クライアントのセットアップが完了したら、クライアントの設定を完了する必要があります。XCP コマンドで HDFS パスを使用するには、次の環境変数が必要です。
