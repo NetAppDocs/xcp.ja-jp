@@ -395,7 +395,6 @@
   <block id="f4915fbc2a7713a0eeea8adce10091de" category="cell">XCP フィルタ</block>
   <block id="ca2e34fd1c2de7fa4ca5bb236706760b" category="cell">XCP SMB exclude オプションでは、フィルタでのパターンに基づいたディレクトリは除外され、ディレクトリのファイルシステムをトラバースできます。</block>
   <block id="76e35710ec65c5c13523e53f9290946d" category="cell">アクティブなソースのサポート</block>
-  <block id="4df0ea8d6ab650858ac62da3aa9f0f41" category="cell">ベースラインまたは差分 Snapshot コピーの使用、増分同期のためのライブソース移行は XCP でサポートされていません。</block>
   <block id="abef06ad7d7930b60b54d21ecda87d96" category="paragraph">次の共通機能は、 XCP NFS および SMB では使用できません。</block>
   <block id="67563b580602624cbe59ec4a7939e8fe" category="list-text">* 同一ホスト上の XCP 複数インスタンス * ：同一ホスト上で複数の XCP インスタンスを実行すると、予測不能な結果になることがあります。</block>
   <block id="163e080f44afc4f1a3717f3330b0859b" category="list-text">* 移行が完了するまでの時間 * ：移行を完了するまでの時間や、移行に使用するコマンドを完了するまでの時間は XCP Upfront にありません。最後のカットオーバーを実行する場合は、ソースボリュームのデータ更新が少ないことを確認してください。</block>
@@ -784,4 +783,7 @@
   <block id="e275d5c35bd98d51f375595425721b8e" category="paragraph-title">MaxStartupsのことです</block>
   <block id="4fc18ed56b82e48babebaac5b07abd72" category="paragraph-title">「nodes.ini"」ファイル</block>
   <block id="08ad268a318e49778022d6aa0d84e057" category="paragraph-title">POSIXコネクタとHDFSコネクタ、マルチノードのスケールアウト、セキュリティ機能を組み合わせて使用できます</block>
+  <block id="c7d37295c1bdef1e9ae306db70634663" category="cell">XCPでは、ベースラインまたは増分Snapshotコピー処理とライブソース移行の組み合わせはサポートされていません。</block>
+  <block id="dbef0b1dd5263aa13674ecebca1b7756" category="cell">ライブソース移行</block>
+  <block id="93571d5812c4c39edcca3e27487acbe9" category="cell">XCPでは、移行時のソースボリューム上のデータの変更はサポートされていません。</block>
 </blocks>
