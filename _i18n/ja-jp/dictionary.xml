@@ -28,7 +28,6 @@
   <block id="66f9acc1b514e86b97784fe390326ce3" category="paragraph">XCP SMB は、 Windows クライアントホストシステムを使用して並列 I/O ストリームを生成し、使用可能なネットワークとストレージのパフォーマンスを最大限に活用します。</block>
   <block id="d25223f4065ca21361aff2e7cdc61203" category="section-title">ストレージを設定する</block>
   <block id="c8fe60bf1229083e3bb54f5366226e26" category="paragraph">XCP SMB の移行および移行には、次のユーザログイン要件があります。</block>
-  <block id="511057ab7032e10b44554037f83be0f0" category="list-text">XCP ホストシステム： XCP ホストユーザには管理者権限が必要です（ユーザは XCP SMB ホストシステムの「 BUILTIN\Administrators 」グループに属している必要があります）。</block>
   <block id="543905c9e8d793e24798d62739fd285b" category="list-text">Active Directory の監査ログポリシーとセキュリティログポリシーに移行または XCP ホストユーザを追加します。Windows 10 で「監査とセキュリティログ」ポリシーを見つけるには、次の手順に従います。</block>
   <block id="efaadd4be852741a24b28d66addf7e17" category="list-text">[ * グループポリシーエディタ * ] ダイアログボックスを開きます。</block>
   <block id="58f61041ffa1d14e245af8a57dce1c48" category="list-text">[ * コンピューターの構成 ] 、 [Windows の設定 ] 、 [ セキュリティーの設定 ] 、 [ ローカルポリシー ] 、 [ ユーザー権利の割り当て * ] の順に選択します。</block>
@@ -635,8 +634,6 @@
   <block id="90637cbab382a9675c5bad0c7aeef15f" category="cell">Hadoop Distributed File System （ HDFS ； Hadoop 分散ファイルシステム）コネクタ</block>
   <block id="b03665438ed7a747020c197d671b61c3" category="list-text">「 sync 」コマンドでは、 HDFS コネクタはサポートされません</block>
   <block id="f5f0878108a9a99caae85df13ed2e0ac" category="list-text">HDFS ファイルシステムでは、シンボリックリンク（ symlinks ）、ハードリンク、または特別なファイルをサポートしていません</block>
-  <block id="3fabfbd2744533c3c888e15445477652" category="cell">ACL</block>
-  <block id="3706b1828c935d3a1a30b30080320b22" category="cell">ソースがネットアップ以外のシステムの場合、 XCP は ACL をコピーしません。</block>
   <block id="edc9f0a5a5d57797bf68e37364743831" category="cell">Linux の場合</block>
   <block id="bd2cc77640d48204c25994ade9373d0d" category="cell">XCP 1.1.6 でサポートされていた以前の Linux ディストリビューションでは、 XCP はサポートされなくなりました。</block>
   <block id="84b5f1dcb24995657953339470fd8782" category="list-text">* ファイル分析用の root 以外のユーザ * ： XCP は、 root 以外のユーザまたは sudo ユーザが実行するインストールと設定をサポートしていません。</block>
@@ -786,4 +783,5 @@
   <block id="c7d37295c1bdef1e9ae306db70634663" category="cell">XCPでは、ベースラインまたは増分Snapshotコピー処理とライブソース移行の組み合わせはサポートされていません。</block>
   <block id="dbef0b1dd5263aa13674ecebca1b7756" category="cell">ライブソース移行</block>
   <block id="93571d5812c4c39edcca3e27487acbe9" category="cell">XCPでは、移行時のソースボリューム上のデータの変更はサポートされていません。</block>
+  <block id="61355ec3f68ee20926a222027dcb3d7b" category="list-text">XCPホストシステム：XCPホストユーザには管理者権限が必要です（ターゲットSMBサーバの「BUILTIN\Administrators」グループに属している必要があります）。</block>
 </blocks>
