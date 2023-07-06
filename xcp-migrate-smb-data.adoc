@@ -60,9 +60,7 @@ C:\xcp>xcp sync \\<source SMB share> \\<destination SMB share>
 
 [NOTE]
 ====
-* 検証操作中に 'verify' コマンドで --preserve-atim' フラグを使用すると ' ソースでのアクセス時間を保持できます
-* 検証動作中に 'verify コマンドとともに -noatim' フラグを使用して ' アクセス時間の違いを除外できます
-
+検証操作中に 'verify' コマンドで --preserve-atim' フラグを使用すると ' ソースでのアクセス時間を保持できます
 
 ====
 * 例： *

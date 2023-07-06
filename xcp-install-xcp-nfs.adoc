@@ -22,7 +22,7 @@ XCP をアップグレードする場合は、現在のインストールファ�
 | 項目 | 要件 
 
 
-| システム | 64 ビット Intel または AMD サーバ、最小 4 コア、 32GB RAM 
+| システム | 64ビットIntelまたはAMDサーバ、8コア以上、64 GB RAM 
 
 
 | オペレーティングシステムとソフトウェア | RHEL8 。を参照してください link:https://mysupport.netapp.com/matrix/["IMT"^] サポートされているオペレーティングシステムの場合 
@@ -37,7 +37,7 @@ XCP をアップグレードする場合は、現在のインストールファ�
 | サポートされているプロトコルバージョン | NFSv3 と NFSv4 （ POSIX と ACL ） 
 
 
-| サポートされているブラウザ（ File Analytics のみ） | XCP File Analytics は Google Chrome バージョン 76 以降をサポートします。を参照してください link:https://mysupport.netapp.com/matrix/["IMT"^] サポートされているすべてのバージョンのブラウザのマトリックスです 
+| サポートされているブラウザ（ File Analytics のみ） | を参照してください link:https://mysupport.netapp.com/matrix/["IMT"^] XCP File Analyticsでサポートされているすべてのブラウザバージョンのマトリックス。 
 |===
 
 NOTE: ライブソース移行の推奨構成は、 8 コアと 64GB RAM です。

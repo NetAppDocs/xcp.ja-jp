@@ -43,12 +43,10 @@
   <block id="963344c97166a9491696af9417e60eed" category="doc">NFS データ移行を計画</block>
   <block id="2d3f0225db2a5974e9dd3efa2510ede8" category="paragraph">NFS データ移行を計画</block>
   <block id="498f79c4c5bbde77f1bceb6c86fd0f6d" category="section-title">- 表示</block>
-  <block id="2af7eb2d79f03b1c5451390ff7784e40" category="paragraph">'how コマンドは '1 つまたは複数のストレージ・サーバの RPC サービスおよび NFS エクスポートを照会しますコマンドは、各エクスポートの使用済み容量と空き容量に加えて、使用可能なサービスとエクスポートを表示し、各エクスポートのルート属性を指定します。例</block>
   <block id="36b1ac7befb0a4a2aafb2840c1654f80" category="list-text">`XCP show &lt;NFS file server IP/FQDN&gt;`</block>
   <block id="4ee7ac9a872eadb3d1f7347270bbfad7" category="list-text">XCP show nfs_server01.netapp.com`</block>
   <block id="0b38ead8cb81444a18a4c9660907007d" category="paragraph">詳細については 'XCP help show' を実行してください</block>
   <block id="22efdbe132eabc102306bd7a334fb434" category="section-title">スキャン</block>
-  <block id="260f1bdc770baf06a9e28946677d8ade" category="paragraph">「を使用すると、ソースの NFSv3 エクスポートパス全体を再帰的にスキャンし、スキャンの終了時にファイル構造の統計を出力できます。スキャン処理の実行中は、ソースの NFS エクスポートマウントを読み取り専用モードにすることを推奨します。例</block>
   <block id="aef9e741ab939722d78e05debc0530f8" category="list-text">XCP scan nfs_server01.netapp.com:/export1`</block>
   <block id="57e9ab68ece2e80c1dd072f065c05577" category="paragraph">詳細については 'XCP help scan を実行してください</block>
   <block id="d966f213346a789643a8dfc71c67068b" category="paragraph">必要に応じて、 File Analytics を使用して、結果をグラフィカルに表示します。</block>
@@ -187,7 +185,6 @@
   <block id="d31b586de007038e5023c216e62f86b1" category="cell">サポートされているプロトコルバージョン</block>
   <block id="4ada655f00526d6808f8340ab758c575" category="cell">すべての SMB プロトコルバージョン</block>
   <block id="817c6a5be8297c117096d41d202aff2e" category="cell">サポートされているブラウザ（ File Analytics のみ）</block>
-  <block id="21c1caf58e7317ab4fa37a9c0510fcd1" category="cell">XCP File Analytics は Google Chrome バージョン 76 以降をサポートします。サポートされているすべてのバージョンのブラウザについては、 IMT マトリックスを参照してください</block>
   <block id="8c7843878f3c9b0f5e771772d6db2dea" category="section-title">XCP SMB Microsoft VC++ 再頒布可能ファイルのインストール</block>
   <block id="c54e109937f5c638f4600d450eedcd55" category="paragraph">VC++ 再配布可能なインストールの手順は、次のとおりです。</block>
   <block id="c4af91562832ae25fbae11e89da4b667" category="inline-link-macro">VC++ 2017 再頒布可能</block>
@@ -366,9 +363,7 @@
   <block id="dcc65cd71fd805adc9f9914a4cf41d78" category="list-text">SMB エージェントを設定している場合は、同じエージェントカードで追加された SMB エージェントを確認できます。</block>
   <block id="bb77d5af0a3f42f7c393fe3289f4a3a1" category="summary">拡張性に優れたハイパフォーマンスのデータ移行を可能にする NetApp XCP</block>
   <block id="3bacc52d746ebb26cd58025acaa37785" category="doc">XCP を使い始める</block>
-  <block id="606f36e4b2f3e6b50928c25be780089f" category="paragraph">拡張性に優れたハイパフォーマンスのデータ移行を可能にする NetApp XCP 。</block>
   <block id="125d45c840d79c5bfc630e1ff6268152" category="section-title">XCP の詳細をご確認ください</block>
-  <block id="98c9ea7de2b6238a9b360c918efd30f4" category="paragraph">NetApp XCP は、ネットアップとネットアップ間のデータ移行およびファイル分析に使用するクライアントベースのソフトウェアです。XCP は、使用可能なすべてのシステムリソースを利用して大量のデータセットとハイパフォーマンスな移行を管理することで、拡張性とパフォーマンスの向上を実現するように設計されています。お客様からのレポートを生成するオプションを使用して、ファイルシステムを完全に可視化できます。一致機能と書式設定機能により、レポートニーズに合わせてレポートをカスタマイズできます。</block>
   <block id="6f1f152483ea52658f15cd3a0974f0a0" category="paragraph">NFS システムまたは SMB システムでは、次のいずれかの方法で XCP を使用します。</block>
   <block id="3ef32fc3b6780a4fdf91e306a592d1cc" category="list-text">Migration 解決策の略</block>
   <block id="94249fa72ae331c87efdfcc0d0a58301" category="list-text">File Analytics 解決策の略</block>
@@ -395,7 +390,6 @@
   <block id="ca2e34fd1c2de7fa4ca5bb236706760b" category="cell">XCP SMB exclude オプションでは、フィルタでのパターンに基づいたディレクトリは除外され、ディレクトリのファイルシステムをトラバースできます。</block>
   <block id="76e35710ec65c5c13523e53f9290946d" category="cell">アクティブなソースのサポート</block>
   <block id="abef06ad7d7930b60b54d21ecda87d96" category="paragraph">次の共通機能は、 XCP NFS および SMB では使用できません。</block>
-  <block id="67563b580602624cbe59ec4a7939e8fe" category="list-text">* 同一ホスト上の XCP 複数インスタンス * ：同一ホスト上で複数の XCP インスタンスを実行すると、予測不能な結果になることがあります。</block>
   <block id="163e080f44afc4f1a3717f3330b0859b" category="list-text">* 移行が完了するまでの時間 * ：移行を完了するまでの時間や、移行に使用するコマンドを完了するまでの時間は XCP Upfront にありません。最後のカットオーバーを実行する場合は、ソースボリュームのデータ更新が少ないことを確認してください。</block>
   <block id="da95bf9af8410657106b7dea7919e7af" category="list-text">* クリーンされていないターゲットで再度コピーを実行する * ：デスティネーションターゲットに部分的なデータがあると、 XCP ベースラインコピーが失敗します。XCP ベースラインコピーと XCP Verify を成功させるには、デスティネーションがクリーンである必要があります。</block>
   <block id="b0875a764dddba8272cc3d6199016dd1" category="list-text">* ライブデスティネーション * ：移行中または差分同期中に、移行先ボリューム上のデータを変更することは XCP でサポートされていません。</block>
@@ -405,7 +399,6 @@
   <block id="00fc0d4b3a5e71116d21a80782c5bdd5" category="summary">XCP の設定手順</block>
   <block id="ef8cdecd9388166741c6ddeb9e648a30" category="doc">XCP を設定します</block>
   <block id="95b2f11d1aece0b4ddfc5cba00384742" category="summary">XCP をインストール</block>
-  <block id="14244e05c3dfba3b36a8f2640bf36a3c" category="paragraph">XCP をインストールします。</block>
   <block id="5157096b4994925e784b5ccc913a425c" category="section-title">ワークフローのインストールと設定</block>
   <block id="dda26d898eec39eecd399e188771288e" category="paragraph">このドキュメントでは、 NFS システムおよび SMB システムに XCP をインストールしてセットアップするための簡単なワークフローを紹介します。</block>
   <block id="341d84aa26cb4521474864e04ea2a63b" category="inline-image-macro">エラー：グラフィックイメージがありません</block>
@@ -477,7 +470,6 @@
   <block id="5dd03e8d039863e563e049be198c3fd3" category="sidebar">リリースノート</block>
   <block id="d60c463bb4096f3ed4bd1618626dfe10" category="sidebar">トラブルシューティングを行う</block>
   <block id="b7b4f4d0374211895e3064e560d36b51" category="cell">RHEL8 。を参照してください <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block> サポートされているオペレーティングシステムの場合</block>
-  <block id="ff7e3293a738a8b6a195e9c65ce9974b" category="cell">XCP File Analytics は Google Chrome バージョン 76 以降をサポートします。を参照してください <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block> サポートされているすべてのバージョンのブラウザのマトリックスです</block>
   <block id="a313028d66f24e87591ecef5ff9f3484" category="summary">ホスト、 ONTAP のバージョン、サポートされているブラウザなどの XCP がサポートされている構成は、 IMT に記載されています。</block>
   <block id="57b6232ac0f92803d0544e702c641050" category="summary">一部の機能は、 XCP NFS または XCP SMB ではサポートされません。</block>
   <block id="27844988f363a5f923e9334ae145a1fd" category="doc">INI ファイルを設定します</block>
@@ -505,7 +497,6 @@
   <block id="915e32144be4f88d02cc0b7b1e33c7c8" category="paragraph">POSIX コネクタと HDFS コネクタ、マルチノードスケールアウト、セキュリティ機能を組み合わせて使用できます。たとえば、次の「 copy 」コマンドと「 ve rify 」コマンドは、 POSIX コネクタと HDFS コネクタをセキュリティおよびスケールアウト機能と組み合わせたものです。</block>
   <block id="2961c595e1b9c1f2bd47edd1c8970e5f" category="list-text">「 copy 」コマンドの例：</block>
   <block id="ddb7e8c7aef66a74fdfde909cf41e522" category="list-text">「 ve rify 」コマンドの例：</block>
-  <block id="06e36d0d8916c19245d82112295e2676" category="list-text">`XCP scan nfs[server:/export path|\file:/&lt;NFS Mounted path&gt;|hdfs://&lt;HDFS mounted path&gt;]`</block>
   <block id="d0b08bb1d5a232daa12efa61e334bd33" category="list-text">`XCP scan\file: /mnt/nfs-source`</block>
   <block id="95e9d579b96f02c13ed81480b282135b" category="list-text">XCP scan hdfs://demo/user1`</block>
   <block id="145d53a32d3487520bd34eee8e20c389" category="summary">XCP NFS アドオン機能は、 POSIX コネクタと HDFS コネクタの使用をサポートし、セキュリティを強化し、データ移行を高速化するスケールアウトアーキテクチャの使用をサポートしています。</block>
@@ -541,7 +532,6 @@
   <block id="ec0bc824851831e651eff319ac6be069" category="cell">これは、ボリューム内に qtree レベルのエクスポートがある場合に発生することがあります。たとえば '/vol1/qtree1' としてエクスポートされるボリューム・サイズが 10 GB で ' ボリューム '/vol1/qtree1' に qtree がある場合 'XCP show コマンドは 'vol1' サイズを 10 GB' として表示し 'qtree1' サイズを 10 GB' として表示しますXCP File Analytics は、両方のエクスポートのスペースを合計し、合計スペースを提供します。この場合、「 20 GB 」となります。「 qtree1 」は論理空間であることは理解できません。</block>
   <block id="fc7af6e6e28187c4a6802a620fab64b4" category="paragraph">copy コマンドは ' ソース・ディレクトリ構造全体をスキャンして ' デスティネーションの NFSv3 エクスポートにコピーします'copy' コマンドでは ' ソース・パスとデスティネーション・パスを変数として指定する必要がありますコピー処理の終了時に、スキャンおよびコピーされたファイル、スループット / 速度、および経過時間の詳細が表示されます</block>
   <block id="b2afea67c58251abc9cea9e00c6f6195" category="paragraph">* POSIX パスの例 :*</block>
-  <block id="29d2ad021e95ccea21b050eea89967f1" category="paragraph">* HDFS パスの例： *</block>
   <block id="d851ab4c5c4fba2cc3e27dbabf3c3675" category="cell">からライセンスをダウンロードします <block ref="f33ccbb3083b14f48de92a286ba83724" category="inline-link-macro-rx"></block>をクリックして '/opt/NetApp/xFiles/XCP にコピーし 'XCP activate コマンドを実行してアクティブにします</block>
   <block id="98dda3ac723570bf847c92d35e6264d2" category="cell">オンラインライセンスをアクティブ化しようとしていますが、ホストシステムがインターネットに接続されていません。システムがインターネットに接続されていることを確認します。</block>
   <block id="60612c946e496400e59de02fe9c8f935" category="cell">XCP Linux クライアントホストでエディタを開き、適切なカタログの場所で構成ファイルを更新します。XCP 構成ファイルは、 /opt/NetApp/xFiles/XCP xcp.ini` にあります。構成ファイルのサンプル・エントリ： `[root@scspr1949387001~]# cat /opt/NetApp/xFiles/XCP / xcp.ini` [XCP ]`CATALOCATA=10.235.128.153:/catalog`</block>
@@ -681,7 +671,6 @@
   <block id="c64a522ee6418ae33077670975c2798b" category="admonition">コピー操作中に 'copy' コマンドとともに --preserve-atim' フラグを使用すると ' ソースでのアクセス時間を保持できます</block>
   <block id="9d83a2ce37bac2516a6b570ccc972b69" category="admonition">同期操作中に '-spreserve-atim' フラグを 'sync' コマンドとともに使用すると ' ソースでのアクセス時間を保持できます</block>
   <block id="7e4d5419d4fcf4ceade27ffac84d4e92" category="list-text">検証操作中に 'verify' コマンドで --preserve-atim' フラグを使用すると ' ソースでのアクセス時間を保持できます</block>
-  <block id="0e97e9bc1c0f6d8ea9bc140cab258f9a" category="list-text">検証動作中に 'verify コマンドとともに -noatim' フラグを使用して ' アクセス時間の違いを除外できます</block>
   <block id="d04f98cbab23bb984f10968cafdb77bf" category="section-title">Windows クライアントを設定します</block>
   <block id="8723065565846862b1fa4bd925384734" category="list-text">デスティネーションストレージボックスとソースストレージボックスをホストファイルに追加します。</block>
   <block id="cf2408bbf2ce4b4de95513dd3053d13a" category="list-text">「 (C:\Windows\System32\drivers\etc\hosts 」の場所に移動します</block>
@@ -741,9 +730,6 @@
   <block id="259c9d5f301d6e350422d2ebfe2bcc87" category="cell">XCP File Analyticsがインストールされていて、HTTPDが実行されているLinuxマシンに対して、システムからpingを実行できることを確認します。サービスが実行されていない場合は 'configure を実行して ' 修復オプションを選択しますサポートされているブラウザバージョンを使用していることを確認してください。を参照してください <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block>。</block>
   <block id="bfccbf3e891050373f71f1230130222b" category="cell"><block ref="ad3b549c4b03e0598dee96d17d3ccc66" prefix="" category="inline-code"></block>:バッチの比較:互換性のないインデックスファイルです。現在のバージョンのXCPで生成されたインデックスファイルのみを使用してください。または、xcp.netapp.comから古いXCPバイナリをダウンロードすることもできます。</block>
   <block id="481da41cf08734ac99d07aca58644781" category="cell"><block ref="6d7d8e19dacf4142870d92b873503ded" prefix="" category="inline-code"></block></block>
-  <block id="2dc9d74fea656209a3e6734b2bd09c40" category="cell">ファイルパスにコロン（:）が含まれている場合は、代わりに3つのコロン（::）を使用します。</block>
-  <block id="e9bef9a5a04a193f8f77a5867e82c24b" category="doc">XCP v1.9.1:リリースノート</block>
-  <block id="a76dc4faed369cb6713d049dbc0ca400" category="paragraph">。 <block ref="5a4a1c694a80c57bbface50f0a4d4a69" category="inline-link-macro-rx"></block> 新機能、アップグレードに関する注意事項、解決済みの問題、既知の制限事項、および既知の問題について説明する。</block>
   <block id="410bc026d79ee8d7b9f82dd6b03feb98" category="list-text">File Analytics GUIにログインします。</block>
   <block id="fce3933747223b348680fa7fa109330b" category="paragraph">File Analytics GUIにログインするには、2つの方法があります。</block>
   <block id="f54b0f1d442f1ec5a7de065a3541d957" category="list-text">設定時に設定したユーザ名adminとパスワードを使用します。</block>
@@ -784,4 +770,122 @@
   <block id="dbef0b1dd5263aa13674ecebca1b7756" category="cell">ライブソース移行</block>
   <block id="93571d5812c4c39edcca3e27487acbe9" category="cell">XCPでは、移行時のソースボリューム上のデータの変更はサポートされていません。</block>
   <block id="61355ec3f68ee20926a222027dcb3d7b" category="list-text">XCPホストシステム：XCPホストユーザには管理者権限が必要です（ターゲットSMBサーバの「BUILTIN\Administrators」グループに属している必要があります）。</block>
+  <block id="7cde6d7e5e7b73d42bf2ff05514668fe" category="cell">サイトにアクセスできないか、インストールの完了後にユーザログインに失敗しました。</block>
+  <block id="7e8faa040a3429cd75dbc9dfed43bac0" category="list-text">XCPサービスが実行されているかどうかを確認します。<block ref="47541872bcdb6b08aeadea6f58c6ebd3" prefix=" " category="inline-code"></block></block>
+  <block id="d311ee2390d292b3694c8f669889041c" category="list-text">XCPリッスン操作を開始し、エラーがないことを確認します。</block>
+  <block id="a819ba1b3efc04fee9100a7ab0ee93ca" category="paragraph"><block ref="a73ccca27c22e20f2b42c66b62244db5" prefix="" category="inline-code"></block></block>
+  <block id="6f59af5df257d27f8f7f83e150cb44c7" category="list-text">次のエラーが表示された場合は、などのyumを使用してCodeReadyパッケージをインストールします<block ref="195584d46184f28385e2ae5bd9f0af62" prefix=" " category="inline-code"></block>：</block>
+  <block id="b326b5062b2f0e69046810717534cb09" category="cell">正しいです</block>
+  <block id="a660b358e105189a720dbb4a9176decf" category="paragraph">NetApp XCPは、拡張性に優れたハイパフォーマンスなデータ移行を可能にするクライアントベースのソフトウェアで、ネットアップ間やネットアップ間のデータ移行やファイル分析に対応します。XCP は、使用可能なすべてのシステムリソースを利用して大量のデータセットとハイパフォーマンスな移行を管理することで、拡張性とパフォーマンスの向上を実現するように設計されています。お客様からのレポートを生成するオプションを使用して、ファイルシステムを完全に可視化できます。一致機能と書式設定機能により、レポートニーズに合わせてレポートをカスタマイズできます。</block>
+  <block id="f11ba2ba1e8e44e293e56351fbc05edf" category="doc">同じXCPホストで複数のXCPジョブを実行します</block>
+  <block id="328be41686da6fdb0454cdc13b57cf2d" category="paragraph">XCP 1.9.2以降では、「-minmem」機能を使用して、1つのXCPホストで複数のXCPジョブまたはコマンドを実行できます。ただし、各ジョブに十分なリソースがホストにある場合に限ります。「-minmem」機能をサポートするコマンドを実行すると、XCPは最小限のホストメモリを使用してジョブを完了します。これにより、同じホスト構成で追加のジョブを実行するための容量が作成されます。</block>
+  <block id="d9647e192eec469f5ef0ff6b04e9a7f0" category="section-title">最小システム要件</block>
+  <block id="9901879377c5f3682a62b2348ecc14ad" category="paragraph">XCPジョブごとに、中規模から大規模の移行用に、最大64GBのホストメモリと8コアを割り当てる必要があります。</block>
+  <block id="b1db961ef892611c930b306acf2b45c9" category="admonition">「-minmem」機能はSMBデータの移行ではサポートされません。</block>
+  <block id="8db7df66ab1d7ab5f1dc947acdb5fae4" category="section-title">ロギング</block>
+  <block id="6c5503e1799fc9bf884095cb4a7486c7" category="paragraph">デフォルトでは、各XCPジョブは、ジョブIDに固有の個別のログファイルに記録されます。このロギングメカニズムは、同じホストで複数のジョブを実行する場合に適しています。NetAppでは、の変更は推奨していません<block ref="1f0167cf593b01d4e8c31f9bea306a0d" prefix=" " category="inline-code"></block> 単一のを使用するファイル<block ref="4bfa73c989008743279ae857adc50faf" prefix=" " category="inline-code"></block> 同じホストで並行して実行されている複数のXCPジョブをログに記録するファイル。</block>
+  <block id="26807eaed63a31814a5e1753d72676d8" category="section-title">サポートされるコマンド</block>
+  <block id="f0ca056f216466d7830147a4008903a4" category="paragraph">「-minmem」機能は、次のXCPコマンドでサポートされます。</block>
+  <block id="644834e9d0415e057f1d7c2c00cdd281" category="list-text"><block ref="53aefec08170b2ebed981a0a86d0dbe0" prefix="" category="inline-code"></block></block>
+  <block id="cf1b3b1776d0d05e295618646490b382" category="list-text"><block ref="12cba3ee81cf4a793796a51b6327c678" prefix="" category="inline-code"></block></block>
+  <block id="d64d8a3c311a3e34d98c5d12b0de2deb" category="list-text"><block ref="69f2afc2390cec954f7c208b07212d39" prefix="" category="inline-code"></block></block>
+  <block id="39c754f7316412b5101d1266f8f9b259" category="list-text"><block ref="e8418d1d706cd73548f9f16f1d55ad6e" prefix="" category="inline-code"></block></block>
+  <block id="0ac5b3cfaad7fc2ecd24fa0fc221ea9d" category="list-text"><block ref="a3e4a767ccc698fa80ecaf42af64deea" prefix="" category="inline-code"></block></block>
+  <block id="456a5abc7727a436e67e4a218e2a4508" category="list-text"><block ref="417e248f80c35ca0d471575a5fb951f5" prefix="" category="inline-code"></block></block>
+  <block id="7bfde840c21e45a59701f55f5c18ef2c" category="list-text"><block ref="4de53f769603f8e4542ee3267c08dd50" prefix="" category="inline-code"></block></block>
+  <block id="3649b15e31d22a1e2210f014d843b9fa" category="list-text"><block ref="099af53f601532dbd31e0ea99ffdeb64" prefix="" category="inline-code"></block></block>
+  <block id="777dd634078a1b960c79f15d2522db38" category="section-title">サポートされないコマンドです</block>
+  <block id="d2e4f5ed82446cf3023ccba7b5646092" category="paragraph">「-minmem」機能はではサポートされていません<block ref="63ad9d34f3503826e5f649ae6b7ac92c" prefix=" " category="inline-code"></block> コマンドを実行します</block>
+  <block id="32ae6defbd536645e75bc85121b5564b" category="section-title">コマンド例</block>
+  <block id="64e1323e5982bf7736f58f196316da1f" category="paragraph">「-minmem」機能を使用するには、次の例に示すように、XCPコマンドに「-minmem」オプションを含める必要があります。</block>
+  <block id="36126c9a86541e7281b955ee81970a5f" category="list-text"><block ref="31a74c4f1c865e5c03256362a477c425" prefix="" category="inline-code"></block></block>
+  <block id="9cd9bbf0e790392cca7a73545353ed80" category="list-text"><block ref="4a4341530f7d16d6f7a7c281a83f9473" prefix="" category="inline-code"></block></block>
+  <block id="daaf865ea062be33e32fee7ce6361bf2" category="list-text"><block ref="2227f4f3166de257df2d86054647a1df" prefix="" category="inline-code"></block></block>
+  <block id="4200a251b90a3e6f4a8f03a96790e241" category="paragraph">* HDFSパスの例*：</block>
+  <block id="6d2258e0ac0187b32c49ef3d86153890" category="list-text"><block ref="3d4bfec43ba02eadffa6b680f5d2ff90" prefix="" category="inline-code"></block></block>
+  <block id="108808871f93d8eb5fadba5e5396e0b1" category="list-text"><block ref="d0ff481491922a2d0b61842bfc7e1e56" prefix="" category="inline-code"></block></block>
+  <block id="5b89894d695356bcaecabb4c87252ae5" category="list-text"><block ref="354e4935785b48c4def1303908b72905" prefix="" category="inline-code"></block></block>
+  <block id="1e84e83ba1d6a6831654831e04a6e7aa" category="paragraph">* POSIXパスの例*：</block>
+  <block id="97fb7d435610adf703b3ea0785c309d6" category="list-text"><block ref="638d56e1e6406263b5111d968a0e1f1d" prefix="" category="inline-code"></block></block>
+  <block id="b7e41451ca91ae23c0a331e9b88f3663" category="list-text"><block ref="a0910009e4d60445309dd8426ef78ded" prefix="" category="inline-code"></block></block>
+  <block id="bdf61b3ecae5f29d6c6b402c1adf2536" category="section-title">XCP推定</block>
+  <block id="e151d1ab502d96991c424c6cbefae2f7" category="paragraph">XCP推定機能は、ベースラインを完了するまでの時間を推定します<block ref="12cba3ee81cf4a793796a51b6327c678" prefix=" " category="inline-code"></block> ソースからデスティネーションへの処理。ベースラインが完了するまでの推定時間が計算されます<block ref="12cba3ee81cf4a793796a51b6327c678" prefix=" " category="inline-code"></block> CPU、RAM、ネットワーク、その他のパラメータなど、現在使用可能なすべてのシステムリソースを使用して処理します。を使用する場合<block ref="a02d29476c13ce0a516e16bcfe4535b6" prefix=" " category="inline-code"></block> オプションで、XCPは推定時間を見つけるためにサンプルコピー操作を実行します。</block>
+  <block id="f943fe60d92b33d799a2c02de9061e3b" category="summary">XCPでは、S3コネクタを使用して、NFSまたはHDFSファイルシステムからS3オブジェクトストレージにデータを移行できます</block>
+  <block id="92095cc1ef432ed93af95b88d3e3b625" category="doc">S3 Connectorを設定します</block>
+  <block id="16933dfe56aff83cb6998c3667c2f0cf" category="paragraph">XCP 1.9.2以降では、Simple Storage Service（S3）コネクタによってHadoop Distributed File System（HDFS）ファイルシステムからS3オブジェクトストレージへのデータ移行が可能になり、XCPデータ移行の範囲が拡張されました。</block>
+  <block id="677857bd3ebd1f41c85f70280b227d8f" category="paragraph-title">サポートされる移行のユースケース</block>
+  <block id="ed0f619faede22039440d1fe21bcb0e9" category="paragraph">S3コネクタの移行のユースケースは次のとおりです。</block>
+  <block id="2268dc053f46fc24ae89f30faa812246" category="list-text">HDFSまたはNFSからNetApp StorageGRIDへの移行</block>
+  <block id="f10c40e18ecc26639294205a739fbd18" category="list-text">HDFSまたはNFSからAmazon S3への移行</block>
+  <block id="d3457be5101b05e590b80f8f7107b022" category="list-text">HDFSまたはNFSからNetApp ONTAP S3への移行</block>
+  <block id="9caa7c5b602fa58bf008c08a7e479da6" category="admonition">現在、MapRはHDFSでのみ認定され、サポートされています。</block>
+  <block id="d006b10e4564e8049b786f2138530862" category="paragraph">のサポート<block ref="53aefec08170b2ebed981a0a86d0dbe0" prefix=" " category="inline-code"></block>、<block ref="12cba3ee81cf4a793796a51b6327c678" prefix=" " category="inline-code"></block>、<block ref="e8418d1d706cd73548f9f16f1d55ad6e" prefix=" " category="inline-code"></block>、<block ref="69f2afc2390cec954f7c208b07212d39" prefix=" " category="inline-code"></block> および<block ref="099af53f601532dbd31e0ea99ffdeb64" prefix=" " category="inline-code"></block> S3コネクタ用のコマンドを使用できます。</block>
+  <block id="c29d1e0e67cc2410608faeefbb62dcb8" category="paragraph-title">サポートされていない機能</block>
+  <block id="9627eb5a42d84d5c63b7319f5d296ebc" category="paragraph">のサポート<block ref="63ad9d34f3503826e5f649ae6b7ac92c" prefix=" " category="inline-code"></block> コマンドはS3コネクタに対しては使用できません。</block>
+  <block id="472fe12a7f2ae7888f36faddba8e5e65" category="paragraph">S3コネクタのパス構文は、です<block ref="aa0fb791d7b6f79654dd107dbd476a65" prefix=" " category="inline-code"></block>。</block>
+  <block id="68549dc967c92035106a77e7439be9ba" category="list-text">を使用して、XCPコマンドに特定のS3プロファイルを指定できます<block ref="4000828b83c0a87531b7ca1caac052b3" prefix=" " category="inline-code"></block> オプション</block>
+  <block id="41088e7d7bed6fb65fd0ce680e35aff1" category="list-text">を使用できます<block ref="9dd62310fbf791aca68053dbd7c2e4d8" prefix=" " category="inline-code"></block> S3と通信するためにエンドポイントの値を変更するオプション</block>
+  <block id="d7442f0f9efd2ca279443c52c914b251" category="admonition">エンドポイントの使用は、StorageGRIDおよびONTAP S3では必須です。</block>
+  <block id="0237d634875999d360d9efab9c63589c" category="section-title">S3コネクタをセットアップします</block>
+  <block id="f30387763ef5dc8495245b22c3826788" category="list-text">S3コネクタを使用してXCPコマンドを実行するには、各プラットフォームのオンラインドキュメントに従ってS3にバケットを作成します。</block>
+  <block id="5fdb600d07b3f6deb635e013a137473b" category="inline-link-macro">ONTAP S3オブジェクトストレージの管理</block>
+  <block id="649ef27cf067f5fae3e9c0657c2a071f" category="list-text"><block ref="649ef27cf067f5fae3e9c0657c2a071f" category="inline-link-macro-rx"></block></block>
+  <block id="f16122d47aa9bddb63b76f4f73a13587" category="inline-link-macro">StorageGRID：テナントアカウントの概要を使用します</block>
+  <block id="59a9d1ab7b45926d308d68d7e6f49a67" category="list-text"><block ref="59a9d1ab7b45926d308d68d7e6f49a67" category="inline-link-macro-rx"></block></block>
+  <block id="ea10e86fc2f564a6f297ea6c75c8f92e" category="admonition">続行する前に、が必要です<block ref="c005759b4dfbaa83c83b8fdc155c3493" prefix=" " category="inline-code"></block>、<block ref="a7656fafe94dae72b1e1487670148412" prefix=" " category="inline-code"></block>、認証局（CA）証明書バンドル、および<block ref="975877452f21015e24a0ec58b6b66541" prefix=" " category="inline-code"></block> 情報。XCPは、処理を開始する前に、これらのパラメータを使用してS3バケットを識別して接続します。</block>
+  <block id="55de7793cb50b93dbda01a2a32ec9f46" category="list-text">Amazon Web Services（AWS）CLIパッケージをインストールし、AWS CLIコマンドを実行してS3アカウントのキーとSecure Sockets Layer（SSL）証明書を設定します。</block>
+  <block id="bf3e5f3e0a2a1a0a56fe8915d5125419" category="inline-link-macro">AWS CLIの最新バージョンをインストールまたは更新します</block>
+  <block id="47f387d5114be0a75243893de72ede38" category="list-text">を参照してください <block ref="7d6aab052f74c1d885fa43336d7be563" category="inline-link-macro-rx"></block> をクリックしてAWSパッケージをインストールします。</block>
+  <block id="38d05d307b3ed600922427e3a1dd49a9" category="inline-link-macro">AWS CLI Command Referenceを参照してください</block>
+  <block id="b707c05877e41f501e5064a02f164115" category="list-text">を参照してください <block ref="ad30b84b7cb0e002f342b12435baea56" category="inline-link-macro-rx"></block> を参照してください。</block>
+  <block id="7f690876f3db4f29ba95620b570b48c2" category="list-text">を使用します<block ref="329dfd38b6589b9bc6d49cf9e785f35b" prefix=" " category="inline-code"></block> コマンドを使用してクレデンシャルファイルを設定します。デフォルトでは、ファイルの場所はです<block ref="40f203cedcd08f7589920d1a469a96d9" prefix=" " category="inline-code"></block>。クレデンシャルファイルにアクセスキーとシークレットアクセスキーを指定する必要があります。</block>
+  <block id="382e42ce21e494705ff831f135606bde" category="list-text">を使用します<block ref="42579c91711a0d7831c6aec42c478881" prefix=" " category="inline-code"></block> コマンドを使用してCA証明書バンドルを指定します。これは、のファイルです<block ref="bdf46f9562b038d0163af0feba0b1dfa" prefix=" " category="inline-code"></block> SSL証明書の検証時に使用される拡張子。デフォルトでは、ファイルの場所はです<block ref="5f5f86503ef335bfb468ac44a0e77d00" prefix=" " category="inline-code"></block>。</block>
+  <block id="228242e9d19fdb954d00a277118e2f18" category="list-text">必要なセットアップ設定が完了したら、XCPコマンドを実行する前に、AWS CLIコマンドがLinuxクライアントからS3バケットにアクセスできることを確認します。<block ref="0b3502a40565c7026d8c433e11ba15b9" prefix=" " category="inline-code"></block></block>
+  <block id="6e457e419b169c5c14b03b5e07a2f21b" category="paragraph"><block ref="0d53497a4b61eeaa925b42c377a42eae" prefix="" category="inline-code"></block></block>
+  <block id="d406f518749cb0808f4c4f13d1b7ab92" category="cell">NFSサーバの共有パス名に1つ以上のコロンが含まれている場合は、1つのコロン（:）ではなく2つのコロン（:）を使用して、NFSサーバのIPとNFSサーバの共有パスを区切ります。</block>
+  <block id="ec95d5f1b4ea1a01d2a072ab802d2e2e" category="cell">SnapLockボリュームでは、のあとにWORMファイルは保持されません<block ref="e64df9c2f5a72d0adb1dbea21a609c16" prefix=" " category="inline-code"></block> 操作。</block>
+  <block id="b939754165d55d04968e3d8581c06ff3" category="paragraph">XCPはWORMファイルをボリュームに正常にコピーしますが、ファイルはSnapLockボリュームでは保持されません。</block>
+  <block id="1723c364ac2943db169228e83d339a34" category="list-text">を実行します<block ref="e64df9c2f5a72d0adb1dbea21a609c16" prefix=" " category="inline-code"></block> ソースボリュームからデスティネーションボリュームへの処理：<block ref="958bd1007a36c3c49dc7ee93fd734a4c" prefix=" " category="inline-code"></block></block>
+  <block id="0ec0ae00838a2eee9dcb4e55279286f7" category="list-text">を使用します<block ref="80cd6575aba36d362f140cdde0c55e70" prefix=" " category="inline-code"></block> デスティネーションボリュームのファイル権限を* readonly *に変更するコマンド：<block ref="ed04d0d005c97df67ef52b0ad8aa0517" prefix=" " category="inline-code"></block></block>
+  <block id="83522b3c501a3f48b27f9b264cae4599" category="paragraph">上記の手順が完了すると、コピーしたファイルのSnapLockボリュームの保持が開始されます。</block>
+  <block id="72400cb7d5b84ae782642ca107c294fc" category="inline-link-macro">保持期限を設定</block>
+  <block id="d6ac9450dbf2c0861efd5a5ef5115f7e" category="admonition">SnapLockボリュームの保持期限は、ボリュームのデフォルトの保持ポリシーによって決まります。移行を開始する前にボリューム保持設定を確認します。 <block ref="fd0c10595d24f7804e14135a6730866f" category="inline-link-macro-rx"></block></block>
+  <block id="d3153df9c554c9b6a863ef3e5a6b6e13" category="doc">XCPのインストールを準備します</block>
+  <block id="4d41b0dcb8b6747f8cec345d418abd0b" category="paragraph">インストールの準備として、XCPをダウンロードしてライセンスを取得し、システムを準備します。</block>
+  <block id="0a009b2626b03b4c70bb4dcb73832482" category="doc">NFSデータを移行するコマンド</block>
+  <block id="322df0ac50172a48935aaba57e5dee70" category="cell">を参照してください <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block> XCP File Analyticsでサポートされているすべてのブラウザバージョンのマトリックス。</block>
+  <block id="8ba09dc2aec500b8eabed3efd8eb8bc9" category="summary">HDFSデータを移行</block>
+  <block id="f30e2bc9de919d5c6249cea25c2f9a74" category="paragraph">を使用して移行を計画したら<block ref="53aefec08170b2ebed981a0a86d0dbe0" prefix=" " category="inline-code"></block> コマンドを使用すると、データを移行できます。</block>
+  <block id="ea6a8ab5a9e8b23dc8df0571125234f4" category="paragraph">。<block ref="12cba3ee81cf4a793796a51b6327c678" prefix=" " category="inline-code"></block> コマンドは、ソースのHadoop分散ファイルシステム（HDFS）データ全体をスキャンし、NFSバケットまたはSimple Storage Service（S3）バケットにコピーします。。<block ref="12cba3ee81cf4a793796a51b6327c678" prefix=" " category="inline-code"></block> コマンドでは、ソースパスとデスティネーションパスを変数として指定する必要があります。スキャンおよびコピーされたファイル、スループット、速度、および経過時間の詳細がコピー処理の終了時に表示されます。</block>
+  <block id="beea424f6b4dbe034f0047f1f1a1cd57" category="paragraph">* NFSパスの例：*</block>
+  <block id="02880d02dff3a15e38a0afe75b110262" category="paragraph">* S3パスの例：*</block>
+  <block id="3f2c3abdeca240c2063183e75fa45805" category="paragraph">。<block ref="69f2afc2390cec954f7c208b07212d39" prefix=" " category="inline-code"></block> コマンドは、カタログインデックスの名前または番号を指定して、中断されていたコピー処理を再開します。前回のコピー操作のカタログインデックス名または番号は、に保存されます<block ref="cbd55302f2990d9880a35e0bd8c4b3e9" prefix=" " category="inline-code"></block> ディレクトリ。</block>
+  <block id="8c81ddc94b60eaab22662db017644a72" category="admonition">デフォルトでは、XCPです<block ref="69f2afc2390cec954f7c208b07212d39" prefix=" " category="inline-code"></block> コマンドは、で使用したコピーインデックスからS3エンドポイントとS3プロファイルを使用します<block ref="12cba3ee81cf4a793796a51b6327c678" prefix=" " category="inline-code"></block> コマンドを実行しますただし、新しい場合<block ref="35a45c3d02a8bdde44197b27cf839c10" prefix=" " category="inline-code"></block> および<block ref="4000828b83c0a87531b7ca1caac052b3" prefix=" " category="inline-code"></block> 値はで提供されます<block ref="69f2afc2390cec954f7c208b07212d39" prefix=" " category="inline-code"></block> コマンドを実行すると、オプションの新しい値が使用され、コピーで使用される値が使用されます<block ref="1dccadfed7bcbb036c56a4afb97e906f" prefix=" " category="inline-code"></block> オーバーライドされます。</block>
+  <block id="bea3d8136ac916a4d71a0db1cd54135f" category="paragraph">。<block ref="e8418d1d706cd73548f9f16f1d55ad6e" prefix=" " category="inline-code"></block> コマンドでは、コピー処理後にカタログインデックス番号を使用せずに、ソースディレクトリとターゲットディレクトリのデータを1バイトずつ比較します。コマンドは、両側のファイルを読み取り、データを比較します。</block>
+  <block id="e3a7bb54039414508e91e2b8caab6243" category="paragraph">。<block ref="a7dd12b1dab17d25467b0b0a4c8d4a92" prefix=" " category="inline-code"></block> コマンドは、1つ以上のストレージサーバのRPCサービスとNFSエクスポートを照会します。コマンドは、各エクスポートの使用済み容量と空き容量に加えて、使用可能なサービスとエクスポートを表示し、各エクスポートのルート属性を指定します。</block>
+  <block id="0c8146ca9bdd9f9a3083cbeed24e27a5" category="paragraph">。<block ref="53aefec08170b2ebed981a0a86d0dbe0" prefix=" " category="inline-code"></block> コマンドは、ソースのNFSv3エクスポートパス全体を再帰的にスキャンし、スキャンの終了時にファイル構造の統計を出力します。スキャン処理の実行中は、ソースの NFS エクスポートマウントを読み取り専用モードにすることを推奨します。</block>
+  <block id="6a95fc6c0382de222dd433886d475460" category="list-text"><block ref="48ac1e589150949f3ebe6a2bb7730a73" prefix="" category="inline-code"></block></block>
+  <block id="af1d56f5c43bf1720e9a92f5de20bb23" category="doc">HDFSデータ移行を計画</block>
+  <block id="7d79a1639a9506966de268ebe5ea7da7" category="paragraph">HDFSのデータ移行を計画します。</block>
+  <block id="3943abc3700d0fc7d672d7c1e82fcb26" category="paragraph">。<block ref="53aefec08170b2ebed981a0a86d0dbe0" prefix=" " category="inline-code"></block> コマンドは、ソースパス全体を再帰的にスキャンし、スキャンの最後にファイル構造の統計を出力します。</block>
+  <block id="dd0cd3eb63043850b57e374170b7dfe2" category="list-text"><block ref="1be5ff729f9dfef8516c12abbd49a5a9" prefix="" category="inline-code"></block></block>
+  <block id="fd72c03485ab8cb65dd065e28ac144b3" category="list-text"><block ref="e79e3cc99b073c66e94d8ad89bc3ba4e" prefix="" category="inline-code"></block></block>
+  <block id="74e963cc1be7bd9eb54760a83863926c" category="list-text"><block ref="31aabc9596cc7a7ef0c9a62732d77a5a" prefix="" category="inline-code"></block></block>
+  <block id="bb0399f427aed863042c042b142bd6cb" category="cell">NFSからS3への移行</block>
+  <block id="240cf8fae0436b28ece1e12030b38e4e" category="cell">XCPは、NFSからS3への移行をサポートしていません。</block>
+  <block id="fe55abf5fae19db6a828fd5ca392b6b7" category="cell">同じホスト上のXCPの複数のインスタンス</block>
+  <block id="8b967b2a58b58d36b79d41009ec9f64b" category="cell">同じホストでXCPの複数のインスタンスを実行すると、予期しない結果が発生する可能性があります。</block>
+  <block id="6e17cc1c2c681736d2ceb6e979223245" category="paragraph">次の機能は、Hadoop Distributed File System（HDFS；分散ファイルシステム）コネクタでは使用できません。</block>
+  <block id="f540f493fb0a9e9093687015a52af134" category="cell">のサポート<block ref="63ad9d34f3503826e5f649ae6b7ac92c" prefix=" " category="inline-code"></block> コマンドを実行します</block>
+  <block id="04047e38150b589ef73f2cf1a47dcbfa" category="cell">HDFSコネクタは、をサポートしていません<block ref="63ad9d34f3503826e5f649ae6b7ac92c" prefix=" " category="inline-code"></block> コマンドを実行します</block>
+  <block id="2cfceda72756239fb550ad6bf9cb21a3" category="cell">シンボリックリンク（symlink）とハードリンクのサポート</block>
+  <block id="9913e624c49a17211b2bfade4f81e5a6" category="cell">HDFSファイルシステムでは、シンボリックリンク、ハードリンク、または特殊ファイルはサポートされません。</block>
+  <block id="e094f0017c23fc66e41a73d4c778d988" category="cell">ソースHDFSのライブマイグレーション</block>
+  <block id="f3b812b32fdce09d7d06a9a0759b8546" category="cell">XCPでは、移行時にソース側でHDFSファイルシステム上のデータを変更することはできません</block>
+  <block id="e8a90b649b22fddc82d6ee4cc9429807" category="paragraph">次の機能は、Simple Storage Service（S3）コネクタでは使用できません。</block>
+  <block id="84b02ee2d0524eb08de32d9354ade34b" category="list-text">*ソースとしてS3バケットを使用した移行*：XCPは、ソースとしてS3バケットを使用した移行をサポートしていません。</block>
+  <block id="a8a17edcb9880059a216d63c9e0c2a18" category="doc">XCP v1.9.2リリースノート</block>
+  <block id="27ce933e59d1bd3bfff8d6118fb7a35e" category="paragraph">。 <block ref="b98ddb4c6025a76df69bcccfdb0bd760" category="inline-link-macro-rx"></block> 新機能、アップグレードに関する注意事項、解決済みの問題、既知の制限事項、および既知の問題について説明する。</block>
+  <block id="b179bbcf6f57100cffb18d2558916e9d" category="cell">64ビットIntelまたはAMDサーバ、8コア以上、64 GB RAM</block>
+  <block id="11db15a14a5186a893fe15b0e03f3213" category="sidebar">同じホストで複数のXCPジョブを実行します</block>
 </blocks>

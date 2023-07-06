@@ -1,0 +1,107 @@
+---
+sidebar: sidebar 
+permalink: xcp-configure-s3-connector-nfs.html 
+keywords: xcp, configure, nfs, S3, connector 
+summary: XCPでは、S3コネクタを使用して、NFSまたはHDFSファイルシステムからS3オブジェクトストレージにデータを移行できます 
+---
+= S3 Connectorを設定します
+:allow-uri-read: 
+
+
+[role="lead"]
+XCP 1.9.2以降では、Simple Storage Service（S3）コネクタによってHadoop Distributed File System（HDFS）ファイルシステムからS3オブジェクトストレージへのデータ移行が可能になり、XCPデータ移行の範囲が拡張されました。
+
+.サポートされる移行のユースケース
+S3コネクタの移行のユースケースは次のとおりです。
+
+* HDFSまたはNFSからNetApp StorageGRIDへの移行
+* HDFSまたはNFSからAmazon S3への移行
+* HDFSまたはNFSからNetApp ONTAP S3への移行
+
+
+
+NOTE: 現在、MapRはHDFSでのみ認定され、サポートされています。
+
+.サポートされている機能
+のサポート `scan`、 `copy`、 `verify`、 `resume` および `delete` S3コネクタ用のコマンドを使用できます。
+
+.サポートされていない機能
+のサポート `sync` コマンドはS3コネクタに対しては使用できません。
+
+.パスの構文
+S3コネクタのパス構文は、です `s3://<bucket in S3>`。
+
+* を使用して、XCPコマンドに特定のS3プロファイルを指定できます `-s3.profile` オプション
+* を使用できます `s3.endpoint` S3と通信するためにエンドポイントの値を変更するオプション
+
+
+
+NOTE: エンドポイントの使用は、StorageGRIDおよびONTAP S3では必須です。
+
+
+
+== S3コネクタをセットアップします
+
+.手順
+. S3コネクタを使用してXCPコマンドを実行するには、各プラットフォームのオンラインドキュメントに従ってS3にバケットを作成します。
++
+** link:https://docs.netapp.com/us-en/ontap/object-storage-management/index.html["ONTAP S3オブジェクトストレージの管理"^]
+** link:https://docs.netapp.com/us-en/storagegrid-116/tenant/index.html["StorageGRID：テナントアカウントの概要を使用します"^]
++
+
+NOTE: 続行する前に、が必要です `access key`、 `secret key`、認証局（CA）証明書バンドル、および `endpoint url` 情報。XCPは、処理を開始する前に、これらのパラメータを使用してS3バケットを識別して接続します。
+
+
+
+. Amazon Web Services（AWS）CLIパッケージをインストールし、AWS CLIコマンドを実行してS3アカウントのキーとSecure Sockets Layer（SSL）証明書を設定します。
++
+** を参照してください link:https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html["AWS CLIの最新バージョンをインストールまたは更新します"^] をクリックしてAWSパッケージをインストールします。
+** を参照してください link:https://docs.aws.amazon.com/cli/latest/reference/configure/set.html["AWS CLI Command Referenceを参照してください"^] を参照してください。
+
+
+. を使用します `aws configure` コマンドを使用してクレデンシャルファイルを設定します。デフォルトでは、ファイルの場所はです `/root/.aws/credentials`。クレデンシャルファイルにアクセスキーとシークレットアクセスキーを指定する必要があります。
+. を使用します `aws configure set` コマンドを使用してCA証明書バンドルを指定します。これは、のファイルです `.pem` SSL証明書の検証時に使用される拡張子。デフォルトでは、ファイルの場所はです `/root/.aws/config`。
++
+* 例： *
+
++
+[listing]
+----
+[root@client1 ~]# aws configure
+AWS Access Key ID [None]: <access_key>
+AWS Secret Access Key [None]: <secret_key>
+Default region name [None]:
+Default output format [None]:
+[root@client1 ~]# cat /root/.aws/credentials
+[default]
+aws_access_key_id = <access_key>
+aws_secret_access_key = <secret_key>
+[root@client1 ~]#
+[root@client1 ~]# aws configure set default.ca_bundle /u/xxxx/s3/ca/aws_cacert.pem
+[root@client1 ~]# cat /root/.aws/config
+[default]
+ca_bundle = /u/xxxx/s3/ca/aws_cacert.pem
+----
+. 必要なセットアップ設定が完了したら、XCPコマンドを実行する前に、AWS CLIコマンドがLinuxクライアントからS3バケットにアクセスできることを確認します。
+`aws s3 ls --endpoint-url <endpoint_url> s3://bucket-name/`
++
+`aws s3 ls --profile <profile> --endpoint-url <endpoint_url> s3://bucket-name`
+
++
+* 例： *
+
++
+[listing]
+----
+[root@client1 linux]# aws s3 ls --profile <profile> --endpoint <endpoint_url>  s3://<bucket-name>
+                           PRE 1G/
+                           PRE aws_files/
+                           PRE copied_folders/
+                           PRE d1/
+                           PRE d2/
+                           PRE giant_size_dirs/
+                           PRE medium_size_dirs/
+                           PRE small_size_dirs/
+[root@client1 l
+----
+

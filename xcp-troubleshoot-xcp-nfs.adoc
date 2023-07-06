@@ -108,7 +108,23 @@ summary: XCP NFS エラーのトラブルシューティング
 | `XCP : エラー : バッチ 2: 子プロセスが失敗しました ( 終了コード -6): recv < タイプ ' 例外 .EOFError'>:` | システムメモリを増やして、テストを再実行してください。 
 
 
-| `xcp:ERROR: invalid path 'IP:/users009/user1/2022-07-01_04:36:52_1489367` | ファイルパスにコロン（:）が含まれている場合は、代わりに3つのコロン（::）を使用します。 
+| `xcp:ERROR: invalid path 'IP:/users009/user1/2022-07-01_04:36:52_1489367` | NFSサーバの共有パス名に1つ以上のコロンが含まれている場合は、1つのコロン（:）ではなく2つのコロン（:）を使用して、NFSサーバのIPとNFSサーバの共有パスを区切ります。 
+
+
+| SnapLockボリュームでは、のあとにWORMファイルは保持されません `xcp copy` 操作。  a| 
+XCPはWORMファイルをボリュームに正常にコピーしますが、ファイルはSnapLockボリュームでは保持されません。
+
+. を実行します `xcp copy` ソースボリュームからデスティネーションボリュームへの処理：
+`xcp copy src_server:/src_export dst_server:/dst_export`
+. を使用します `xcp chmod` デスティネーションボリュームのファイル権限を* readonly *に変更するコマンド：
+`xcp chmod -mode  a-w  dst_server:/dst_export`
+
+
+上記の手順が完了すると、コピーしたファイルのSnapLockボリュームの保持が開始されます。
+
+
+NOTE: SnapLockボリュームの保持期限は、ボリュームのデフォルトの保持ポリシーによって決まります。移行を開始する前にボリューム保持設定を確認します。 link:https://docs.netapp.com/us-en/ontap/snaplock/set-retention-period-task.html["保持期限を設定"^]
+
 |===
 
 

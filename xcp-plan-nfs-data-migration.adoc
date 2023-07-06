@@ -20,7 +20,9 @@ NFS データ移行を計画
 
 == - 表示
 
-'how コマンドは '1 つまたは複数のストレージ・サーバの RPC サービスおよび NFS エクスポートを照会しますコマンドは、各エクスポートの使用済み容量と空き容量に加えて、使用可能なサービスとエクスポートを表示し、各エクスポートのルート属性を指定します。例
+。 `show` コマンドは、1つ以上のストレージサーバのRPCサービスとNFSエクスポートを照会します。コマンドは、各エクスポートの使用済み容量と空き容量に加えて、使用可能なサービスとエクスポートを表示し、各エクスポートのルート属性を指定します。
+
+* 例： *
 
 * `XCP show <NFS file server IP/FQDN>`
 * XCP show nfs_server01.netapp.com`
@@ -32,12 +34,13 @@ NFS データ移行を計画
 
 == スキャン
 
-「を使用すると、ソースの NFSv3 エクスポートパス全体を再帰的にスキャンし、スキャンの終了時にファイル構造の統計を出力できます。スキャン処理の実行中は、ソースの NFS エクスポートマウントを読み取り専用モードにすることを推奨します。例
+。 `scan` コマンドは、ソースのNFSv3エクスポートパス全体を再帰的にスキャンし、スキャンの終了時にファイル構造の統計を出力します。スキャン処理の実行中は、ソースの NFS エクスポートマウントを読み取り専用モードにすることを推奨します。
 
-* `XCP scan nfs[server:/export path|\file:/<NFS Mounted path>|hdfs://<HDFS mounted path>]`
+* 例： *
+
+* `xcp scan NFS [server:/export path | file:// ]`
 * XCP scan nfs_server01.netapp.com:/export1`
 * `XCP scan\file: /mnt/nfs-source`
-* XCP scan hdfs://demo/user1`
 
 
 詳細については 'XCP help scan を実行してください

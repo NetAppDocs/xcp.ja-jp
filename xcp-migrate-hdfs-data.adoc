@@ -1,0 +1,89 @@
+---
+sidebar: sidebar 
+permalink: xcp-migrate-hdfs-data.html 
+keywords: netapp, xcp, migrate, data, nfs, hdfs, smb, copy, resume, verify, posix 
+summary: HDFSデータを移行 
+---
+= HDFSデータを移行
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+を使用して移行を計画したら `scan` コマンドを使用すると、データを移行できます。
+
+
+
+== コピー
+
+。 `copy` コマンドは、ソースのHadoop分散ファイルシステム（HDFS）データ全体をスキャンし、NFSバケットまたはSimple Storage Service（S3）バケットにコピーします。。 `copy` コマンドでは、ソースパスとデスティネーションパスを変数として指定する必要があります。スキャンおよびコピーされたファイル、スループット、速度、および経過時間の詳細がコピー処理の終了時に表示されます。
+
+* NFSパスの例：*
+
+[listing]
+----
+xcp copy -newid <id> hdfs:///demo/user dst_server:/dst_export
+----
+* POSIX パスの例 :*
+
+[listing]
+----
+xcp copy -newid <id> hdfs:///demo/user file:///mnt/dest
+----
+* S3パスの例：*
+
+[listing]
+----
+xcp copy -newid <id> hdfs:///demo/user s3://my-bucket
+xcp copy -newid <id> -s3.profile <s3 profile name> -s3.endpoint <endpoint-url> hdfs:///demo/user s3://my-bucket
+----
+詳細は 'XCP help copy' を参照してください
+
+
+
+== 再開
+
+。 `resume` コマンドは、カタログインデックスの名前または番号を指定して、中断されていたコピー処理を再開します。前回のコピー操作のカタログインデックス名または番号は、に保存されます `<catalog path>:/catalog/indexes` ディレクトリ。
+
+* 例： *
+
+[listing]
+----
+xcp resume [options] -id <id used for copy>
+xcp resume [options] -s3.profile <s3 profile name> -s3.endpoint <endpoint-url> -id <id used for copy>
+----
+
+NOTE: デフォルトでは、XCPです `resume` コマンドは、で使用したコピーインデックスからS3エンドポイントとS3プロファイルを使用します `copy` コマンドを実行しますただし、新しい場合 `-s3.endpoint` および `-s3.profile` 値はで提供されます `resume` コマンドを実行すると、オプションの新しい値が使用され、コピーで使用される値が使用されます `command` オーバーライドされます。
+
+詳細については 'XCP help resume を参照してください
+
+
+
+== 確認します
+
+。 `verify` コマンドでは、コピー処理後にカタログインデックス番号を使用せずに、ソースディレクトリとターゲットディレクトリのデータを1バイトずつ比較します。コマンドは、両側のファイルを読み取り、データを比較します。
+
+* 例： *
+
+[listing]
+----
+xcp verify hdfs:///demo/user dst_server:/dst_export
+----
+* POSIX パスの例 :*
+
+[listing]
+----
+xcp verify hdfs:///user/demo1/data file:///user/demo1/dest
+----
+* S3パスの例：*
+
+[listing]
+----
+xcp verify hdfs:///user/demo1/data s3://my-bucket
+xcp verify -s3.profile <s3 profile name> -s3.endpoint <endpoint-url> hdfs:///demo/user s3://my-bucket
+----
+詳細は 'XCP help verify' を参照してください

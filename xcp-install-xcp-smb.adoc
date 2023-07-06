@@ -40,7 +40,7 @@ NOTE: アップグレードするオプションはありません。既存の�
 | サポートされているプロトコルバージョン | すべての SMB プロトコルバージョン 
 
 
-| サポートされているブラウザ（ File Analytics のみ） | XCP File Analytics は Google Chrome バージョン 76 以降をサポートします。サポートされているすべてのバージョンのブラウザについては、 IMT マトリックスを参照してください 
+| サポートされているブラウザ（ File Analytics のみ） | を参照してください link:https://mysupport.netapp.com/matrix/["IMT"^] XCP File Analyticsでサポートされているすべてのブラウザバージョンのマトリックス。 
 |===
 
 

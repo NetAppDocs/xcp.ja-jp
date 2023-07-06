@@ -14,9 +14,10 @@ sidebar:
   - title: リリースノート
     url: "/releasenotes.html"
   - title: XCP を使い始める
-    url: "/index.html"
     type: solutions
     entries:
+    - title: XCP の詳細をご確認ください
+      url: "/index.html"
     - title: XCP NFS アドオン機能
       url: "/xcp-nfs-add-ons.html"
     - title: サポートされない機能です
@@ -26,8 +27,9 @@ sidebar:
     - title: XCP で使用されるポート
       url: "/xcp-ports-used.html"
   - title: XCP をインストール
-    url: "/xcp-install-xcp.html"
     entries:
+    - title: XCPのインストールを準備します
+      url: "/xcp-install-xcp.html"
     - title: XCP NFS 用 Linux を準備します
       url: "/xcp-prepare-linux-for-xcp-nfs.html"
     - title: XCP SMB 用に Windows を準備します
@@ -56,6 +58,8 @@ sidebar:
       url: "/xcp-configure-hdfs-connector-nfs.html"
     - title: マルチノードスケールアウトを構成します
       url: "/xcp-configure-multinode-scaleout-nfs.html"
+    - title: S3 Connectorを設定します
+      url: "/xcp-configure-s3-connector-nfs.html"
   - title: データ移行を計画
     url: "/xcp-plan-data-migration.html"
     entries:
@@ -63,6 +67,8 @@ sidebar:
       url: "/xcp-plan-nfs-data-migration.html"
     - title: SMB データ移行を計画
       url: "/xcp-plan-smb-data-migration.html"
+    - title: HDFSデータ移行を計画
+      url: "/xcp-plan-hdfs-data-migration.html"
     - title: File Analytics の使用を計画する
       url: "/xcp-using-file-analytics.html"
       entries:
@@ -79,9 +85,15 @@ sidebar:
   - title: データを移行
     entries:
     - title: NFS データを移行する
-      url: "/xcp-migrate-nfs-data.html"
+      entries:
+      - title: NFSデータを移行するコマンド
+        url: "/xcp-migrate-nfs-data.html"
     - title: SMB データを移行
       url: "/xcp-migrate-smb-data.html"
+    - title: HDFSデータを移行
+      url: "/xcp-migrate-hdfs-data.html"
+    - title: 同じホストで複数のXCPジョブを実行します
+      url: "/xcp-run-multiple-jobs-on-same-host.html"
     - title: その他の NFS 機能
       url: "/xcp-migrate-nfs-additional-features.html"
   - title: トラブルシューティングを行う

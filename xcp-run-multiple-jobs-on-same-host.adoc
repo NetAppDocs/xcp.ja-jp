@@ -1,0 +1,78 @@
+---
+sidebar: sidebar 
+permalink: xcp-run-multiple-jobs-on-same-host.html 
+keywords: xcp, configure, nfs, posix, connector 
+summary: POSIX コネクタを使用すると、 XCP は NFSv4 、 XFS 、 Veritas など、 Linux でマウントされた任意のファイルシステムにアクセスできます。 
+---
+= 同じXCPホストで複数のXCPジョブを実行します
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+XCP 1.9.2以降では、「-minmem」機能を使用して、1つのXCPホストで複数のXCPジョブまたはコマンドを実行できます。ただし、各ジョブに十分なリソースがホストにある場合に限ります。「-minmem」機能をサポートするコマンドを実行すると、XCPは最小限のホストメモリを使用してジョブを完了します。これにより、同じホスト構成で追加のジョブを実行するための容量が作成されます。
+
+
+
+== 最小システム要件
+
+XCPジョブごとに、中規模から大規模の移行用に、最大64GBのホストメモリと8コアを割り当てる必要があります。
+
+
+NOTE: 「-minmem」機能はSMBデータの移行ではサポートされません。
+
+
+
+== ロギング
+
+デフォルトでは、各XCPジョブは、ジョブIDに固有の個別のログファイルに記録されます。このロギングメカニズムは、同じホストで複数のジョブを実行する場合に適しています。NetAppでは、の変更は推奨していません `xcpLogConfig.Json` 単一のを使用するファイル `xcp.log` 同じホストで並行して実行されている複数のXCPジョブをログに記録するファイル。
+
+
+
+== サポートされるコマンド
+
+「-minmem」機能は、次のXCPコマンドでサポートされます。
+
+* `scan`
+* `copy`
+* `resume`
+* `verify`
+* `isync`
+* `chmod`
+* `chown`
+* `delete`
+
+
+
+
+== サポートされないコマンドです
+
+「-minmem」機能はではサポートされていません `sync` コマンドを実行します
+
+
+
+== コマンド例
+
+「-minmem」機能を使用するには、次の例に示すように、XCPコマンドに「-minmem」オプションを含める必要があります。
+
+* `xcp copy -newid _new ID_ *-minmem* src_server:/src_export dst_server:/dst_export`
+* `xcp resume [options] -id *-minmem* _copy ID_`
+* `xcp verify *-minmem* src_server:/src_export dst_server:/dst_export`
+
+
+* HDFSパスの例*：
+
+* `xcp copy *-minmem* hdfs:///user/demo1/data \file:///user/demo1/dest`
+* `xcp verify *-minmem* hdfs:///user/demo1/data \file:///user/demo1/dest`
+* `xcp copy -minmem hdfs:///user/demo1/data s3://bucket1`
+
+
+* POSIXパスの例*：
+
+* `xcp copy *-minmem* -newid _new ID_ \file:///mnt/source \file:///mnt/dest`
+* `xcp verify *-minmem* \file:///mnt/source \file:///mnt/dest`
+

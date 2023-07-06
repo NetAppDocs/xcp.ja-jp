@@ -47,6 +47,8 @@ entries:
     url: "/xcp-configure-hdfs-connector-nfs.html"
   - title: マルチノードスケールアウトを構成します
     url: "/xcp-configure-multinode-scaleout-nfs.html"
+  - title: S3 Connectorを設定します
+    url: "/xcp-configure-s3-connector-nfs.html"
 - title: データ移行を計画
   url: "/xcp-plan-data-migration.html"
   entries:
@@ -54,6 +56,8 @@ entries:
     url: "/xcp-plan-nfs-data-migration.html"
   - title: SMB データ移行を計画
     url: "/xcp-plan-smb-data-migration.html"
+  - title: HDFSデータ移行を計画
+    url: "/xcp-plan-hdfs-data-migration.html"
   - title: File Analytics の使用を計画する
     url: "/xcp-using-file-analytics.html"
     entries:
@@ -73,6 +77,10 @@ entries:
     url: "/xcp-migrate-nfs-data.html"
   - title: SMB データを移行
     url: "/xcp-migrate-smb-data.html"
+  - title: HDFSデータを移行
+    url: "/xcp-migrate-hdfs-data.html"
+  - title: 同じホストで複数のXCPジョブを実行します
+    url: "/xcp-run-multiple-jobs-on-same-host.html"
   - title: その他の NFS 機能
     url: "/xcp-migrate-nfs-additional-features.html"
 - title: トラブルシューティングを行う
