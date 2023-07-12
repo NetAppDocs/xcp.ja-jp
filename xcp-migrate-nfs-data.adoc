@@ -1,8 +1,6 @@
 ---
-sidebar: sidebar 
 permalink: xcp-migrate-nfs-data.html 
-keywords: netapp, xcp, migrate, data, nfs, smb, copy, resume, sync, verify 
-summary: NFS データを移行する 
+redirect: xcp/xcp-migrate-data.html 
 ---
 = NFSデータを移行するコマンド
 :hardbreaks:
@@ -13,73 +11,3 @@ summary: NFS データを移行する
 :imagesdir: ./media/
 
 
-[role="lead"]
-「 show 」コマンドと「 can 」コマンドを使用して移行を計画した後、データを移行できます。
-
-
-
-== コピー
-
-copy コマンドは ' ソース・ディレクトリ構造全体をスキャンして ' デスティネーションの NFSv3 エクスポートにコピーします'copy' コマンドでは ' ソース・パスとデスティネーション・パスを変数として指定する必要がありますコピー処理の終了時に、スキャンおよびコピーされたファイル、スループット / 速度、および経過時間の詳細が表示されます
-
-* 例： *
-
-[listing]
-----
-xcp copy -newid <id> src_server:/src_export dst_server:/dst_export
-----
-* POSIX パスの例 :*
-
-[listing]
-----
-xcp copy -newid <id> file:///mnt/source file:///mnt/dest
-----
-詳細は 'XCP help copy' を参照してください
-
-
-
-== 再開
-
-「 resume 」コマンドは、カタログインデックス名または番号を指定することにより、以前に中断されたコピー操作を再開します。カタログインデックスの名前または以前のコピー操作の番号は '<catalog path>:/catalog/indexs' ディレクトリに保存されます
-
-* 例： *
-
-[listing]
-----
-xcp resume [options] -id <id used for copy>
-----
-詳細については 'XCP help resume を参照してください
-
-
-
-== 同期
-
-'sync' コマンドは ' カタログ・インデックス・タグ名または以前のコピー操作の番号を使用して ' ソース NFS ディレクトリで実行された変更および変更をスキャンしますソースの差分変更がコピーされ、ターゲットディレクトリに適用されます。古いカタログインデックス番号は、 sync 操作 # の後に新しい 1 つ [.underline] # で置き換えられます。
-
-* 例： *
-
-[listing]
-----
-xcp sync [options] -id <id used for copy>
-----
-詳細については、「 XCP help sync 」を参照してください。
-
-
-
-== 確認します
-
-「 ve rify 」コマンドでは、カタログインデックス番号を使用せずにコピー操作を行った後に、ソースディレクトリとターゲットディレクトリ間でのバイト単位のデータ比較を完全に使用します。コマンドは、権限を含む、変更日時およびその他のファイルまたはディレクトリの属性をチェックします。また、両側のファイルを読み取り、データを比較します。
-
-* 例： *
-
-[listing]
-----
-xcp verify src_server:/src_export dst_server:/dst_export
-----
-* POSIX パスの例 :*
-
-[listing]
-----
-xcp verify file:///mnt/source file:///mnt/dest
-----
-詳細は 'XCP help verify' を参照してください

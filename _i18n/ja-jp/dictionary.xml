@@ -408,7 +408,6 @@
   <block id="8c41baf1ca98e1184f48c4721d44d431" category="inline-link-macro">ネットアップサポートサイト</block>
   <block id="110444d197d67f7d16c29fa0e2022b7f" category="paragraph">XCP はからダウンロードできます <block ref="ff34957a5613d93a82e79914bce07df2" category="inline-link-macro-rx"></block>。</block>
   <block id="5d813edbc38ed8b3a73ab3c485aa5daf" category="section-title">XCP のライセンス</block>
-  <block id="a6ed02e973991972186d8dbd4bd0e16e" category="paragraph">ネットアップでは 90 日間の XCP ライセンスを無償で提供しています。ライセンスファイルは、から取得できます <block ref="f33ccbb3083b14f48de92a286ba83724" category="inline-link-macro-rx"></block>。ライセンスポータルでは、さまざまなライセンスオプションが提供されています。90 日が経過したら、同じポータルを使用して、さらに 90 日間ライセンスを更新できます。</block>
   <block id="0f217d96dd705618a7386cd8e0f4a5e4" category="paragraph">XCP ライセンスは、オフラインまたはオンラインライセンスとして提供されています。移行の統計情報を送信する場合は、オンラインライセンスを使用します。オンラインライセンスを使用するには、インターネットに接続する必要があります。オフラインライセンスではインターネット接続は必要ありません。</block>
   <block id="b4c8d461cf544f3b1324e87e550416e1" category="section-title">システムを準備</block>
   <block id="e20233267adbb44f966c8c601a37ab48" category="inline-link-macro">Linux システムでの XCP NFS</block>
@@ -724,8 +723,6 @@
   <block id="f6e8987d5e2d203c406379ba9e8b8a47" category="admonition">移行後に'XCPのCONFIG_DIRまたは'XCPのLOG_DIR'環境変数を使用してデフォルトの設定場所またはログの場所を上書きすると'古い移行またはジョブIDで使用した場合に'logdump'コマンドは失敗しますこれを回避するには、移行が完了するまで同じログパスを使用します。</block>
   <block id="20f0f3784e710ced2f992c9e868a329f" category="cell">ACL移行を伴うXCP COPYエラーメッセージがxcp.logファイルに記録されました:'pywintypes.error:`(1314'GetNamedSecurityInfo','a required privilege is not Held by the client.')`</block>
   <block id="ec548dc7e9c4428d0af475d94ed8628f" category="cell">ユーザはセキュリティ記述子に関連する問題 に直面しています。これは、移行ユーザが所有する権限でXCPが取得できるのは所有者、グループ、およびDACLのみで、SACLを取得できないためです。移行ユーザを Active Directory の「 Manage Audit and Security Log 」ポリシーに追加します。参照 <block ref="47c554f6b2ce744e50a1b2318fbe4ec3" category="inline-link-macro-rx"></block></block>
-  <block id="fdbdc0e84f617d7346b90d43e65e3e78" category="doc">XCP v1.9マニュアル</block>
-  <block id="acca97deb653a678580117072b78b763" category="paragraph">XCP 情報ライブラリへようこそ。ここでは、XCP v1.9ソフトウェアのインストール、設定、および使用方法を記載したマニュアルを提供しています。</block>
   <block id="8d199d68726e0baa3da715584c92e083" category="admonition">XCPバイナリはコード署名済みです。詳細については、「NetApp_XCP _&lt;バージョン&gt;.tgz」のREADMEを参照してください。</block>
   <block id="259c9d5f301d6e350422d2ebfe2bcc87" category="cell">XCP File Analyticsがインストールされていて、HTTPDが実行されているLinuxマシンに対して、システムからpingを実行できることを確認します。サービスが実行されていない場合は 'configure を実行して ' 修復オプションを選択しますサポートされているブラウザバージョンを使用していることを確認してください。を参照してください <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block>。</block>
   <block id="bfccbf3e891050373f71f1230130222b" category="cell"><block ref="ad3b549c4b03e0598dee96d17d3ccc66" prefix="" category="inline-code"></block>:バッチの比較:互換性のないインデックスファイルです。現在のバージョンのXCPで生成されたインデックスファイルのみを使用してください。または、xcp.netapp.comから古いXCPバイナリをダウンロードすることもできます。</block>
@@ -888,4 +885,7 @@
   <block id="27ce933e59d1bd3bfff8d6118fb7a35e" category="paragraph">。 <block ref="b98ddb4c6025a76df69bcccfdb0bd760" category="inline-link-macro-rx"></block> 新機能、アップグレードに関する注意事項、解決済みの問題、既知の制限事項、および既知の問題について説明する。</block>
   <block id="b179bbcf6f57100cffb18d2558916e9d" category="cell">64ビットIntelまたはAMDサーバ、8コア以上、64 GB RAM</block>
   <block id="11db15a14a5186a893fe15b0e03f3213" category="sidebar">同じホストで複数のXCPジョブを実行します</block>
+  <block id="bd843a39d27307ca3a4420e90c5e228f" category="doc">XCP v1.9.2ドキュメント</block>
+  <block id="84f3449f04bbc191eb611f160d99dcfc" category="paragraph">NetApp XCP情報ライブラリへようこそ。ここでは、XCPのインストール、設定、および使用方法を含むXCP v1.9.2ソフトウェアのマニュアルを示します。</block>
+  <block id="ac1b0e3122e91e04b7f9d9e2eea0accb" category="paragraph">NetAppでは、1年間のXCPライセンスを無料で提供しています。ライセンスファイルは、から取得できます <block ref="f33ccbb3083b14f48de92a286ba83724" category="inline-link-macro-rx"></block>。ライセンスポータルでは、さまざまなライセンスオプションが提供されています。1年後には、同じポータルを使用して別の年のライセンスを更新できます。</block>
 </blocks>

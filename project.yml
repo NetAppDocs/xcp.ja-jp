@@ -85,9 +85,7 @@ sidebar:
   - title: データを移行
     entries:
     - title: NFS データを移行する
-      entries:
-      - title: NFSデータを移行するコマンド
-        url: "/xcp-migrate-nfs-data.html"
+      url: "/xcp-migrate-data.html"
     - title: SMB データを移行
       url: "/xcp-migrate-smb-data.html"
     - title: HDFSデータを移行
