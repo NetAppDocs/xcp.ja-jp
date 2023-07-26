@@ -14,9 +14,9 @@ XCP 1.9.2以降では、Simple Storage Service（S3）コネクタによってHa
 .サポートされる移行のユースケース
 S3コネクタの移行のユースケースは次のとおりです。
 
-* HDFSまたはNFSからNetApp StorageGRIDへの移行
-* HDFSまたはNFSからAmazon S3への移行
-* HDFSまたはNFSからNetApp ONTAP S3への移行
+* HDFSからNetApp StorageGRIDへの移行
+* HDFSからAmazon S3への移行
+* HDFSからNetApp ONTAP S3への移行
 
 
 
