@@ -1,0 +1,55 @@
+---
+permalink: legal-notices.html 
+sidebar: sidebar 
+keywords:  
+summary:  
+---
+= 法的通知
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+著作権に関する声明、商標、特許などにアクセスできます。
+
+
+
+== 著作権
+
+link:https://www.netapp.com/company/legal/copyright/["https://www.netapp.com/company/legal/copyright/"^]
+
+
+
+== 商標
+
+NetApp 、 NetApp のロゴ、および NetApp の商標ページに記載されているマークは、 NetApp, Inc. の商標です。その他の会社名および製品名は、それぞれの所有者の商標である場合があります。
+
+link:https://www.netapp.com/company/legal/trademarks/["https://www.netapp.com/company/legal/trademarks/"^]
+
+
+
+== 特許
+
+ネットアップが所有する特許の最新リストは、次のサイトで入手できます。
+
+link:https://www.netapp.com/pdf.html?item=/media/11887-patentspage.pdf["https://www.netapp.com/pdf.html?item=/media/11887-patentspage.pdf"^]
+
+
+
+== プライバシーポリシー
+
+link:https://www.netapp.com/company/legal/privacy-policy/["https://www.netapp.com/company/legal/privacy-policy/"^]
+
+
+
+== オープンソース
+
+通知ファイルには、ネットアップソフトウェアで使用されるサードパーティの著作権およびライセンスに関する情報が記載されています。
+
+* link:media/xcp_1.9.2_notice.pdf["NetApp XCP 1.9.2に関する注意事項"^]
+* link:media/xcp_1.9.1_notice.pdf["NetApp XCP 1.9.1に関する注意事項"^]
+* link:media/xcp_1.9_notice.pdf["NetApp XCP 1.9に関する注意事項"^]
+* link:media/xcp_1.8.1_notice.pdf["NetApp XCP 1.8.1に関する注意事項"^]
+* link:media/xcp_1.8_notice.pdf["NetApp XCP 1.8に関する注意事項"^]
+

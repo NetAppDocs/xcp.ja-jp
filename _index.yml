@@ -1,0 +1,35 @@
+---
+indexpage:
+  lead: NetApp XCPは、拡張性に優れたハイパフォーマンスなデータ移行を可能にするクライアントベースのソフトウェアで、ネットアップ間やネットアップ間のデータ移行やファイル分析に対応します。ここでは、XCPのインストール、設定、および使用方法を含むXCP
+    1.9.2ソフトウェアのドキュメントを見つけることができます。以前のリリースのXCPのドキュメントは、NetApp Support Siteから入手できます。
+  tiles:
+  - title: はじめに
+    links:
+    - title: リリースノート
+      url: "/releasenotes.html"
+    - title: XCP の詳細をご確認ください
+      url: "/xcp-index.html"
+  - title: 以前のバージョン
+    links:
+    - title: NetApp XCP 1.9.1
+      url: https://mysupport.netapp.com/documentation/docweb/index.html?productID=64637&language=en-US
+    - title: NetApp XCP 1.9
+      url: https://mysupport.netapp.com/documentation/docweb/index.html?productID=64493&language=en-US
+    - title: NetApp XCP 1.8.1
+      url: https://mysupport.netapp.com/documentation/docweb/index.html?productID=64287&language=en-US
+    - title: NetApp XCP 1.8
+      url: https://mysupport.netapp.com/documentation/docweb/index.html?productID=64074&language=en-US
+    - title: NetApp XCP 1.7以前
+      url: https://mysupport.netapp.com/documentation/productlibrary/index.html?productID=63064
+  - title: リソースの追加
+    links:
+    - title: XCPマニュアル（参考資料を含む）
+      url: https://mysupport.netapp.com/documentation/productlibrary/index.html?productID=63064
+    - title: NetApp TechCommTV（NetApp XCPビデオ）
+      url: link:https://www.youtube.com/user/NetAppTechCommTV/search?query=xcp
+    - title: NetApp XCP（ライセンスを取得するためのリンクを含む）
+      url: https://xcp.netapp.com/
+    - title: XCP用のNetAppリソース
+      url: https://www.netapp.com/search/#q=xcp&sort=relevancy&f:@language=English
+    - title: NetAppコミュニティ（フォーラム）
+      url: link:https://community.netapp.com

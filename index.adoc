@@ -1,10 +1,10 @@
 ---
+layout: landing-page 
 sidebar: sidebar 
 permalink: index.html 
-keywords: netapp, xcp, about, migration, file analytics, nfs, smb 
-summary: 拡張性に優れたハイパフォーマンスのデータ移行を可能にする NetApp XCP 
+summary: NetApp XCPは、拡張性に優れたハイパフォーマンスなデータ移行を可能にするクライアントベースのソフトウェアで、ネットアップ間やネットアップ間のデータ移行やファイル分析に対応します。 
 ---
-= XCP の詳細をご確認ください
+= NetApp XCPのドキュメント
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -13,24 +13,3 @@ summary: 拡張性に優れたハイパフォーマンスのデータ移行を�
 :imagesdir: ./media/
 
 
-[role="lead"]
-NetApp XCPは、拡張性に優れたハイパフォーマンスなデータ移行を可能にするクライアントベースのソフトウェアで、ネットアップ間やネットアップ間のデータ移行やファイル分析に対応します。XCP は、使用可能なすべてのシステムリソースを利用して大量のデータセットとハイパフォーマンスな移行を管理することで、拡張性とパフォーマンスの向上を実現するように設計されています。お客様からのレポートを生成するオプションを使用して、ファイルシステムを完全に可視化できます。一致機能と書式設定機能により、レポートニーズに合わせてレポートをカスタマイズできます。
-
-NFS システムまたは SMB システムでは、次のいずれかの方法で XCP を使用します。
-
-* Migration 解決策の略
-* File Analytics 解決策の略
-
-
-NFS プロトコルと SMB プロトコルをサポートする 1 つのパッケージで提供される XCP は、コマンドラインソフトウェアです。NFS データセット用の Linux バイナリとして XCP が提供されており、 SMB データセット用の Windows 実行ファイルとして利用できます。
-
-XCP File Analytics は、ファイル共有を検出し、ファイルシステム上でスキャンを実行し、ファイル分析用のダッシュボードを提供するホストベースのソフトウェアです。XCP File Analytics は、ネットアップシステムとサードパーティシステムの両方で動作し、 Linux ホストまたは Windows ホストで動作して、 NFS および SMB エクスポートファイルシステムの分析を提供します。ファイル分析 GUI のバイナリは、 NFS プロトコルと SMB プロトコルをサポートする 1 つのパッケージに含まれています。
-
-
-NOTE: XCPバイナリはコード署名済みです。詳細については、「NetApp_XCP _<バージョン>.tgz」のREADMEを参照してください。
-
-XCP CLI は堅牢です。詳細については、から _XCP Reference_on をダウンロードしてください link:https://xcp.netapp.com/["XCP サイト"^]。
-
-* XCP ワークフロー *
-
-image:xcp_image1.png["XCP ワークフローイメージ"]

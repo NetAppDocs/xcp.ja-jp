@@ -9,15 +9,15 @@ settings:
   langs: ja-jp,us-en,ko-kr,zh-cn,zh-tw,de-de,es-es,fr-fr,it-it
 sidebar:
   entries:
-  - title: ホーム
-    url: "/home.html"
+  - title: NetApp XCPのドキュメント
+    url: "/index.html"
   - title: リリースノート
     url: "/releasenotes.html"
   - title: XCP を使い始める
     type: solutions
     entries:
     - title: XCP の詳細をご確認ください
-      url: "/index.html"
+      url: "/xcp-index.html"
     - title: XCP NFS アドオン機能
       url: "/xcp-nfs-add-ons.html"
     - title: サポートされない機能です
@@ -70,8 +70,9 @@ sidebar:
     - title: HDFSデータ移行を計画
       url: "/xcp-plan-hdfs-data-migration.html"
     - title: File Analytics の使用を計画する
-      url: "/xcp-using-file-analytics.html"
       entries:
+      - title: データ移行の計画
+        url: "/xcp-file-analytics-plan-data-migration.html"
       - title: File Analytics にアクセスします
         url: "/xcp-access-file-analytics.html"
       - title: ファイルサーバを追加します
@@ -102,5 +103,5 @@ sidebar:
       url: "/xcp-troubleshoot-xcp-smb-errors.html"
     - title: XCP File Analytics エラーのトラブルシューティング
       url: "/xcp-troubleshoot-xcp-file-analytics-errors.html"
-  - title: 詳細はこちらをご覧ください
-    url: "/get-more-information.html"
+  - title: 法的通知
+    url: "/legal-notices.html"

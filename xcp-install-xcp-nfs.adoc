@@ -11,9 +11,15 @@ summary: XCP NFS をインストールしています
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
+:firstname: [.lead]
+:author: [.lead]
+:authorinitials: [
+:authors: [.lead]
+:revnumber: 
+:revdate: delete the current installation and replace it with a new installation of the latest version.
 
 
-XCP をアップグレードする場合は、現在のインストールファイルを削除し、最新バージョンの新しいインストールファイルに置き換えます。このセクションでは、 Linux クライアントでの XCP の初期セットアップおよび INI ファイルの設定に関するシステム要件と手順について説明します。
+このセクションでは、 Linux クライアントでの XCP の初期セットアップおよび INI ファイルの設定に関するシステム要件と手順について説明します。
 
 * システム要件 *
 
