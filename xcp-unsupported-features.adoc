@@ -34,14 +34,6 @@ summary: 一部の機能は、 XCP NFS または XCP SMB ではサポートさ�
 
 
 
-| Hadoop Distributed File System （ HDFS ； Hadoop 分散ファイルシステム）コネクタ  a| 
-* 「 sync 」コマンドでは、 HDFS コネクタはサポートされません
-* HDFS ファイルシステムでは、シンボリックリンク（ symlinks ）、ハードリンク、または特別なファイルをサポートしていません
-* ソースがアクティブなときに 'copy' コマンドは使用しないでください
-
-
-
-
 | Linux の場合 | XCP 1.1.6 でサポートされていた以前の Linux ディストリビューションでは、 XCP はサポートされなくなりました。 
 
 
