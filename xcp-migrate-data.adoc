@@ -4,7 +4,7 @@ permalink: xcp-migrate-data.html
 keywords: netapp, xcp, migrate, data, nfs, smb, copy, resume, sync, verify 
 summary: データを移行 
 ---
-= データを移行
+= NFS データを移行する
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: データを移行
 
 
 [role="lead"]
-「 show 」コマンドと「 can 」コマンドを使用して移行を計画した後、データを移行できます。
+を使用して移行を計画したら `show` および `scan` コマンドを実行すると、NFSデータを移行できます。
 
 
 
