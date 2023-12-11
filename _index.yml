@@ -1,7 +1,7 @@
 ---
 indexpage:
   lead: NetApp XCPは、拡張性に優れたハイパフォーマンスなデータ移行を可能にするクライアントベースのソフトウェアで、ネットアップ間やネットアップ間のデータ移行やファイル分析に対応します。ここでは、XCPのインストール、設定、および使用方法を含むXCP
-    1.9.2ソフトウェアのドキュメントを見つけることができます。以前のリリースのXCPのドキュメントは、NetApp Support Siteから入手できます。
+    1.9.3ソフトウェアのドキュメントを見つけることができます。以前のリリースのXCPのドキュメントは、NetApp Support Siteから入手できます。
   tiles:
   - title: はじめに
     links:
@@ -11,6 +11,8 @@ indexpage:
       url: "/xcp-index.html"
   - title: 以前のバージョン
     links:
+    - title: NetApp XCP 1.9.2
+      url: https://mysupport.netapp.com/documentation/docweb/index.html?productID=64804&language=en-US
     - title: NetApp XCP 1.9.1
       url: https://mysupport.netapp.com/documentation/docweb/index.html?productID=64637&language=en-US
     - title: NetApp XCP 1.9

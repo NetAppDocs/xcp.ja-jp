@@ -80,3 +80,16 @@ xcp estimate -id <scan id> -target server:/export
 xcp live estimation with -t option
 xcp estimate -id <scan id> -t <time for which estimation should run> -target server:/export
 ....
+
+
+== インデックス削除
+
+を使用できます `indexdelete` カタログインデックスを削除するコマンド。
+
+* 例 *
+
+[listing]
+----
+xcp indexdelete
+----
+を実行します `xcp help indexdelete` 詳細：

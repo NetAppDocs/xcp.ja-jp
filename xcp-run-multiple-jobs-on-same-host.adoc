@@ -14,7 +14,7 @@ summary: POSIX コネクタを使用すると、 XCP は NFSv4 、 XFS 、 Verit
 
 
 [role="lead"]
-XCP 1.9.2以降では、「-minmem」機能を使用して、1つのXCPホストで複数のXCPジョブまたはコマンドを実行できます。ただし、各ジョブに十分なリソースがホストにある場合に限ります。「-minmem」機能をサポートするコマンドを実行すると、XCPは最小限のホストメモリを使用してジョブを完了します。これにより、同じホスト構成で追加のジョブを実行するための容量が作成されます。
+XCP 1.9.2以降では、各ジョブに十分なリソースがホストにある場合は、1つのXCPホストで複数のXCPジョブまたはコマンドを実行できます。複数のジョブをサポートするコマンドを実行すると、XCPは最小限のホストメモリを使用してジョブを完了します。これにより、同じホスト構成で追加のジョブを実行するための容量が作成されます。
 
 
 
@@ -23,7 +23,7 @@ XCP 1.9.2以降では、「-minmem」機能を使用して、1つのXCPホスト
 XCPジョブごとに、中規模から大規模の移行用に、最大64GBのホストメモリと8コアを割り当てる必要があります。
 
 
-NOTE: 「-minmem」機能はSMBデータの移行ではサポートされません。
+NOTE: SMBデータの移行では、同じホストで複数のXCPジョブを実行することはサポートされていません。
 
 
 
@@ -35,7 +35,7 @@ NOTE: 「-minmem」機能はSMBデータの移行ではサポートされませ�
 
 == サポートされるコマンド
 
-「-minmem」機能は、次のXCPコマンドでサポートされます。
+同じホストで複数のXCPジョブを実行するには、次のXCPコマンドを使用します。
 
 * `scan`
 * `copy`
@@ -51,28 +51,4 @@ NOTE: 「-minmem」機能はSMBデータの移行ではサポートされませ�
 
 == サポートされないコマンドです
 
-「-minmem」機能はではサポートされていません `sync` コマンドを実行します
-
-
-
-== コマンド例
-
-「-minmem」機能を使用するには、次の例に示すように、XCPコマンドに「-minmem」オプションを含める必要があります。
-
-* `xcp copy -newid _new ID_ *-minmem* src_server:/src_export dst_server:/dst_export`
-* `xcp resume [options] -id *-minmem* _copy ID_`
-* `xcp verify *-minmem* src_server:/src_export dst_server:/dst_export`
-
-
-* HDFSパスの例*：
-
-* `xcp copy *-minmem* hdfs:///user/demo1/data \file:///user/demo1/dest`
-* `xcp verify *-minmem* hdfs:///user/demo1/data \file:///user/demo1/dest`
-* `xcp copy -minmem hdfs:///user/demo1/data s3://bucket1`
-
-
-* POSIXパスの例*：
-
-* `xcp copy *-minmem* -newid _new ID_ \file:///mnt/source \file:///mnt/dest`
-* `xcp verify *-minmem* \file:///mnt/source \file:///mnt/dest`
-
+では、同じホストで複数のXCPジョブを実行することはサポートされていません。 `sync` コマンドを実行します

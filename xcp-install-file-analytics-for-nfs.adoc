@@ -16,26 +16,63 @@ summary: File Analytics for NFS をインストールまたはアップグレー
 [role="lead"]
 File Analytics for NFS をインストールまたはアップグレードします。
 
-NFS のシステム要件については、を参照してください link:xcp-install-xcp-nfs.html["XCP NFS をインストールします"]。「 configure.sh 」スクリプトは、 Linux サーバで利用可能な HTTPD および PostgreSQL のデフォルト設定をインストールし、有効にします。必要に応じて、より新しいバージョンに変更または更新したり、セキュリティガイドラインに従って更新したりできます。
+.このタスクについて
+NFSのシステム要件については、を参照してください。 link:xcp-install-xcp-nfs.html["XCP NFS をインストールします"]。
+
+。 `configure.sh` スクリプトは、Red Hat Enterprise Linux（RHEL）ホストマシンにXCP File Analyticsをインストールします。インストールの一環として、Postgres Database、Apache HTTPDサーバ、およびその他の必要なパッケージがホストLinuxマシンにインストールされます。サポートされている特定のRHELバージョンについては、を参照してください。 link:https://mysupport.netapp.com/matrix/["IMT"^]。必要に応じて、より新しいバージョンに変更または更新したり、セキュリティガイドラインに従って更新したりできます。詳細については、 `configure.sh` スクリプト、実行 `./configure.sh -h` コマンドラインで実行します。
 
 .作業を開始する前に
-* 同じホストで XCP アプリケーションと XCP サービスを同時に実行することはできません。実行中の XCP 処理がある場合は、設定を開始する前にその処理を実行します。
+* 実行中のXCP処理がある場合はNetApp、設定を開始する前に処理を完了することを推奨します。
 * Linux マシンが Yum リポジトリサーバまたはインターネットに接続されている必要があります。
-* Linux マシンでファイアウォールが設定されている場合は、 XCP 、 XCP サービス、および XCP File Analytics で使用されるサービスで使用されるポートを有効にするようにファイアウォールの設定を変更する必要があります。詳細については、を参照してください xref:xcp-ports-used.html[XCP で使用されるポート]。
+* Linuxマシンでファイアウォールが設定されている場合は、ファイアウォールの設定を変更して、XCPサービスで使用されるポート5030を有効にする必要があります。
 
 
 .手順
-. XCP フォルダに移動し './configure.sh スクリプトを実行しますこのスクリプトは、 Linux マシンの設定と次のタスクの実行に 3 ～ 10 分かかります。
+. File Analytics for NFS をインストールまたはアップグレードします。
 +
-.. PostgreSQL パッケージをダウンロードします
-.. PostgreSQL サーバをインストールします
-.. HTTPD をインストールします
-.. オープン SSL を使用して、自己署名証明書 (`erver.key および server.crt') を作成します。
-.. XCP File Analytics データベースを作成します
+[role="tabbed-block"]
+====
+.File Analyticsをインストール
+--
+.. に移動します `xcp` フォルダを作成し、 `./configure.sh` スクリプト：
++
+インストールが正常に完了すると、次のメッセージが表示されます。
+
++
+[listing]
+----
+You can now access XCP file analytics using (<username>:<password>)
+https://<ip_address>/xcp
+----
++
+
+NOTE: このユーザー名とパスワードを使用して、File Analytics GUIにログインできます。
 
 
-. XCP 設定メニューから 'Option 1 Configure client system' を選択します
-. 新規インストールの場合は、管理者ユーザとデータベースユーザのパスワードを更新します。アップグレードの場合は、 XCP サービスを停止するように求められます。終了したら 'Option 0' を選択します
-. XCP サービスを開始します。次のコマンドを使用して、 XCP サービスが実行されているかどうかを確認します。 service XCP status
-. ブラウザで File Analytics を起動します。 * 。 https://<ip address of Linux > /XCP * 。
+
+--
+.ファイル分析をアップグレード
+--
+.. に移動します `xcp` フォルダと実行 `./configure.sh -f`。
+.. プロンプトで、と入力します `y` システムをクリーンアップして再設定します。
++
+スクリプトが承認されると、既存の設定がクリーンアップされ、システムが再構成されます。
+
++
+成功すると、次のメッセージが表示されます。
+
++
+[listing]
+----
+You can now access XCP file analytics using (<username>:<password>)
+https://<ip_address>/xcp
+----
+
+
+--
+====
+. サポートされているブラウザでファイル分析を起動します。* Linuxの\https://<ipアドレス>/XCP *。
++
+を参照してください link:xcp-install-xcp-nfs.html["XCP NFS をインストールします"] サポートされるブラウザについては、を参照してください。
+
 

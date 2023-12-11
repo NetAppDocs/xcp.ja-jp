@@ -31,7 +31,7 @@ NOTE: コピー操作中に 'copy' コマンドとともに --preserve-atim' フ
 ----
 C:\xcp>xcp copy \\<source SMB share> \\<destination SMB share>
 ----
-詳細は 'XCP help copy' を参照してください
+を実行します `xcp help copy` 詳細：
 
 
 
@@ -50,7 +50,7 @@ NOTE: 同期操作中に '-spreserve-atim' フラグを 'sync' コマンドと�
 ----
 C:\xcp>xcp sync \\<source SMB share> \\<destination SMB share>
 ----
-詳細については、「 XCP help sync 」を参照してください。
+を実行します `xcp help sync` 詳細：
 
 
 
@@ -69,4 +69,4 @@ C:\xcp>xcp sync \\<source SMB share> \\<destination SMB share>
 ----
 C:\xcp>xcp verify \\<source SMB share> \\<destination SMB share>
 ----
-詳細は 'XCP help verify' を参照してください
+を実行します `xcp help verify` 詳細：

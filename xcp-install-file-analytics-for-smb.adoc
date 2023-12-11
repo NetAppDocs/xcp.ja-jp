@@ -16,10 +16,10 @@ summary: File Analytics for SMB をインストールまたはアップグレー
 [role="lead"]
 File Analytics for SMB をインストールまたはアップグレードします。
 
+.このタスクについて
 SMB のシステム要件については、を参照してください link:xcp-install-xcp-smb.html["XCP SMB をインストールします"]。
 
-* 始める前に *
-
+.作業を開始する前に
 * XCP SMB サービスを使用するには、 Linux マシンで NFS 用に XCP File Analytics を設定する必要があります。
 * Windows マシンで XCP File Analytics の構成を開始する前に、 Linux マシンで XCP サービスが実行されていることを確認します。
 
@@ -31,20 +31,28 @@ SMB のシステム要件については、を参照してください link:xcp-
 SMB 向けファイル分析の新規インストールを実行するには、次の手順を実行します。
 
 .手順
-. "XCP .exe" ファイルを Windows`C:` ドライブにコピーします。このバイナリは、 tgz を解凍した後、 "/XCP /Windows" 内で入手できます。
+. をコピーします `xcp.exe` ファイルをWindowsに保存 `C:` ドライブ。このバイナリは `/xcp/windows` ツールを展開した後、 `tgz` ファイル。
 . から XCP ライセンスファイルをダウンロードします link:https://xcp.netapp.com/["XCP サイト"^]。
 . C:\NetApp\XCP というフォルダを作成し、 XCP ライセンスをこの場所にコピーします。
 . コマンドプロンプトで次のコマンドを使用して、 XCP ライセンスをアクティブにします。 xcp.exe activate
-. 「 server.key 」と「 server.crt 」ファイルを「 /opt/NetApp/xFiles/XCP 」（ XCP File Analytics が設定されている Linux ボックス）から「 C:\NetApp\XCP 」（オプション）にコピーします。 CA 証明書がある場合は、同じ名前と拡張子を持つこの場所に証明書を置きます。
 . Windows CLI のコマンドプロンプトで、「 XCP configure 」を実行します。
 . プロンプトが表示されたら、 XCP File Analytics サーバが設定されている Linux マシンの IP アドレスを入力します。
-. プロンプトが表示されたら、 XCP Linux File Analytics 設定で入力したデータベースのパスワードを入力します。
-. Linux マシンに移動し './configure.sh を実行します
-. メインメニューで「 Option 4 (Update XCP Windows agent IP) 」を選択し、 Windows マシンの IP アドレスを指定します。
-. Windows マシンに移動して、 XCP LISTEN を実行します。ここで XCP File Analytics for SMB が構成されています。サービスを継続的に実行するには、ウィンドウを開いた状態のままにします。
-. Google Chrome ブラウザで File Analytics を起動し、ページを更新してください :`\https://<ip address of Linux>/XCP
-. ダイアログボックスが表示されたら「 OK 」を選択します。新しいタブが開きます。ポップアップがブロックされている場合は、ブラウザで有効にしてください。URL のプライバシーポリシーを受け入れ、「 `S MB agent is ready to use 」というメッセージが表示されます。分析ページを更新してください
-. XCP File Analytics GUI がホストされている元のタブに戻り、ページを更新します。これにより、エージェントカードの下に SMB エージェントが表示されます。
+. をコピーします `server.key` および `server.crt` ファイル `/opt/NetApp/xFiles/xcp/` （XCP File Analyticsがすでに設定されているLinuxボックスで） `C:\NetApp\XCP`。
++
+必要に応じて、CA証明書がある場合は、 `C:\NetApp\XCP` 同じ名前と拡張子を持つ。
+
+. Windowsマシンに移動し、 `xcp listen`では、XCP File Analytics for SMBの設定が完了しました。サービスを継続的に実行するには、ウィンドウを開いたままにします。
+. サポートされているブラウザでFile Analyticsを起動します。 `\https://<ip address of linux>/xcp`
++
+を参照してください link:xcp-install-xcp-smb.html["XCP SMB をインストールします"] サポートされるブラウザについては、を参照してください。
+
+. 選択するオプション `OK` ダイアログボックスが表示されたとき。
++
+
+NOTE: 新しいタブが開きます。ブロックされている場合は、ブラウザのポップアップを有効にします。
+
+. URLのプライバシーポリシーに同意します。次のメッセージが表示されます。 `SMB agent is ready to use. Please refresh the analytics page`
+. XCP File Analytics GUIをホストする元のタブに戻り、ページを更新して、[Agents]カードの下にSMBエージェントを表示します。
 
 
 
@@ -53,13 +61,19 @@ SMB 向けファイル分析の新規インストールを実行するには、�
 
 SMB 向けの既存の File Analytics をアップグレードするには、次の手順を実行します。
 
-. File Analytics を実行する前に、 File Analytics が実行されている Linux サーバーもアップグレードされ、サービスが実行されていることを確認してください。
+. File Analyticsを実行する前に、File Analyticsが実行されているLinuxサーバもアップグレードされていること、およびサービスが実行されていることを確認します。
 . Windows では、コマンドラインに「 CTRL-C 」と入力して、既存の XCP サービスを停止します。
-. 「 XCP .exe 」を最新のバイナリに置き換えます。
-. Linux マシンに移動し './configure.sh を実行します
-. メインメニューで「 Option 4 (Update XCP Windows agent IP) 」を選択し、 Windows マシンの IP アドレスを指定します。
-. Windows マシンに移動して、 XCP LISTEN を実行します。ここで XCP File Analytics for SMB が構成されています。サービスを継続的に実行するには、ウィンドウを開いた状態のままにします。
-. Google Chrome ブラウザで File Analytics を起動し、ページを更新してください :`\https://<ip address of Linux>/XCP
-. ダイアログボックスが表示されたら「 OK 」を選択します。新しいタブが開きます。ポップアップがブロックされている場合は、ブラウザで有効にしてください。URL のプライバシーポリシーを受け入れ、「 `S MB agent is ready to use 」というメッセージが表示されます。分析ページを更新してください
-. XCP File Analytics GUI がホストされている元のタブに戻り、ページを更新します。これにより、エージェントカードの下に SMB エージェントが表示されます。
+. 交換してください `xcp.exe` 最新のバイナリで。
+. Windowsマシンに移動し、 `xcp listen` XCP File Analytics for SMBを構成するには、次の手順に従います。サービスを継続的に実行するには、ウィンドウを開いたままにします。
+. サポートされているブラウザでFile Analyticsを起動します。 `\https://<ip address of linux>/xcp`
++
+を参照してください link:xcp-install-xcp-smb.html["XCP SMB をインストールします"] サポートされるブラウザについては、を参照してください。
+
+. ダイアログボックスが表示されたら、* OK *を選択します。
++
+
+NOTE: 新しいタブが開きます。ブロックされている場合は、ブラウザのポップアップを有効にします。
+
+. URLのプライバシーポリシーに同意します。次のメッセージが表示されます。 `SMB agent is ready to use. Please refresh the analytics page`
+. XCP File Analytics GUIをホストする元のタブに戻り、ページを更新して、[Agents]カードの下にSMBエージェントを表示します。
 

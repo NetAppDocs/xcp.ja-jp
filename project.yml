@@ -89,6 +89,9 @@ sidebar:
       url: "/xcp-migrate-data.html"
     - title: SMB データを移行
       url: "/xcp-migrate-smb-data.html"
+      entries:
+      - title: SMBでのNTFS代替データストリームの移行
+        url: "/xcp-smb-ads.html"
     - title: HDFSデータを移行
       url: "/xcp-migrate-hdfs-data.html"
     - title: 同じホストで複数のXCPジョブを実行します
