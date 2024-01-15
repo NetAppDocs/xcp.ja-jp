@@ -390,8 +390,6 @@
   <block id="2e92962c0b6996add9517e4242ea9bdc" category="cell">5432</block>
   <block id="b5d1e5d54f5315ff2add6fab835e546d" category="cell">XCP （ファイル分析用サービス）</block>
   <block id="faad95253aee7437871781018bdf3309" category="cell">5030</block>
-  <block id="11047916a280f54b6bb638b4fa43d625" category="summary">XCP SMB エラーのトラブルシューティング</block>
-  <block id="5bf172f77cc9d71e44a586eb796e8205" category="doc">XCP SMB エラーのトラブルシューティング</block>
   <block id="430f0b9cbaeb94092aee4baf6da23965" category="cell">適切な XCP ライセンスファイルを取得します。XCP ホストの「 c ： \NetApp\XCP 」フォルダに XCP ライセンスをコピーします。ライセンスを有効にするには 'XCP activate コマンドを実行します</block>
   <block id="d41bf97a60e7be57b7f2c07b092ad5b0" category="cell">XCP : エラー : XCP がアクティブ化されていません。先に 'activate' を実行してください</block>
   <block id="93a8c927e888fa50601e3fe6d0cb5c14" category="cell">から XCP ライセンスをダウンロードします <block ref="f33ccbb3083b14f48de92a286ba83724" category="inline-link-macro-rx"></block>。XCP ホストの c:\NetApp\XCP で XCP Linux クライアントホスト上のファイルをコピーします。ライセンスを有効にするには 'XCP activate コマンドを実行します</block>
@@ -951,4 +949,6 @@ xcp.logファイルに記録されたエラーメッセージ：<block ref="e2ac
   <block id="b99588d251bf1019e0e822689ebaf7d2" category="list-text"><block ref="b9a9b1656ba3adc03b7fa7487e42a8f6" prefix="" category="inline-code"></block></block>
   <block id="462f82c31411e99799f7e9026350b607" category="sidebar">NetApp XCPは、拡張性に優れたハイパフォーマンスなデータ移行を可能にするクライアントベースのソフトウェアで、ネットアップ間やネットアップ間のデータ移行やファイル分析に対応します。ここでは、XCPのインストール、設定、および使用方法を含むXCP 1.9.3ソフトウェアのドキュメントを見つけることができます。以前のリリースのXCPのドキュメントは、NetApp Support Siteから入手できます。</block>
   <block id="01fe75bfb5351e8cb287658bc7ee5325" category="sidebar">NetApp XCP 1.9.2</block>
+  <block id="06c7c6fe1390b1e7519864e5fd3adc1b" category="summary">XCP SMBエラーのトラブルシューティング</block>
+  <block id="103bae74aac9cad62c4f7826cc30141d" category="doc">XCP SMBエラーのトラブルシューティング</block>
 </blocks>

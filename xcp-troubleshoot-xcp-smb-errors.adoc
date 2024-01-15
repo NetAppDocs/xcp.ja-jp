@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: xcp-troubleshoot-xcp-smb-errors.html 
 keywords: netapp, xcp, troubleshoot, troubleshooting, smb, 
-summary: XCP SMB エラーのトラブルシューティング 
+summary: XCP SMBエラーのトラブルシューティング 
 ---
-= XCP SMB エラーのトラブルシューティング
+= XCP SMBエラーのトラブルシューティング
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
