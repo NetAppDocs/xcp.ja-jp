@@ -1,7 +1,7 @@
 ---
 indexpage:
   lead: NetApp XCPは、拡張性に優れたハイパフォーマンスなデータ移行を可能にするクライアントベースのソフトウェアで、ネットアップ間やネットアップ間のデータ移行やファイル分析に対応します。ここでは、XCPのインストール、設定、および使用方法を含むXCP
-    1.9.3ソフトウェアのドキュメントを見つけることができます。以前のリリースのXCPのドキュメントは、NetApp Support Siteから入手できます。
+    1.6.2以降のソフトウェアのドキュメントを見つけることができます。1.6.2より前のXCPリリースのドキュメントは、NetApp Support Siteから入手できます。
   tiles:
   - title: はじめに
     links:
@@ -9,23 +9,23 @@ indexpage:
       url: "/releasenotes.html"
     - title: XCP の詳細をご確認ください
       url: "/xcp-index.html"
-  - title: 以前のバージョン
+  - title: 以前のリリースノートバージョン
     links:
     - title: NetApp XCP 1.9.2
-      url: https://mysupport.netapp.com/documentation/docweb/index.html?productID=64804&language=en-US
+      url: https://library.netapp.com/ecm/ecm_get_file/ECMLP2885805
     - title: NetApp XCP 1.9.1
-      url: https://mysupport.netapp.com/documentation/docweb/index.html?productID=64637&language=en-US
+      url: https://library.netapp.com/ecm/ecm_get_file/ECMLP2884968
     - title: NetApp XCP 1.9
-      url: https://mysupport.netapp.com/documentation/docweb/index.html?productID=64493&language=en-US
+      url: https://library.netapp.com/ecm/ecm_get_file/ECMLP2883342
     - title: NetApp XCP 1.8.1
-      url: https://mysupport.netapp.com/documentation/docweb/index.html?productID=64287&language=en-US
+      url: https://library.netapp.com/ecm/ecm_get_file/ECMLP2881500
     - title: NetApp XCP 1.8
-      url: https://mysupport.netapp.com/documentation/docweb/index.html?productID=64074&language=en-US
+      url: https://library.netapp.com/ecm/ecm_get_file/ECMLP2880112
     - title: NetApp XCP 1.7以前
       url: https://mysupport.netapp.com/documentation/productlibrary/index.html?productID=63064
   - title: リソースの追加
     links:
-    - title: XCPマニュアル（参考資料を含む）
+    - title: XCP 1.6.1以前のドキュメント
       url: https://mysupport.netapp.com/documentation/productlibrary/index.html?productID=63064
     - title: NetApp TechCommTV（NetApp XCPビデオ）
       url: link:https://www.youtube.com/user/NetAppTechCommTV/search?query=xcp
