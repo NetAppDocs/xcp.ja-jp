@@ -66,7 +66,7 @@ XCP SMB の初期セットアップを実行するには、次の手順を実行
 .手順
 . Windows クライアントでライセンスと XCP SMB バイナリ「 NetApp_XCP _ < バージョン >.tgz 」をダウンロードします。
 . 「 NetApp_XCP _ 」ファイルを展開します。
-. 「 xCP 」ファイルを Windows C ：ドライブにコピーします。このバイナリは、「 tgz 」ファイルを解凍した後、「 NetApp_XCP _ 1.8 \XCP \windows 」内で入手できます。
+. をコピーします `xcp.exe` ファイルをWindows C:ドライブに保存します。このバイナリは `NETAPP_XCP_<version>\xcp\windows` を展開した後、 `tgz` ファイル。
 . 以前のバージョンの XCP からシステムで「 C ： \NetApp\XCP 」パスが利用可能であることを確認します。「 C:\NetApp\XCP 」が利用可能な場合は、「 xcp.exe activate 」コマンドを使用して XCP をアクティブにし、データ移行を続行します。
 +
 「 C ： \NetApp\XCP 」が使用できない場合は、最初に「 xcp.exe activate 」コマンドを実行するときに、 XCP ホスト構成ディレクトリが作成され、そのディレクトリが C:\NetApp\XCP にファイルされます。「 xcp.exe activate 」コマンドは失敗し、新しいライセンスを要求するエラーメッセージが表示されます。

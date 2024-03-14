@@ -596,7 +596,6 @@
   <block id="23c9666a12a742df28045c71457392a3" category="list-text">インストールが完了したら、 Windows クライアントを再起動します。</block>
   <block id="5dfa463a08f83c24c2d431cffb177fa8" category="list-text">Windows クライアントでライセンスと XCP SMB バイナリ「 NetApp_XCP _ &lt; バージョン &gt;.tgz 」をダウンロードします。</block>
   <block id="bdacdc2ce48f16d27d87fef257b0c28f" category="list-text">「 NetApp_XCP _ 」ファイルを展開します。</block>
-  <block id="5721c375e95676c97876a49105a2b54c" category="list-text">「 xCP 」ファイルを Windows C ：ドライブにコピーします。このバイナリは、「 tgz 」ファイルを解凍した後、「 NetApp_XCP _ 1.8 \XCP \windows 」内で入手できます。</block>
   <block id="17b92bb56c632debb93b565e92dbd987" category="list-text">以前のバージョンの XCP からシステムで「 C ： \NetApp\XCP 」パスが利用可能であることを確認します。「 C:\NetApp\XCP 」が利用可能な場合は、「 xcp.exe activate 」コマンドを使用して XCP をアクティブにし、データ移行を続行します。</block>
   <block id="c9dd31b110e2c919cd80441873e975fc" category="paragraph">「 C ： \NetApp\XCP 」が使用できない場合は、最初に「 xcp.exe activate 」コマンドを実行するときに、 XCP ホスト構成ディレクトリが作成され、そのディレクトリが C:\NetApp\XCP にファイルされます。「 xcp.exe activate 」コマンドは失敗し、新しいライセンスを要求するエラーメッセージが表示されます。</block>
   <block id="fca650b5fb2499a28c4614bbf33b9323" category="list-text">追加したファイルサーバカードの矢印を選択して、ファイルサーバ上のファイル共有を表示します。</block>
@@ -957,4 +956,5 @@ xcp.logファイルに記録されたエラーメッセージ：<block ref="e2ac
   <block id="fa9d00e8e16d36faed7e27ef33cc9bb1" category="sidebar">NetApp XCPは、拡張性に優れたハイパフォーマンスなデータ移行を可能にするクライアントベースのソフトウェアで、ネットアップ間やネットアップ間のデータ移行やファイル分析に対応します。ここでは、XCPのインストール、設定、および使用方法を含むXCP 1.6.2以降のソフトウェアのドキュメントを見つけることができます。1.6.2より前のXCPリリースのドキュメントは、NetApp Support Siteから入手できます。</block>
   <block id="0b5f5476de5c5e40cc0b9b6eac7b5003" category="sidebar">以前のリリースノートバージョン</block>
   <block id="a0bdfc7755831681bc292330bc4e3777" category="sidebar">XCP 1.6.1以前のドキュメント</block>
+  <block id="50093a13cb17d2efa1a538b0678cc15e" category="list-text">をコピーします<block ref="42dc92c99a13a4f3e1ce5f5dbffb3d77" prefix=" " category="inline-code"></block> ファイルをWindows C:ドライブに保存します。このバイナリは<block ref="b83dd8b00a764f84f57961a6d4eb38c7" prefix=" " category="inline-code"></block> を展開した後、<block ref="05d1190d81e37d06607cc19e21f63ea7" prefix=" " category="inline-code"></block> ファイル。</block>
 </blocks>
