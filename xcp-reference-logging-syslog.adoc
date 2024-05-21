@@ -1,0 +1,145 @@
+---
+sidebar: sidebar 
+permalink: xcp-reference-logging-syslog.html 
+keywords: netapp, xcp, reference, event, logging 
+summary: XCPロギング 
+---
+= syslogクライアントを有効にする
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+XCPは、Syslogクライアントをサポートして、NFSおよびSMBのリモートSyslogレシーバにXCPイベントログメッセージを送信します。デフォルトポート514を使用するUDPプロトコルをサポートします。
+
+
+
+== NFSおよびSMB用のsyslogクライアントの設定
+
+syslogクライアントを有効にするには、 `syslog` オプション `xcpLogConfig.json` NFSおよびSMBの構成ファイル。
+
+次に、NFSおよびSMB用のsyslogクライアントの設定例を示します。
+
+[listing]
+----
+{
+"syslog":{
+"isEnabled":true,
+"level":"INFO",
+"serverIp":"10.101.101.d",
+"port":514
+},
+"sanitize":false
+}
+----
+
+
+== syslogオプション
+
+次の表に、syslogのサブオプションとその概要を示します。
+
+[cols="1,1,1,3"]
+|===
+| サブオプション | JSON データ型 | デフォルト値 | 説明 
+
+
+| `isEnabled` | ブール値 | いいえ | このブーリアンオプションは、XCPでSyslogクライアントをイネーブルにします。に設定します
+falseを指定すると、syslog設定は無視されます。 
+
+
+| `level` | 文字列 | 情報 | イベントメッセージの重大度フィルタレベル。イベントメッセージングでは、重大度の低い順に5つの重大度レベル（CRITICAL、ERROR、WARNING、INFO、DEBUG）がサポートされます。 
+
+
+| `serverIp` | 文字列 | なし | このオプションは、リモートsyslogサーバのIPアドレスまたはホスト名をリストします。 
+
+
+| `port` | インテガー | 514 | このオプションは、リモートsyslogレシーバポートです。このオプションを使用すると、別のポートでsyslogデータグラムを受け入れるようにsyslogレシーバを設定できます。 デフォルトのUDPポートは514です。 
+|===
+
+IMPORTANT: 。 `sanitize` 「syslog」設定でオプションを指定しないでください。このオプションはグローバルに適用され、JSON構成内のロギング、イベントログ、syslogに共通です。この値を「true」に設定すると、syslogサーバに送信されるsyslogメッセージの機密情報が非表示になります。
+
+
+
+== syslogメッセージの形式
+
+UDP経由でリモートsyslogサーバに送信されるすべてのsyslogメッセージは、NFSおよびSMBのRFC 5424形式に従ってフォーマットされます。
+
+次の表に、XCPのsyslogメッセージでサポートされるRFC 5424に従って重大度を示します。
+
+|===
+| シユウタイトチ | 重大度レベル 
+
+
+| 3. | ERROR：エラー状態 
+
+
+| 4. | WARNING：警告状態 
+
+
+| 6. | INFORMATIONAL：情報メッセージ 
+
+
+| 7. | DEBUG：デバッグレベルのメッセージ 
+|===
+NFSおよびSMBのsyslogヘッダーでは、versionの値は1で、XCPのすべてのメッセージのファシリティの値は1（ユーザレベルのメッセージ）に設定されています。
+`<PRI> = syslog facility * 8 + severity value`
+
+.NFSのsyslogヘッダーを含むXCPアプリケーションsyslogメッセージ形式：
+次の表に、NFSのsyslogヘッダーを含むsyslogメッセージ形式のテンプレートと例を示します。
+
+|===
+| テンプレート | 例 
+
+
+ a| 
+`<PRI><version> <Time stamp> <hostname> xcp_nfs - - - <XCP message>`
+ a| 
+`<14>1 2020-07-08T06:30:34.341Z netapp xcp_nfs - - - INFO {"Event ID": 14,
+"Event Category": "XCP job status", "Event Type": "XCP scan completion",
+"Event Source": "netapp", "Description": "XCP scan is completed by scanning 8
+items"}`
+
+|===
+.NFSのsyslogヘッダーなしのXCPアプリケーションメッセージ
+次の表に、NFSのsyslogヘッダーなしのsyslogメッセージ形式のテンプレートと例を示します。
+
+|===
+| テンプレート | 例 
+
+
+ a| 
+`<message severity level i.e CRITICAL, ERROR, WARNING, INFO, DEBUG> <XCP event log message>`
+ a| 
+`INFO {"Event ID": 14, "Event Category": "XCP job status", "Event Type": "XCP scan completion", "Event Source": "netapp", "Description": "XCP scan is completed by scanning 8 items"}`
+
+|===
+.SMBのsyslogヘッダーを含むXCPアプリケーションsyslogメッセージ形式
+次の表に、SMBのsyslogヘッダーを含むsyslogメッセージ形式のテンプレートと例を示します。
+
+|===
+| テンプレート | 例 
+
+
+ a| 
+`<PRI><version> <Time stamp> <hostname> xcp_smb - - - <XCP message`
+ a| 
+`<14>1 2020-07-10T10:37:18.452Z bansala01 xcp_smb - - - INFO {"Event ID": 14, "Event Category": "XCP job status", "Event Type": "XCP scan completion", "Event Source": "NETAPP-01", "Description": "XCP scan is completed by scanning 17 items"}`
+
+|===
+.SMBのsyslogヘッダーなしのXCPアプリケーションメッセージ
+次の表に、SMBのsyslogヘッダーがないsyslogメッセージの形式のテンプレートと例を示します。
+
+|===
+| テンプレート | 例 
+
+
+ a| 
+`<message severity level i.e CRITICAL, ERROR, WARNING, INFO, DEBUG> <XCP event log message>`
+ a| 
+`NFO {"Event ID": 14, "Event Category": "XCP job status", "Event Type": "XCP scan completion", "Event Source": "NETAPP-01", "Description": "XCP scan is completed by scanning 17items"}`
+
+|===

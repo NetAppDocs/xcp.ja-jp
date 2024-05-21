@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: xcp-smb-ads.html 
 keywords: netapp, xcp, smb, ads, alternate, data, streams, ntfs 
-summary: SMBでのNTFS代替データストリームの移行 
+summary: NTFSタイタイテエタアトリアムノイコウSMB 
 ---
-= SMBでのNTFS代替データストリームの移行
+= SMBノNTFSタイタイタイテエタストリイムノイコウ
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,13 +14,13 @@ summary: SMBでのNTFS代替データストリームの移行
 
 
 [role="lead"]
-XCP 1.9.3以降では、XCP SMBは、 `-ads` XCP SMBコマンドのオプション。
+XCP 1.9.3以降では、XCP SMBは、を使用したNTFS代替データストリームの移行をサポートしています。 `-ads` XCP SMBコマンドのオプション。
 
 
 
 == サポートされるユースケース
 
-XCP SMBを使用できます。 `copy` および `sync` ADSを含むデータを移行するコマンド、およびXCP SMB `scan` コマンドを使用して、SMB共有をスキャンして広告を表示します。
+XCP SMBを使用できます。 `copy` および `sync` 代替データストリームを含むデータを移行するコマンド、およびXCP SMB `scan` SMB共有で代替データストリームをスキャンするコマンド。
 
 
 

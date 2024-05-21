@@ -26,7 +26,7 @@ copy コマンドは ' ソース・ディレクトリ構造全体をスキャン
 
 [listing]
 ----
-xcp copy -newid <id> src_server:/src_export dst_server:/dst_export
+xcp copy <source_nfs_export_path> <destination_nfs_export_path>
 ----
 * POSIX パスの例 :*
 
@@ -46,7 +46,7 @@ xcp copy -newid <id> file:///mnt/source file:///mnt/dest
 
 [listing]
 ----
-xcp resume [options] -id <id used for copy>
+xcp resume -id <catalog_name>
 ----
 を実行します `xcp help resume` 詳細：
 
@@ -60,7 +60,7 @@ xcp resume [options] -id <id used for copy>
 
 [listing]
 ----
-xcp sync [options] -id <id used for copy>
+xcp sync -id <catalog_name>
 ----
 を実行します `xcp help sync` 詳細：
 
@@ -74,7 +74,7 @@ xcp sync [options] -id <id used for copy>
 
 [listing]
 ----
-xcp verify src_server:/src_export dst_server:/dst_export
+xcp verify <source_ip_address>:/source_vol <destination_ip_address>:/dest_vol
 ----
 * POSIX パスの例 :*
 

@@ -10,10 +10,12 @@ indexpage:
       url: "/xcp-index.html"
     - title: XCP をインストール
       url: "/xcp-install-xcp.html"
-    - title: XCPリファレンス
-      url: https://library.netapp.com/ecm/ecm_download_file/ECMLP2886872
   - title: 以前のリリース
     links:
+    - title: NetApp XCP 1.9.3リリースノート
+      url: https://library.netapp.com/ecm/ecm_download_file/ECMLP2886695
+    - title: NetApp XCP 1.9.3リファレンス
+      url: https://library.netapp.com/ecm/ecm_download_file/ECMLP2886872
     - title: NetApp XCP 1.9.2リリースノート
       url: https://library.netapp.com/ecm/ecm_get_file/ECMLP2885805
     - title: NetApp XCP 1.9.2リファレンス
@@ -21,10 +23,6 @@ indexpage:
     - title: NetApp XCP 1.9.1リリースノート
       url: https://library.netapp.com/ecm/ecm_get_file/ECMLP2884968
     - title: NetApp XCP 1.9.1のリファレンス
-      url: https://library.netapp.com/ecm/ecm_download_file/ECMLP2883343
-    - title: NetApp XCP 1.9リリースノート
-      url: https://library.netapp.com/ecm/ecm_get_file/ECMLP2883342
-    - title: NetApp XCP 1.9リファレンス
       url: https://library.netapp.com/ecm/ecm_download_file/ECMLP2883343
   - title: リソースの追加
     links:
@@ -36,3 +34,9 @@ indexpage:
       url: https://www.netapp.com/search/#q=xcp&sort=relevancy&f:@language=English
     - title: NetAppコミュニティ（フォーラム）
       url: link:https://community.netapp.com
+  - title: XCPリファレンス
+    links:
+    - title: NFSコマンドリファレンス
+      url: "/xcp-nfs-reference-help.html"
+    - title: SMBコマンドリファレンス
+      url: "/xcp-smb-reference-help.html"

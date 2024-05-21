@@ -1,0 +1,35 @@
+---
+sidebar: sidebar 
+permalink: xcp-reference-logging-logconfig.html 
+keywords: netapp, xcp, reference, event, logging 
+summary: XCPロギング 
+---
+= logconfigオプションを設定します。
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+のlogconfigオプションの詳細については、 `xcpLogConfig.json` XCP NFSおよびSMB用のJSON構成ファイル。
+
+次の例は、「logconfig」オプションを使用して設定されたJSON構成ファイルを示しています。
+
+* 例 *
+
+[listing]
+----
+{
+"level":"INFO",
+"maxBytes":"52428800",
+"name":"xcp.log"
+}
+----
+* この設定では、有効なレベル値を選択することで、重大度に基づいてメッセージをフィルタリングできます。 `CRITICAL`、 `ERROR`、 `WARNING`、 `INFO`および `Debug`。
+* 。 `maxBytes` を設定すると、ローテーションログファイルのファイルサイズを変更できます。デフォルトは50MBです。値を0に設定するとローテーションが停止し、すべてのログに対して1つのファイルが作成されます。
+* 。 `name` オプションは、ログファイルの名前を設定します。
+* キーと値のペアが見つからない場合は、デフォルト値が使用されます。既存のキーの名前を誤って指定した場合、そのキーは新しいキーとして扱われ、システムの動作やシステムの機能には影響しません。
+

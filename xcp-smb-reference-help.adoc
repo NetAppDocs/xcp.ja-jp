@@ -1,0 +1,107 @@
+---
+sidebar: sidebar 
+permalink: xcp-smb-reference-help.html 
+keywords: netapp, xcp, reference, smb, command, commands 
+summary: XCP SMBの「help」コマンドリファレンス 
+---
+= ヘルプ
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+SMB `help` コマンドは、コマンドのリスト、コマンドパラメータ、および各コマンドの簡単な概要を表示します。このコマンドは、XCPを初めて使用する初心者に非常に便利です。
+
+.構文
+[source, cli]
+----
+xcp --help
+----
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+C:\Users\Administrator\Desktop\xcp>xcp --help
+usage: xcp [-h] [-version]
+            {scan,show,listen,configure,copy,sync,verify,license,activate,help}
+            ...
+optional arguments:
+  -h, --help       show this help message and exit
+  -version         show program's version number and exit
+
+XCP commands:
+  {scan,show,listen,configure,copy,sync,verify,license,activate,help}
+    scan           Read all the files in a file tree
+    show           Request information from host about SMB shares
+    listen         Run xcp service
+    configure      Configure xcp.ini file
+    copy           Recursively copy everything from source to target
+    sync           Sync target with source
+    verify         Verify that the target is the same as the source
+    license        Show xcp license info
+    activate       Activate a license on the current host
+    help           Show help for commands
+----
+====
+
+
+== ヘルプ<command>
+
+で<command>を使用 `help` をクリックして、指定した<command>の例とオプションの詳細を表示します。
+
+.構文
+[source, cli]
+----
+xcp help <command>
+----
+次の出力例は、の詳細、使用方法、引数、およびオプションの引数を示しています。 `sync` コマンドを実行します
+
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+C:\Users\Administrator\Desktop\xcp>xcp help sync
+usage: xcp sync [-h] [-v] [-parallel <n>] [-match <filter>] [-preserve-atime]
+[-noatime] [-noctime] [-nomtime] [-noattrs]
+[-noownership] [-atimewindow <float>] [-ctimewindow <float>]
+[-mtimewindow <float>] [-acl] [-fallback-user FALLBACK_USER]
+[-fallback-group FALLBACK_GROUP] [-l]
+source target
+Note: ONTAP does not let a SMB client modify COMPRESSED or ENCRYPTED attributes.
+XCP sync will ignore these file attributes.
+positional arguments:
+source
+target
+optional arguments:
+-h, --help            show this help message and exit
+-v                    increase debug verbosity
+-parallel <n>         number of concurrent processes (default: <cpu-count>)
+-match <filter>       only process files and directories that match the filter
+                      see `xcp help -match` for details)
+-preserve-atime       restore last accessed date on source
+-noatime              do not check file access time
+-noctime              do not check file creation time
+-nomtime              do not check file modification time
+-noattrs              do not check attributes
+-noownership          do not check ownership
+-atimewindow <float>  acceptable access time difference in seconds
+-ctimewindow <float>  acceptable creation time difference in seconds
+-mtimewindow <float>  acceptable modification time difference in seconds
+-acl                  copy security information
+-fallback-user FALLBACK_USER
+                      a user on the target machine to receive the permissions of local
+(nondomain)source machine users (eg. domain\administrator)
+-fallback-group       FALLBACK_GROUP
+                      a group on the target machine to receive the permissions oflocal
+(non-domain) source machine groups (eg. domain\administrators)
+-l                    increase output
+-root                 sync acl for root directory
+C:\Users\Administrator\Desktop\xcp>
+----
+====

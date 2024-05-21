@@ -1,0 +1,619 @@
+---
+sidebar: sidebar 
+permalink: xcp-nfs-reference-copy.html 
+keywords: netapp, xcp, reference, nfs, command, commands 
+summary: XCP NFSコマンドリファレンス 
+---
+= コピー
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+XCP NFS `copy` コマンドは、ソースディレクトリ構造全体をスキャンし、デスティネーションNFSv3エクスポートにコピーします。
+
+。 `copy` コマンドでは、ソースパスとデスティネーションパスを変数として指定する必要があります。スキャンおよびコピーされたファイル、スループット、速度、および経過時間の詳細がコピー処理の終了時に表示されます。
+
+[NOTE]
+====
+* ランタイムログファイルは次の場所にあります。 `/opt/NetApp/xFiles/xcp/xcp.log` このパスは設定可能です。追加のロギングは、各コマンドの実行後にカタログに保存されます。
+* ソースが7-Modeシステムの場合は、Snapshotコピーをソースとして使用できます。例： `<ip_address>:/vol/ex_s01/.snapshot/<snapshot_name>`
+
+
+====
+.構文
+[source, cli]
+----
+xcp copy <source_nfs_export_path> <destination_nfs_export_path>
+----
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+root@localhost linux]# ./xcp copy <IP address of NFS server>:/source_vol < IP address of
+destination NFS server>:/dest_vol
+
+xcp: WARNING: No index name has been specified, creating one with name: autoname_copy_2020-03-
+03_23.46.33.153705
+Xcp command : xcp copy <IP address of NFS server>:/source_vol <IP address of destination NFS
+server>:/dest_vol
+18 scanned, 0 matched, 17 copied, 0 error
+Speed : 38.9 KiB in (51.2 KiB/s), 81.2 KiB out (107KiB/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+次の表に、を示します `copy` パラメータとその概要。
+
+[cols="2*"]
+|===
+| パラメータ | 説明 
+
+
+| <<コピー名>> | ファイルリストとレポートからユーザ名とグループ名を除外します。 
+
+
+| <<copy_match,コピーマッチ >> | フィルタに一致するファイルとディレクトリのみを処理します。 
+
+
+| <<copy_md5,コピー- MD5 string_expression>  | ファイルにチェックサムを生成し、インデックス作成時にチェックサムを保存します（デフォルト：false）。 
+
+
+| <<copy_dircount,copy-dircount[k]>  | ディレクトリを読み取るときの要求サイズを指定します。 
+
+
+| <<copy_edupe,copy-edupe>> | 重複排除の見積もりをレポートに含めます。 
+
+
+| <<copy_bs,copy-bs[k]>  | 読み取り/書き込みブロックサイズを指定します（デフォルト：64k）。 
+
+
+| <<copy_parallel,コピーパラレル >> | 同時バッチプロセスの最大数を指定します（デフォルト：7）。 
+
+
+| <<copy_preserve_atime,copy-preserve-atime>> | ソースで最後にアクセスした日付にすべてのファイルをリストアします。 
+
+
+| <<copy_s3_insecure,-s3.insecureをコピー>> | S3バケットの通信にHTTPSの代わりにHTTPを使用するオプションを提供します。 
+
+
+| <<copy_s3_endpoint,copy -s3.endpoint> | Amazon Web Services（AWS）エンドポイントのデフォルトのURLを、S3バケット通信用に指定したURLで上書きします。 
+
+
+| <<copy_s3_profile,-s3.profileをコピー profile_name> | S3バケットの通信用にAWSクレデンシャルファイルからプロファイルを指定します。 
+
+
+| <<copy_s3_noverify,-s3.noverifyをコピー>> | S3バケット通信のSSL証明書のデフォルトの検証を上書きします。 
+|===
+
+
+== コピー名
+
+を使用します `-nonames` パラメータと `copy` ファイルリストまたはレポートからユーザ名とグループ名を除外するコマンド。
+
+.構文
+[source, cli]
+----
+xcp copy -nonames <source_ip_address_or_hostname>:/source_vol <destination_ip_address_or_hostname>:/dest_vol
+----
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp copy -nonames <IP address or hostname of NFS server>:/source_vol <IP
+address of destination NFS server>:/dest_vol
+
+xcp: WARNING: No index name has been specified, creating one with name: autoname_copy_2020-03-
+03_23.48.48.147261
+Xcp command : xcp copy -nonames <IP address or hostname of NFS server>:/source_vol <IP address of
+destination NFS server>:/dest_vol
+18 scanned, 0 matched, 17 copied, 0 error
+Speed : 38.9 KiB in (53.5 KiB/s), 81.3 KiB out (112 KiB/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+
+
+== Copy-Match <filter>
+
+を使用します `-match <filter>` パラメータと `copy` フィルタに一致するファイルとディレクトリのみが処理されるように指定するコマンド。
+
+.構文
+[source, cli]
+----
+xcp copy -match <filter> <source_ip_address_or_hostname>:/source_vol <destination_ip_address_or_hostname>:/dest_vol
+----
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp copy -match bin <IP address or hostname of NFS server>:/source_vol <IP
+address of destination NFS server>:/dest_vol
+
+xcp: WARNING: No index name has been specified, creating one with name: autoname_copy_2020-03-
+04_00.00.07.125990
+Xcp command : xcp copy -match bin <IP address or hostname of NFS server>:/source_vol <IP address
+of destination NFS server>:/dest_vol
+18 scanned, 18 matched, 17 copied, 0 error
+Speed : 39.1 KiB in (52.6 KiB/s), 81.7 KiB out (110 KiB/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+
+
+== コピー- MD5 <string_expression>
+
+を使用します `-md5` パラメータと `copy` ファイルリストのチェックサムを生成し、インデックス作成時にチェックサムを保存するコマンド。デフォルト値はfalseに設定されています。
+
+.構文
+[source, cli]
+----
+xcp copy -md5 <source_ip_address_or_hostname>:/source_vol <destination_ip_address_or_hostname>:/dest_vol
+----
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp copy -md5 <IP address or hostname of NFS server>:/source_vol <IP
+address of destination NFS server>:/dest_vol
+
+xcp: WARNING: No index name has been specified, creating one with name: autoname_copy_2020-03-
+03_23.47.41.137615
+Xcp command : xcp copy -md5 <IP address or hostname of NFS server>:/source_vol <IP address of
+destination NFS server>:/dest_vol
+18 scanned, 0 matched, 17 copied, 0 error
+Speed : 38.9 KiB in (52.1 KiB/s), 81.3 KiB out (109 KiB/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+
+
+== copy-dircount <n[k]>
+
+を使用します `-dircount <n[k]>` パラメータと `copy` コマンドを使用して、ディレクトリを読み取るときの要求サイズを指定します。デフォルト値は64kです。
+
+.構文
+[source, cli]
+----
+xcp copy -dircount <n[k]> <source_ip_address_or_hostname>:/source_vol <destination_ip_address_or_hostname>:/dest_vol
+----
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp copy -dircount 32k <IP address or hostname of NFS server>:/source_vol
+<IP address of destination NFS server>:/dest_vol
+
+xcp: WARNING: No index name has been specified, creating one with name: autoname_copy_2020-03-
+03_23.58.01.094460
+Xcp command : xcp copy -dircount 32k <IP address or hostname of NFS server>:/source_vol <IP
+address of destination NFS server >:/dest_vol
+18 scanned, 0 matched, 17 copied, 0 error
+Speed : 39.1 KiB in (56.7 KiB/s), 81.6 KiB out (119 KiB/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+
+
+== copy-edupe
+
+を使用します `-edupe` パラメータと `copy` 重複排除の見積もりをレポートに含めるコマンド。
+
+
+NOTE: Simple Storage Service（S3）ではスパースファイルはサポートされません。そのため、ターゲットデスティネーションとしてS3バケットを指定 `copy -edupe` スパースデータの場合は値"None"を返します。
+
+.構文
+[source, cli]
+----
+xcp copy -edupe <source_ip_address_or_hostname>:/source_vol <destination_ip_address_or_hostname>:/dest_vol
+----
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp copy -edupe <IP address or hostname of NFS server>:/source_vol <IP
+address of destination NFS server>:/dest_vol
+
+xcp: WARNING: No index name has been specified, creating one with name: autoname_copy_2020-03-
+03_23.48.10.436325
+== Maximum Values ==
+Size Used Depth Namelen Dirsize
+1 KiB 4 KiB 2 11 9
+== Average Values ==
+Namelen Size Depth Dirsize
+6 682 1 5
+== Top Space Users ==
+root
+52 KiB
+== Top File Owners ==
+root
+18
+== Top File Extensions ==
+.txt other
+5 10
+== Number of files ==
+empty <8KiB 8-64KiB 64KiB-1MiB 1-10MiB 10-100MiB >100MiB
+4 11
+== Space used ==
+empty <8KiB 8-64KiB 64KiB-1MiB 1-10MiB 10-100MiB >100MiB
+40 KiB
+== Directory entries ==
+empty 1-10
+3
+10-100 100-1K 1K-10K >10K
+== Depth ==
+0-5 6-10 11-15 16-20 21-100 >100
+18
+== Accessed ==
+>1 year >1 month 1-31 days 1-24 hrs <1 hour <15 mins future
+4 11
+== Modified ==
+>1 year >1 month 1-31 days 1-24 hrs <1 hour <15 mins future
+10 5
+== Changed ==
+>1 year >1 month 1-31 days 1-24 hrs <1 hour <15 mins future
+10 5
+Total count: 18
+Directories: 3
+Regular files: 15
+Symbolic links: None
+Special files: None
+Hard links: None,
+multilink files: None,
+Space Saved by Hard links (KB): 0
+Sparse data: None
+Dedupe estimate: N/A
+Total space for regular files: size: 10.0 KiB, used: 40 KiB
+Total space for symlinks: size: 0, used: 0
+Total space for directories: size: 12 KiB, used: 12 KiB
+Total space used: 52 KiB
+Xcp command : xcp copy -edupe <IP address or hostname of NFS server>:/source_vol <destination NFS
+export path>:/dest_vol
+18 scanned, 0 matched, 17 copied, 0 error
+Speed : 38.9 KiB in (36.7 KiB/s), 81.3 KiB out (76.7 KiB/s)
+Total Time : 1s.
+STATUS : PASSED
+----
+====
+
+
+== コピーBS <n[k]>
+
+を使用します `-bs <n[k]>` パラメータと `copy` 読み取り/書き込みブロックサイズを指定するコマンド。デフォルトのブロックサイズは64kです。
+
+.構文
+[source, cli]
+----
+xcp copy -bs <n[k]> <ip_address_or_hostname>:/source_vol <destination_ip_address_or_hostname>:/dest_vol
+----
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp copy -bs 32k <IP address or hostname of NFS server>:/source_vol <IP
+address of destination NFS server>:/dest_vol
+
+xcp: WARNING: No index name has been specified, creating one with name: autoname_copy_2020-03-
+03_23.57.04.742145
+Xcp command : xcp copy -bs 32k <IP address or hostname of NFS server>:/source_vol <IP address of
+destination NFS server>:/dest_vol
+18 scanned, 0 matched, 17 copied, 0 error
+Speed : 39.1 KiB in (115 KiB/s), 81.6 KiB out (241 KiB/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+
+
+== コピーパラレル<n>
+
+を使用します `-parallel <n>` パラメータと `copy` コマンドを使用して、同時バッチプロセスの最大数を指定します。デフォルト値は7です。
+
+.構文
+[source, cli]
+----
+xcp copy -parallel <n> <ip_address_or_hostname>:/source_vol destination_ip_address_or_hostname:/<dest_vol>
+----
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp copy -parallel 4 <IP address or hostname of NFS server>:/source_vol
+<IP address of destination NFS server>:/dest_vol
+
+xcp: WARNING: No index name has been specified, creating one with name: autoname_copy_2020-03-
+03_23.59.41.477783
+Xcp command : xcp copy -parallel 4 <IP address or hostname of NFS server>:/source_vol <IP address
+of destination NFS server>:/dest_vol
+18 scanned, 0 matched, 17 copied, 0 error
+Speed : 39.1 KiB in (35.6 KiB/s), 81.6 KiB out (74.4 KiB/s)
+Total Time : 1s.
+STATUS : PASSED
+----
+====
+
+
+== copy-preserve-atime
+
+を使用します `-preserve-atime` パラメータと `copy` ソースで最後にアクセスした日付にすべてのファイルをリストアするコマンド。
+
+。 `-preserve-atime` オプションを選択すると、XCP読み取り操作の前に設定された元の値にアクセス時間がリセットされます。
+
+.構文
+[source, cli]
+----
+xcp copy -preserve-atime <source_ip_address_or_hostname>:/source_vol <destination_ip_address_or_hostname>:/dest_vol
+----
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+[root@client1 linux]# ./xcp copy -preserve-atime 101.10.10.10:/source_vol 10.102.102.10:/dest_vol
+
+xcp: WARNING: No index name has been specified, creating one with name: XCP_copy_2022-06-
+30_14.22.53.742272
+xcp: Job ID: Job_XCP_copy_2022-06-30_14.22.53.742272_2022-06-30_14.22.53.742272_copy
+Xcp command : xcp copy -preserve-atime 101.10.10.10:/source_vol 10.102.102.10:/dest_vol
+Stats : 55 scanned, 54 copied, 55 indexed
+Speed : 1.26 MiB in (852 KiB/s), 1.32 MiB out (896 KiB/s)
+Total Time : 1s.
+Migration ID: XCP_copy_2022-06-30_14.22.53.742272
+Job ID : Job_XCP_copy_2022-06-30_14.22.53.742272_2022-06-30_14.22.53.742272_copy
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/Job_XCP_copy_2022-06-30_14.22.53.742272_2022-06-
+30_14.22.53.742272_copy.log
+STATUS : PASSED
+[root@client1 linux]#
+----
+====
+
+
+== -s3.insecureをコピー
+
+を使用します `-s3.insecure` パラメータと `copy` S3バケットの通信にHTTPSではなくHTTPを使用するコマンド。
+
+.構文
+[source, cli]
+----
+xcp copy -s3.insecure s3://<bucket_name>
+----
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+[root@client1 linux]# ./xcp copy -s3.insecure hdfs:///user/test s3://bucket1
+
+xcp: WARNING: No index name has been specified, creating one with name: XCP_copy_2023-06-
+08_09.01.47.581599
+Job ID: Job_XCP_copy_2023-06-08_09.01.47.581599_copy
+Xcp command : xcp copy -s3.insecure hdfs:///user/test s3://bucket1
+Stats : 8 scanned, 5 copied, 8 indexed, 5 KiB s3.data.uploaded, 5
+s3.copied.single.key.file, 5 s3.copied.file
+Speed : 6.78 KiB in (1.86 KiB/s), 83.3 KiB out (22.9 KiB/s)
+Total Time : 3s.
+Migration ID: XCP_copy_2023-06-08_09.01.47.581599
+Job ID : Job_XCP_copy_2023-06-08_09.01.47.581599_copy
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/Job_XCP_copy_2023-06-08_09.01.47.581599_copy.log
+STATUS : PASSED
+
+[root@client1 linux]# ./xcp copy -s3.insecure hdfs:///user/demo s3://bucket1
+
+xcp: WARNING: No index name has been specified, creating one with name: XCP_copy_2023-06-
+08_09.15.58.807485
+Job ID: Job_XCP_copy_2023-06-08_09.15.58.807485_copy
+Xcp command : xcp copy -s3.insecure hdfs:///user/demo s3://bucket1
+Stats : 8 scanned, 5 copied, 8 indexed, 5 KiB s3.data.uploaded, 5
+s3.copied.single.key.file, 5 s3.copied.file
+Speed : 10.4 KiB in (3.60 KiB/s), 85.3 KiB out (29.6 KiB/s)
+Total Time : 2s.
+Migration ID: XCP_copy_2023-06-08_09.15.58.807485
+Job ID : Job_XCP_copy_2023-06-08_09.15.58.807485_copy
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/Job_XCP_copy_2023-06-08_09.15.58.807485_copy.log
+STATUS : PASSED
+----
+====
+
+
+== copy-s3.endpoint <s3_endpoint_url>
+
+を使用します `-s3.endpoint <s3_endpoint_url>` パラメータと `copy` AWSエンドポイントのデフォルトのURLをS3バケットの通信用に指定したURLで上書きするコマンド。
+
+.構文
+[source, cli]
+----
+xcp copy -s3.endpoint https://<endpoint_url>: s3://<bucket_name>
+----
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+root@client1 linux]# ./xcp copy -s3.endpoint https://<endpoint_url>: hdfs:///user/test
+s3://xcp-testing
+
+xcp: WARNING: No index name has been specified, creating one with name: XCP_copy_2023-06-
+13_11.20.32.571348
+Job ID: Job_XCP_copy_2023-06-13_11.20.32.571348_copy
+Xcp command : xcp copy -s3.endpoint https://<endpoint_url> hdfs:///user/test s3://xcp-testing
+Stats : 8 scanned, 5 copied, 8 indexed, 5 KiB s3.data.uploaded, 5
+s3.copied.single.key.file, 5 s3.copied.file
+Speed : 6.78 KiB in (1.77 KiB/s), 83.6 KiB out (21.8 KiB/s)
+Total Time : 3s.
+Migration ID: XCP_copy_2023-06-13_11.20.32.571348
+Job ID : Job_XCP_copy_2023-06-13_11.20.32.571348_copy
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/Job_XCP_copy_2023-06-13_11.20.32.571348_copy.log
+STATUS : PASSED
+[root@client1 linux]# ./xcp copy -s3.endpoint https://<endpoint_url>: hdfs:///user/demo
+s3://xcp-testing
+
+xcp: WARNING: No index name has been specified, creating one with name: XCP_copy_2023-06-
+13_11.40.26.913130
+Job ID: Job_XCP_copy_2023-06-13_11.40.26.913130_copy
+15,009 scanned, 1,462 copied, 9 indexed, 1.46 MiB s3.data.uploaded, 1,491
+s3.copied.single.key.file, 1,491 s3.copied.file, 4.58 MiB in (933 KiB/s), 1.72 MiB out (350
+KiB/s), 5s
+15,009 scanned, 4,283 copied, 9 indexed, 4.20 MiB s3.data.uploaded, 4,302
+s3.copied.single.key.file, 4,302 s3.copied.file, 7.70 MiB in (629 KiB/s), 4.85 MiB out (632
+KiB/s), 10s
+15,009 scanned, 7,323 copied, 9 indexed, 7.17 MiB s3.data.uploaded, 7,343
+s3.copied.single.key.file, 7,343 s3.copied.file, 11.0 MiB in (672 KiB/s), 8.24 MiB out (681
+KiB/s), 15s
+15,009 scanned, 10,427 copied, 9 indexed, 10.2 MiB s3.data.uploaded, 10,439
+s3.copied.single.key.file, 10,439 s3.copied.file, 14.5 MiB in (690 KiB/s), 11.7 MiB out (695
+KiB/s), 20s
+15,009 scanned, 13,445 copied, 9 indexed, 13.1 MiB s3.data.uploaded, 13,454
+s3.copied.single.key.file, 13,454 s3.copied.file, 17.8 MiB in (676 KiB/s), 15.0 MiB out (682
+KiB/s), 25s
+Xcp command : xcp copy -s3.endpoint https://<endpoint_url>: hdfs:///user/demo s3://xcp-testing
+Stats : 15,009 scanned, 15,005 copied, 15,009 indexed, 14.7 MiB s3.data.uploaded, 15,005
+s3.copied.single.key.file, 15,005 s3.copied.file
+Speed : 19.2 MiB in (712 KiB/s), 17.1 MiB out (635 KiB/s)
+Total Time : 27s.
+Migration ID: XCP_copy_2023-06-13_11.40.26.913130
+Job ID : Job_XCP_copy_2023-06-13_11.40.26.913130_copy
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/Job_XCP_copy_2023-06-13_11.40.26.913130_copy.log
+STATUS : PASSED
+----
+====
+
+
+== -s3.profile <name>のコピー
+
+を使用します `s3.profile` パラメータと `copy` S3バケット通信用のAWSクレデンシャルファイルからプロファイルを指定するコマンド。
+
+.構文
+[source, cli]
+----
+xcp copy -s3.profile <name> -s3.endpoint https://<endpoint_url>: s3://<bucket_name>
+----
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+root@client1 linux]# ./xcp copy -s3.endpoint https://<endpoint_url>: hdfs:///user/test
+s3://xcp-testing
+
+xcp: WARNING: No index name has been specified, creating one with name: XCP_copy_2023-06-
+13_11.20.32.571348
+Job ID: Job_XCP_copy_2023-06-13_11.20.32.571348_copy
+Xcp command : xcp copy -s3.endpoint https://<endpoint_url> hdfs:///user/test s3://xcp-testing
+Stats : 8 scanned, 5 copied, 8 indexed, 5 KiB s3.data.uploaded, 5
+s3.copied.single.key.file, 5 s3.copied.file
+Speed : 6.78 KiB in (1.77 KiB/s), 83.6 KiB out (21.8 KiB/s)
+Total Time : 3s.
+Migration ID: XCP_copy_2023-06-13_11.20.32.571348
+Job ID : Job_XCP_copy_2023-06-13_11.20.32.571348_copy
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/Job_XCP_copy_2023-06-13_11.20.32.571348_copy.log
+STATUS : PASSED
+[root@client1 linux]# ./xcp copy -s3.endpoint https://<endpoint_url>: hdfs:///user/demo
+s3://xcp-testing
+
+xcp: WARNING: No index name has been specified, creating one with name: XCP_copy_2023-06-
+13_11.40.26.913130
+Job ID: Job_XCP_copy_2023-06-13_11.40.26.913130_copy
+15,009 scanned, 1,462 copied, 9 indexed, 1.46 MiB s3.data.uploaded, 1,491
+s3.copied.single.key.file, 1,491 s3.copied.file, 4.58 MiB in (933 KiB/s), 1.72 MiB out (350
+KiB/s), 5s
+15,009 scanned, 4,283 copied, 9 indexed, 4.20 MiB s3.data.uploaded, 4,302
+s3.copied.single.key.file, 4,302 s3.copied.file, 7.70 MiB in (629 KiB/s), 4.85 MiB out (632
+KiB/s), 10s
+15,009 scanned, 7,323 copied, 9 indexed, 7.17 MiB s3.data.uploaded, 7,343
+s3.copied.single.key.file, 7,343 s3.copied.file, 11.0 MiB in (672 KiB/s), 8.24 MiB out (681
+KiB/s), 15s
+15,009 scanned, 10,427 copied, 9 indexed, 10.2 MiB s3.data.uploaded, 10,439
+s3.copied.single.key.file, 10,439 s3.copied.file, 14.5 MiB in (690 KiB/s), 11.7 MiB out (695
+KiB/s), 20s
+15,009 scanned, 13,445 copied, 9 indexed, 13.1 MiB s3.data.uploaded, 13,454
+s3.copied.single.key.file, 13,454 s3.copied.file, 17.8 MiB in (676 KiB/s), 15.0 MiB out (682
+KiB/s), 25s
+Xcp command : xcp copy -s3.endpoint https://<endpoint_url>: hdfs:///user/demo s3://xcp-testing
+Stats : 15,009 scanned, 15,005 copied, 15,009 indexed, 14.7 MiB s3.data.uploaded, 15,005
+s3.copied.single.key.file, 15,005 s3.copied.file
+Speed : 19.2 MiB in (712 KiB/s), 17.1 MiB out (635 KiB/s)
+Total Time : 27s.
+Migration ID: XCP_copy_2023-06-13_11.40.26.913130
+Job ID : Job_XCP_copy_2023-06-13_11.40.26.913130_copy
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/Job_XCP_copy_2023-06-13_11.40.26.913130_copy.log
+STATUS : PASSED
+----
+====
+
+
+== -s3.noverifyをコピー
+
+を使用します `-s3.noverify` パラメータと `copy` コマンドを使用して、S3バケットの通信用のSSL証明書のデフォルトの検証を無視します。
+
+.構文
+[source, cli]
+----
+xcp copy -s3.noverify s3://<bucket_name>
+----
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+[root@client1 linux]# ./xcp copy -s3.noverify hdfs://user/test s3:// bucket1
+
+xcp: WARNING: No index name has been specified, creating one with name: XCP_copy_2023-06-
+13_10.57.41.994969
+Job ID: Job_XCP_copy_2023-06-13_10.57.41.994969_copy
+Xcp command : xcp copy -s3.noverify hdfs://user/test s3://bucket1
+Stats : 8 scanned, 5 copied, 8 indexed, 5 KiB s3.data.uploaded, 5
+s3.copied.single.key.file, 5 s3.copied.file
+Speed : 6.78 KiB in (2.36 KiB/s), 83.3 KiB out (29.0 KiB/s)
+Total Time : 2s.
+Migration ID: XCP_copy_2023-06-13_10.57.41.994969
+Job ID : Job_XCP_copy_2023-06-13_10.57.41.994969_copy
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/Job_XCP_copy_2023-06-13_10.57.41.994969_copy.log
+STATUS : PASSED
+./xcp copy -s3.profile sg -s3.noverify -s3.endpoint https://<endpoint_url>: hdfs:///user/demo s3://bucket1
+
+xcp: WARNING: No index name has been specified, creating one with name: XCP_copy_2023-06-
+13_11.26.56.143287
+Job ID: Job_XCP_copy_2023-06-13_11.26.56.143287_copy
+1 scanned, 9.95 KiB in (1.99 KiB/s), 12.9 KiB out (2.58 KiB/s), 5s
+15,009 scanned, 1,555 copied, 9 indexed, 1.54 MiB s3.data.uploaded, 1,572
+s3.copied.single.key.file, 1,572 s3.copied.file, 4.68 MiB in (951 KiB/s), 1.81 MiB out (365
+KiB/s), 10s
+15,009 scanned, 4,546 copied, 9 indexed, 4.46 MiB s3.data.uploaded, 4,572
+s3.copied.single.key.file, 4,572 s3.copied.file, 7.95 MiB in (660 KiB/s), 5.15 MiB out (674
+KiB/s), 15s
+15,009 scanned, 7,702 copied, 9 indexed, 7.53 MiB s3.data.uploaded, 7,710
+s3.copied.single.key.file, 7,710 s3.copied.file, 11.5 MiB in (710 KiB/s), 8.65 MiB out (707
+KiB/s), 20s
+15,009 scanned, 10,653 copied, 9 indexed, 10.4 MiB s3.data.uploaded, 10,669
+s3.copied.single.key.file, 10,669 s3.copied.file, 14.7 MiB in (661 KiB/s), 11.9 MiB out (670
+KiB/s), 25s
+15,009 scanned, 13,422 copied, 9 indexed, 13.1 MiB s3.data.uploaded, 13,428
+s3.copied.single.key.file, 13,428 s3.copied.file, 17.8 MiB in (627 KiB/s), 15.0 MiB out (627
+KiB/s), 30s
+Xcp command : xcp copy -s3.profile sg -s3.noverify -s3.endpoint https://<endpoint_url>: hdfs:///user/demo s3://bucket1
+Stats : 15,009 scanned, 15,005 copied, 15,009 indexed, 14.7 MiB s3.data.uploaded, 15,005
+s3.copied.single.key.file, 15,005 s3.copied.file
+Speed : 19.2 MiB in (609 KiB/s), 17.1 MiB out (543 KiB/s)
+Total Time : 32s.
+Migration ID: XCP_copy_2023-06-13_11.26.56.143287
+Job ID : Job_XCP_copy_2023-06-13_11.26.56.143287_copy
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/Job_XCP_copy_2023-06-13_11.26.56.143287_copy.log
+STATUS : PASSED
+----
+====

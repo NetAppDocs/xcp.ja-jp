@@ -1,0 +1,32 @@
+---
+sidebar: sidebar 
+permalink: xcp-smb-reference-activate.html 
+keywords: netapp, xcp, reference, smb, command, commands 
+summary: XCP SMB「activate」コマンドリファレンス 
+---
+= アクティブにします
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+SMB `activate` コマンドはXCPライセンスをアクティブにします。このコマンドを実行する前に、ライセンスファイルがXCPホストまたはクライアントマシンのC：\NetApp\XCPディレクトリにダウンロードおよびコピーされていることを確認してください。ライセンスは任意の数のホストでアクティブ化できます。
+
+.構文
+[source, cli]
+----
+xcp activate
+----
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+C:\Users\Administrator\Desktop\xcp>xcp activate
+XCP activated
+----
+====

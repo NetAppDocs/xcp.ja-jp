@@ -1,0 +1,453 @@
+---
+sidebar: sidebar 
+permalink: xcp-nfs-reference-sync.html 
+keywords: netapp, xcp, reference, nfs, command, commands 
+summary: XCP NFSコマンドリファレンス 
+---
+= 同期
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+XCPの説明、パラメータ、例を表示する `sync` コマンド（ `sync` コマンドは、 `dry run` オプション
+
+
+
+== 同期
+
+XCP NFS `sync` コマンドは、カタログインデックスタグ名または前回のコピー処理の番号を使用して、ソースNFSディレクトリに対する変更や変更をスキャンします。ソースに対する増分変更がコピーされ、ターゲットディレクトリに適用されます。同期処理後、古いカタログインデックス番号が新しいインデックス番号に置き換えられます。
+
+
+NOTE: 同期処理では、変更されたファイルとディレクトリがデスティネーションNFSv3エクスポートに再度コピーされます。
+
+.構文
+[source, cli]
+----
+xcp sync -id <catalog_name>
+----
+
+IMPORTANT: 。 `-id <catalog_name>` パラメータは、 `sync` コマンドを実行します
+
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp sync -id autoname_copy_2020-03-04_01.10.22.338436
+
+xcp: Index: {source: <IP address or hostname of NFS server>:/source_vol, target: <IP address of
+destination NFS server>:/dest_vol}
+Xcp command : xcp sync -id autoname_copy_2020-03-04_01.10.22.338436
+0 scanned, 0 copied, 0 modification, 0 new item, 0 delete item, 0 error
+Speed : 26.4 KiB in (27.6 KiB/s), 22.7 KiB out (23.7 KiB/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+次の表に、を示します `sync` パラメータとその概要。
+
+[cols="2*"]
+|===
+| パラメータ | 説明 
+
+
+| <<sync_id,sync-id  catalog_name>  | 前のコピーインデックスのカタログ名を指定します。これは、 `sync` コマンドを実行します 
+
+
+| <<sync_nonames,名前の同期>> | ファイルリストとレポートからユーザ名とグループ名を除外します。 
+
+
+| <<sync_bs,sync-bs[k]>  | 読み取り/書き込みブロックサイズを指定します（デフォルト：64k）。 
+
+
+| <<sync_dircount,sync-dircount[k]>  | ディレクトリを読み取るときの要求サイズを指定します。 
+
+
+| <<sync_parallel,sync-parallel >> | 同時バッチプロセスの最大数を指定します（デフォルト：7）。 
+
+
+| <<sync_preserve_atime,sync-preserve-atime>> | ソースで最後にアクセスした日付にすべてのファイルをリストアします。 
+|===
+
+
+=== 名前の同期
+
+ツールバーの `-nonames` パラメータと `sync` ファイルリストまたはレポートからユーザ名とグループ名を除外するコマンド。
+
+.構文
+[source, cli]
+----
+xcp sync -id <catalog_name> -nonames
+----
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp sync -id ID001 -nonames
+
+xcp: Index: {source: <IP address or hostname of NFS server>:/source_vol, target: <IP address of
+destination NFS server>:/dest_vol}
+Xcp command : xcp sync -id ID001 -nonames
+0 scanned, 0 copied, 0 modification, 0 new item, 0 delete item, 0 error
+Speed : 26.4 KiB in (22.2 KiB/s), 22.3 KiB out (18.8 KiB/s)
+Total Time : 1s.
+STATUS : PASSED
+----
+====
+
+
+=== Sync-BS <n[k]>
+
+ツールバーの `-bs <n[k]>` パラメータと `sync` 読み取り/書き込みブロックサイズを指定するコマンド。デフォルトのブロックサイズは64kです。
+
+.構文
+[source, cli]
+----
+xcp sync -id <catalog_name> -bs <n[k]>
+----
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp sync -id ID001 -bs 32k
+
+xcp: Index: {source: <IP address or hostname of NFS server>:/source_vol, target: <IP address of
+destination NFS server>:/dest_vol}
+Xcp command : xcp sync -id ID001 -bs 32k
+0 scanned, 0 copied, 0 modification, 0 new item, 0 delete item, 0 error
+Speed : 25.3 KiB in (20.4 KiB/s), 21.0 KiB out (16.9 KiB/s)
+Total Time : 1s.
+STATUS : PASSED
+----
+====
+
+
+=== sync-dircount <n[k]>
+
+ツールバーの `-dircount <n[k]>` パラメータと `sync` コマンドを使用して、ディレクトリを読み取るときの要求サイズを指定します。デフォルト値は64kです。
+
+.構文
+[source, cli]
+----
+xcp sync -id <catalog_name> -dircount <n[k]>
+----
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp sync -id ID001 -dircount 32k
+
+xcp: Index: {source: <IP address or hostname of NFS server>:/source_vol, target: <IP address of
+destination NFS server>:/dest_vol}
+Xcp command : xcp sync -id ID001 -dircount 32k
+0 scanned, 0 copied, 0 modification, 0 new item, 0 delete item, 0 error
+Speed : 25.3 KiB in (27.8 KiB/s), 21.0 KiB out (23.0 KiB/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+
+
+=== 同期-パラレル
+
+ツールバーの `-parallel` パラメータと `sync` コマンドを使用して、同時バッチプロセスの最大数を指定します。デフォルト値は7です。
+
+.構文
+[source, cli]
+----
+xcp sync -id <catalog_name> -parallel <n>
+----
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp sync -id ID001 -parallel 4
+
+xcp: Index: {source: <IP address or hostname of NFS server>:/source_vol, target: <IP address of
+destination NFS server>:/dest_vol}
+Xcp command : xcp sync -id ID001 -parallel 4
+0 scanned, 0 copied, 0 modification, 0 new item, 0 delete item, 0 error
+Speed : 25.3 KiB in (20.6 KiB/s), 21.0 KiB out (17.1 KiB/s)
+Total Time : 1s.
+STATUS : PASSED
+----
+====
+
+
+=== -preserve-atime
+
+ツールバーの `-preserve-atime` パラメータと `sync` ソースで最後にアクセスした日付にすべてのファイルをリストアするコマンド。
+
+。 `-preserve-atime` オプションを選択すると、XCP読み取り操作の前に設定された元の値にアクセス時間がリセットされます。
+
+.構文
+[source, cli]
+----
+xcp sync -preserve-atime -id <catalog_name>
+----
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+[root@client-1 linux]# ./xcp sync -preserve-atime -id XCP_copy_2022-06-30_14.22.53.742272
+
+xcp: Job ID: Job_XCP_copy_2022-06-30_14.22.53.742272_2022-06-30_14.27.28.660165_sync
+xcp: Index: {source: 101.10.10.10:/source_vol, target: 10.201.201.20:/dest_vol}
+xcp: diff 'XCP_copy_2022-06-30_14.22.53.742272': 55 reviewed, 55 checked at source, 1 modification,
+54 reindexed, 23.3 KiB in (15.7 KiB/s), 25.1 KiB out (16.9 KiB/s), 1s.
+xcp: sync 'XCP_copy_2022-06-30_14.22.53.742272': Starting search pass for 1 modified directory...
+xcp: find changes: 55 reviewed, 55 checked at source, 1 modification, 55 re-reviewed, 54 reindexed,
+28.0 KiB in (18.4 KiB/s), 25.3 KiB out (16.6 KiB/s), 1s.
+xcp: sync phase 2: Rereading the 1 modified directory...
+xcp: sync phase 2: 55 reviewed, 55 checked at source, 1 modification, 55 re-reviewed, 1 new dir, 54
+reindexed, 29.2 KiB in (19.0 KiB/s), 25.6 KiB out (16.7 KiB/s), 1s.
+xcp: sync 'XCP_copy_2022-06-30_14.22.53.742272': Deep scanning the 1 modified directory...
+xcp: sync 'XCP_copy_2022-06-30_14.22.53.742272': 58 scanned, 55 copied, 56 indexed, 55 reviewed, 55
+checked at source, 1 modification, 55 re-reviewed, 1 new dir, 54 reindexed, 1.28 MiB in (739
+KiB/s), 1.27 MiB out (732 KiB/s), 1s.
+Xcp command : xcp sync -preserve-atime -id XCP_copy_2022-06-30_14.22.53.742272
+Stats : 58 scanned, 55 copied, 56 indexed, 55 reviewed, 55 checked at source, 1 modification,
+55 re-reviewed, 1 new dir, 54 reindexed
+Speed : 1.29 MiB in (718 KiB/s), 1.35 MiB out (755 KiB/s)
+Total Time : 1s.
+Migration ID: XCP_copy_2022-06-30_14.22.53.742272
+Job ID : Job_XCP_copy_2022-06-30_14.22.53.742272_2022-06-30_14.27.28.660165_sync
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/Job_XCP_copy_2022-06-30_14.22.53.742272_2022-06-
+30_14.27.28.660165_sync.log
+STATUS : PASSED
+----
+====
+
+
+== 同期ドライラン
+
+。 `sync` コマンドにを指定します `dry-run` オプションは、コピー処理の以前のカタログインデックス番号を使用してソースNFSディレクトリに加えられた変更または変更を検索します。このコマンドは、前回のコピー操作以降に新規、移動、削除、または名前変更されたファイルとディレクトリも検出します。このコマンドでは、ソースの変更は報告されますが、ターゲットには適用されません。
+
+.構文
+[source, cli]
+----
+xcp sync dry-run -id <catalog_name>
+----
+
+IMPORTANT: 。 `-id <catalog_name>` パラメータは、 `sync dry-run` コマンドオプション。
+
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp sync dry-run -id ID001
+
+xcp: Index: {source: <IP address or hostname of NFS server>:/source_vol, target: <IP address of
+destination NFS server>:/dest_vol}
+Xcp command : xcp sync dry-run -id ID001
+0 matched, 0 error
+Speed : 15.2 KiB in (46.5 KiB/s), 5.48 KiB out (16.7 KiB/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+次の表に、を示します `sync dry-run` パラメータとその概要。
+
+[cols="2*"]
+|===
+| パラメータ | 説明 
+
+
+| <<sync_dry_run_id,同期dry-run-id  catalog_name>  | 前のコピーインデックスのカタログ名を指定します。これは、 `sync` コマンドを実行します 
+
+
+| <<sync_dry_run_stats,ドライラン統計を同期>> | 変更されたディレクトリのディープスキャンを実行し、
+新規： 
+
+
+| <<sync_dry_run_l,同期ドライラン-l>> | 変更されたファイルおよびディレクトリの詳細を出力します。 
+
+
+| <<sync_dry_run_nonames,ドライラン名の同期>> | ファイルリストとレポートからユーザ名とグループ名を除外します。 
+
+
+| <<sync_dry_run_dircount,sync dry-run-dircount[k]>  | ディレクトリを読み取るときの要求サイズを指定します。 
+
+
+| <<sync_dry_run_parallel,同期ドライランパラレル >> | 同時バッチプロセスの最大数を指定します（デフォルト：7）。 
+|===
+
+
+=== 同期ドライランID <catalog_name>
+
+ツールバーの `-id <catalog_name>` パラメータをに指定します `sync dry-run` 前のコピーインデックスのカタログ名を指定します。
+
+
+IMPORTANT: 。 `-id <catalog_name>` パラメータは、 `sync dry-run` コマンドオプション。
+
+.構文
+[source, cli]
+----
+xcp sync dry-run -id <catalog_name>
+----
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp sync dry-run -id ID001
+
+xcp: Index: {source: <IP address or hostname of NFS server>:/source_vol, target: <IP address of
+destination NFS server>:/dest_vol}
+Xcp command : xcp sync dry-run -id ID001
+0 matched, 0 error
+Speed : 15.2 KiB in (21.7 KiB/s), 5.48 KiB out (7.81 KiB/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+
+
+=== ドライラン統計を同期
+
+ツールバーの `-stats` パラメータをに指定します `sync dry-run` 変更されたディレクトリのディープスキャンを実行し、新しいものをすべて報告します。
+
+.構文
+[source, cli]
+----
+xcp sync dry-run -id <catalog_name> -stats
+----
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp sync dry-run -id ID001 -stats
+
+xcp: Index: {source: <IP address or hostname of NFS server>:/source_vol, target: <IP address of
+destination NFS server>:/dest_vol}
+4,895 reviewed, 43,163 checked at source, 12.8 MiB in (2.54 MiB/s), 5.49 MiB out (1.09 MiB/s),
+5s
+4,895 reviewed, 101,396 checked at source, 19.2 MiB in (1.29 MiB/s), 12.8 MiB out (1.47 MiB/s),
+10s
+Xcp command : xcp sync dry-run -id ID001 -stats
+0 matched, 0 error
+Speed : 22.9 MiB in (1.74 MiB/s), 17.0 MiB out (1.29 MiB/s)
+Total Time : 13s.
+STATUS : PASSED
+----
+====
+
+
+=== 同期ドライラン-l
+
+ツールバーの `-l` パラメータをに指定します `sync dry-run` 変更されたファイルおよびディレクトリの詳細を印刷します。
+
+.構文
+[source, cli]
+----
+xcp sync dry-run -id <catalog_name> -l
+----
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp sync dry-run -id ID001 -l
+
+xcp: Index: {source: <IP address or hostname of NFS server>:/source_vol, target: <IP address of
+destination NFS server>:/dest_vol}
+Xcp command : xcp sync dry-run -id ID001 -l
+0 matched, 0 error
+Speed : 15.2 KiB in (13.6 KiB/s), 5.48 KiB out (4.88 KiB/s)
+Total Time : 1s.
+STATUS : PASSED
+----
+====
+
+
+=== ドライラン名の同期
+
+ツールバーの `-nonames` パラメータをに指定します `sync dry-run` ファイルリストまたはレポートからユーザ名とグループ名を除外するには、次の手順を実行します。
+
+.構文
+[source, cli]
+----
+xcp sync dry-run -id <catalog_name> -nonames
+----
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp sync dry-run -id ID001 -nonames
+
+xcp: Index: {source: <IP address or hostname of NFS server>:/source_vol, target: <IP address of
+destination NFS server>:/dest_vol}
+Xcp command : xcp sync dry-run -id ID001 -nonames
+0 matched, 0 error
+Speed : 15.2 KiB in (15.8 KiB/s), 5.48 KiB out (5.70 KiB/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+
+
+=== dri-run-dircount <n[k]>を同期
+
+ツールバーの `-dircount <n[k]>` パラメータをに指定します `sync dry-run` ディレクトリを読み取るときの要求サイズを指定します。デフォルト値は64kです。
+
+.構文
+[source, cli]
+----
+xcp sync dry-run -id <catalog_name> -dircount <n[k]>
+----
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp sync dry-run -id ID001 -dircount 32k
+
+xcp: Index: {source: <IP address or hostname of NFS server>:/source_vol, target: <IP address of
+destination NFS server>:/dest_vol}
+Xcp command : xcp sync dry-run -id ID001 -dircount 32k
+0 matched, 0 error
+Speed : 15.2 KiB in (32.5 KiB/s), 5.48 KiB out (11.7 KiB/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+
+
+=== 同期ドライラン-パラレル
+
+ツールバーの `-parallel` パラメータをに指定します `sync dry-run` 同時に実行できるバッチプロセスの最大数を指定します。デフォルト値は7です。
+
+.構文
+[source, cli]
+----
+xcp sync dry-run -id <catalog_name> -parallel <n>
+----
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp sync dry-run -id ID001 -parallel 4
+
+xcp: Index: {source: <IP address or hostname of NFS server>:/source_vol, target: <IP address of
+destination NFS server>:/dest_vol}
+Xcp command : xcp sync dry-run -id ID001 -parallel 4
+0 matched, 0 error
+Speed : 15.2 KiB in (25.4 KiB/s), 5.48 KiB out (9.13 KiB/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====

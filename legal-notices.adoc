@@ -47,8 +47,8 @@ link:https://www.netapp.com/company/legal/privacy-policy/["https://www.netapp.co
 
 通知ファイルには、ネットアップソフトウェアで使用されるサードパーティの著作権およびライセンスに関する情報が記載されています。
 
+* link:media/xcp_1.9.4_notice.pdf["NetApp XCP 1.9.4に関する注意事項"^]
 * link:media/xcp_1.9.3_notice.pdf["NetApp XCP 1.9.3に関する注意事項"^]
 * link:media/xcp_1.9.2_notice.pdf["NetApp XCP 1.9.2に関する注意事項"^]
 * link:media/xcp_1.9.1_notice.pdf["NetApp XCP 1.9.1に関する注意事項"^]
-* link:media/xcp_1.9_notice.pdf["NetApp XCP 1.9に関する注意事項"^]
 

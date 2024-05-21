@@ -29,7 +29,7 @@ NOTE: コピー操作中に 'copy' コマンドとともに --preserve-atim' フ
 
 [listing]
 ----
-C:\xcp>xcp copy \\<source SMB share> \\<destination SMB share>
+C:\xcp>xcp copy \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
 ----
 を実行します `xcp help copy` 詳細：
 
@@ -48,7 +48,7 @@ NOTE: 同期操作中に '-spreserve-atim' フラグを 'sync' コマンドと�
 
 [listing]
 ----
-C:\xcp>xcp sync \\<source SMB share> \\<destination SMB share>
+C:\xcp>xcp sync \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
 ----
 を実行します `xcp help sync` 詳細：
 
@@ -67,6 +67,6 @@ C:\xcp>xcp sync \\<source SMB share> \\<destination SMB share>
 
 [listing]
 ----
-C:\xcp>xcp verify \\<source SMB share> \\<destination SMB share>
+C:\xcp>xcp verify \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
 ----
 を実行します `xcp help verify` 詳細：

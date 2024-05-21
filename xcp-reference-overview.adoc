@@ -1,0 +1,17 @@
+---
+sidebar: sidebar 
+permalink: xcp-reference-overview.html 
+keywords: netapp, xcp, reference, smb, nfs, logging, use case, commands 
+summary: XCP SMBコマンドリファレンス 
+---
+= XCPコマンドリファレンスの概要
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+XCP NFSおよびSMBで使用できるコマンドの例については、XCPコマンドリファレンスを参照してください。各コマンドには追加のパラメータがあり、必要に応じて単独で使用することも、組み合わせて使用することもできます。XCPは、重大度レベルに基づくログファイルのローテーションとログフィルタリングをサポートしています。

@@ -1,0 +1,108 @@
+---
+sidebar: sidebar 
+permalink: xcp-reference-logging-eventlog.html 
+keywords: netapp, xcp, reference, event, logging 
+summary: XCPロギング 
+---
+= eventlogオプションを設定する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+XCPはイベントメッセージングをサポートしています。イベントメッセージングは、 `eventlog` のオプションを選択します `xcpLogConfig.json` JSON構成ファイル。
+
+NFSの場合、すべてのイベントメッセージがに書き込まれます。 `xcp_event.log` デフォルトの場所のいずれかにあるファイル `/opt/NetApp/xFiles/xcp/` または、次の環境変数を使用して設定されたカスタムの場所。
+
+`XCP_CONFIG_DIR`
+
+
+NOTE: 両方のロケーションが設定されている場合、 `XCP_LOG_DIR` を使用します。
+
+SMBの場合は、すべてのイベントメッセージがファイルに書き込まれます。 `xcp_event.log` デフォルトの場所にあります。 `C:\NetApp\XCP\`。
+
+
+
+== NFSおよびSMBのイベントメッセージ用のJSONの設定
+
+次の例では、JSON構成ファイルを使用してNFSおよびSMBのイベントメッセージを有効にしています。
+
+.eventlogオプションを有効にしたJSON構成ファイルの例
+[listing]
+----
+{
+"eventlog": {
+"isEnabled": true,
+"level": "INFO"
+},
+"sanitize": false
+}
+----
+.eventlogおよびその他のオプションを有効にしたJSON構成ファイルの例
+[listing]
+----
+{
+"logConfig": {
+"level": "INFO",
+"maxBytes": 52428800,
+"name": "xcp.log"
+},
+"eventlog": {
+"isEnabled": true,
+"level": "INFO"
+},
+"syslog": {
+"isEnabled": true,
+"level": "info",
+"serverIp": "10.101.101.10",
+"port": 514
+},
+"sanitize": false
+}
+----
+次の表に、eventlogサブオプションとその概要を示します。
+
+[cols="1,1,1,3"]
+|===
+| サブオプション | JSON データ型 | デフォルト値 | 説明 
+
+
+| `isEnabled` | ブール値 | いいえ | このブーリアンオプションは、イベントメッセージングを有効にするために使用されます。falseに設定すると、イベントメッセージは生成されず、イベントログファイルには公開されません。 
+
+
+| `level` | 文字列 | 情報 | イベントメッセージの重大度フィルタレベル。イベントメッセージングでは、重大度の低い順に5つの重大度レベル（CRITICAL、ERROR、WARNING、INFO、DEBUG）がサポートされます。 
+|===
+.NFSイベントログメッセージのテンプレート
+次の表に、NFSイベントログメッセージのテンプレートと例を示します。
+
+|===
+| テンプレート | 例 
+
+
+ a| 
+`<Time stamp> - <Severity level> {"Event ID": <ID>, "Event
+Category":<category of xcp event log>, "Event Type": <type of event
+log>, "ExecutionId": < unique ID for each xcp command execution >,
+"Event Source": <host name>, "Description": <XCP event log message>}`
+ a| 
+`2020-07-14 07:07:07,286 - ERROR {"Event ID": 51, "Event Category":
+"Application failure", "Event Type": "No space left on destination
+error", " ExecutionId ": 408252316712, "Event Source": "NETAPP-01",
+"Description": "Target volume is left with no free space while executing
+: copy {}. Please increase the size of target volume
+10.101.101.101:/cat_vol"}`
+
+|===
+.EventLogメッセージのオプション
+イベントログメッセージには、次のオプションを使用できます。
+
+* `Event ID`:各イベントログメッセージの一意の識別子。
+* `Event Category`：イベントタイプとイベントログメッセージのカテゴリについて説明します。
+* `Event Type`：イベントメッセージを説明する短い文字列です。1つのカテゴリに複数のイベントタイプを含めることができます。
+* `Description`：概要フィールドには、XCPによって生成されたイベントログメッセージが含まれます。
+* `ExecutionId`:実行される各XCPコマンドの一意の識別子。
+
