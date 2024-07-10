@@ -350,8 +350,6 @@
   <block id="95b2f11d1aece0b4ddfc5cba00384742" category="summary">XCP をインストール</block>
   <block id="5157096b4994925e784b5ccc913a425c" category="section-title">ワークフローのインストールと設定</block>
   <block id="dda26d898eec39eecd399e188771288e" category="paragraph">このドキュメントでは、 NFS システムおよび SMB システムに XCP をインストールしてセットアップするための簡単なワークフローを紹介します。</block>
-  <block id="341d84aa26cb4521474864e04ea2a63b" category="inline-image-macro">エラー：グラフィックイメージがありません</block>
-  <block id="e0cc20d4c07649f34c6795a45c8f54ec" category="paragraph"><block ref="e0cc20d4c07649f34c6795a45c8f54ec" category="inline-image-macro-rx" type="image"></block></block>
   <block id="af4c2fb6e7c29314dbe63e8b1d277ff8" category="section-title">XCP をダウンロードします</block>
   <block id="83008f4493bba0b08400133371c2e80c" category="paragraph">ネットアップサポートサイトから XCP をダウンロードし、 XCP サイトからライセンスを取得します。</block>
   <block id="8c41baf1ca98e1184f48c4721d44d431" category="inline-link-macro">ネットアップサポートサイト</block>
@@ -2214,4 +2212,8 @@ falseを指定すると、syslog設定は無視されます。</block>
   <block id="7abd8bc01e56757cc6d2d51936b79c34" category="sidebar">XCPイベントログ</block>
   <block id="64b873b5723d0186c94db0f344f92d2b" category="sidebar">NFSイベントログ</block>
   <block id="4749766868b7c96046bdc8c12e4653fb" category="sidebar">SMBイヘントロク</block>
+  <block id="10f9a2d4423674460e3651820224566e" category="inline-image-macro">XCPのインストールと設定のワークフロー</block>
+  <block id="d00c1e93acb215a134bcc17a6aafed7e" category="paragraph"><block ref="d00c1e93acb215a134bcc17a6aafed7e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="e53491994f0709110c81f65b9c6dcbf5" category="cell">サードパーティからNetAppへのNTFSアクセス制御リスト（ACL）</block>
+  <block id="0ce0e45a25c05fb4a79ccca92ab31b0a" category="cell">XCP SMBでは、ネットアップ以外のシステムからNetAppシステムへのサードパーティACLの移行はサポートされていません。</block>
 </blocks>
