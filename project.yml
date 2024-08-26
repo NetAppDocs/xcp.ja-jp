@@ -14,7 +14,6 @@ sidebar:
   - title: リリースノート
     url: "/releasenotes.html"
   - title: XCP を使い始める
-    type: solutions
     entries:
     - title: XCP の詳細をご確認ください
       url: "/xcp-index.html"
@@ -61,8 +60,9 @@ sidebar:
     - title: S3 Connectorを設定します
       url: "/xcp-configure-s3-connector-nfs.html"
   - title: データ移行を計画
-    url: "/xcp-plan-data-migration.html"
     entries:
+    - title: 概要
+      url: "/xcp-plan-data-migration.html"
     - title: NFS データ移行を計画
       url: "/xcp-plan-nfs-data-migration.html"
     - title: SMB データ移行を計画
@@ -89,6 +89,7 @@ sidebar:
       url: "/xcp-migrate-data.html"
     - title: SMB データを移行
       url: "/xcp-migrate-smb-data.html"
+    - title: SMBノNTFSタイタイタイテエタストリイムノイコウ
       entries:
       - title: SMBノNTFSタイタイタイテエタストリイムノイコウ
         url: "/xcp-smb-ads.html"

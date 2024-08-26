@@ -110,7 +110,7 @@ NOTE: SMB スキャンでアクセス時間（ atime ）グラフを取得する
 
 === アクセス/変更/作成されたグラフのファイルサイズ
 
-image:xcp-filesize-amc.png[""]
+image:xcp-filesize-amc.png["時間の経過に伴って変更されたファイルのサイズを示すグラフ"]
 
 [File Size Accessed/Modified/Created]グラフには、時間の経過に伴って変更されたファイルのサイズが表示されます。X軸は変更が行われた期間を表し、Y軸は変更されたファイルのサイズを表します。
 
@@ -127,13 +127,13 @@ File Distribution by Extension グラフは、ファイル共有内のさまざ�
 
 また、SMB共有の場合は、スキャンを実行する前に代替データストリームのチェックボックスをオンにすると、ファイル拡張子ごとに代替データストリームファイルの数を確認できます。
 
-image:xcp-file-distribution-ads.png[""]
+image:xcp-file-distribution-ads.png["XCP SMBでファイル拡張子ごとに代替データストリームファイルの数を取得する方法を示すグラフ"]
 
 
 
 === 拡張子別ファイルサイズ分布グラフ
 
-image:xcp-filesize-dist-ex.png[""]
+image:xcp-filesize-dist-ex.png["ファイル共有内のさまざまなファイル拡張子の累積サイズを示すグラフ。"]
 
 [File Size Distribution by Extension]グラフは、ファイル共有内のさまざまなファイル拡張子の累積サイズを表します。拡張子を表す分割のサイズは、各拡張子を持つファイルのサイズに基づいています。
 
@@ -154,4 +154,4 @@ image:xcp_image15.png["拡張子グラフィックによるファイル配布"]
 
 また、SMB共有の場合は、スキャンを実行する前に代替データストリームのチェックボックスをオンにすることで、さまざまなタイプの代替データストリームファイルの数を確認できます。
 
-image:xcp-file-distribution-type.png[""]
+image:xcp-file-distribution-type.png["XCP SMBのさまざまなタイプの代替データストリームファイルの数を取得する方法を示すグラフ"]

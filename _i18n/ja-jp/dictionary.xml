@@ -413,7 +413,6 @@
   <block id="d60c463bb4096f3ed4bd1618626dfe10" category="sidebar">トラブルシューティングを行う</block>
   <block id="a313028d66f24e87591ecef5ff9f3484" category="summary">ホスト、 ONTAP のバージョン、サポートされているブラウザなどの XCP がサポートされている構成は、 IMT に記載されています。</block>
   <block id="57b6232ac0f92803d0544e702c641050" category="summary">一部の機能は、 XCP NFS または XCP SMB ではサポートされません。</block>
-  <block id="27844988f363a5f923e9334ae145a1fd" category="doc">INI ファイルを設定します</block>
   <block id="29c2f1feeb1231581bf05d60a3d62a9a" category="paragraph">XCP の INI ファイルを設定する手順。</block>
   <block id="586dba64773da8695bdac99be604919f" category="section-title">ルートユーザの INI ファイルを設定します</block>
   <block id="21ee12acf8b4df5f11e93b279367513a" category="paragraph">次の手順を使用して、 XCP NFS root ユーザの INI ファイルを設定できます。</block>
@@ -877,14 +876,10 @@ xcp.logファイルに記録されたエラーメッセージ：<block ref="e2ac
   <block id="269e3fa15ca9366f6cfcb1eac97c6cf0" category="paragraph">を実行します<block ref="1a1b0d47f4e6e0151b4df12640fe4bb0" prefix=" " category="inline-code"></block> 詳細：</block>
   <block id="ea7072dd30b8128f4d74568ed70d406c" category="paragraph">[Files Accessed/Modified/Created]グラフには、時間の経過に伴って変更されたファイルの数が表示されます。X軸は変更が行われた期間を表し、Y軸は変更されたファイルの数を表します。</block>
   <block id="e66cb3e85cec55480dc46a379124f46a" category="section-title">アクセス/変更/作成されたグラフのファイルサイズ</block>
-  <block id="5eeb433a134b50fcf2d2d02005945304" category="paragraph"><block ref="5eeb433a134b50fcf2d2d02005945304" category="inline-image-macro-rx" type="image"></block></block>
   <block id="b483a26f1bc7e903df1139b2bea4faca" category="paragraph">[File Size Accessed/Modified/Created]グラフには、時間の経過に伴って変更されたファイルのサイズが表示されます。X軸は変更が行われた期間を表し、Y軸は変更されたファイルのサイズを表します。</block>
   <block id="8105201d67059c07d533dcbbe25a3c67" category="section-title">拡張子別ファイル配布グラフ</block>
-  <block id="699e5e6ac0568498b21221ee949dd4a3" category="paragraph"><block ref="699e5e6ac0568498b21221ee949dd4a3" category="inline-image-macro-rx" type="image"></block></block>
   <block id="79f475897ad3ccfba85aa2fc2f2d9bad" category="section-title">拡張子別ファイルサイズ分布グラフ</block>
-  <block id="4ab3fb97b389232d625b03e49824e147" category="paragraph"><block ref="4ab3fb97b389232d625b03e49824e147" category="inline-image-macro-rx" type="image"></block></block>
   <block id="a07e34309c0f4fe3914143661296e902" category="paragraph">[File Size Distribution by Extension]グラフは、ファイル共有内のさまざまなファイル拡張子の累積サイズを表します。拡張子を表す分割のサイズは、各拡張子を持つファイルのサイズに基づいています。</block>
-  <block id="fa089a630122acf5e9273fce49f4cf34" category="paragraph"><block ref="fa089a630122acf5e9273fce49f4cf34" category="inline-image-macro-rx" type="image"></block></block>
   <block id="0c298119c26e2b6846ed04c0a3a19fc9" category="paragraph">を実行します<block ref="0b0f856b03e3ddcd7804298ac5bc4a97" prefix=" " category="inline-code"></block> 詳細：</block>
   <block id="1b8208be7fabaa97780c143eb5ae291e" category="paragraph">を実行します<block ref="dc7a0e5e50a6e16de630993f68e9061c" prefix=" " category="inline-code"></block> 詳細：</block>
   <block id="b802ccf3bd2b24d676e6542534797831" category="paragraph">を実行します<block ref="7aaf8f3c0f52b0fd5a97d37fbe81d5c5" prefix=" " category="inline-code"></block> 詳細：</block>
@@ -2216,4 +2211,15 @@ falseを指定すると、syslog設定は無視されます。</block>
   <block id="d00c1e93acb215a134bcc17a6aafed7e" category="paragraph"><block ref="d00c1e93acb215a134bcc17a6aafed7e" category="inline-image-macro-rx" type="image"></block></block>
   <block id="e53491994f0709110c81f65b9c6dcbf5" category="cell">サードパーティからNetAppへのNTFSアクセス制御リスト（ACL）</block>
   <block id="0ce0e45a25c05fb4a79ccca92ab31b0a" category="cell">XCP SMBでは、ネットアップ以外のシステムからNetAppシステムへのサードパーティACLの移行はサポートされていません。</block>
+  <block id="1300bd8e2d36b2d26dd0d4054937f9b7" category="admonition">XCP INIファイルはXCP SMBでは必要ありません。</block>
+  <block id="cfd8dd3ece7e01985a0c3284a9784c66" category="inline-image-macro">時間の経過に伴って変更されたファイルのサイズを示すグラフ</block>
+  <block id="6892c40e78a41a89c3e977071754228f" category="paragraph"><block ref="6892c40e78a41a89c3e977071754228f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="23cc9fe9e052a539bfb7f4050d5cbc0c" category="inline-image-macro">XCP SMBでファイル拡張子ごとに代替データストリームファイルの数を取得する方法を示すグラフ</block>
+  <block id="38a84eabbe5af8a7b5f98fac70ba57da" category="paragraph"><block ref="38a84eabbe5af8a7b5f98fac70ba57da" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0ddb9db6b0a28f38a95e40d7cf8eb8cb" category="inline-image-macro">ファイル共有内のさまざまなファイル拡張子の累積サイズを示すグラフ。</block>
+  <block id="3364e1b19026788a2e58a0d78550ffc5" category="paragraph"><block ref="3364e1b19026788a2e58a0d78550ffc5" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="4a19e5a58f92d23fde8fba05519926e6" category="inline-image-macro">XCP SMBのさまざまなタイプの代替データストリームファイルの数を取得する方法を示すグラフ</block>
+  <block id="92420eba0222a4b23e712f8973ef3bc8" category="paragraph"><block ref="92420eba0222a4b23e712f8973ef3bc8" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="19699e63b68566e37c15a09d5b8fa402" category="sidebar">XCPのマニュアル</block>
+  <block id="3b878279a04dc47d60932cb294d96259" category="sidebar">概要</block>
 </blocks>
