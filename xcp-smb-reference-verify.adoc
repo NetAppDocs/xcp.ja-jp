@@ -79,8 +79,7 @@ STATUS : PASSED
 | <<verify-noownership>> | 所有権をチェックしないでください。 
 
 
-| <<Verify-ADS>> | ソースとターゲットのSMB共有で代替データストリームの変更と変更をスキャンします。変更がある場合は、変更がターゲットに適用されます。
-ターゲットがソースと同一であることを確認します。 
+| <<Verify-ADS>> |  `verify`コマンドで `-ads`パラメータを指定すると、ソースとデスティネーションの代替データストリームがないかどうかがチェックされ、相違点があれば表示されます。 
 
 
 | <<verify-noacls>> | ACLはチェックしないでください。 
@@ -110,10 +109,10 @@ STATUS : PASSED
 | <<verify_smb_acl,verify-fallback-group fallback_group>  | ターゲットマシン上のActive Directoryグループまたはローカル（ドメインでない）グループ。ローカル（ドメインでない）ソースマシングループ（例：domain\administrators）の権限を取得します。 
 
 
-| <<smb_verify_root,verify-root>> | ルートディレクトリのACLを同期します。 
+| <<smb_verify_root,verify-root>> | ルートディレクトリのACLを確認します。 
 
 
-| <<verify_smb_onlyacl,Verify-Onlyacl>> | セキュリティ情報のみをコピーします。 
+| <<verify_smb_onlyacl,Verify-Onlyacl>> | セキュリティ情報のみを確認します。 
 |===
 
 
@@ -477,7 +476,7 @@ STATUS : PASSED
 
 == Verify-ADS
 
-を使用します `-ads` パラメータと `verify` ソースとデスティネーションに代替データストリームがあるかどうかを読み取り、相違点を表示するコマンド。
+ `-ads` `verify`ソースとデスティネーションに代替データストリームがあるかどうかを確認し、相違点を表示するには、コマンドでパラメータを使用します。
 
 .構文
 [source, cli]
@@ -774,7 +773,7 @@ xcp verify -noacls -fallback-user <fallback_user> -fallback-group <fallback_grou
 
 == verify-root
 
-を使用します `-root` パラメータと `verify` ルートディレクトリのACLを同期するコマンド。
+ `-root` `verify`コマンドでパラメータを使用して、ルートディレクトリのACLを確認します。
 
 .構文
 [source, cli]
