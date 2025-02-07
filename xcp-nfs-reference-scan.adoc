@@ -199,9 +199,13 @@ STATUS : PASSED
 
 を使用します `-stats`、 `-csv`および `-html` パラメータと `scan` ツリー統計レポート形式でファイルを一覧表示するコマンド。
 
+[NOTE]
+====
+* を指定すると、 `-stats`オプション人間が判読可能なレポートがコンソールに出力されます。その他のレポート形式オプションは `-html`、または `-csv`です。カンマ区切り値（CSV）形式には正確な値があります。CSVレポートとHTMLレポートは、カタログが存在する場合は自動的にカタログに保存されます。
+* XCPレポート（.csv、.html）は、ファイルで指定したカタログの場所に保存され `xcp.ini`ます。ファイルはフォルダに保存され `<catalog path>/catalog/indexes/1/reports`ます。サンプルレポートはで表示できますlink:https://library.netapp.com/ecm/ecm_download_file/ECMLP2886872["NetApp XCP 1.9.3リファレンス"^]。
 
-NOTE: XCPレポート（.csv、.html）は、 `xcp.ini` ファイル。ファイルは、 `<catalog path>/catalog/indexes/1/reports` フォルダ。サンプルレポートは付録で確認できます。
 
+====
 .構文
 [source, cli]
 ----
