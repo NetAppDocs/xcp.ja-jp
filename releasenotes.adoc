@@ -4,11 +4,11 @@ sidebar: sidebar
 keywords: release, notes, new, features, fixed, issues, known, xcp 
 summary: 新機能、アップグレードの注意事項、解決済みの問題、既知の制限事項、および既知の問題について説明します。 
 ---
-= XCP v1.9.4リリースノート
+= XCP v1.9.4P1リリースノート
 :allow-uri-read: 
 
 
 [role="lead"]
-。 link:https://library.netapp.com/ecm/ecm_download_file/ECMLP3317866["XCP v1.9.4リリースノート"^] 新機能、アップグレードに関する注意事項、解決済みの問題、既知の制限事項、および既知の問題について説明する。
+そのlink:https://library.netapp.com/ecm/ecm_download_file/ECMLP3317866["XCP v1.9.4P1リリースノート"^]新しい機能、アップグレード ノート、修正された問題、既知の制限、既知の問題について説明します。
 
-リリースノートにアクセスするには、ネットアップサポートサイトにサインオンする必要があります。
+リリース ノートにアクセスするには、NetApp サポート サイトにサインインする必要があります。

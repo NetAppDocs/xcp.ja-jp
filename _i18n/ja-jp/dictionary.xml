@@ -139,7 +139,6 @@
   <block id="0e4a94fc1ebb00022d0693e301596d2d" category="cell">XCP サービスが停止している可能性があります設定スクリプトを実行し、 * Repair * オプションを選択します。これにより、停止されたすべてのサービスが再起動されます。</block>
   <block id="e2d6471d3d51e8bf2d4aa734bd07e4ed" category="cell">特定のファイルサーバ上のエクスポートされたファイルシステムの合計スペースは、割り当てられた物理ストレージよりも多くのスペースを表示することがあります。</block>
   <block id="a3100bf3334206028c894a5568ddcf09" category="summary">新機能、アップグレードの注意事項、解決済みの問題、既知の制限事項、および既知の問題について説明します。</block>
-  <block id="dbd469acdcbd52648cb242bcfda6add3" category="paragraph">リリースノートにアクセスするには、ネットアップサポートサイトにサインオンする必要があります。</block>
   <block id="899cb0fc6e09b056f086b2106c805708" category="summary">XCP SMB をインストールします</block>
   <block id="8f753e7a8965c7ae386ee6fa22a4b1bf" category="admonition">アップグレードするオプションはありません。既存のバージョンを置き換えるには XCP を再インストールしてください。</block>
   <block id="b9982e4a219c9f069ec01b724fff8274" category="paragraph">* システム要件 *</block>
@@ -2133,8 +2132,6 @@ falseを指定すると、syslog設定は無視されます。</block>
   <block id="7cb35b7703703d652804134b52bf829b" category="paragraph">を使用します<block ref="66cd389c6c12385d9542ca86e992449e" prefix=" " category="inline-code"></block> パラメータと<block ref="2af1ae573e96f9c96edbfe34f2ecd144" prefix=" " category="inline-code"></block> フィルタに一致するファイルとディレクトリのみを処理するコマンド。</block>
   <block id="1fc46f8d24487350c659281460a310d9" category="section-title">indexdelete -ログレベルの&lt;name&gt;</block>
   <block id="1360d8395bfcf9ad24917527cdbfea22" category="paragraph">を使用します<block ref="8b89acaeef479a34b0cfc743614719b4" prefix=" " category="inline-code"></block> パラメータと<block ref="2af1ae573e96f9c96edbfe34f2ecd144" prefix=" " category="inline-code"></block> ログレベルを設定するコマンド。使用可能なレベルはINFOおよびDEBUGです。デフォルトのレベルは「情報」です。</block>
-  <block id="6f9bf328f7fea62d92188f9c4c08614b" category="doc">XCP v1.9.4リリースノート</block>
-  <block id="3b61885b697e1edb6c215f90afdd792e" category="paragraph">。 <block ref="98899b177c8da430fcd78f8fb0f1ab8b" category="inline-link-macro-rx"></block> 新機能、アップグレードに関する注意事項、解決済みの問題、既知の制限事項、および既知の問題について説明する。</block>
   <block id="e384977f6d5fbe4be72e70d0abfbedaf" category="summary">XCP SMB「scan」コマンドリファレンス</block>
   <block id="061db87d2d617de9abf8d907bfd9535f" category="paragraph">SMB<block ref="53aefec08170b2ebed981a0a86d0dbe0" prefix=" " category="inline-code"></block> コマンドは、SMB共有全体を再帰的にスキャンし、<block ref="53aefec08170b2ebed981a0a86d0dbe0" prefix=" " category="inline-code"></block> コマンドを実行します</block>
   <block id="cd8d8f76da0c72bf17f57779b195f34c" category="inline-xref">scan-h、–-help</block>
@@ -2225,4 +2222,7 @@ falseを指定すると、syslog設定は無視されます。</block>
   <block id="12ce88dea76a012f44f4f35bbc418dbd" category="list-text">を指定すると、<block ref="1051648d0a5a726e0234c2579abcd347" prefix=" " category="inline-code"></block>オプション人間が判読可能なレポートがコンソールに出力されます。その他のレポート形式オプションは<block ref="a04601c5ed04826cdcefa49dea445044" prefix=" " category="inline-code"></block>、または<block ref="e36751ffcb15beae9c1bdef00c6041fd" prefix=" " category="inline-code"></block>です。カンマ区切り値（CSV）形式には正確な値があります。CSVレポートとHTMLレポートは、カタログが存在する場合は自動的にカタログに保存されます。</block>
   <block id="94e333b8fe7eeb24ad8148da30611a12" category="list-text">XCPレポート（.csv、.html）は、ファイルで指定したカタログの場所に保存され<block ref="d509f49d5d9a07934f91eefcf45a7334" prefix=" " category="inline-code"></block>ます。ファイルはフォルダに保存され<block ref="4ab06dfafbc06c813ac00690ec02817f" prefix=" " category="inline-code"></block>ます。サンプルレポートはで表示できます<block ref="4e380b3bd4c911d8ac7f28200efc937b" category="inline-link-macro-rx"></block>。</block>
   <block id="1ce3aa5c05c910125de58745a6c5c442" category="admonition">statsオプションを指定すると、人間が判読可能なレポートがコンソールに出力されます。その他のレポート形式オプションには、-htmlまたは-csvがあります。カンマ区切り値（CSV）形式には正確な値があります。CSVレポートとHTMLレポートは、カタログが存在する場合は自動的にカタログに保存されます。</block>
+  <block id="5cb2823040d5c096016e66f50cb537d9" category="doc">XCP v1.9.4P1リリースノート</block>
+  <block id="1ffdd60f2e1036fd9fdd193a4b1f40c8" category="paragraph">その<block ref="c72f9149922a980ca48dffb603f15c20" category="inline-link-macro-rx"></block>新しい機能、アップグレード ノート、修正された問題、既知の制限、既知の問題について説明します。</block>
+  <block id="7db7336d37e2a7cbb5ab4d9e623c5961" category="paragraph">リリース ノートにアクセスするには、NetApp サポート サイトにサインインする必要があります。</block>
 </blocks>
