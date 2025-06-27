@@ -2223,6 +2223,6 @@ falseを指定すると、syslog設定は無視されます。</block>
   <block id="94e333b8fe7eeb24ad8148da30611a12" category="list-text">XCPレポート（.csv、.html）は、ファイルで指定したカタログの場所に保存され<block ref="d509f49d5d9a07934f91eefcf45a7334" prefix=" " category="inline-code"></block>ます。ファイルはフォルダに保存され<block ref="4ab06dfafbc06c813ac00690ec02817f" prefix=" " category="inline-code"></block>ます。サンプルレポートはで表示できます<block ref="4e380b3bd4c911d8ac7f28200efc937b" category="inline-link-macro-rx"></block>。</block>
   <block id="1ce3aa5c05c910125de58745a6c5c442" category="admonition">statsオプションを指定すると、人間が判読可能なレポートがコンソールに出力されます。その他のレポート形式オプションには、-htmlまたは-csvがあります。カンマ区切り値（CSV）形式には正確な値があります。CSVレポートとHTMLレポートは、カタログが存在する場合は自動的にカタログに保存されます。</block>
   <block id="7db7336d37e2a7cbb5ab4d9e623c5961" category="paragraph">リリース ノートにアクセスするには、NetApp サポート サイトにサインインする必要があります。</block>
-  <block id="6f9bf328f7fea62d92188f9c4c08614b" category="doc">XCP v1.9.4リリースノート</block>
-  <block id="3b61885b697e1edb6c215f90afdd792e" category="paragraph">その<block ref="98899b177c8da430fcd78f8fb0f1ab8b" category="inline-link-macro-rx"></block>新しい機能、アップグレード ノート、修正された問題、既知の制限、既知の問題について説明します。</block>
+  <block id="5cb2823040d5c096016e66f50cb537d9" category="doc">XCP v1.9.4P1リリースノート</block>
+  <block id="1ffdd60f2e1036fd9fdd193a4b1f40c8" category="paragraph">その<block ref="c72f9149922a980ca48dffb603f15c20" category="inline-link-macro-rx"></block>新しい機能、アップグレード ノート、修正された問題、既知の制限、既知の問題について説明します。</block>
 </blocks>
