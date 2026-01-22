@@ -29,13 +29,13 @@ indexpage:
   - title: リソースの追加
     links:
     - title: NetApp TechCommTV（NetApp XCPビデオ）
-      url: link:https://www.youtube.com/user/NetAppTechCommTV/search?query=xcp
+      url: https://www.youtube.com/user/NetAppTechCommTV/search?query=xcp
     - title: NetApp XCP（ライセンスを取得するためのリンクを含む）
       url: https://xcp.netapp.com/
     - title: XCP用のNetAppリソース
       url: https://www.netapp.com/search/#q=xcp&sort=relevancy&f:@language=English
     - title: NetAppコミュニティ（フォーラム）
-      url: link:https://community.netapp.com
+      url: https://community.netapp.com
   - title: XCPリファレンス
     links:
     - title: NFSコマンドリファレンス
